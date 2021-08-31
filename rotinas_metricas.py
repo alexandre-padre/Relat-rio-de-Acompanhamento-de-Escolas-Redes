@@ -10,7 +10,7 @@ from PIL import Image
 import plotly.express as px
 
 # Importações de CSVs
-avaliacao_somativa_namespace = pd.read_csv('../CSV/Avaliação Somativa/avaliacao_somativa.csv')
+avaliacao_somativa_namespace = pd.read_csv('./CSV/Avaliação Somativa/avaliacao_somativa.csv')
 avaliacao_somativa_namespace2 = avaliacao_somativa_namespace[avaliacao_somativa_namespace['Média'] > 0]
 
 ## Título do relatório
