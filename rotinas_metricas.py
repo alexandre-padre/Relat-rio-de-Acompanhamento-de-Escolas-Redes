@@ -73,7 +73,7 @@ st.markdown(
         unsafe_allow_html=True,
     )
 
-st.subheader('**Avaliação Somativa'+' ('+str(round(100*avaliacao_somativa_namespace_select['Média'][0], 2))+')**')
+st.subheader('**Avaliação Somativa'+' (Pontuação: '+str(round(100*avaliacao_somativa_namespace_select['Média'][0], 2))+')**')
 st.markdown('***O namespace '+namespace_select+ ' está no '+avaliacao_somativa_namespace_select['Quartil'][0]+ ' quartil!***') 
 st.progress(avaliacao_somativa_namespace_select['Média'][0])
 
