@@ -85,7 +85,7 @@ avaliacao_somativa_namespace6.rename(columns = {'Média':'Média (0 a 100)'}, in
 avaliacao_somativa_namespace7 = avaliacao_somativa_namespace6.drop(columns = ['Porcentagem de engajamento em AAs','Média de AAs por turma','Média de exercícios por turma','Correção de exercícios discursivos','Criação de AA','Publicação da AA','Acesso à relatórios de AA por aluno','Porcentagem de visualização de relatórios de AA por professor','Porcentagem de administradores que visualizaram relatórios de AA'])
     
 if ver_destaque_avaliacao_somativa == 'Sim':
-    avaliacao_somativa_namespace8 = avaliacao_somativa_namespace7.drop(columns = ['Quartil'])
+    avaliacao_somativa_namespace8 = avaliacao_somativa_namespace7.drop(columns = ['Quartil']).reset_index(drop = True)
     avaliacao_somativa_namespace9 = avaliacao_somativa_namespace8.loc[0:19]
     avaliacao_somativa_namespace9['Medalha'] = ''
     for i in range(20):
