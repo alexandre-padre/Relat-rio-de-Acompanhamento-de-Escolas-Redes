@@ -98,7 +98,6 @@ if ver_destaque_avaliacao_somativa == 'Sim':
         if i > 2:
             avaliacao_somativa_namespace9['Medalha'][i] = '  '   
     avaliacao_somativa_namespace9.set_index('Medalha', drop = True, inplace=True)
-    avaliacao_somativa_namespace9["Média (0 a 100)"] = avaliacao_somativa_namespace9["Média (0 a 100)"].apply(lambda x: np.round(x, decimals=2))
     #avaliacao_somativa_namespace10 = avaliacao_somativa_namespace9.style.format({"Média (0 a 100)":"{:,.2f}"})
     st.table(avaliacao_somativa_namespace9)
 
