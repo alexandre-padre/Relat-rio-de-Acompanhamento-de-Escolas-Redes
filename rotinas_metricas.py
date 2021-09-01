@@ -80,7 +80,7 @@ st.progress(avaliacao_somativa_namespace_select['Média'][0])
 ver_destaque_avaliacao_somativa = st.radio('Você deseja visualizar os namespaces destaque em Avaliação Somativa? 📈',('Não','Sim'))
 
 avaliacao_somativa_namespace6 = avaliacao_somativa_namespace5.copy()
-avaliacao_somativa_namespace6['Média'] = "{0:.2f}".format(round(100*avaliacao_somativa_namespace6['Média'],2))
+avaliacao_somativa_namespace6['Média'] = round(100*avaliacao_somativa_namespace6['Média'],2)
 avaliacao_somativa_namespace6.rename(columns = {'Média':'Média (0 a 100)'}, inplace = True)
 avaliacao_somativa_namespace7 = avaliacao_somativa_namespace6.drop(columns = ['Porcentagem de engajamento em AAs','Média de AAs por turma','Média de exercícios por turma','Correção de exercícios discursivos','Criação de AA','Publicação da AA','Acesso à relatórios de AA por aluno','Porcentagem de visualização de relatórios de AA por professor','Porcentagem de administradores que visualizaram relatórios de AA'])
     
@@ -98,6 +98,7 @@ if ver_destaque_avaliacao_somativa == 'Sim':
         if i > 2:
             avaliacao_somativa_namespace9['Medalha'][i] = '  '   
     avaliacao_somativa_namespace9.set_index('Medalha', drop = True, inplace=True)
+    avaliacao_somativa_namespace9["Média (0 a 100)"] = avaliacao_somativa_namespace9["Média (0 a 100)"].apply(lambda x: np.round(x, decimals=2))
     #avaliacao_somativa_namespace10 = avaliacao_somativa_namespace9.style.format({"Média (0 a 100)":"{:,.2f}"})
     st.table(avaliacao_somativa_namespace9)
 
