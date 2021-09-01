@@ -97,8 +97,9 @@ if ver_destaque_avaliacao_somativa == 'Sim':
             avaliacao_somativa_namespace9['Medalha'][i] = '🥉'
         if i > 2:
             avaliacao_somativa_namespace9['Medalha'][i] = '  '   
-    avaliacao_somativa_namespace9.set_index('Medalha', drop = True, inplace=True).style.format({"Média (0 a 100)":"{:,.2f}"})
-    #avaliacao_somativa_namespace10 = avaliacao_somativa_namespace9.style.format({"Média (0 a 100)":"{:,.2f}"})
+    #avaliacao_somativa_namespace9.set_index('Medalha', drop = True, inplace=True)
+    avaliacao_somativa_namespace10 = avaliacao_somativa_namespace9.style.format({"Média (0 a 100)":"{:,.2f}"})
+    avaliacao_somativa_namespace10.set_index('Medalha', drop = True, inplace=True)
     st.table(avaliacao_somativa_namespace9)
 
 
