@@ -22,13 +22,17 @@ st.title('Relatório de Acompanhamento de Escolas/Redes')
 image = Image.open('[LOGO] Eduqo.png')
 st.sidebar.image(image,caption='Eduqo - Plataforma QMágico',use_column_width=True)
 st.sidebar.markdown('Feito por : Alexandre Fernandes (Padre)')
-st.sidebar.write("Repositório Github: [link] (https://github.com/alexandre-padre/Relat-rio-de-Acompanhamento-de-Escolas-Redes.git)")
 
 ## Introdução
 st.subheader('Os dados analisados são do período entre 01/06/2021 e 29/08/2021')
 
 ## Seleção do namespace a ser analisado
-namespace_select = st.sidebar.selectbox('Selecione um namespace', avaliacao_somativa_namespace2['namespace'])
+avaliacao_somativa_namespace_ = avaliacao_somativa_namespace2.sort_values(by = 'namespace')
+namespace_select = st.sidebar.selectbox('Selecione um namespace', avaliacao_somativa_namespace_['namespace'])
+
+## Informações de licenças, produto, gestor de conta e receita
+informacoes_hubspot = pd.read_csv('./CSV/informacoes_hubspot.csv')
+#st.dataframe(informacoes_hubspot)
 
 st.subheader('Namespace selecionado: **'+namespace_select+'**')
 
