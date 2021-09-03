@@ -37,15 +37,7 @@ st.header('**Rotinas Pedagógicas Digitais**')
 
 st.image('Rotinas Pedagógicas Digitais.png', use_column_width=True, caption='Rotinas Pedagógicas Digitais')
 
-
-
-
-
-
-
-
-
-## Rotina de Avaliação Diagnóstica
+## Rotina de Avaliação Diagnóstica (Geral)
 
 avaliacao_diagnostica_namespace = pd.read_csv('./CSV/Avaliação Diagnóstica/avaliacao_diagnostica.csv')
 
@@ -61,36 +53,7 @@ st.subheader('**Avaliação Diagnóstica'+' (Pontuação: '+str(round(100*avalia
 st.markdown('***O namespace '+namespace_select+ ' está no '+avaliacao_diagnostica_namespace_select['Quartil'][0]+ ' quartil!***') 
 st.progress(avaliacao_diagnostica_namespace_select['Média'][0])
 
-ver_destaque_avaliacao_diagnostica = st.radio('Você deseja visualizar os namespaces destaque em Avaliação Diagnóstica? 📈',('Não','Sim'))
-
-# Ajustes na tabela de Avaliação Diagnóstica
-avaliacao_diagnostica_namespace3 = avaliacao_diagnostica_namespace2.copy()
-avaliacao_diagnostica_namespace3['Média'] = round(100*avaliacao_diagnostica_namespace3['Média'],2)
-avaliacao_diagnostica_namespace3.rename(columns = {'Média':'Média (0 a 100)'}, inplace = True)
-#avaliacao_somativa_namespace7 = avaliacao_somativa_namespace6.drop(columns = ['Porcentagem de engajamento em AAs','Média de AAs por turma','Média de exercícios por turma','Correção de exercícios discursivos','Criação de AA','Publicação da AA','Acesso à relatórios de AA por aluno','Porcentagem de visualização de relatórios de AA por professor','Porcentagem de administradores que visualizaram relatórios de AA'])
-
-# Visualização dos namespaces destaque
-if ver_destaque_avaliacao_diagnostica == 'Sim':
-    avaliacao_diagnostica_namespace4 = destaques_rotina(avaliacao_diagnostica_namespace3)
-    st.table(avaliacao_diagnostica_namespace4)
-
-# Visualização dos quartis
-ver_quartil_avaliacao_diagnostica = st.radio('Escolha o quartil que deseja ver os resultados de Avaliação Diagnóstica 📈',('Nenhum','1º','2º','3º','4º'))
-if ver_quartil_avaliacao_diagnostica != 'Nenhum':
-    avaliacao_diagnostica_namespace_quartil = visualizacao_resultado_quartil(ver_quartil_avaliacao_diagnostica,avaliacao_diagnostica_namespace3)
-    st.table(avaliacao_diagnostica_namespace_quartil)
-
-# Visualização das métricas do namespace selecionado
-check_box_avaliacao_diagnostica = st.checkbox('Selecione para visualizar os resultados de Avaliação Diagnóstica do namespace por métrica.')
-var = []
-if check_box_avaliacao_diagnostica == True:
-    for coluna in avaliacao_diagnostica_namespace_select.loc[:,'Nº de AAs copiadas da estante mágica e aplicada':'Média de exercícios em relatórios de AD por turma']:
-        st.markdown('**'+coluna+' (Pontuação: '+str(round(100*avaliacao_diagnostica_namespace_select[coluna][0], 2))+')**') 
-        st.progress(avaliacao_diagnostica_namespace_select[coluna][0])
-
-########################################################################################################
-
-## Rotina de Avaliação Somativa
+## Rotina de Avaliação Somativa (Geral)
 
 # Quartis Avaliação Somativa
 avaliacao_somativa_namespace4 = quartis(avaliacao_somativa_namespace2,'Média')
@@ -100,6 +63,50 @@ avaliacao_somativa_namespace5.rename(columns = {"('Criação de AA', '')":'Cria�
 
 avaliacao_somativa_namespace_select = avaliacao_somativa_namespace5[avaliacao_somativa_namespace5['namespace'] == namespace_select].reset_index(drop = True)
 
+# Média do namespace
+st.subheader('**Avaliação Somativa'+' (Pontuação: '+str(round(100*avaliacao_somativa_namespace_select['Média'][0], 2))+')**')
+st.markdown('***O namespace '+namespace_select+ ' está no '+avaliacao_somativa_namespace_select['Quartil'][0]+ ' quartil!***') 
+st.progress(avaliacao_somativa_namespace_select['Média'][0])
+
+######################################################################################################
+
+st.subheader('**Métricas detalhadas de cada rotina pedagógica**')
+
+## Rotina de Avaliação Diagnóstica
+st.markdown('**Avaliação Diagnóstica**')
+
+# Ajustes na tabela de Avaliação Diagnóstica
+avaliacao_diagnostica_namespace3 = avaliacao_diagnostica_namespace2.copy()
+avaliacao_diagnostica_namespace3['Média'] = round(100*avaliacao_diagnostica_namespace3['Média'],2)
+avaliacao_diagnostica_namespace3.rename(columns = {'Média':'Média (0 a 100)'}, inplace = True)
+
+avaliacao_diagnostica_namespace4 = pd.DataFrame()
+for coluna in avaliacao_diagnostica_namespace3.columns:
+    if (coluna == 'namespace' or coluna == 'Média (0 a 100)' or coluna == 'Quartil'):
+        avaliacao_diagnostica_namespace4[coluna] = avaliacao_diagnostica_namespace3[coluna]
+
+
+# Visualização dos namespaces destaque
+with st.expander("Visualizar as escolas destaque em Avaliação Diagnóstica -> (clique aqui 🖱️)"):
+    avaliacao_diagnostica_namespace5 = destaques_rotina(avaliacao_diagnostica_namespace4)
+    st.table(avaliacao_diagnostica_namespace5)
+
+# Visualização dos quartis
+ver_quartil_avaliacao_diagnostica = st.radio('Escolha o quartil que deseja ver os resultados de Avaliação Diagnóstica 📈',('Nenhum','1º','2º','3º','4º'))
+if ver_quartil_avaliacao_diagnostica != 'Nenhum':
+    avaliacao_diagnostica_namespace_quartil = visualizacao_resultado_quartil(ver_quartil_avaliacao_diagnostica,avaliacao_diagnostica_namespace4)
+    st.table(avaliacao_diagnostica_namespace_quartil)
+
+# Visualização das métricas do namespace selecionado
+with st.expander("Visualizar os resultados de Avaliação Diagnóstica do namespace selecionado por métrica -> (clique aqui 🖱️)"):
+    for coluna in avaliacao_diagnostica_namespace_select.loc[:,'Nº de AAs copiadas da estante mágica e aplicada':'Média de exercícios em relatórios de AD por turma']:
+        st.markdown('**'+coluna+' (Pontuação: '+str(round(100*avaliacao_diagnostica_namespace_select[coluna][0], 2))+')**') 
+        st.progress(avaliacao_diagnostica_namespace_select[coluna][0])
+        st.write('Pontuação Média Eduqo: '+str(round(100*avaliacao_diagnostica_namespace2[coluna].mean(), 2)))
+
+########################################################################################################
+
+## Rotina de Avaliação Somativa
 st.markdown(
         """
         <style>
@@ -110,24 +117,18 @@ st.markdown(
         unsafe_allow_html=True,
     )
 
-# Média do namespace
-st.subheader('**Avaliação Somativa'+' (Pontuação: '+str(round(100*avaliacao_somativa_namespace_select['Média'][0], 2))+')**')
-st.markdown('***O namespace '+namespace_select+ ' está no '+avaliacao_somativa_namespace_select['Quartil'][0]+ ' quartil!***') 
-st.progress(avaliacao_somativa_namespace_select['Média'][0])
-
-ver_destaque_avaliacao_somativa = st.radio('Você deseja visualizar os namespaces destaque em Avaliação Somativa? 📈',('Não','Sim'))
-
 # Ajustes na tabela de Avaliação Somativa
 avaliacao_somativa_namespace6 = avaliacao_somativa_namespace5.copy()
 avaliacao_somativa_namespace6['Média'] = round(100*avaliacao_somativa_namespace6['Média'],2)
 avaliacao_somativa_namespace6.rename(columns = {'Média':'Média (0 a 100)'}, inplace = True)
 avaliacao_somativa_namespace7 = avaliacao_somativa_namespace6.drop(columns = ['Porcentagem de engajamento em AAs','Média de AAs por turma','Média de exercícios por turma','Correção de exercícios discursivos','Criação de AA','Publicação da AA','Acesso à relatórios de AA por aluno','Porcentagem de visualização de relatórios de AA por professor','Porcentagem de administradores que visualizaram relatórios de AA'])
 
+st.markdown('**Avaliação Somativa**')
 
 # Visualização dos namespaces destaque
-if ver_destaque_avaliacao_somativa == 'Sim':
-    avaliacao_somativa_namespace9 = destaques_rotina(avaliacao_somativa_namespace7)
-    st.table(avaliacao_somativa_namespace9)
+with st.expander("Visualizar as escolas destaque em Avaliação Somativa -> (clique aqui 🖱️)"):
+    avaliacao_somativa_namespace8 = destaques_rotina(avaliacao_somativa_namespace7)
+    st.table(avaliacao_somativa_namespace8)
 
 # Visualização dos quartis
 ver_quartil_avaliacao_somativa = st.radio('Escolha o quartil que deseja ver os resultados de Avaliação Somativa 📈',('Nenhum','1º','2º','3º','4º'))
@@ -136,9 +137,7 @@ if ver_quartil_avaliacao_somativa != 'Nenhum':
     st.table(avaliacao_somativa_namespace_quartil)
 
 # Visualização das métricas do namespace selecionado
-check_box_avaliacao_somativa = st.checkbox('Selecione para visualizar os resultados de Avaliação Somativa do namespace por métrica.')
-var = []
-if check_box_avaliacao_somativa == True:
+with st.expander("Visualizar os resultados de Avaliação Somativa do namespace selecionado por métrica -> (clique aqui 🖱️)"):
     for coluna in avaliacao_somativa_namespace_select.loc[:,'Porcentagem de engajamento em AAs':'Porcentagem de administradores que visualizaram relatórios de AA']:
         st.markdown('**'+coluna+' (Pontuação: '+str(round(100*avaliacao_somativa_namespace_select[coluna][0], 2))+')**') 
         if coluna == 'Porcentagem de engajamento em AAs':
@@ -154,4 +153,5 @@ if check_box_avaliacao_somativa == True:
         if coluna == 'Porcentagem de visualização de relatórios de AA por professor':
             st.write('Essa métrica consiste na razão entre o número de AAs diferentes que o professor viu o relatório dentre as que ele é corretor/dono número.')
         st.progress(avaliacao_somativa_namespace_select[coluna][0])
+        st.write('Pontuação Média Eduqo: '+str(round(100*avaliacao_somativa_namespace5[coluna].mean(), 2)))
 
