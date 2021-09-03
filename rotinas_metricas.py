@@ -49,9 +49,14 @@ avaliacao_diagnostica_namespace2 = avaliacao_diagnostica_namespace_aux.drop(colu
 avaliacao_diagnostica_namespace_select = avaliacao_diagnostica_namespace2[avaliacao_diagnostica_namespace2['namespace'] == namespace_select].reset_index(drop = True)
 
 # Média do namespace
-st.subheader('**Avaliação Diagnóstica'+' (Pontuação: '+str(round(100*avaliacao_diagnostica_namespace_select['Média'][0], 2))+')**')
+if avaliacao_diagnostica_namespace_select['Média'][0] >= avaliacao_diagnostica_namespace2['Média'].mean():
+    comparativo_media_avaliacao_somativa = ' 🟩'
+else:
+    comparativo_media_avaliacao_somativa = ' 🟨'
+st.subheader('**Avaliação Diagnóstica'+' (Pontuação: '+str(round(100*avaliacao_diagnostica_namespace_select['Média'][0], 2))+comparativo_media_avaliacao_somativa+')**')
 st.markdown('***O namespace '+namespace_select+ ' está no '+avaliacao_diagnostica_namespace_select['Quartil'][0]+ ' quartil!***') 
 st.progress(avaliacao_diagnostica_namespace_select['Média'][0])
+st.write('Pontuação **Média Eduqo: '+str(round(100*avaliacao_diagnostica_namespace2['Média'].mean(), 2))+'**')
 
 ## Rotina de Avaliação Somativa (Geral)
 
@@ -64,10 +69,14 @@ avaliacao_somativa_namespace5.rename(columns = {"('Criação de AA', '')":'Cria�
 avaliacao_somativa_namespace_select = avaliacao_somativa_namespace5[avaliacao_somativa_namespace5['namespace'] == namespace_select].reset_index(drop = True)
 
 # Média do namespace
-st.subheader('**Avaliação Somativa'+' (Pontuação: '+str(round(100*avaliacao_somativa_namespace_select['Média'][0], 2))+')**')
+if avaliacao_somativa_namespace_select['Média'][0] >= avaliacao_somativa_namespace5['Média'].mean():
+    comparativo_media_avaliacao_somativa = ' 🟩'
+else:
+    comparativo_media_avaliacao_somativa = ' 🟨'
+st.subheader('**Avaliação Somativa'+' (Pontuação: '+str(round(100*avaliacao_somativa_namespace_select['Média'][0], 2))+comparativo_media_avaliacao_somativa+')**')
 st.markdown('***O namespace '+namespace_select+ ' está no '+avaliacao_somativa_namespace_select['Quartil'][0]+ ' quartil!***') 
 st.progress(avaliacao_somativa_namespace_select['Média'][0])
-
+st.write('Pontuação **Média Eduqo: '+str(round(100*avaliacao_somativa_namespace5['Média'].mean(), 2))+'**')
 ######################################################################################################
 
 st.subheader('**Métricas detalhadas de cada rotina pedagógica**')
@@ -100,9 +109,13 @@ if ver_quartil_avaliacao_diagnostica != 'Nenhum':
 # Visualização das métricas do namespace selecionado
 with st.expander("Visualizar os resultados de Avaliação Diagnóstica do namespace selecionado por métrica -> (clique aqui 🖱️)"):
     for coluna in avaliacao_diagnostica_namespace_select.loc[:,'Nº de AAs copiadas da estante mágica e aplicada':'Média de exercícios em relatórios de AD por turma']:
-        st.markdown('**'+coluna+' (Pontuação: '+str(round(100*avaliacao_diagnostica_namespace_select[coluna][0], 2))+')**') 
+        if avaliacao_diagnostica_namespace_select[coluna][0] >= avaliacao_diagnostica_namespace2[coluna].mean():
+            comparativo_media_avaliacao_diagnostica = ' 🟩'
+        else:
+            comparativo_media_avaliacao_diagnostica = ' 🟨'
+        st.markdown('**'+coluna+' (Pontuação: '+str(round(100*avaliacao_diagnostica_namespace_select[coluna][0], 2))+comparativo_media_avaliacao_diagnostica+')**') 
         st.progress(avaliacao_diagnostica_namespace_select[coluna][0])
-        st.write('Pontuação Média Eduqo: '+str(round(100*avaliacao_diagnostica_namespace2[coluna].mean(), 2)))
+        st.write('Pontuação **Média Eduqo: '+str(round(100*avaliacao_diagnostica_namespace2[coluna].mean(), 2))+'**')
 
 ########################################################################################################
 
@@ -139,7 +152,11 @@ if ver_quartil_avaliacao_somativa != 'Nenhum':
 # Visualização das métricas do namespace selecionado
 with st.expander("Visualizar os resultados de Avaliação Somativa do namespace selecionado por métrica -> (clique aqui 🖱️)"):
     for coluna in avaliacao_somativa_namespace_select.loc[:,'Porcentagem de engajamento em AAs':'Porcentagem de administradores que visualizaram relatórios de AA']:
-        st.markdown('**'+coluna+' (Pontuação: '+str(round(100*avaliacao_somativa_namespace_select[coluna][0], 2))+')**') 
+        if avaliacao_somativa_namespace_select[coluna][0] >= avaliacao_somativa_namespace5[coluna].mean():
+            comparativo_media_avaliacao_somativa = ' 🟩'
+        else:
+            comparativo_media_avaliacao_somativa = ' 🟨'
+        st.markdown('**'+coluna+' (Pontuação: '+str(round(100*avaliacao_somativa_namespace_select[coluna][0], 2))+comparativo_media_avaliacao_somativa+')**') 
         if coluna == 'Porcentagem de engajamento em AAs':
             st.write('Essa métrica consiste na razão entre o número de exercícios realizados em relação aos disponibilizados (média entre os alunos)')
         if coluna == 'Correção de exercícios discursivos':
@@ -153,5 +170,5 @@ with st.expander("Visualizar os resultados de Avaliação Somativa do namespace 
         if coluna == 'Porcentagem de visualização de relatórios de AA por professor':
             st.write('Essa métrica consiste na razão entre o número de AAs diferentes que o professor viu o relatório dentre as que ele é corretor/dono número.')
         st.progress(avaliacao_somativa_namespace_select[coluna][0])
-        st.write('Pontuação Média Eduqo: '+str(round(100*avaliacao_somativa_namespace5[coluna].mean(), 2)))
+        st.write('Pontuação **Média Eduqo: '+str(round(100*avaliacao_somativa_namespace5[coluna].mean(), 2))+'**')
 
