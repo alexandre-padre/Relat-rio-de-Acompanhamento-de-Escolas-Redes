@@ -10,6 +10,11 @@ from PIL import Image
 import plotly.express as px
 from funcoes import *
 
+st.set_page_config(
+    page_title="Relatório de Acompanhamento de Escolas/Redes", layout="centered", page_icon="[LOGO] Eduqo 4.png"
+)
+
+
 ######################## Namespaces a serem analisados ########################
 
 namespaces = pd.read_csv('./CSV/produto_namespace.csv')
@@ -150,188 +155,191 @@ namespace2 = inserir_linha(pd.DataFrame(data = namespace['namespace'].unique()),
 namespace_select = st.sidebar.selectbox('Selecione um namespace', namespace2)
 
 ######################## Resultados gerais por rotina ########################
+if namespace_select != 'Namespace':
+    st.subheader('**Resultados gerais por Rotina Pedagógica Digital**')
 
-st.subheader('**Resultados gerais por Rotina Pedagógica Digital**')
+    ############## Avaliação Diagnóstica ##############
 
-############## Avaliação Diagnóstica ##############
+    ###### Leitura dos dados de cada rotina por namespace ######
+    avaliacao_diagnostica_namespace = pd.read_csv('./CSV/Avaliação Diagnóstica/Resultados por namespace/avaliacao_diagnostica_namespace.csv')
+    avaliacao_diagnostica_namespace2 = pd.merge(namespaces_x_hubspot3['namespace'],avaliacao_diagnostica_namespace, on = 'namespace', how = 'left')
+    avaliacao_diagnostica_namespace3 = avaliacao_diagnostica_namespace2.groupby('namespace').mean().reset_index()
+    avaliacao_diagnostica_namespace4 = avaliacao_diagnostica_namespace3.drop(columns = ['Unnamed: 0'])
 
-###### Leitura dos dados de cada rotina por namespace ######
-avaliacao_diagnostica_namespace = pd.read_csv('./CSV/Avaliação Diagnóstica/Resultados por namespace/avaliacao_diagnostica_namespace.csv')
-avaliacao_diagnostica_namespace2 = pd.merge(namespaces_x_hubspot3['namespace'],avaliacao_diagnostica_namespace, on = 'namespace', how = 'left')
-avaliacao_diagnostica_namespace3 = avaliacao_diagnostica_namespace2.groupby('namespace').mean().reset_index()
-avaliacao_diagnostica_namespace4 = avaliacao_diagnostica_namespace3.drop(columns = ['Unnamed: 0'])
+    ###### Normalização dos dados ######
+    for coluna in avaliacao_diagnostica_namespace4.columns:
+        if coluna in ('Nº de AAs aplicadas da estante','Média de exercícios em relatórios de AD por turma'):
+            avaliacao_diagnostica_namespace4 = normalizacao(avaliacao_diagnostica_namespace4,coluna,0.1, 0.9)
+    #st.dataframe(avaliacao_diagnostica_namespace4)
 
-###### Normalização dos dados ######
-for coluna in avaliacao_diagnostica_namespace4.columns:
-    if coluna in ('Nº de AAs aplicadas da estante','Média de exercícios em relatórios de AD por turma'):
-        avaliacao_diagnostica_namespace4 = normalizacao(avaliacao_diagnostica_namespace4,coluna,0.1, 0.9)
-#st.dataframe(avaliacao_diagnostica_namespace4)
+    ###### Média Final ######
+    col = avaliacao_diagnostica_namespace4.loc[: , "Porcentagem de exercícios de AAs em relatórios de AD":"Porcentagem de administradores que visualizaram relatórios de AD"]
+    avaliacao_diagnostica_namespace4['Média'] = col.mean(axis=1)
 
-###### Média Final ######
-col = avaliacao_diagnostica_namespace4.loc[: , "Porcentagem de exercícios de AAs em relatórios de AD":"Porcentagem de administradores que visualizaram relatórios de AD"]
-avaliacao_diagnostica_namespace4['Média'] = col.mean(axis=1)
+    ###### Quartis ######
+    avaliacao_diagnostica_namespace5 = quartis(avaliacao_diagnostica_namespace4,'Média')
+    avaliacao_diagnostica_namespace_select = avaliacao_diagnostica_namespace5[avaliacao_diagnostica_namespace5['namespace'] == namespace_select].reset_index(drop = True)
 
-###### Quartis ######
-avaliacao_diagnostica_namespace5 = quartis(avaliacao_diagnostica_namespace4,'Média')
-avaliacao_diagnostica_namespace_select = avaliacao_diagnostica_namespace5[avaliacao_diagnostica_namespace5['namespace'] == namespace_select].reset_index(drop = True)
+    ###### Média do namespace x média Eduqo ######
+    if avaliacao_diagnostica_namespace_select['Média'][0] >= avaliacao_diagnostica_namespace5['Média'].mean():
+        comparativo_media_avaliacao_diagnostica = ' 🟩'
+    else:
+        comparativo_media_avaliacao_diagnostica = ' 🟨'
+    st.subheader('**Avaliação Diagnóstica'+' (Pontuação: '+str(round(100*avaliacao_diagnostica_namespace_select['Média'][0], 2))+')**')
+    st.markdown('O namespace '+namespace_select+ ' está no **'+avaliacao_diagnostica_namespace_select['Quartil'][0]+ ' quartil**!') 
+    st.progress(avaliacao_diagnostica_namespace_select['Média'][0])
+    st.write('Pontuação **Média Eduqo: '+str(round(100*avaliacao_diagnostica_namespace5['Média'].mean(), 2))+comparativo_media_avaliacao_diagnostica+'**')
 
-###### Média do namespace x média Eduqo ######
-if avaliacao_diagnostica_namespace_select['Média'][0] >= avaliacao_diagnostica_namespace5['Média'].mean():
-    comparativo_media_avaliacao_diagnostica = ' 🟩'
+    ###### Junção Hubspot para pegar média das escolas que tem o mesmo produto e mesma faixa de licenças ######
+    juncao_hubspot_diagnostica_namespace = pd.merge(namespaces_x_hubspot3,avaliacao_diagnostica_namespace5, on = 'namespace', how = 'left')
+    avaliacao_diagnostica_namespace_select_juncao = juncao_hubspot_diagnostica_namespace[juncao_hubspot_diagnostica_namespace['namespace'] == namespace_select].reset_index(drop = True)
+    juncao_hubspot_diagnostica_namespace2 = juncao_hubspot_diagnostica_namespace[juncao_hubspot_diagnostica_namespace['Produto'] == avaliacao_diagnostica_namespace_select_juncao['Produto'][0]]
+    juncao_hubspot_diagnostica_namespace3 = juncao_hubspot_diagnostica_namespace2[juncao_hubspot_diagnostica_namespace2['licenças'] == avaliacao_diagnostica_namespace_select_juncao['licenças'][0]]
+    if avaliacao_diagnostica_namespace_select['Média'][0] >= juncao_hubspot_diagnostica_namespace3['Média'].mean():
+        comparativo_media_avaliacao_diagnostica_juncao = ' 🟩'
+    else:
+        comparativo_media_avaliacao_diagnostica_juncao = ' 🟨'
+    st.write('Pontuação **Média '+avaliacao_diagnostica_namespace_select_juncao['Produto'][0]+' com faixa de licenças de '+avaliacao_diagnostica_namespace_select_juncao['licenças'][0]+': '+str(round(100*juncao_hubspot_diagnostica_namespace3['Média'].mean(), 2))+comparativo_media_avaliacao_diagnostica_juncao+'**')
+
+    st.write('---')
+    ############## Avaliação Somativa ##############
+
+    ###### Leitura dos dados de cada rotina por namespace ######
+    avaliacao_somativa_namespace = pd.read_csv('./CSV/Avaliação Somativa/Resultados por namespace/avaliacao_somativa_namespace.csv')
+    avaliacao_somativa_namespace2 = pd.merge(namespaces_x_hubspot3['namespace'],avaliacao_somativa_namespace, on = 'namespace', how = 'left')
+
+    ###### Normalização dos dados ######
+    for coluna in avaliacao_somativa_namespace2.columns:
+        if coluna in ('Número de AAs por turma','Média de exercícios de AA por turma'):
+            avaliacao_somativa_namespace2 = normalizacao(avaliacao_somativa_namespace2,coluna,0.1, 0.9)
+        if coluna in ('Tempo médio entre publicação e ínicio de AA'):
+            avaliacao_somativa_namespace2 = normalizacao_datetime(avaliacao_somativa_namespace2,coluna,0.1, 0.9)
+        if coluna in ('Tempo de correção por aluno por questão','Tempo médio entre criação e publicação de AA por questão'):
+            avaliacao_somativa_namespace2 = normalizacao_datetime_inversa(avaliacao_somativa_namespace2,coluna,0.1, 0.9)
+    avaliacao_somativa_namespace3 = avaliacao_somativa_namespace2.drop(columns = ['Unnamed: 0'])
+
+    ###### Média Final ######
+    col = avaliacao_somativa_namespace3.loc[: , "Porcentagem de engajamento em AAs":"Porcentagem de administrantes que visualizaram relatórios de AA"]
+    avaliacao_somativa_namespace3['Média'] = col.mean(axis=1)
+
+    ###### Quartis ######
+    avaliacao_somativa_namespace4 = quartis(avaliacao_somativa_namespace3,'Média')
+    avaliacao_somativa_namespace_select = avaliacao_somativa_namespace4[avaliacao_somativa_namespace4['namespace'] == namespace_select].reset_index(drop = True)
+
+    ###### Média do namespace x média Eduqo ######
+    if avaliacao_somativa_namespace_select['Média'][0] >= avaliacao_somativa_namespace4['Média'].mean():
+        comparativo_media_avaliacao_somativa = ' 🟩'
+    else:
+        comparativo_media_avaliacao_somativa = ' 🟨'
+    st.subheader('**Avaliação Somativa'+' (Pontuação: '+str(round(100*avaliacao_somativa_namespace_select['Média'][0], 2))+')**')
+    st.markdown('O namespace '+namespace_select+ ' está no **'+avaliacao_somativa_namespace_select['Quartil'][0]+ ' quartil**!') 
+    st.progress(avaliacao_somativa_namespace_select['Média'][0])
+    st.write('Pontuação **Média Eduqo: '+str(round(100*avaliacao_somativa_namespace4['Média'].mean(), 2))+comparativo_media_avaliacao_somativa+'**')
+
+    ###### Junção Hubspot para pegar média das escolas que tem o mesmo produto e mesma faixa de licenças ######
+    juncao_hubspot_somativa_namespace = pd.merge(namespaces_x_hubspot3,avaliacao_somativa_namespace4, on = 'namespace', how = 'left')
+    avaliacao_somativa_namespace_select_juncao = juncao_hubspot_somativa_namespace[juncao_hubspot_somativa_namespace['namespace'] == namespace_select].reset_index(drop = True)
+    juncao_hubspot_somativa_namespace2 = juncao_hubspot_somativa_namespace[juncao_hubspot_somativa_namespace['Produto'] == avaliacao_somativa_namespace_select_juncao['Produto'][0]]
+    juncao_hubspot_somativa_namespace3 = juncao_hubspot_somativa_namespace2[juncao_hubspot_somativa_namespace2['licenças'] == avaliacao_somativa_namespace_select_juncao['licenças'][0]]
+    if avaliacao_somativa_namespace_select['Média'][0] >= juncao_hubspot_somativa_namespace3['Média'].mean():
+        comparativo_media_avaliacao_somativa_juncao = ' 🟩'
+    else:
+        comparativo_media_avaliacao_somativa_juncao = ' 🟨'
+    st.write('Pontuação **Média '+avaliacao_somativa_namespace_select_juncao['Produto'][0]+' com faixa de licenças de '+avaliacao_somativa_namespace_select_juncao['licenças'][0]+': '+str(round(100*juncao_hubspot_somativa_namespace3['Média'].mean(), 2))+comparativo_media_avaliacao_somativa_juncao+'**')
+
+
+    ######################## Resultados detalhados por rotina ########################
+
+    st.subheader('**Resultados detalhados por Rotina Pedagógica Digital**')
+
+    ############## Avaliação Diagnóstica ##############
+
+    st.markdown('**Avaliação Diagnóstica**')
+
+    ###### Namespaces destaques ######
+    avaliacao_diagnostica_namespace6 = avaliacao_diagnostica_namespace5.copy()
+    avaliacao_diagnostica_namespace6['Média'] = round(100*avaliacao_diagnostica_namespace6['Média'],2)
+    avaliacao_diagnostica_namespace6.rename(columns = {'Média':'Média (0 a 100)'}, inplace = True)
+    avaliacao_diagnostica_namespace7 = pd.DataFrame()
+    avaliacao_diagnostica_namespace7['namespace'] = avaliacao_diagnostica_namespace6['namespace']
+    avaliacao_diagnostica_namespace7['Média (0 a 100)'] = avaliacao_diagnostica_namespace6['Média (0 a 100)']
+    avaliacao_diagnostica_namespace7['Quartil'] = avaliacao_diagnostica_namespace6['Quartil']
+    avaliacao_diagnostica_namespace8 = avaliacao_diagnostica_namespace7.groupby('namespace').mean()
+    avaliacao_diagnostica_namespace9 = quartis(avaliacao_diagnostica_namespace8,'Média (0 a 100)').reset_index()
+    avaliacao_diagnostica_namespace10 = avaliacao_diagnostica_namespace9.sort_values(by = 'Média (0 a 100)', ascending = False)
+    with st.expander("Visualizar as escolas destaque em Avaliação Somativa -> (clique aqui 🖱️)"):
+        avaliacao_diagnostica_namespace11 = destaques_rotina(avaliacao_diagnostica_namespace10)
+        st.table(avaliacao_diagnostica_namespace11)
+
+    ###### Visualizar um quartil ######
+    ver_quartil_avaliacao_diagnostica = st.radio('Escolha o quartil que deseja ver os resultados de Avaliação Diagnóstica 📈',('Nenhum','1º','2º','3º','4º'))
+    if ver_quartil_avaliacao_diagnostica != 'Nenhum':
+        avaliacao_diagnostica_namespace_quartil = visualizacao_resultado_quartil(ver_quartil_avaliacao_diagnostica,avaliacao_diagnostica_namespace10)
+        st.table(avaliacao_diagnostica_namespace_quartil)
+
+    ###### Visualização das métricas do namespace selecionado ######
+    with st.expander("Visualizar os resultados de Avaliação Diagnóstica do namespace selecionado por métrica -> (clique aqui 🖱️)"):
+        for coluna in avaliacao_diagnostica_namespace_select.columns:
+            if (coluna != 'namespace' and coluna != 'Média' and coluna != 'Quartil'):
+                if avaliacao_diagnostica_namespace_select[coluna][0] >= avaliacao_diagnostica_namespace6[coluna].mean():
+                    comparativo_media_avaliacao_diagnostica = ' 🟩'
+                else:
+                    comparativo_media_avaliacao_diagnostica = ' 🟨'
+                st.markdown('**'+coluna+' (Pontuação: '+str(round(100*avaliacao_diagnostica_namespace_select[coluna][0], 2))+')**')
+                st.progress(avaliacao_diagnostica_namespace_select[coluna][0])
+                st.write('**Média Eduqo: '+str(round(100*avaliacao_diagnostica_namespace6[coluna].mean(), 2))+comparativo_media_avaliacao_diagnostica+'**')
+                if avaliacao_diagnostica_namespace_select[coluna][0] >= juncao_hubspot_diagnostica_namespace3[coluna].mean():
+                    comparativo_media_avaliacao_diagnostica_juncao = ' 🟩'
+                else:
+                    comparativo_media_avaliacao_diagnostica_juncao = ' 🟨'
+                st.write('**Média '+avaliacao_diagnostica_namespace_select_juncao['Produto'][0]+' com faixa de licenças de '+avaliacao_diagnostica_namespace_select_juncao['licenças'][0]+': '+str(round(100*juncao_hubspot_diagnostica_namespace3[coluna].mean(), 2))+comparativo_media_avaliacao_diagnostica_juncao+'**')
+                st.write('----')
+
+
+    ############## Avaliação Somativa ##############
+
+    st.markdown('**Avaliação Somativa**')
+
+    ###### Namespaces destaques ######
+    avaliacao_somativa_namespace5 = avaliacao_somativa_namespace4.copy()
+    avaliacao_somativa_namespace5['Média'] = round(100*avaliacao_somativa_namespace5['Média'],2)
+    avaliacao_somativa_namespace5.rename(columns = {'Média':'Média (0 a 100)'}, inplace = True)
+    avaliacao_somativa_namespace6 = pd.DataFrame()
+    avaliacao_somativa_namespace6['namespace'] = avaliacao_somativa_namespace5['namespace']
+    avaliacao_somativa_namespace6['Média (0 a 100)'] = avaliacao_somativa_namespace5['Média (0 a 100)']
+    avaliacao_somativa_namespace6['Quartil'] = avaliacao_somativa_namespace5['Quartil']
+    avaliacao_somativa_namespace7 = avaliacao_somativa_namespace6.groupby('namespace').mean()
+    avaliacao_somativa_namespace8 = quartis(avaliacao_somativa_namespace7,'Média (0 a 100)').reset_index()
+    avaliacao_somativa_namespace9 = avaliacao_somativa_namespace8.sort_values(by = 'Média (0 a 100)', ascending = False)
+    with st.expander("Visualizar as escolas destaque em Avaliação Somativa -> (clique aqui 🖱️)"):
+        avaliacao_somativa_namespace10 = destaques_rotina(avaliacao_somativa_namespace9)
+        st.table(avaliacao_somativa_namespace10)
+
+    ###### Visualizar um quartil ######
+    ver_quartil_avaliacao_somativa = st.radio('Escolha o quartil que deseja ver os resultados de Avaliação Somativa 📈',('Nenhum','1º','2º','3º','4º'))
+    if ver_quartil_avaliacao_somativa != 'Nenhum':
+        avaliacao_somativa_namespace_quartil = visualizacao_resultado_quartil(ver_quartil_avaliacao_somativa,avaliacao_somativa_namespace9)
+        st.table(avaliacao_somativa_namespace_quartil)
+
+    ###### Visualização das métricas do namespace selecionado ######
+    with st.expander("Visualizar os resultados de Avaliação Somativa do namespace selecionado por métrica -> (clique aqui 🖱️)"):
+        for coluna in avaliacao_somativa_namespace_select.columns:
+            if (coluna != 'namespace' and coluna != 'Média' and coluna != 'Quartil'):
+                if avaliacao_somativa_namespace_select[coluna][0] >= avaliacao_somativa_namespace5[coluna].mean():
+                    comparativo_media_avaliacao_somativa = ' 🟩'
+                else:
+                    comparativo_media_avaliacao_somativa = ' 🟨'
+                st.markdown('**'+coluna+' (Pontuação: '+str(round(100*avaliacao_somativa_namespace_select[coluna][0], 2))+')**')
+                st.progress(avaliacao_somativa_namespace_select[coluna][0])
+                st.write('**Média Eduqo: '+str(round(100*avaliacao_somativa_namespace5[coluna].mean(), 2))+comparativo_media_avaliacao_somativa+'**')
+                if avaliacao_somativa_namespace_select[coluna][0] >= juncao_hubspot_somativa_namespace3[coluna].mean():
+                    comparativo_media_avaliacao_somativa_juncao = ' 🟩'
+                else:
+                    comparativo_media_avaliacao_somativa_juncao = ' 🟨'
+                st.write('**Média '+avaliacao_somativa_namespace_select_juncao['Produto'][0]+' com faixa de licenças de '+avaliacao_somativa_namespace_select_juncao['licenças'][0]+': '+str(round(100*juncao_hubspot_somativa_namespace3[coluna].mean(), 2))+comparativo_media_avaliacao_somativa_juncao+'**')
+                st.write('----')
+
 else:
-    comparativo_media_avaliacao_diagnostica = ' 🟨'
-st.subheader('**Avaliação Diagnóstica'+' (Pontuação: '+str(round(100*avaliacao_diagnostica_namespace_select['Média'][0], 2))+')**')
-st.markdown('O namespace '+namespace_select+ ' está no **'+avaliacao_diagnostica_namespace_select['Quartil'][0]+ ' quartil**!') 
-st.progress(avaliacao_diagnostica_namespace_select['Média'][0])
-st.write('Pontuação **Média Eduqo: '+str(round(100*avaliacao_diagnostica_namespace5['Média'].mean(), 2))+comparativo_media_avaliacao_diagnostica+'**')
-
-###### Junção Hubspot para pegar média das escolas que tem o mesmo produto e mesma faixa de licenças ######
-juncao_hubspot_diagnostica_namespace = pd.merge(namespaces_x_hubspot3,avaliacao_diagnostica_namespace5, on = 'namespace', how = 'left')
-avaliacao_diagnostica_namespace_select_juncao = juncao_hubspot_diagnostica_namespace[juncao_hubspot_diagnostica_namespace['namespace'] == namespace_select].reset_index(drop = True)
-juncao_hubspot_diagnostica_namespace2 = juncao_hubspot_diagnostica_namespace[juncao_hubspot_diagnostica_namespace['Produto'] == avaliacao_diagnostica_namespace_select_juncao['Produto'][0]]
-juncao_hubspot_diagnostica_namespace3 = juncao_hubspot_diagnostica_namespace2[juncao_hubspot_diagnostica_namespace2['licenças'] == avaliacao_diagnostica_namespace_select_juncao['licenças'][0]]
-if avaliacao_diagnostica_namespace_select['Média'][0] >= juncao_hubspot_diagnostica_namespace3['Média'].mean():
-    comparativo_media_avaliacao_diagnostica_juncao = ' 🟩'
-else:
-    comparativo_media_avaliacao_diagnostica_juncao = ' 🟨'
-st.write('Pontuação **Média '+avaliacao_diagnostica_namespace_select_juncao['Produto'][0]+' com faixa de licenças de '+avaliacao_diagnostica_namespace_select_juncao['licenças'][0]+': '+str(round(100*juncao_hubspot_diagnostica_namespace3['Média'].mean(), 2))+comparativo_media_avaliacao_diagnostica_juncao+'**')
-
-st.write('---')
-############## Avaliação Somativa ##############
-
-###### Leitura dos dados de cada rotina por namespace ######
-avaliacao_somativa_namespace = pd.read_csv('./CSV/Avaliação Somativa/Resultados por namespace/avaliacao_somativa_namespace.csv')
-avaliacao_somativa_namespace2 = pd.merge(namespaces_x_hubspot3['namespace'],avaliacao_somativa_namespace, on = 'namespace', how = 'left')
-
-###### Normalização dos dados ######
-for coluna in avaliacao_somativa_namespace2.columns:
-    if coluna in ('Número de AAs por turma','Média de exercícios de AA por turma'):
-        avaliacao_somativa_namespace2 = normalizacao(avaliacao_somativa_namespace2,coluna,0.1, 0.9)
-    if coluna in ('Tempo médio entre publicação e ínicio de AA'):
-        avaliacao_somativa_namespace2 = normalizacao_datetime(avaliacao_somativa_namespace2,coluna,0.1, 0.9)
-    if coluna in ('Tempo de correção por aluno por questão','Tempo médio entre criação e publicação de AA por questão'):
-        avaliacao_somativa_namespace2 = normalizacao_datetime_inversa(avaliacao_somativa_namespace2,coluna,0.1, 0.9)
-avaliacao_somativa_namespace3 = avaliacao_somativa_namespace2.drop(columns = ['Unnamed: 0'])
-
-###### Média Final ######
-col = avaliacao_somativa_namespace3.loc[: , "Porcentagem de engajamento em AAs":"Porcentagem de administrantes que visualizaram relatórios de AA"]
-avaliacao_somativa_namespace3['Média'] = col.mean(axis=1)
-
-###### Quartis ######
-avaliacao_somativa_namespace4 = quartis(avaliacao_somativa_namespace3,'Média')
-avaliacao_somativa_namespace_select = avaliacao_somativa_namespace4[avaliacao_somativa_namespace4['namespace'] == namespace_select].reset_index(drop = True)
-
-###### Média do namespace x média Eduqo ######
-if avaliacao_somativa_namespace_select['Média'][0] >= avaliacao_somativa_namespace4['Média'].mean():
-    comparativo_media_avaliacao_somativa = ' 🟩'
-else:
-    comparativo_media_avaliacao_somativa = ' 🟨'
-st.subheader('**Avaliação Somativa'+' (Pontuação: '+str(round(100*avaliacao_somativa_namespace_select['Média'][0], 2))+')**')
-st.markdown('O namespace '+namespace_select+ ' está no **'+avaliacao_somativa_namespace_select['Quartil'][0]+ ' quartil**!') 
-st.progress(avaliacao_somativa_namespace_select['Média'][0])
-st.write('Pontuação **Média Eduqo: '+str(round(100*avaliacao_somativa_namespace4['Média'].mean(), 2))+comparativo_media_avaliacao_somativa+'**')
-
-###### Junção Hubspot para pegar média das escolas que tem o mesmo produto e mesma faixa de licenças ######
-juncao_hubspot_somativa_namespace = pd.merge(namespaces_x_hubspot3,avaliacao_somativa_namespace4, on = 'namespace', how = 'left')
-avaliacao_somativa_namespace_select_juncao = juncao_hubspot_somativa_namespace[juncao_hubspot_somativa_namespace['namespace'] == namespace_select].reset_index(drop = True)
-juncao_hubspot_somativa_namespace2 = juncao_hubspot_somativa_namespace[juncao_hubspot_somativa_namespace['Produto'] == avaliacao_somativa_namespace_select_juncao['Produto'][0]]
-juncao_hubspot_somativa_namespace3 = juncao_hubspot_somativa_namespace2[juncao_hubspot_somativa_namespace2['licenças'] == avaliacao_somativa_namespace_select_juncao['licenças'][0]]
-if avaliacao_somativa_namespace_select['Média'][0] >= juncao_hubspot_somativa_namespace3['Média'].mean():
-    comparativo_media_avaliacao_somativa_juncao = ' 🟩'
-else:
-    comparativo_media_avaliacao_somativa_juncao = ' 🟨'
-st.write('Pontuação **Média '+avaliacao_somativa_namespace_select_juncao['Produto'][0]+' com faixa de licenças de '+avaliacao_somativa_namespace_select_juncao['licenças'][0]+': '+str(round(100*juncao_hubspot_somativa_namespace3['Média'].mean(), 2))+comparativo_media_avaliacao_somativa_juncao+'**')
-
-
-######################## Resultados detalhados por rotina ########################
-
-st.subheader('**Resultados detalhados por Rotina Pedagógica Digital**')
-
-############## Avaliação Diagnóstica ##############
-
-st.markdown('**Avaliação Diagnóstica**')
-
-###### Namespaces destaques ######
-avaliacao_diagnostica_namespace6 = avaliacao_diagnostica_namespace5.copy()
-avaliacao_diagnostica_namespace6['Média'] = round(100*avaliacao_diagnostica_namespace6['Média'],2)
-avaliacao_diagnostica_namespace6.rename(columns = {'Média':'Média (0 a 100)'}, inplace = True)
-avaliacao_diagnostica_namespace7 = pd.DataFrame()
-avaliacao_diagnostica_namespace7['namespace'] = avaliacao_diagnostica_namespace6['namespace']
-avaliacao_diagnostica_namespace7['Média (0 a 100)'] = avaliacao_diagnostica_namespace6['Média (0 a 100)']
-avaliacao_diagnostica_namespace7['Quartil'] = avaliacao_diagnostica_namespace6['Quartil']
-avaliacao_diagnostica_namespace8 = avaliacao_diagnostica_namespace7.groupby('namespace').mean()
-avaliacao_diagnostica_namespace9 = quartis(avaliacao_diagnostica_namespace8,'Média (0 a 100)').reset_index()
-avaliacao_diagnostica_namespace10 = avaliacao_diagnostica_namespace9.sort_values(by = 'Média (0 a 100)', ascending = False)
-with st.expander("Visualizar as escolas destaque em Avaliação Somativa -> (clique aqui 🖱️)"):
-    avaliacao_diagnostica_namespace11 = destaques_rotina(avaliacao_diagnostica_namespace10)
-    st.table(avaliacao_diagnostica_namespace11)
-
-###### Visualizar um quartil ######
-ver_quartil_avaliacao_diagnostica = st.radio('Escolha o quartil que deseja ver os resultados de Avaliação Diagnóstica 📈',('Nenhum','1º','2º','3º','4º'))
-if ver_quartil_avaliacao_diagnostica != 'Nenhum':
-    avaliacao_diagnostica_namespace_quartil = visualizacao_resultado_quartil(ver_quartil_avaliacao_diagnostica,avaliacao_diagnostica_namespace10)
-    st.table(avaliacao_diagnostica_namespace_quartil)
-
-###### Visualização das métricas do namespace selecionado ######
-with st.expander("Visualizar os resultados de Avaliação Diagnóstica do namespace selecionado por métrica -> (clique aqui 🖱️)"):
-    for coluna in avaliacao_diagnostica_namespace_select.columns:
-        if (coluna != 'namespace' and coluna != 'Média' and coluna != 'Quartil'):
-            if avaliacao_diagnostica_namespace_select[coluna][0] >= avaliacao_diagnostica_namespace6[coluna].mean():
-                comparativo_media_avaliacao_diagnostica = ' 🟩'
-            else:
-                comparativo_media_avaliacao_diagnostica = ' 🟨'
-            st.markdown('**'+coluna+' (Pontuação: '+str(round(100*avaliacao_diagnostica_namespace_select[coluna][0], 2))+')**')
-            st.progress(avaliacao_diagnostica_namespace_select[coluna][0])
-            st.write('**Média Eduqo: '+str(round(100*avaliacao_diagnostica_namespace6[coluna].mean(), 2))+comparativo_media_avaliacao_diagnostica+'**')
-            if avaliacao_diagnostica_namespace_select[coluna][0] >= juncao_hubspot_diagnostica_namespace3[coluna].mean():
-                comparativo_media_avaliacao_diagnostica_juncao = ' 🟩'
-            else:
-                comparativo_media_avaliacao_diagnostica_juncao = ' 🟨'
-            st.write('**Média '+avaliacao_diagnostica_namespace_select_juncao['Produto'][0]+' com faixa de licenças de '+avaliacao_diagnostica_namespace_select_juncao['licenças'][0]+': '+str(round(100*juncao_hubspot_diagnostica_namespace3[coluna].mean(), 2))+comparativo_media_avaliacao_diagnostica_juncao+'**')
-            st.write('----')
-
-
-############## Avaliação Somativa ##############
-
-st.markdown('**Avaliação Somativa**')
-
-###### Namespaces destaques ######
-avaliacao_somativa_namespace5 = avaliacao_somativa_namespace4.copy()
-avaliacao_somativa_namespace5['Média'] = round(100*avaliacao_somativa_namespace5['Média'],2)
-avaliacao_somativa_namespace5.rename(columns = {'Média':'Média (0 a 100)'}, inplace = True)
-avaliacao_somativa_namespace6 = pd.DataFrame()
-avaliacao_somativa_namespace6['namespace'] = avaliacao_somativa_namespace5['namespace']
-avaliacao_somativa_namespace6['Média (0 a 100)'] = avaliacao_somativa_namespace5['Média (0 a 100)']
-avaliacao_somativa_namespace6['Quartil'] = avaliacao_somativa_namespace5['Quartil']
-avaliacao_somativa_namespace7 = avaliacao_somativa_namespace6.groupby('namespace').mean()
-avaliacao_somativa_namespace8 = quartis(avaliacao_somativa_namespace7,'Média (0 a 100)').reset_index()
-avaliacao_somativa_namespace9 = avaliacao_somativa_namespace8.sort_values(by = 'Média (0 a 100)', ascending = False)
-with st.expander("Visualizar as escolas destaque em Avaliação Somativa -> (clique aqui 🖱️)"):
-    avaliacao_somativa_namespace10 = destaques_rotina(avaliacao_somativa_namespace9)
-    st.table(avaliacao_somativa_namespace10)
-
-###### Visualizar um quartil ######
-ver_quartil_avaliacao_somativa = st.radio('Escolha o quartil que deseja ver os resultados de Avaliação Somativa 📈',('Nenhum','1º','2º','3º','4º'))
-if ver_quartil_avaliacao_somativa != 'Nenhum':
-    avaliacao_somativa_namespace_quartil = visualizacao_resultado_quartil(ver_quartil_avaliacao_somativa,avaliacao_somativa_namespace9)
-    st.table(avaliacao_somativa_namespace_quartil)
-
-###### Visualização das métricas do namespace selecionado ######
-with st.expander("Visualizar os resultados de Avaliação Somativa do namespace selecionado por métrica -> (clique aqui 🖱️)"):
-    for coluna in avaliacao_somativa_namespace_select.columns:
-        if (coluna != 'namespace' and coluna != 'Média' and coluna != 'Quartil'):
-            if avaliacao_somativa_namespace_select[coluna][0] >= avaliacao_somativa_namespace5[coluna].mean():
-                comparativo_media_avaliacao_somativa = ' 🟩'
-            else:
-                comparativo_media_avaliacao_somativa = ' 🟨'
-            st.markdown('**'+coluna+' (Pontuação: '+str(round(100*avaliacao_somativa_namespace_select[coluna][0], 2))+')**')
-            st.progress(avaliacao_somativa_namespace_select[coluna][0])
-            st.write('**Média Eduqo: '+str(round(100*avaliacao_somativa_namespace5[coluna].mean(), 2))+comparativo_media_avaliacao_somativa+'**')
-            if avaliacao_somativa_namespace_select[coluna][0] >= juncao_hubspot_somativa_namespace3[coluna].mean():
-                comparativo_media_avaliacao_somativa_juncao = ' 🟩'
-            else:
-                comparativo_media_avaliacao_somativa_juncao = ' 🟨'
-            st.write('**Média '+avaliacao_somativa_namespace_select_juncao['Produto'][0]+' com faixa de licenças de '+avaliacao_somativa_namespace_select_juncao['licenças'][0]+': '+str(round(100*juncao_hubspot_somativa_namespace3[coluna].mean(), 2))+comparativo_media_avaliacao_somativa_juncao+'**')
-            st.write('----')
+    st.warning('🙂 Escolha um namespace para visualizar seus resultados!')
 
 
