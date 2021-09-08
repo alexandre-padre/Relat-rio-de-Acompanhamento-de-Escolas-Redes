@@ -8,7 +8,7 @@ import streamlit as st
 import math
 from PIL import Image
 import plotly.express as px
-from funcoes import *
+from funcoes import inserir_linha
 
 ######################## Namespaces a serem analisados ########################
 
