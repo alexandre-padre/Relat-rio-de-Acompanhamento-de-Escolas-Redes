@@ -165,7 +165,8 @@ avaliacao_diagnostica_namespace4 = avaliacao_diagnostica_namespace3.drop(columns
 for coluna in avaliacao_diagnostica_namespace4.columns:
     if coluna in ('Nº de AAs aplicadas da estante','Média de exercícios em relatórios de AD por turma'):
         avaliacao_diagnostica_namespace4 = normalizacao(avaliacao_diagnostica_namespace4,coluna,0.1, 0.9)
-st.dataframe(avaliacao_diagnostica_namespace4)
+#st.dataframe(avaliacao_diagnostica_namespace4)
+
 ###### Média Final ######
 col = avaliacao_diagnostica_namespace4.loc[: , "Porcentagem de exercícios de AAs em relatórios de AD":"Porcentagem de administradores que visualizaram relatórios de AD"]
 avaliacao_diagnostica_namespace4['Média'] = col.mean(axis=1)
