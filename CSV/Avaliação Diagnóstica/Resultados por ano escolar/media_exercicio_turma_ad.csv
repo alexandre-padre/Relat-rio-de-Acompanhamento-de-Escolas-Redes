@@ -1,0 +1,1105 @@
+,namespace,grade,gerados
+1015,sas,0,404.0
+1068,testevictorhugo,em 1a serie,150.0
+92,aescobjetivo,em 1a serie,120.0
+93,aescobjetivo,em 2a serie,108.0
+1011,santoamerico,em 3a serie,90.0
+573,equipe,0,88.0
+1009,santoamerico,em 1a serie,45.0
+687,master,ef 9o ano,15.833333333333334
+685,master,ef 7o ano,8.0
+684,master,ef 6o ano,7.68
+984,qescola,ef 6o ano,5.0
+991,rede,ef 9o ano,2.5
+681,master,ef 3o ano,0.8333333333333334
+728,objetivoteresina,0,0.0
+751,overlimaesilva,ef 1o ano,0.0
+729,oficinadoestudante,outro,0.0
+730,osequim,0,0.0
+731,overabelcabral,0,0.0
+749,overjoaopessoa,outro,0.0
+732,overabelcabral,ef 1o ano,0.0
+733,overabelcabral,ef 2o ano,0.0
+734,overabelcabral,ef 3o ano,0.0
+750,overlimaesilva,0,0.0
+727,objetivolorena,outro,0.0
+735,overabelcabral,ef 4o ano,0.0
+746,overjoaopessoa,em 1a serie,0.0
+736,overabelcabral,ef 5o ano,0.0
+748,overjoaopessoa,em 3a serie,0.0
+737,overabelcabral,ef 6o ano,0.0
+725,objetivolorena,em 2a serie,0.0
+738,overabelcabral,ef 7o ano,0.0
+747,overjoaopessoa,em 2a serie,0.0
+739,overabelcabral,ef 8o ano,0.0
+740,overabelcabral,ef 9o ano,0.0
+741,overabelcabral,em 1a serie,0.0
+742,overabelcabral,em 2a serie,0.0
+743,overabelcabral,em 3a serie,0.0
+744,overjoaopessoa,0,0.0
+745,overjoaopessoa,ef 9o ano,0.0
+726,objetivolorena,em 3a serie,0.0
+721,objetivolorena,ef 7o ano,0.0
+724,objetivolorena,em 1a serie,0.0
+707,nucleocriativo,ef 2o ano,0.0
+693,minhalista,0,0.0
+694,minhalista,outro,0.0
+695,moaciralves,ef 8o ano,0.0
+696,moaciralves,ef 9o ano,0.0
+697,montessori,em 1a serie,0.0
+698,montessori,em 2a serie,0.0
+699,montessori,em 3a serie,0.0
+700,murilorocha,0,0.0
+701,navegasas,ef 5o ano,0.0
+702,novotempo,ef 9o ano,0.0
+703,novotempo,em 1a serie,0.0
+704,novotempo,em 2a serie,0.0
+705,novotempo,em 3a serie,0.0
+706,nucleocriativo,ef 1o ano,0.0
+708,nucleocriativo,ef 3o ano,0.0
+723,objetivolorena,ef 9o ano,0.0
+709,nucleocriativo,ef 4o ano,0.0
+710,nucleocriativo,ef 5o ano,0.0
+711,nucleocriativo,ef 6o ano,0.0
+712,nucleocriativo,ef 7o ano,0.0
+713,nucleocriativo,ef 8o ano,0.0
+714,nucleocriativo,ef 9o ano,0.0
+715,nucleocriativo,em 1a serie,0.0
+716,nucleopva,0,0.0
+717,objetivolorena,0,0.0
+718,objetivolorena,ef 4o ano,0.0
+719,objetivolorena,ef 5o ano,0.0
+720,objetivolorena,ef 6o ano,0.0
+753,overlimaesilva,ef 3o ano,0.0
+722,objetivolorena,ef 8o ano,0.0
+752,overlimaesilva,ef 2o ano,0.0
+754,overlimaesilva,ef 4o ano,0.0
+691,master,outro,0.0
+799,overzonanorte,ef 7o ano,0.0
+805,overzonanorte,outro,0.0
+804,overzonanorte,em 3a serie,0.0
+803,overzonanorte,em 2a serie,0.0
+802,overzonanorte,em 1a serie,0.0
+801,overzonanorte,ef 9o ano,0.0
+800,overzonanorte,ef 8o ano,0.0
+798,overzonanorte,ef 6o ano,0.0
+807,pearson,em 3a serie,0.0
+797,overzonanorte,ef 5o ano,0.0
+796,overzonanorte,ef 4o ano,0.0
+795,overzonanorte,ef 3o ano,0.0
+794,overzonanorte,ef 2o ano,0.0
+793,overzonanorte,ef 1o ano,0.0
+792,overzonanorte,0,0.0
+806,pauloviana,ef 9o ano,0.0
+808,pesenglish,0,0.0
+790,overpontanegra,em 2a serie,0.0
+817,physicsalmirantebarroso,ef 4o ano,0.0
+823,physicsalmirantebarroso,em 1a serie,0.0
+822,physicsalmirantebarroso,ef 9o ano,0.0
+821,physicsalmirantebarroso,ef 8o ano,0.0
+820,physicsalmirantebarroso,ef 7o ano,0.0
+819,physicsalmirantebarroso,ef 6o ano,0.0
+818,physicsalmirantebarroso,ef 5o ano,0.0
+816,physicsalmirantebarroso,ef 3o ano,0.0
+809,physicsalcindocacela,0,0.0
+815,physicsalmirantebarroso,ef 2o ano,0.0
+814,physicsalcindocacela,outro,0.0
+813,physicsalcindocacela,em 3a serie,0.0
+812,physicsalcindocacela,em 2a serie,0.0
+811,physicsalcindocacela,em 1a serie,0.0
+810,physicsalcindocacela,ef 9o ano,0.0
+791,overpontanegra,em 3a serie,0.0
+789,overpontanegra,em 1a serie,0.0
+755,overlimaesilva,ef 5o ano,0.0
+763,overmarciliofurtado,em 3a serie,0.0
+769,overmossoro,ef 6o ano,0.0
+768,overmossoro,ef 5o ano,0.0
+767,overmossoro,ef 4o ano,0.0
+766,overmossoro,ef 2o ano,0.0
+765,overmossoro,ef 1o ano,0.0
+764,overmossoro,0,0.0
+762,overmarciliofurtado,em 2a serie,0.0
+771,overmossoro,ef 8o ano,0.0
+761,overmarciliofurtado,em 1a serie,0.0
+760,overmarciliofurtado,ef 9o ano,0.0
+759,overmarciliofurtado,ef 8o ano,0.0
+758,overmarciliofurtado,ef 7o ano,0.0
+757,overmarciliofurtado,ef 6o ano,0.0
+756,overmarciliofurtado,0,0.0
+770,overmossoro,ef 7o ano,0.0
+772,overmossoro,ef 9o ano,0.0
+788,overpontanegra,ef 9o ano,0.0
+781,overpontanegra,ef 2o ano,0.0
+787,overpontanegra,ef 8o ano,0.0
+786,overpontanegra,ef 7o ano,0.0
+785,overpontanegra,ef 6o ano,0.0
+784,overpontanegra,ef 5o ano,0.0
+783,overpontanegra,ef 4o ano,0.0
+782,overpontanegra,ef 3o ano,0.0
+780,overpontanegra,ef 1o ano,0.0
+773,overmossoro,em 1a serie,0.0
+779,overpontanegra,0,0.0
+778,overnascimentodecastro,outro,0.0
+777,overnascimentodecastro,0,0.0
+776,overmossoro,outro,0.0
+775,overmossoro,em 3a serie,0.0
+774,overmossoro,em 2a serie,0.0
+692,meta,0,0.0
+0,acessoalmirantetamandare,ef 2o ano,0.0
+690,master,em 3a serie,0.0
+603,institutocristao,ef 7o ano,0.0
+589,francobrasileiro,em 3a serie,0.0
+590,fundacaobradesco,0,0.0
+591,galois,0,0.0
+592,garra,0,0.0
+593,gerabixo,outro,0.0
+594,idaam,em 3a serie,0.0
+595,implantacao,outro,0.0
+596,insa,em 1a serie,0.0
+597,insa,em 2a serie,0.0
+598,insa,em 3a serie,0.0
+599,institutoauxiliadoradf,em 1a serie,0.0
+600,institutoauxiliadoradf,em 2a serie,0.0
+601,institutoauxiliadoradf,em 3a serie,0.0
+602,institutocristao,ef 6o ano,0.0
+604,institutocristao,ef 9o ano,0.0
+620,integradaeducativa,ef 6o ano,0.0
+605,institutocristao,em 2a serie,0.0
+606,institutocristao,em 3a serie,0.0
+607,institutoeurofarma,outro,0.0
+608,institutosaojose,em 1a serie,0.0
+609,institutosaojose,em 2a serie,0.0
+610,institutosaojose,em 3a serie,0.0
+611,integra,ef 1o ano,0.0
+612,integra,ef 2o ano,0.0
+613,integra,ef 3o ano,0.0
+614,integra,ef 4o ano,0.0
+615,integra,ef 5o ano,0.0
+616,integra,ef 6o ano,0.0
+617,integra,ef 7o ano,0.0
+618,integra,ef 8o ano,0.0
+588,fleming,0,0.0
+587,faculdadeflamingo,outro,0.0
+586,faculdadeflamingo,0,0.0
+585,estantemagica,outro,0.0
+555,educandarioterciocorreia,ef 7o ano,0.0
+556,educandarioterciocorreia,ef 8o ano,0.0
+557,educandarioterciocorreia,ef 9o ano,0.0
+558,educarse,outro,0.0
+559,eduqo,0,0.0
+560,einsteinassis,ef 6o ano,0.0
+561,einsteinassis,ef 7o ano,0.0
+562,einsteinassis,ef 8o ano,0.0
+563,einsteinassis,ef 9o ano,0.0
+564,einsteinassis,em 1a serie,0.0
+565,einsteinassis,em 2a serie,0.0
+566,einsteinassis,em 3a serie,0.0
+567,elitecuritibaemilianoperneta,em 1a serie,0.0
+568,elitecuritibaemilianoperneta,em 2a serie,0.0
+569,elitecuritibaemilianoperneta,em 3a serie,0.0
+570,elitecuritibaemilianoperneta,outro,0.0
+571,eluneonline,0,0.0
+572,eluneonline,em 1a serie,0.0
+574,escola,ef 4o ano,0.0
+575,escolaceciliameireles,ef 2o ano,0.0
+576,escolaceciliameireles,ef 3o ano,0.0
+577,escolaceciliameireles,ef 4o ano,0.0
+578,escolaceciliameireles,ef 5o ano,0.0
+579,escolaceciliameireles,ef 6o ano,0.0
+580,escoladeimpacto,0,0.0
+581,escolamaster,em 1a serie,0.0
+582,escolamaster,em 2a serie,0.0
+583,escolamaster,em 3a serie,0.0
+584,esperanza,0,0.0
+619,integradaeducativa,0,0.0
+621,integradaeducativa,ef 7o ano,0.0
+689,master,em 2a serie,0.0
+670,mariliamattoso,0,0.0
+656,magister,ef 5o ano,0.0
+657,magister,outro,0.0
+658,maplebearslz,0,0.0
+659,maplebearslz,ef 2o ano,0.0
+660,maplebearslz,ef 3o ano,0.0
+661,maplebearslz,ef 4o ano,0.0
+662,maplebearslz,ef 5o ano,0.0
+663,maplebearslz,ef 6o ano,0.0
+664,maplebearslz,ef 7o ano,0.0
+665,maplebearslz,ef 8o ano,0.0
+666,maplebearslz,ef 9o ano,0.0
+667,maplebearslz,em 1a serie,0.0
+668,maplebearslz,em 2a serie,0.0
+669,maplebearslz,outro,0.0
+671,mariliamattoso,ef 5o ano,0.0
+622,integradaeducativa,ef 8o ano,0.0
+672,mariliamattoso,ef 6o ano,0.0
+673,mariliamattoso,ef 7o ano,0.0
+674,mariliamattoso,ef 8o ano,0.0
+675,mariliamattoso,ef 9o ano,0.0
+676,mariliamattoso,em 1a serie,0.0
+677,mariliamattoso,em 2a serie,0.0
+678,mariliamattoso,em 3a serie,0.0
+679,master,ef 1o ano,0.0
+680,master,ef 2o ano,0.0
+682,master,ef 4o ano,0.0
+683,master,ef 5o ano,0.0
+825,physicsalmirantebarroso,em 3a serie,0.0
+686,master,ef 8o ano,0.0
+688,master,em 1a serie,0.0
+655,magister,ef 4o ano,0.0
+654,magister,ef 3o ano,0.0
+653,magister,0,0.0
+652,macvest,outro,0.0
+623,integradaeducativa,ef 9o ano,0.0
+624,integradaeducativa,em 1a serie,0.0
+625,integradaeducativa,em 2a serie,0.0
+626,integradaeducativa,em 3a serie,0.0
+627,invictus,0,0.0
+628,invictus,ef 6o ano,0.0
+629,invictus,ef 7o ano,0.0
+630,invictus,ef 8o ano,0.0
+631,invictus,ef 9o ano,0.0
+632,invictus,em 1a serie,0.0
+633,invictus,em 2a serie,0.0
+634,invictus,em 3a serie,0.0
+635,invictus,outro,0.0
+636,iracemarufino,infantil iii,0.0
+637,isem,ef 3o ano,0.0
+638,isem,ef 4o ano,0.0
+639,isem,ef 5o ano,0.0
+640,isem,ef 6o ano,0.0
+641,isem,ef 7o ano,0.0
+642,isem,ef 8o ano,0.0
+643,isem,ef 9o ano,0.0
+644,itamarati,ef 8o ano,0.0
+645,jazzvestibular,outro,0.0
+646,joaobelem,ef 6o ano,0.0
+647,joaobelem,ef 9o ano,0.0
+648,lasalleaguasclaras,em 1a serie,0.0
+649,lasalleaguasclaras,em 2a serie,0.0
+650,lasalleaguasclaras,em 3a serie,0.0
+651,litteratus,em 3a serie,0.0
+824,physicsalmirantebarroso,em 2a serie,0.0
+830,physicsaugustomontenegro,ef 6o ano,0.0
+826,physicsaugustomontenegro,ef 2o ano,0.0
+1007,santoamerico,ef 8o ano,0.0
+1016,sas,em 1a serie,0.0
+1014,santoantonio,em 3a serie,0.0
+1013,santoantonio,0,0.0
+1012,santoamerico,outro,0.0
+1010,santoamerico,em 2a serie,0.0
+1008,santoamerico,ef 9o ano,0.0
+1006,santoamerico,ef 7o ano,0.0
+827,physicsaugustomontenegro,ef 3o ano,0.0
+1005,santoamerico,ef 6o ano,0.0
+1004,santoamerico,0,0.0
+1003,santamariacn,em 3a serie,0.0
+1002,santamariacn,em 2a serie,0.0
+1001,santamariacn,0,0.0
+1000,santadoroteia,em 3a serie,0.0
+1017,sasadapt,ef 1o ano,0.0
+1018,sasadaptem,0,0.0
+1019,seletivoeducallis,0,0.0
+1020,seletivoeducallis,ef 5o ano,0.0
+1021,seletivoeducallis,em 1a serie,0.0
+1022,seletivoeducallis,em 2a serie,0.0
+1023,simbios,outro,0.0
+1024,simuladoita,outro,0.0
+1025,sobral,outro,0.0
+1026,souhabilis,em 3a serie,0.0
+1027,souhabilis,outro,0.0
+1028,spdacruz,0,0.0
+1029,spdacruz,ef 6o ano,0.0
+1030,spdacruz,ef 7o ano,0.0
+1031,spdacruz,ef 8o ano,0.0
+1032,spdacruz,ef 9o ano,0.0
+1033,spdacruz,em 1a serie,0.0
+999,santadoroteia,em 2a serie,0.0
+998,santadoroteia,em 1a serie,0.0
+997,sagradafamilia,em 3a serie,0.0
+978,psantagema,em 2a serie,0.0
+964,provaspoliedro,ef 7o ano,0.0
+965,provaspoliedro,ef 8o ano,0.0
+966,provaspoliedro,ef 9o ano,0.0
+967,provaspoliedro,em 1a serie,0.0
+968,provaspoliedro,em 2a serie,0.0
+969,provaspoliedro,em 3a serie,0.0
+970,provaspoliedro,outro,0.0
+971,psantagema,0,0.0
+972,psantagema,ef 2o ano,0.0
+973,psantagema,ef 6o ano,0.0
+974,psantagema,ef 7o ano,0.0
+975,psantagema,ef 8o ano,0.0
+976,psantagema,ef 9o ano,0.0
+977,psantagema,em 1a serie,0.0
+979,psantagema,em 3a serie,0.0
+996,sagradafamilia,em 2a serie,0.0
+980,psantagema,outro,0.0
+981,qescola,0,0.0
+982,qescola,ef 1o ano,0.0
+983,qescola,ef 5o ano,0.0
+985,qescola,ef 7o ano,0.0
+986,qescola,em 1a serie,0.0
+987,qescola,em 2a serie,0.0
+988,qescola,em 3a serie,0.0
+989,qescola,outro,0.0
+990,qescola.qmagico.com.br,0,0.0
+992,saberviver,ef 4o ano,0.0
+993,saberviver,ef 5o ano,0.0
+994,saea,0,0.0
+995,sagradafamilia,em 1a serie,0.0
+1034,spdacruz,em 2a serie,0.0
+1035,spdacruz,em 3a serie,0.0
+1036,stellamarisaguaverde,ef 2o ano,0.0
+1087,universobarcarena,ef 7o ano,0.0
+1073,universitariolondrina,ef 6o ano,0.0
+1074,universitariolondrina,ef 7o ano,0.0
+1075,universitariolondrina,ef 8o ano,0.0
+1076,universitariolondrina,ef 9o ano,0.0
+1077,universitariolondrina,em 1a serie,0.0
+1078,universitariolondrina,em 2a serie,0.0
+1079,universitariolondrina,em 3a serie,0.0
+1080,universitariolondrina,outro,0.0
+1081,universobarcarena,ef 1o ano,0.0
+1082,universobarcarena,ef 2o ano,0.0
+1083,universobarcarena,ef 3o ano,0.0
+1084,universobarcarena,ef 4o ano,0.0
+1085,universobarcarena,ef 5o ano,0.0
+1086,universobarcarena,ef 6o ano,0.0
+1088,universobarcarena,ef 8o ano,0.0
+1071,universitariolondrina,ef 4o ano,0.0
+1089,universobarcarena,ef 9o ano,0.0
+1090,universobarcarena,em 1a serie,0.0
+1091,universobarcarena,em 2a serie,0.0
+1092,universobarcarena,em 3a serie,0.0
+1093,villalobos,ef 4o ano,0.0
+1094,villalobos,ef 5o ano,0.0
+1095,villalobos,ef 6o ano,0.0
+1096,villalobos,ef 7o ano,0.0
+1097,villalobos,ef 8o ano,0.0
+1098,villalobos,ef 9o ano,0.0
+1099,villalobos,em 1a serie,0.0
+1100,villalobos,em 2a serie,0.0
+1101,villalobos,em 3a serie,0.0
+1102,vitae,ef 2o ano,0.0
+1072,universitariolondrina,ef 5o ano,0.0
+1070,universitariolondrina,ef 3o ano,0.0
+1037,stellamarisaguaverde,ef 3o ano,0.0
+1052,stellamarisjuveve,em 3a serie,0.0
+1038,stellamarisaguaverde,ef 4o ano,0.0
+1039,stellamarisaguaverde,ef 5o ano,0.0
+1040,stellamarisaguaverde,ef 6o ano,0.0
+1041,stellamarisaguaverde,ef 7o ano,0.0
+1042,stellamarisjuveve,ef 2o ano,0.0
+1043,stellamarisjuveve,ef 3o ano,0.0
+1044,stellamarisjuveve,ef 4o ano,0.0
+1045,stellamarisjuveve,ef 5o ano,0.0
+1046,stellamarisjuveve,ef 6o ano,0.0
+1047,stellamarisjuveve,ef 7o ano,0.0
+1048,stellamarisjuveve,ef 8o ano,0.0
+1049,stellamarisjuveve,ef 9o ano,0.0
+1050,stellamarisjuveve,em 1a serie,0.0
+1051,stellamarisjuveve,em 2a serie,0.0
+1053,stellamarisjuveve,outro,0.0
+1069,universitariolondrina,0,0.0
+1054,stellamarisxaxim,ef 2o ano,0.0
+1055,stellamarisxaxim,ef 3o ano,0.0
+1056,stellamarisxaxim,ef 4o ano,0.0
+1057,stellamarisxaxim,ef 5o ano,0.0
+1058,stellamarisxaxim,ef 6o ano,0.0
+1059,stellamarisxaxim,ef 7o ano,0.0
+1060,stellamarisxaxim,ef 8o ano,0.0
+1061,stellamarisxaxim,ef 9o ano,0.0
+1062,stellamarisxaxim,em 1a serie,0.0
+1063,stellamarisxaxim,em 2a serie,0.0
+1064,stellamarisxaxim,em 3a serie,0.0
+1065,studos,em 1a serie,0.0
+1066,testevictorhugo,0,0.0
+1067,testevictorhugo,ef 7o ano,0.0
+963,provaspoliedro,ef 6o ano,0.0
+962,provaspoliedro,ef 1o ano,0.0
+961,provaspoliedro,0,0.0
+876,physicsumarizal,ef 7o ano,0.0
+862,physicsconselheirofurtado,em 3a serie,0.0
+863,physicsmacapa,ef 7o ano,0.0
+864,physicsmacapa,ef 8o ano,0.0
+865,physicsmacapa,ef 9o ano,0.0
+866,physicsmacapa,em 1a serie,0.0
+867,physicsmacapa,em 2a serie,0.0
+868,physicsmacapa,em 3a serie,0.0
+869,physicsmacapa,outro,0.0
+870,physicsumarizal,0,0.0
+871,physicsumarizal,ef 2o ano,0.0
+872,physicsumarizal,ef 3o ano,0.0
+873,physicsumarizal,ef 4o ano,0.0
+874,physicsumarizal,ef 5o ano,0.0
+875,physicsumarizal,ef 6o ano,0.0
+877,physicsumarizal,ef 8o ano,0.0
+860,physicsconselheirofurtado,em 1a serie,0.0
+878,physicsumarizal,ef 9o ano,0.0
+879,physicsumarizal,em 1a serie,0.0
+880,physicsumarizal,em 2a serie,0.0
+881,physicsumarizal,em 3a serie,0.0
+882,pioxi,0,0.0
+883,pioxi,ef 1o ano,0.0
+884,pioxi,ef 2o ano,0.0
+885,pioxi,ef 3o ano,0.0
+886,pioxi,ef 4o ano,0.0
+887,pioxi,ef 5o ano,0.0
+888,pioxi,ef 6o ano,0.0
+889,pioxi,ef 7o ano,0.0
+890,pioxi,ef 8o ano,0.0
+891,pioxi,ef 9o ano,0.0
+861,physicsconselheirofurtado,em 2a serie,0.0
+859,physicsconselheirofurtado,0,0.0
+893,pioxi,em 2a serie,0.0
+842,physicsbatistacampos,ef 5o ano,0.0
+828,physicsaugustomontenegro,ef 4o ano,0.0
+829,physicsaugustomontenegro,ef 5o ano,0.0
+553,educandarioterciocorreia,ef 5o ano,0.0
+831,physicsaugustomontenegro,ef 7o ano,0.0
+832,physicsaugustomontenegro,ef 8o ano,0.0
+833,physicsaugustomontenegro,ef 9o ano,0.0
+834,physicsaugustomontenegro,em 1a serie,0.0
+835,physicsaugustomontenegro,em 2a serie,0.0
+836,physicsaugustomontenegro,em 3a serie,0.0
+837,physicsaugustomontenegro,outro,0.0
+838,physicsbatistacampos,0,0.0
+839,physicsbatistacampos,ef 2o ano,0.0
+840,physicsbatistacampos,ef 3o ano,0.0
+841,physicsbatistacampos,ef 4o ano,0.0
+843,physicsbatistacampos,ef 6o ano,0.0
+858,physicscidadenova,outro,0.0
+844,physicsbatistacampos,ef 7o ano,0.0
+845,physicsbatistacampos,ef 8o ano,0.0
+846,physicsbatistacampos,ef 9o ano,0.0
+847,physicscidadenova,ef 2o ano,0.0
+848,physicscidadenova,ef 3o ano,0.0
+849,physicscidadenova,ef 4o ano,0.0
+850,physicscidadenova,ef 5o ano,0.0
+851,physicscidadenova,ef 6o ano,0.0
+852,physicscidadenova,ef 7o ano,0.0
+853,physicscidadenova,ef 8o ano,0.0
+854,physicscidadenova,ef 9o ano,0.0
+855,physicscidadenova,em 1a serie,0.0
+856,physicscidadenova,em 2a serie,0.0
+857,physicscidadenova,em 3a serie,0.0
+892,pioxi,em 1a serie,0.0
+894,pioxi,em 3a serie,0.0
+960,progressaoig,outro,0.0
+944,prismapatrocinio,em 2a serie,0.0
+930,portoseguro,0,0.0
+931,portoseguro,ef 4o ano,0.0
+932,positivoon,em 3a serie,0.0
+933,prevest,0,0.0
+934,prevest,outro,0.0
+935,primeirodemaio,0,0.0
+936,prismapatrocinio,ef 2o ano,0.0
+937,prismapatrocinio,ef 4o ano,0.0
+938,prismapatrocinio,ef 5o ano,0.0
+939,prismapatrocinio,ef 6o ano,0.0
+940,prismapatrocinio,ef 7o ano,0.0
+941,prismapatrocinio,ef 8o ano,0.0
+942,prismapatrocinio,ef 9o ano,0.0
+943,prismapatrocinio,em 1a serie,0.0
+945,prismapatrocinio,em 3a serie,0.0
+928,porto,em 2a serie,0.0
+946,prismapatrocinio,outro,0.0
+947,profederal,0,0.0
+948,profederal,outro,0.0
+949,progressaodc,0,0.0
+950,progressaodc,em 1a serie,0.0
+951,progressaodc,em 2a serie,0.0
+952,progressaodc,em 3a serie,0.0
+953,progressaoig,0,0.0
+954,progressaoig,ef 6o ano,0.0
+955,progressaoig,ef 7o ano,0.0
+956,progressaoig,ef 9o ano,0.0
+957,progressaoig,em 1a serie,0.0
+958,progressaoig,em 2a serie,0.0
+959,progressaoig,em 3a serie,0.0
+929,porto,em 3a serie,0.0
+927,porto,em 1a serie,0.0
+895,pioxi,outro,0.0
+910,portinari,0,0.0
+896,pioxiicolegio,ef 9o ano,0.0
+897,pioxiicolegio,em 1a serie,0.0
+898,pioxiicolegio,em 2a serie,0.0
+899,pioxiicolegio,em 3a serie,0.0
+900,plannetaosasco,ef 2o ano,0.0
+901,plannetaosasco,ef 3o ano,0.0
+902,plannetataboao,ef 1o ano,0.0
+903,plannetataboao,ef 2o ano,0.0
+904,plannetataboao,ef 3o ano,0.0
+905,plannetataboao,ef 4o ano,0.0
+906,plannetataboao,ef 5o ano,0.0
+907,poliedro,0,0.0
+908,poliedropv,0,0.0
+909,poliedrotreinamento,0,0.0
+911,portinari,ef 2o ano,0.0
+926,porto,ef 9o ano,0.0
+912,portinari,ef 3o ano,0.0
+913,portinari,ef 4o ano,0.0
+914,portinari,ef 5o ano,0.0
+915,portinari,ef 6o ano,0.0
+916,portinari,ef 7o ano,0.0
+917,portinari,ef 8o ano,0.0
+918,portinari,ef 9o ano,0.0
+919,portinari,em 1a serie,0.0
+920,portinari,em 2a serie,0.0
+921,portinari,em 3a serie,0.0
+922,porto,0,0.0
+923,porto,ef 6o ano,0.0
+924,porto,ef 7o ano,0.0
+925,porto,ef 8o ano,0.0
+554,educandarioterciocorreia,ef 6o ano,0.0
+552,educandarioterciocorreia,ef 4o ano,0.0
+1,acessoalmirantetamandare,ef 3o ano,0.0
+183,ceprimeiromundo,ef 9o ano,0.0
+189,ciadosaber,ef 2o ano,0.0
+188,charlesdarwin,0,0.0
+187,ceprimeiromundo,outro,0.0
+186,ceprimeiromundo,em 3a serie,0.0
+185,ceprimeiromundo,em 2a serie,0.0
+184,ceprimeiromundo,em 1a serie,0.0
+182,ceprimeiromundo,ef 8o ano,0.0
+208,colegioalphaunis,ef 7o ano,0.0
+181,ceprimeiromundo,ef 7o ano,0.0
+180,ceprimeiromundo,ef 6o ano,0.0
+179,ceprimeiromundo,ef 5o ano,0.0
+178,ceprimeiromundo,ef 4o ano,0.0
+177,ceprimeiromundo,ef 3o ano,0.0
+176,ceprimeiromundo,ef 2o ano,0.0
+190,ciadosaber,ef 3o ano,0.0
+191,ciadosaber,ef 4o ano,0.0
+192,ciadosaber,ef 5o ano,0.0
+193,ciadosaber,ef 6o ano,0.0
+194,ciadosaber,ef 7o ano,0.0
+195,ciadosaber,ef 8o ano,0.0
+196,ciadosaber,ef 9o ano,0.0
+197,cmdpii,em 2a serie,0.0
+198,cnslpb,ef 6o ano,0.0
+199,cnslpb,ef 7o ano,0.0
+200,cnslpb,ef 8o ano,0.0
+201,cnslpb,ef 9o ano,0.0
+202,cnslpb,em 1a serie,0.0
+203,cnslpb,em 2a serie,0.0
+204,cnslpb,em 3a serie,0.0
+205,cognitivo,0,0.0
+206,colegioalphaunis,0,0.0
+175,ceprimeiromundo,ef 1o ano,0.0
+174,ceprimeiromundo,0,0.0
+173,cem,em 3a serie,0.0
+156,ceespacolivre,ef 6o ano,0.0
+142,cbpdigital,ef 8o ano,0.0
+143,cbpdigital,ef 9o ano,0.0
+144,ceabb,ef 3o ano,0.0
+145,ceabb,ef 4o ano,0.0
+146,ceabb,ef 5o ano,0.0
+147,ceabb,ef 6o ano,0.0
+148,ceabb,ef 7o ano,0.0
+149,ceabb,ef 8o ano,0.0
+150,ceabb,ef 9o ano,0.0
+151,cecbdf,em 1a serie,0.0
+152,cecbdf,em 2a serie,0.0
+153,cecbdf,em 3a serie,0.0
+154,ceespacolivre,0,0.0
+155,ceespacolivre,ef 5o ano,0.0
+157,ceespacolivre,ef 7o ano,0.0
+172,cem,em 2a serie,0.0
+158,ceespacolivre,ef 8o ano,0.0
+159,ceespacolivre,ef 9o ano,0.0
+160,ceespacolivre,em 1a serie,0.0
+161,ceespacolivre,em 2a serie,0.0
+162,cem,0,0.0
+163,cem,ef 2o ano,0.0
+164,cem,ef 3o ano,0.0
+165,cem,ef 4o ano,0.0
+166,cem,ef 5o ano,0.0
+167,cem,ef 6o ano,0.0
+168,cem,ef 7o ano,0.0
+169,cem,ef 8o ano,0.0
+170,cem,ef 9o ano,0.0
+171,cem,em 1a serie,0.0
+207,colegioalphaunis,ef 6o ano,0.0
+209,colegioalphaunis,ef 8o ano,0.0
+140,cbpdigital,ef 6o ano,0.0
+252,colegiobilac,ef 8o ano,0.0
+258,colegiobrasilia,ef 5o ano,0.0
+257,colegiobrasilia,ef 4o ano,0.0
+256,colegiobrasilia,ef 3o ano,0.0
+255,colegiobrasilia,ef 2o ano,0.0
+254,colegiobrasilia,0,0.0
+253,colegiobilac,ef 9o ano,0.0
+251,colegiobilac,ef 7o ano,0.0
+210,colegioalphaunis,ef 9o ano,0.0
+250,colegiobilac,ef 6o ano,0.0
+249,colegiobilac,ef 5o ano,0.0
+248,colegiobilac,ef 4o ano,0.0
+247,colegiobilac,ef 3o ano,0.0
+246,colegiobilac,ef 2o ano,0.0
+245,colegiobilac,ef 1o ano,0.0
+259,colegiobrasilia,ef 6o ano,0.0
+260,colegiobrasilia,ef 7o ano,0.0
+261,colegiobrasilia,ef 8o ano,0.0
+262,colegiobrasilia,ef 9o ano,0.0
+263,colegiobrasilia,em 1a serie,0.0
+264,colegiobrasilia,em 2a serie,0.0
+265,colegiobrasilia,em 3a serie,0.0
+266,colegiobrasilia,outro,0.0
+267,colegiocb,0,0.0
+268,colegiocb,ef 3o ano,0.0
+269,colegiocb,ef 4o ano,0.0
+270,colegiocb,ef 5o ano,0.0
+271,colegiocb,ef 6o ano,0.0
+272,colegiocb,ef 7o ano,0.0
+273,colegiocb,ef 8o ano,0.0
+274,colegiocb,ef 9o ano,0.0
+275,colegiocb,em 1a serie,0.0
+244,colegiobianguloiv,em 3a serie,0.0
+243,colegiobianguloiv,em 2a serie,0.0
+242,colegiobianguloiv,em 1a serie,0.0
+225,colegiobatistaindependente,0,0.0
+211,colegioalphaunis,em 1a serie,0.0
+212,colegioalphaunis,em 2a serie,0.0
+213,colegioalphaunis,em 3a serie,0.0
+214,colegioanchietai,em 1a serie,0.0
+215,colegioanchietai,em 2a serie,0.0
+216,colegioanchietai,em 3a serie,0.0
+217,colegioanchietaii,em 1a serie,0.0
+218,colegioanchietaii,em 2a serie,0.0
+219,colegioanchietaii,em 3a serie,0.0
+220,colegioarena,0,0.0
+221,colegioarena,em 1a serie,0.0
+222,colegioarena,em 2a serie,0.0
+223,colegioarena,em 3a serie,0.0
+224,colegioarena,outro,0.0
+226,colegiobatistaindependente,ef 5o ano,0.0
+241,colegiobetelbrasileirosp,em 3a serie,0.0
+227,colegiobatistaindependente,ef 6o ano,0.0
+228,colegiobatistaindependente,ef 7o ano,0.0
+229,colegiobatistaindependente,ef 8o ano,0.0
+230,colegiobatistaindependente,ef 9o ano,0.0
+231,colegiobatistaindependente,em 1a serie,0.0
+232,colegiobatistaindependente,em 2a serie,0.0
+233,colegiobatistaindependente,em 3a serie,0.0
+234,colegiobatistaindependente,outro,0.0
+235,colegiobetelbrasileirosp,ef 6o ano,0.0
+236,colegiobetelbrasileirosp,ef 7o ano,0.0
+237,colegiobetelbrasileirosp,ef 8o ano,0.0
+238,colegiobetelbrasileirosp,ef 9o ano,0.0
+239,colegiobetelbrasileirosp,em 1a serie,0.0
+240,colegiobetelbrasileirosp,em 2a serie,0.0
+141,cbpdigital,ef 7o ano,0.0
+139,cbpdigital,ef 5o ano,0.0
+551,educandarioterciocorreia,ef 3o ano,0.0
+43,acessofazendariogrande,outro,0.0
+49,acessohauer,ef 6o ano,0.0
+48,acessohauer,ef 5o ano,0.0
+47,acessohauer,ef 4o ano,0.0
+46,acessohauer,ef 3o ano,0.0
+45,acessohauer,ef 2o ano,0.0
+44,acessohauer,0,0.0
+42,acessofazendariogrande,em 3a serie,0.0
+68,acessosjpinhais,ef 2o ano,0.0
+41,acessofazendariogrande,em 2a serie,0.0
+40,acessofazendariogrande,em 1a serie,0.0
+39,acessofazendariogrande,ef 9o ano,0.0
+38,acessofazendariogrande,ef 8o ano,0.0
+37,acessofazendariogrande,ef 7o ano,0.0
+36,acessofazendariogrande,ef 6o ano,0.0
+50,acessohauer,ef 7o ano,0.0
+51,acessopinhais,em 1a serie,0.0
+52,acessopinhais,em 2a serie,0.0
+53,acessopinhais,em 3a serie,0.0
+54,acessopinhais,outro,0.0
+55,acessosantafelicidade,ef 2o ano,0.0
+56,acessosantafelicidade,ef 3o ano,0.0
+57,acessosantafelicidade,ef 4o ano,0.0
+58,acessosantafelicidade,ef 5o ano,0.0
+59,acessosantafelicidade,ef 6o ano,0.0
+60,acessosantafelicidade,ef 7o ano,0.0
+61,acessosantafelicidade,ef 8o ano,0.0
+62,acessosantafelicidade,ef 9o ano,0.0
+63,acessosantafelicidade,em 1a serie,0.0
+64,acessosantafelicidade,em 2a serie,0.0
+65,acessosantafelicidade,em 3a serie,0.0
+66,acessosantafelicidade,outro,0.0
+35,acessofazendariogrande,ef 5o ano,0.0
+34,acessofazendariogrande,ef 4o ano,0.0
+33,acessofazendariogrande,ef 3o ano,0.0
+16,acessoboqueirao,em 2a serie,0.0
+2,acessoalmirantetamandare,ef 4o ano,0.0
+3,acessoalmirantetamandare,ef 5o ano,0.0
+4,acessoalmirantetamandare,ef 6o ano,0.0
+5,acessoalmirantetamandare,ef 7o ano,0.0
+6,acessoalmirantetamandare,ef 8o ano,0.0
+7,acessoalmirantetamandare,ef 9o ano,0.0
+8,acessoalmirantetamandare,em 1a serie,0.0
+9,acessoalmirantetamandare,em 2a serie,0.0
+10,acessoalmirantetamandare,em 3a serie,0.0
+11,acessoalmirantetamandare,outro,0.0
+12,acessoboqueirao,0,0.0
+13,acessoboqueirao,ef 8o ano,0.0
+14,acessoboqueirao,ef 9o ano,0.0
+15,acessoboqueirao,em 1a serie,0.0
+17,acessoboqueirao,em 3a serie,0.0
+32,acessofazendariogrande,ef 2o ano,0.0
+18,acessoboqueirao,outro,0.0
+19,acessocampolargo,ef 6o ano,0.0
+20,acessocampolargo,ef 7o ano,0.0
+21,acessocampolargo,ef 8o ano,0.0
+22,acessocampolargo,ef 9o ano,0.0
+23,acessocampolargo,em 1a serie,0.0
+24,acessocampolargo,em 2a serie,0.0
+25,acessocampolargo,em 3a serie,0.0
+26,acessocampolargo,outro,0.0
+27,acessocampolargokids,ef 2o ano,0.0
+28,acessocampolargokids,ef 3o ano,0.0
+29,acessocampolargokids,ef 4o ano,0.0
+30,acessocampolargokids,ef 5o ano,0.0
+31,acessocampolargokids,outro,0.0
+67,acessosjpinhais,0,0.0
+69,acessosjpinhais,ef 3o ano,0.0
+138,cbpdigital,ef 4o ano,0.0
+114,amaisteste,em 1a serie,0.0
+120,aprovest,outro,0.0
+119,apogeustoantonio2,outro,0.0
+118,apogeustoantonio2,ef 9o ano,0.0
+117,apogeustoantonio2,0,0.0
+116,anchietaba,0,0.0
+115,amaisteste,em 3a serie,0.0
+113,amaisteste,ef 9o ano,0.0
+70,acessosjpinhais,ef 4o ano,0.0
+112,amaisteste,ef 6o ano,0.0
+111,amaisteste,ef 3o ano,0.0
+110,amais,outro,0.0
+109,amais,em 3a serie,0.0
+108,amais,0,0.0
+107,amadeus,em 3a serie,0.0
+121,arlindocavalcanti,0,0.0
+122,beityaacov,0,0.0
+123,beityaacov,em 3a serie,0.0
+124,bertelsmann,0,0.0
+125,brasilcursinhos,0,0.0
+126,brasilcursinhos,outro,0.0
+127,camerinocursos,0,0.0
+128,camerinocursos,outro,0.0
+129,casdinhosjc,ef 8o ano,0.0
+130,casdinhosjc,ef 9o ano,0.0
+131,casdvest,0,0.0
+132,casdvest,outro,0.0
+133,castelobruxo,0,0.0
+134,cats,outro,0.0
+135,cbpdigital,0,0.0
+136,cbpdigital,ef 2o ano,0.0
+137,cbpdigital,ef 3o ano,0.0
+106,amadeus,em 2a serie,0.0
+105,amadeus,em 1a serie,0.0
+104,amadeus,ef 9o ano,0.0
+85,aescobjetivo,ef 3o ano,0.0
+71,acessosjpinhais,ef 5o ano,0.0
+72,acessosjpinhais,ef 6o ano,0.0
+73,acessosjpinhais,ef 7o ano,0.0
+74,acessosjpinhais,ef 8o ano,0.0
+75,acessosjpinhais,ef 9o ano,0.0
+76,acessosjpinhais,em 1a serie,0.0
+77,acessosjpinhais,em 2a serie,0.0
+78,acessosjpinhais,em 3a serie,0.0
+79,acessosjpinhais,outro,0.0
+80,adrianochan,0,0.0
+81,adrianochan,outro,0.0
+82,aescobjetivo,0,0.0
+83,aescobjetivo,ef 1o ano,0.0
+84,aescobjetivo,ef 2o ano,0.0
+86,aescobjetivo,ef 4o ano,0.0
+103,amadeus,ef 8o ano,0.0
+87,aescobjetivo,ef 5o ano,0.0
+88,aescobjetivo,ef 6o ano,0.0
+89,aescobjetivo,ef 7o ano,0.0
+90,aescobjetivo,ef 8o ano,0.0
+91,aescobjetivo,ef 9o ano,0.0
+94,aescobjetivo,em 3a serie,0.0
+95,alfacembilingue,0,0.0
+96,amadeus,0,0.0
+97,amadeus,ef 2o ano,0.0
+98,amadeus,ef 3o ano,0.0
+99,amadeus,ef 4o ano,0.0
+100,amadeus,ef 5o ano,0.0
+101,amadeus,ef 6o ano,0.0
+102,amadeus,ef 7o ano,0.0
+276,colegiocb,em 2a serie,0.0
+277,colegiocb,em 3a serie,0.0
+278,colegiocognos,0,0.0
+458,colegiouniverso,ef 6o ano,0.0
+464,colegiouniverso,em 3a serie,0.0
+463,colegiouniverso,em 2a serie,0.0
+462,colegiouniverso,em 1a serie,0.0
+461,colegiouniverso,ef 9o ano,0.0
+460,colegiouniverso,ef 8o ano,0.0
+459,colegiouniverso,ef 7o ano,0.0
+457,colegiouirapuru,em 3a serie,0.0
+483,contemporaneo,em 3a serie,0.0
+456,colegiouirapuru,em 2a serie,0.0
+455,colegiouirapuru,em 1a serie,0.0
+454,colegiouirapuru,ef 9o ano,0.0
+453,colegiouirapuru,ef 8o ano,0.0
+452,colegiouirapuru,ef 7o ano,0.0
+451,colegiouirapuru,ef 6o ano,0.0
+465,colegioup,0,0.0
+466,colegioup,ef 6o ano,0.0
+467,colegioup,ef 7o ano,0.0
+468,colegioup,ef 8o ano,0.0
+469,colegioup,ef 9o ano,0.0
+470,colegioup,em 1a serie,0.0
+471,colegioup,em 2a serie,0.0
+472,colegioup,em 3a serie,0.0
+473,conexaosaber,0,0.0
+474,conexaosaber,ef 1o ano,0.0
+475,conexaosaber,ef 2o ano,0.0
+476,conexaosaber,ef 3o ano,0.0
+477,conexaosaber,ef 4o ano,0.0
+478,conexaosaber,ef 5o ano,0.0
+479,conexaosaber,ef 6o ano,0.0
+480,conexaosaber,ef 7o ano,0.0
+481,conexaosaber,ef 8o ano,0.0
+450,colegiouirapuru,ef 5o ano,0.0
+449,colegiouirapuru,ef 4o ano,0.0
+448,colegiouirapuru,ef 3o ano,0.0
+431,colegiopremium,em 2a serie,0.0
+417,colegioplanck,em 1a serie,0.0
+418,colegioplanck,em 2a serie,0.0
+419,colegioplanck,em 3a serie,0.0
+420,colegioplanck,outro,0.0
+421,colegiopremium,ef 1o ano,0.0
+422,colegiopremium,ef 2o ano,0.0
+423,colegiopremium,ef 3o ano,0.0
+424,colegiopremium,ef 4o ano,0.0
+425,colegiopremium,ef 5o ano,0.0
+426,colegiopremium,ef 6o ano,0.0
+427,colegiopremium,ef 7o ano,0.0
+428,colegiopremium,ef 8o ano,0.0
+429,colegiopremium,ef 9o ano,0.0
+430,colegiopremium,em 1a serie,0.0
+432,colegiopremium,em 3a serie,0.0
+447,colegiosete,em 3a serie,0.0
+433,colegioprogresso,0,0.0
+434,colegioradar,0,0.0
+435,colegioriobranco,0,0.0
+436,colegiosantamaria,0,0.0
+437,colegioser,0,0.0
+438,colegioser,outro,0.0
+439,colegiosete,0,0.0
+440,colegiosete,ef 5o ano,0.0
+441,colegiosete,ef 6o ano,0.0
+442,colegiosete,ef 7o ano,0.0
+443,colegiosete,ef 8o ano,0.0
+444,colegiosete,ef 9o ano,0.0
+445,colegiosete,em 1a serie,0.0
+446,colegiosete,em 2a serie,0.0
+482,conexaosaber,ef 9o ano,0.0
+484,contemporaneocidadeverde,0,0.0
+279,colegiodasamericas,0,0.0
+527,cursosazambuja,0,0.0
+533,deltaeducacional,em 3a serie,0.0
+532,deltaeducacional,em 2a serie,0.0
+531,deltaeducacional,em 1a serie,0.0
+530,deltaeducacional,0,0.0
+529,dante,em 3a serie,0.0
+528,cursosazambuja,outro,0.0
+526,cursoprogressao,0,0.0
+485,contemporaneocidadeverde,ef 3o ano,0.0
+525,cursoleopoldo,outro,0.0
+524,cursoleopoldo,em 3a serie,0.0
+523,cursoisfera,outro,0.0
+522,cursoisfera,0,0.0
+521,cursoenfase,outro,0.0
+520,cursobase,0,0.0
+534,dommga,em 3a serie,0.0
+535,domus,em 1a serie,0.0
+536,domus,em 2a serie,0.0
+537,domus,em 3a serie,0.0
+538,eacorcovado,ef 8o ano,0.0
+539,eacorcovado,em 1a serie,0.0
+540,eacorcovado,em 2a serie,0.0
+541,eacorcovado,em 3a serie,0.0
+542,eccos,0,0.0
+543,eccos,ef 3o ano,0.0
+544,eccos,ef 4o ano,0.0
+545,eccos,ef 5o ano,0.0
+546,eccos,ef 6o ano,0.0
+547,eccos,ef 7o ano,0.0
+548,eccos,ef 8o ano,0.0
+549,eccos,ef 9o ano,0.0
+550,educamais,ef 6o ano,0.0
+519,cursinhoeach,0,0.0
+518,crescercampinas,em 3a serie,0.0
+517,crescercampinas,em 2a serie,0.0
+500,contemporaneolagoanova,em 2a serie,0.0
+486,contemporaneocidadeverde,ef 5o ano,0.0
+487,contemporaneocidadeverde,ef 6o ano,0.0
+488,contemporaneocidadeverde,ef 7o ano,0.0
+489,contemporaneocidadeverde,ef 8o ano,0.0
+490,contemporaneocidadeverde,ef 9o ano,0.0
+491,contemporaneocidadeverde,em 1a serie,0.0
+492,contemporaneocidadeverde,em 2a serie,0.0
+493,contemporaneocidadeverde,em 3a serie,0.0
+494,contemporaneolagoanova,0,0.0
+495,contemporaneolagoanova,ef 6o ano,0.0
+496,contemporaneolagoanova,ef 7o ano,0.0
+497,contemporaneolagoanova,ef 8o ano,0.0
+498,contemporaneolagoanova,ef 9o ano,0.0
+499,contemporaneolagoanova,em 1a serie,0.0
+501,contemporaneolagoanova,em 3a serie,0.0
+516,crescercampinas,em 1a serie,0.0
+502,cparaiso,0,0.0
+503,crb,ef 6o ano,0.0
+504,crb,ef 7o ano,0.0
+505,crb,ef 8o ano,0.0
+506,crb,ef 9o ano,0.0
+507,crb,em 1a serie,0.0
+508,crb,em 2a serie,0.0
+509,crb,em 3a serie,0.0
+510,crb,outro,0.0
+511,crescercampinas,0,0.0
+512,crescercampinas,ef 6o ano,0.0
+513,crescercampinas,ef 7o ano,0.0
+514,crescercampinas,ef 8o ano,0.0
+515,crescercampinas,ef 9o ano,0.0
+416,colegioplanck,ef 9o ano,0.0
+415,colegioplanck,ef 8o ano,0.0
+414,colegioplanck,ef 7o ano,0.0
+321,colegioensitec,ef 5o ano,0.0
+327,colegioensitec,em 2a serie,0.0
+326,colegioensitec,em 1a serie,0.0
+325,colegioensitec,ef 9o ano,0.0
+324,colegioensitec,ef 8o ano,0.0
+323,colegioensitec,ef 7o ano,0.0
+322,colegioensitec,ef 6o ano,0.0
+320,colegioensitec,ef 4o ano,0.0
+413,colegioplanck,ef 6o ano,0.0
+319,colegioensitec,ef 3o ano,0.0
+318,colegioensitec,ef 2o ano,0.0
+317,colegioeducallis,em 3a serie,0.0
+316,colegioeducallis,em 2a serie,0.0
+315,colegioeducallis,em 1a serie,0.0
+314,colegioeducallis,ef 9o ano,0.0
+328,colegioensitec,em 3a serie,0.0
+329,colegioflamingo,em 1a serie,0.0
+330,colegioflamingo,em 2a serie,0.0
+331,colegioflamingo,em 3a serie,0.0
+332,colegiofuturageracao,ef 3o ano,0.0
+333,colegiofuturageracao,ef 4o ano,0.0
+334,colegiofuturageracao,ef 5o ano,0.0
+335,colegiofuturageracao,ef 6o ano,0.0
+336,colegiofuturageracao,ef 7o ano,0.0
+337,colegiofuturageracao,ef 8o ano,0.0
+338,colegiofuturageracao,ef 9o ano,0.0
+339,colegiofuturageracao,em 1a serie,0.0
+340,colegioglobal,0,0.0
+341,colegioglobal,ef 2o ano,0.0
+342,colegioglobal,ef 3o ano,0.0
+343,colegioglobal,ef 4o ano,0.0
+344,colegioglobal,ef 5o ano,0.0
+313,colegioeducallis,ef 8o ano,0.0
+312,colegioeducallis,ef 7o ano,0.0
+311,colegioeducallis,ef 6o ano,0.0
+294,colegioecursodesafio,em 1a serie,0.0
+280,colegiodasamericas,ef 6o ano,0.0
+281,colegiodasamericas,ef 7o ano,0.0
+282,colegiodasamericas,ef 8o ano,0.0
+283,colegiodasamericas,ef 9o ano,0.0
+284,colegiodasamericas,em 1a serie,0.0
+285,colegiodasamericas,em 2a serie,0.0
+286,colegiodasamericas,em 3a serie,0.0
+287,colegiodasamericas,outro,0.0
+288,colegiodompedrosegundo,0,0.0
+289,colegioeag,ef 1o ano,0.0
+290,colegioeag,ef 3o ano,0.0
+291,colegioeag,ef 4o ano,0.0
+292,colegioeag,ef 5o ano,0.0
+293,colegioecursodesafio,ef 1o ano,0.0
+295,colegioecursodesafio,em 2a serie,0.0
+310,colegioeducallis,ef 5o ano,0.0
+296,colegioecursodesafio,em 3a serie,0.0
+297,colegioecursoprogressao,0,0.0
+298,colegioecursoprogressao,ef 1o ano,0.0
+299,colegioecursoprogressao,ef 6o ano,0.0
+300,colegioecursoprogressao,ef 7o ano,0.0
+301,colegioecursoprogressao,ef 8o ano,0.0
+302,colegioecursoprogressao,ef 9o ano,0.0
+303,colegioecursoprogressao,em 1a serie,0.0
+304,colegioecursoprogressao,em 2a serie,0.0
+305,colegioecursoprogressao,em 3a serie,0.0
+306,colegioeducallis,0,0.0
+307,colegioeducallis,ef 2o ano,0.0
+308,colegioeducallis,ef 3o ano,0.0
+309,colegioeducallis,ef 4o ano,0.0
+345,colegioglobal,ef 6o ano,0.0
+346,colegioglobal,ef 7o ano,0.0
+347,colegioglobal,ef 8o ano,0.0
+397,colegiomagnum,em 2a serie,0.0
+383,colegiojoaopaulo,ef 4o ano,0.0
+384,colegiojoaopaulo,ef 5o ano,0.0
+385,colegiojoaopaulo,ef 6o ano,0.0
+386,colegiojoaopaulo,ef 7o ano,0.0
+387,colegiojoaopaulo,ef 8o ano,0.0
+388,colegiojoaopaulo,ef 9o ano,0.0
+389,colegiojoaopaulo,em 1a serie,0.0
+390,colegiojoaopaulo,em 2a serie,0.0
+391,colegiojoaopaulo,em 3a serie,0.0
+392,colegiojoaopaulo,outro,0.0
+393,colegioliceu,em 1a serie,0.0
+394,colegioliceu,em 2a serie,0.0
+395,colegioliceu,em 3a serie,0.0
+396,colegiomagnum,em 1a serie,0.0
+398,colegiomagnum,em 3a serie,0.0
+381,colegiointegral,outro,0.0
+399,colegiomodelo,0,0.0
+400,colegiomundial,ef 6o ano,0.0
+401,colegiomundial,ef 9o ano,0.0
+402,colegiomundial,em 1a serie,0.0
+403,colegiomundial,em 2a serie,0.0
+404,colegiomundial,em 3a serie,0.0
+405,colegionobre,0,0.0
+406,colegionobre,ef 6o ano,0.0
+407,colegionovageracao,ef 2o ano,0.0
+408,colegionovageracao,ef 3o ano,0.0
+409,colegionovageracao,ef 4o ano,0.0
+410,colegionovageracao,ef 5o ano,0.0
+411,colegionovopatio,0,0.0
+412,colegioplanck,0,0.0
+382,colegiojoaopaulo,0,0.0
+380,colegiointegral,em 3a serie,0.0
+348,colegioglobal,ef 9o ano,0.0
+363,colegioiguatemy,ef 7o ano,0.0
+349,colegioglobal,em 1a serie,0.0
+350,colegioglobal,em 2a serie,0.0
+351,colegioglobal,em 3a serie,0.0
+352,colegioguilhermedealmeida,ef 6o ano,0.0
+353,colegioguilhermedealmeida,ef 7o ano,0.0
+354,colegioguilhermedealmeida,ef 8o ano,0.0
+355,colegioguilhermedealmeida,ef 9o ano,0.0
+356,colegioguilhermedealmeida,em 1a serie,0.0
+357,colegioguilhermedealmeida,em 2a serie,0.0
+358,colegioguilhermedealmeida,em 3a serie,0.0
+359,colegioiguatemy,ef 3o ano,0.0
+360,colegioiguatemy,ef 4o ano,0.0
+361,colegioiguatemy,ef 5o ano,0.0
+362,colegioiguatemy,ef 6o ano,0.0
+364,colegioiguatemy,ef 8o ano,0.0
+379,colegiointegral,em 2a serie,0.0
+365,colegioiguatemy,ef 9o ano,0.0
+366,colegioiguatemy,em 1a serie,0.0
+367,colegioiguatemy,em 2a serie,0.0
+368,colegioiguatemy,em 3a serie,0.0
+369,colegiointegral,0,0.0
+370,colegiointegral,ef 2o ano,0.0
+371,colegiointegral,ef 3o ano,0.0
+372,colegiointegral,ef 4o ano,0.0
+373,colegiointegral,ef 5o ano,0.0
+374,colegiointegral,ef 6o ano,0.0
+375,colegiointegral,ef 7o ano,0.0
+376,colegiointegral,ef 8o ano,0.0
+377,colegiointegral,ef 9o ano,0.0
+378,colegiointegral,em 1a serie,0.0
+1103,wilsondeandradebarreto,em 1a serie,0.0

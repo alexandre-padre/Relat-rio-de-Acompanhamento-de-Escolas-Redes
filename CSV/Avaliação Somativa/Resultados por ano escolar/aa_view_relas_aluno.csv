@@ -1,0 +1,1767 @@
+,namespace,grade,Porcentagem de visualização de relatórios de AA
+0,acesso,em 3a serie,0.0
+1,acesso,outro,0.0
+2,acessoalmirantetamandare,ef 2o ano,0.28
+3,acessoalmirantetamandare,ef 3o ano,0.36134453781512604
+4,acessoalmirantetamandare,ef 4o ano,0.2
+5,acessoalmirantetamandare,ef 5o ano,0.7485207100591716
+6,acessoalmirantetamandare,ef 6o ano,0.5800711743772242
+7,acessoalmirantetamandare,ef 7o ano,0.7088235294117647
+8,acessoalmirantetamandare,ef 8o ano,0.7142857142857143
+9,acessoalmirantetamandare,ef 9o ano,0.5064935064935064
+10,acessoalmirantetamandare,em 1a serie,0.3784916201117318
+11,acessoalmirantetamandare,em 2a serie,0.4741847826086957
+12,acessoalmirantetamandare,em 3a serie,0.7083333333333334
+13,acessoalmirantetamandare,outro,0.8
+14,acessoboqueirao,0,0.0
+15,acessoboqueirao,ef 8o ano,0.5277190012695726
+16,acessoboqueirao,ef 9o ano,0.39467148340483177
+17,acessoboqueirao,em 1a serie,0.3482981833368135
+18,acessoboqueirao,em 2a serie,0.31552323743281696
+19,acessoboqueirao,em 3a serie,0.722397476340694
+20,acessoboqueirao,outro,0.3416666666666667
+21,acessocampolargo,ef 6o ano,0.7761904761904762
+22,acessocampolargo,ef 7o ano,0.6196078431372549
+23,acessocampolargo,ef 8o ano,0.6529605263157895
+24,acessocampolargo,ef 9o ano,0.535673839184598
+25,acessocampolargo,em 1a serie,0.41517857142857145
+26,acessocampolargo,em 2a serie,0.48817567567567566
+27,acessocampolargo,em 3a serie,0.625
+28,acessocampolargo,outro,0.6571428571428571
+29,acessocampolargokids,ef 2o ano,0.2375
+30,acessocampolargokids,ef 3o ano,0.18181818181818182
+31,acessocampolargokids,ef 4o ano,0.16666666666666666
+32,acessocampolargokids,ef 5o ano,0.95
+33,acessocampolargokids,outro,0.2
+34,acessoemilianoperneta,em 2a serie,0.0
+35,acessoemilianoperneta,em 3a serie,0.0
+36,acessoemilianoperneta,outro,0.0
+37,acessofazendariogrande,ef 2o ano,0.10714285714285714
+38,acessofazendariogrande,ef 3o ano,0.34210526315789475
+39,acessofazendariogrande,ef 4o ano,0.3482142857142857
+40,acessofazendariogrande,ef 5o ano,0.6153846153846154
+41,acessofazendariogrande,ef 6o ano,0.5529801324503312
+42,acessofazendariogrande,ef 7o ano,0.531986531986532
+43,acessofazendariogrande,ef 8o ano,0.5870445344129555
+44,acessofazendariogrande,ef 9o ano,0.4677777777777778
+45,acessofazendariogrande,em 1a serie,0.36846153846153845
+46,acessofazendariogrande,em 2a serie,0.4031991174848318
+47,acessofazendariogrande,em 3a serie,0.6090225563909775
+48,acessofazendariogrande,outro,0.8095238095238095
+49,acessohauer,0,0.0
+50,acessohauer,ef 2o ano,0.26666666666666666
+51,acessohauer,ef 3o ano,0.312
+52,acessohauer,ef 4o ano,0.37142857142857144
+53,acessohauer,ef 5o ano,0.6246819338422391
+54,acessohauer,ef 6o ano,0.6996309963099631
+55,acessohauer,ef 7o ano,0.6201067615658363
+56,acessopinhais,em 1a serie,0.405420054200542
+57,acessopinhais,em 2a serie,0.36464646464646466
+58,acessopinhais,em 3a serie,0.7781954887218046
+59,acessopinhais,outro,0.32653061224489793
+60,acessosantafelicidade,ef 2o ano,0.275
+61,acessosantafelicidade,ef 3o ano,0.21951219512195122
+62,acessosantafelicidade,ef 4o ano,0.26666666666666666
+63,acessosantafelicidade,ef 5o ano,0.6428571428571429
+64,acessosantafelicidade,ef 6o ano,0.625
+65,acessosantafelicidade,ef 7o ano,0.5368171021377672
+66,acessosantafelicidade,ef 8o ano,0.6480293308890925
+67,acessosantafelicidade,ef 9o ano,0.408983451536643
+68,acessosantafelicidade,em 1a serie,0.3315018315018315
+69,acessosantafelicidade,em 2a serie,0.33771486349848334
+70,acessosantafelicidade,em 3a serie,0.7987012987012987
+71,acessosantafelicidade,outro,0.39285714285714285
+72,acessosjpinhais,0,0.0
+73,acessosjpinhais,ef 2o ano,0.09937888198757763
+74,acessosjpinhais,ef 3o ano,0.3023255813953488
+75,acessosjpinhais,ef 4o ano,0.2347266881028939
+76,acessosjpinhais,ef 5o ano,0.44417862838915473
+77,acessosjpinhais,ef 6o ano,0.5179738562091504
+78,acessosjpinhais,ef 7o ano,0.46712586098935505
+79,acessosjpinhais,ef 8o ano,0.479129923574368
+80,acessosjpinhais,ef 9o ano,0.39719837324898327
+81,acessosjpinhais,em 1a serie,0.3806881243063263
+82,acessosjpinhais,em 2a serie,0.39969604863221886
+83,acessosjpinhais,em 3a serie,0.6803571428571429
+84,acessosjpinhais,outro,0.34523809523809523
+85,adrianochan,0,0.0
+86,adrianochan,outro,0.24882912826710984
+87,aescobjetivo,0,0.0
+88,aescobjetivo,ef 1o ano,0.5
+89,aescobjetivo,ef 2o ano,0.5573770491803278
+90,aescobjetivo,ef 3o ano,0.35
+91,aescobjetivo,ef 4o ano,0.640625
+92,aescobjetivo,ef 5o ano,0.4551282051282051
+93,aescobjetivo,ef 6o ano,0.45622119815668205
+94,aescobjetivo,ef 7o ano,0.573170731707317
+95,aescobjetivo,ef 8o ano,0.5638440860215054
+96,aescobjetivo,ef 9o ano,0.46944444444444444
+97,aescobjetivo,em 1a serie,0.3415372964786066
+98,aescobjetivo,em 2a serie,0.26952504691785767
+99,aescobjetivo,em 3a serie,0.2729326705829191
+100,albertsabin,0,0.0
+101,albertsabin,em 1a serie,0.0
+102,alfacembilingue,0,0.0
+103,alfacembilingue,em 1a serie,0.0
+104,alfeurosa,0,0.0
+105,alfeurosa,ef 3o ano,0.0
+106,alfeurosa,ef 7o ano,0.0
+107,alfeurosa,ef 9o ano,0.0
+108,alfeurosa,em 1a serie,0.0
+109,alfeurosa,em 2a serie,0.0
+110,alfeurosa,em 3a serie,0.0
+111,alpha,0,0.0
+112,alpha,ef 3o ano,0.0
+113,alpha,ef 7o ano,0.0
+114,alpha,ef 9o ano,0.0
+115,alpha,em 1a serie,0.0
+116,alpha,em 2a serie,0.0
+117,alpha,em 3a serie,0.0
+118,amadeus,0,0.0
+119,amadeus,ef 2o ano,0.1324110671936759
+120,amadeus,ef 3o ano,0.20436507936507936
+121,amadeus,ef 4o ano,0.24458874458874458
+122,amadeus,ef 5o ano,0.28254437869822485
+123,amadeus,ef 6o ano,0.4315952503871967
+124,amadeus,ef 7o ano,0.4666666666666667
+125,amadeus,ef 8o ano,0.3118477593615715
+126,amadeus,ef 9o ano,0.282863041982106
+127,amadeus,em 1a serie,0.2179946284691137
+128,amadeus,em 2a serie,0.31804176651831567
+129,amadeus,em 3a serie,0.03076923076923077
+130,amadeus,outro,0.0
+131,amais,0,0.0
+132,amais,ef 2o ano,0.0
+133,amais,ef 3o ano,0.0
+134,amais,ef 9o ano,0.0
+135,amais,em 1a serie,0.0
+136,amais,em 2a serie,0.0
+137,amais,outro,0.0
+138,amaismaker,ef 2o ano,0.0
+139,amaismaker,ef 5o ano,0.0
+140,amaismaker,em 1a serie,0.0
+141,amaismaker,em 2a serie,0.0
+142,amaismaker,outro,0.0
+143,amaisteste,ef 3o ano,0.0
+144,amaisteste,ef 6o ano,0.16666666666666666
+145,amaisteste,ef 9o ano,0.08
+146,amaisteste,em 1a serie,0.0
+147,amaisteste,em 3a serie,0.0
+148,anchietaba,0,0.0
+149,anchietaba,em 1a serie,0.0
+150,anossaatmosfera,0,0.0
+151,anossaatmosfera,ef 3o ano,0.0
+152,anossaatmosfera,ef 7o ano,0.0
+153,anossaatmosfera,ef 9o ano,0.0
+154,anossaatmosfera,em 1a serie,0.0
+155,anossaatmosfera,em 2a serie,0.0
+156,anossaatmosfera,em 3a serie,0.0
+157,apogeubenfica,outro,0.0
+158,apogeupousoalegre,outro,0.0
+159,apogeustoantonio1,outro,0.0
+160,apogeustoantonio2,0,0.0
+161,apogeustoantonio2,ef 9o ano,0.5909090909090909
+162,apogeustoantonio2,outro,0.40345268542199486
+163,aprovest,outro,0.8588235294117647
+164,arena,0,0.0
+165,arena,em 1a serie,0.0
+166,arlindocavalcanti,0,0.0
+167,atmo,0,0.0
+168,atmo,em 1a serie,0.0
+169,augustolaranja,0,0.0
+170,augustolaranja,em 1a serie,0.0
+171,avaliacaoapogeu,0,0.0
+172,avaliacaoapogeu,ef 9o ano,0.0
+173,avaliacaoapogeu,outro,0.0
+174,bahema,0,0.0
+175,bahema,em 1a serie,0.0
+176,beityaacov,0,0.0
+177,beityaacov,em 1a serie,0.0
+178,beityaacov,em 3a serie,0.2777777777777778
+179,benjaminconstant,0,0.0
+180,benjaminconstant,ef 1o ano,0.0
+181,benjaminconstant,em 1a serie,0.0
+182,bertelsmann,0,0.0
+183,bertelsmann,ef 5o ano,0.0
+184,bertelsmann,em 1a serie,0.0
+185,blueschooleducacional,0,0.0
+186,blueschooleducacional,em 1a serie,0.0
+187,boaviagem,0,0.0
+188,boaviagem,ef 3o ano,0.0
+189,boaviagem,ef 7o ano,0.0
+190,boaviagem,ef 9o ano,0.0
+191,boaviagem,em 1a serie,0.0
+192,boaviagem,em 2a serie,0.0
+193,boaviagem,em 3a serie,0.0
+194,borapassar,0,0.0
+195,borapassar,ef 3o ano,0.0
+196,borapassar,ef 7o ano,0.0
+197,borapassar,ef 9o ano,0.0
+198,borapassar,em 1a serie,0.0
+199,borapassar,em 2a serie,0.0
+200,borapassar,em 3a serie,0.0
+201,bosquemananciais,0,0.0
+202,bosquemananciais,em 1a serie,0.0
+203,brasilcursinhos,0,0.0
+204,brasilcursinhos,outro,0.4059633027522936
+205,camerinocursos,0,0.0
+206,camerinocursos,outro,0.08
+207,capacitacaoinspira,outro,0.0
+208,casdinhosjc,ef 8o ano,0.4603174603174603
+209,casdinhosjc,ef 9o ano,0.4851116625310174
+210,casdvest,0,0.0
+211,casdvest,ef 8o ano,0.0
+212,casdvest,outro,0.07197268190175991
+213,catamaravita,0,0.0
+214,catamaravita,ef 3o ano,0.0
+215,catamaravita,ef 7o ano,0.0
+216,catamaravita,ef 9o ano,0.0
+217,catamaravita,em 1a serie,0.0
+218,catamaravita,em 2a serie,0.0
+219,catamaravita,em 3a serie,0.0
+220,catarinense,0,0.0
+221,catarinense,ef 1o ano,0.0
+222,catarinense,em 1a serie,0.0
+223,cats,outro,0.4393939393939394
+224,caur,ef 9o ano,0.0
+225,caur,em 2a serie,0.0
+226,caur,outro,0.0
+227,cav,0,0.0
+228,cav,em 1a serie,0.0
+229,cbpdigital,0,0.0
+230,cbpdigital,ef 2o ano,0.6175
+231,cbpdigital,ef 3o ano,0.7864583333333334
+232,cbpdigital,ef 4o ano,0.7763713080168776
+233,cbpdigital,ef 5o ano,0.7821969696969697
+234,cbpdigital,ef 6o ano,0.741042345276873
+235,cbpdigital,ef 7o ano,0.7359550561797753
+236,cbpdigital,ef 8o ano,0.4891304347826087
+237,cbpdigital,ef 9o ano,0.5169971671388102
+238,ceabb,ef 3o ano,0.020833333333333332
+239,ceabb,ef 4o ano,0.4
+240,ceabb,ef 5o ano,0.18181818181818182
+241,ceabb,ef 6o ano,0.13216957605985039
+242,ceabb,ef 7o ano,0.18382352941176472
+243,ceabb,ef 8o ano,0.031746031746031744
+244,ceabb,ef 9o ano,0.0875
+245,cecbdf,0,0.0
+246,cecbdf,em 1a serie,0.0
+247,cecbdf,em 3a serie,0.0
+248,ceespacolivre,0,0.0
+249,ceespacolivre,ef 3o ano,0.0
+250,ceespacolivre,ef 5o ano,1.0
+251,ceespacolivre,ef 6o ano,0.7228464419475655
+252,ceespacolivre,ef 7o ano,0.7323943661971831
+253,ceespacolivre,ef 8o ano,0.748587570621469
+254,ceespacolivre,ef 9o ano,0.4986072423398329
+255,ceespacolivre,em 1a serie,0.3815789473684211
+256,ceespacolivre,em 2a serie,0.5620689655172414
+257,ceespacolivre,em 3a serie,0.0
+258,cem,0,0.0
+259,cem,ef 2o ano,0.6324786324786325
+260,cem,ef 3o ano,0.65625
+261,cem,ef 4o ano,0.7916666666666666
+262,cem,ef 5o ano,0.7719298245614035
+263,cem,ef 6o ano,0.7417840375586855
+264,cem,ef 7o ano,0.8881578947368421
+265,cem,ef 8o ano,0.9333333333333333
+266,cem,ef 9o ano,0.8448753462603878
+267,cem,em 1a serie,0.7658862876254181
+268,cem,em 2a serie,0.8452380952380952
+269,cem,em 3a serie,0.6411483253588517
+270,ceprimeiromundo,0,0.0
+271,ceprimeiromundo,ef 1o ano,0.0
+272,ceprimeiromundo,ef 2o ano,0.0
+273,ceprimeiromundo,ef 3o ano,0.24390243902439024
+274,ceprimeiromundo,ef 4o ano,0.4796747967479675
+275,ceprimeiromundo,ef 5o ano,0.3333333333333333
+276,ceprimeiromundo,ef 6o ano,0.13902439024390245
+277,ceprimeiromundo,ef 7o ano,0.1730612244897959
+278,ceprimeiromundo,ef 8o ano,0.1846986089644513
+279,ceprimeiromundo,ef 9o ano,0.20433639947437582
+280,ceprimeiromundo,em 1a serie,0.1519134132199459
+281,ceprimeiromundo,em 2a serie,0.11006637168141593
+282,ceprimeiromundo,em 3a serie,0.45714285714285713
+283,ceprimeiromundo,outro,0.0
+284,cepseguro,em 1a serie,0.0
+285,cfc,0,0.0
+286,cfc,ef 1o ano,0.0
+287,cfc,em 1a serie,0.0
+288,cfimaculadaconceicao,em 2a serie,0.0
+289,charlesdarwin,0,0.0
+290,charlesdarwin,em 1a serie,0.0
+291,ciadosaber,ef 2o ano,0.1927710843373494
+292,ciadosaber,ef 3o ano,0.02459016393442623
+293,ciadosaber,ef 4o ano,0.3924731182795699
+294,ciadosaber,ef 5o ano,0.42063492063492064
+295,ciadosaber,ef 6o ano,0.5423728813559322
+296,ciadosaber,ef 7o ano,0.5394736842105263
+297,ciadosaber,ef 8o ano,0.7758620689655172
+298,ciadosaber,ef 9o ano,0.4678362573099415
+299,classea,0,0.0
+300,classea,em 1a serie,0.0
+301,cmdpii,0,0.0
+302,cmdpii,em 1a serie,0.0
+303,cmdpii,em 2a serie,0.0
+304,cnslpb,ef 6o ano,0.444794952681388
+305,cnslpb,ef 7o ano,0.4925373134328358
+306,cnslpb,ef 8o ano,0.5669642857142857
+307,cnslpb,ef 9o ano,0.3285939968404423
+308,cnslpb,em 1a serie,0.3219858156028369
+309,cnslpb,em 2a serie,0.16778523489932887
+310,cnslpb,em 3a serie,0.14862138533960995
+311,cognita,0,0.0
+312,cognita,em 1a serie,0.0
+313,cognitivo,0,0.0
+314,cognitivo,em 1a serie,0.0
+315,colegioalbertsabin,0,0.0
+316,colegioalbertsabin,em 1a serie,0.0
+317,colegioalphaunis,0,0.0
+318,colegioalphaunis,ef 6o ano,0.793859649122807
+319,colegioalphaunis,ef 7o ano,0.7040816326530612
+320,colegioalphaunis,ef 8o ano,0.8846153846153846
+321,colegioalphaunis,ef 9o ano,0.8760233918128655
+322,colegioalphaunis,em 1a serie,0.15333333333333332
+323,colegioalphaunis,em 2a serie,0.09885057471264368
+324,colegioalphaunis,em 3a serie,0.11486486486486487
+325,colegioanchietai,em 1a serie,0.0
+326,colegioanchietai,em 2a serie,0.0
+327,colegioanchietai,em 3a serie,0.0
+328,colegioanchietaii,em 1a serie,0.0
+329,colegioanchietaii,em 2a serie,0.0
+330,colegioanchietaii,em 3a serie,0.0
+331,colegioarena,0,0.0
+332,colegioarena,ef 6o ano,0.0
+333,colegioarena,em 1a serie,0.5152173913043478
+334,colegioarena,em 2a serie,0.43413078149920253
+335,colegioarena,em 3a serie,0.20816798941798942
+336,colegioarena,outro,0.14893617021276595
+337,colegiobatistaindependente,0,0.0
+338,colegiobatistaindependente,ef 5o ano,0.4805194805194805
+339,colegiobatistaindependente,ef 6o ano,0.718816067653277
+340,colegiobatistaindependente,ef 7o ano,0.7407407407407407
+341,colegiobatistaindependente,ef 8o ano,0.6742209631728046
+342,colegiobatistaindependente,ef 9o ano,0.708904109589041
+343,colegiobatistaindependente,em 1a serie,0.7061068702290076
+344,colegiobatistaindependente,em 2a serie,0.5913461538461539
+345,colegiobatistaindependente,em 3a serie,0.5908045977011495
+346,colegiobatistaindependente,outro,0.75
+347,colegiobetelbrasileirosp,ef 1o ano,0.8888888888888888
+348,colegiobetelbrasileirosp,ef 6o ano,0.7962529274004684
+349,colegiobetelbrasileirosp,ef 7o ano,0.7335640138408305
+350,colegiobetelbrasileirosp,ef 8o ano,0.7667638483965015
+351,colegiobetelbrasileirosp,ef 9o ano,0.7703081232492998
+352,colegiobetelbrasileirosp,em 1a serie,0.7758620689655172
+353,colegiobetelbrasileirosp,em 2a serie,0.75
+354,colegiobetelbrasileirosp,em 3a serie,0.6767676767676768
+355,colegiobianguloiv,em 1a serie,0.0
+356,colegiobianguloiv,em 2a serie,0.0
+357,colegiobianguloiv,em 3a serie,0.0
+358,colegiobilac,ef 1o ano,0.05555555555555555
+359,colegiobilac,ef 2o ano,0.05092592592592592
+360,colegiobilac,ef 3o ano,0.10504201680672269
+361,colegiobilac,ef 4o ano,0.08791208791208792
+362,colegiobilac,ef 5o ano,0.0803921568627451
+363,colegiobilac,ef 6o ano,0.48329621380846327
+364,colegiobilac,ef 7o ano,0.23404255319148937
+365,colegiobilac,ef 8o ano,0.42993197278911566
+366,colegiobilac,ef 9o ano,0.365702479338843
+367,colegiobrasilia,0,0.0
+368,colegiobrasilia,ef 2o ano,0.30484848484848487
+369,colegiobrasilia,ef 3o ano,0.24832663989290496
+370,colegiobrasilia,ef 4o ano,0.42225998300764656
+371,colegiobrasilia,ef 5o ano,0.5122435473196558
+372,colegiobrasilia,ef 6o ano,0.40907638223074466
+373,colegiobrasilia,ef 7o ano,0.43571861734384476
+374,colegiobrasilia,ef 8o ano,0.48416845988318474
+375,colegiobrasilia,ef 9o ano,0.3623488773747841
+376,colegiobrasilia,em 1a serie,0.3658435360033202
+377,colegiobrasilia,em 2a serie,0.36925858951175405
+378,colegiobrasilia,em 3a serie,0.3726190476190476
+379,colegiobrasilia,outro,0.0
+380,colegiocb,0,0.0
+381,colegiocb,ef 3o ano,0.6130434782608696
+382,colegiocb,ef 4o ano,0.19491525423728814
+383,colegiocb,ef 5o ano,0.17261904761904762
+384,colegiocb,ef 6o ano,0.7755331088664422
+385,colegiocb,ef 7o ano,0.6633663366336634
+386,colegiocb,ef 8o ano,0.741304347826087
+387,colegiocb,ef 9o ano,0.7429577464788732
+388,colegiocb,em 1a serie,0.5533498759305211
+389,colegiocb,em 2a serie,0.6292906178489702
+390,colegiocb,em 3a serie,0.5433526011560693
+391,colegiocognos,0,0.0
+392,colegiocognos,em 1a serie,0.0
+393,colegiodasamericas,0,0.0
+394,colegiodasamericas,ef 3o ano,0.6666666666666666
+395,colegiodasamericas,ef 4o ano,0.8181818181818182
+396,colegiodasamericas,ef 6o ano,0.9342560553633218
+397,colegiodasamericas,ef 7o ano,0.946236559139785
+398,colegiodasamericas,ef 8o ano,0.848297213622291
+399,colegiodasamericas,ef 9o ano,0.8574938574938575
+400,colegiodasamericas,em 1a serie,0.8076109936575053
+401,colegiodasamericas,em 2a serie,0.7865612648221344
+402,colegiodasamericas,em 3a serie,0.7995735607675906
+403,colegiodasamericas,outro,0.8678571428571429
+404,colegiodelta,ef 6o ano,0.0
+405,colegiodompedrosegundo,0,0.0
+406,colegiodosjesuitas,0,0.0
+407,colegiodosjesuitas,em 1a serie,0.0
+408,colegioeag,ef 1o ano,0.7046979865771812
+409,colegioeag,ef 3o ano,0.35714285714285715
+410,colegioeag,ef 4o ano,0.5714285714285714
+411,colegioeag,ef 5o ano,0.4431818181818182
+412,colegioeag,outro,0.0
+413,colegioeccos,0,0.0
+414,colegioeccos,em 1a serie,0.0
+415,colegioecursodesafio,0,0.0
+416,colegioecursodesafio,ef 1o ano,0.09126984126984126
+417,colegioecursodesafio,ef 2o ano,0.15503875968992248
+418,colegioecursodesafio,ef 3o ano,0.44936708860759494
+419,colegioecursodesafio,ef 4o ano,0.35064935064935066
+420,colegioecursodesafio,ef 5o ano,0.34331337325349304
+421,colegioecursodesafio,ef 6o ano,0.3814207650273224
+422,colegioecursodesafio,ef 7o ano,0.413516609392898
+423,colegioecursodesafio,ef 8o ano,0.4020979020979021
+424,colegioecursodesafio,ef 9o ano,0.3686440677966102
+425,colegioecursodesafio,em 1a serie,0.15262515262515264
+426,colegioecursodesafio,em 2a serie,0.13544303797468354
+427,colegioecursodesafio,em 3a serie,0.0888671875
+428,colegioecursoprogressao,0,0.0
+429,colegioecursoprogressao,ef 1o ano,0.0
+430,colegioecursoprogressao,ef 6o ano,0.814404432132964
+431,colegioecursoprogressao,ef 7o ano,0.8451776649746193
+432,colegioecursoprogressao,ef 8o ano,0.8278443113772455
+433,colegioecursoprogressao,ef 9o ano,0.7951219512195122
+434,colegioecursoprogressao,em 1a serie,0.6979267116682739
+435,colegioecursoprogressao,em 2a serie,0.5266085387853278
+436,colegioecursoprogressao,em 3a serie,0.5007796257796258
+437,colegioeducallis,0,0.0
+438,colegioeducallis,ef 2o ano,0.3888888888888889
+439,colegioeducallis,ef 3o ano,0.25925925925925924
+440,colegioeducallis,ef 4o ano,0.39147286821705424
+441,colegioeducallis,ef 5o ano,0.4351851851851852
+442,colegioeducallis,ef 6o ano,0.33579335793357934
+443,colegioeducallis,ef 7o ano,0.38543689320388347
+444,colegioeducallis,ef 8o ano,0.4078014184397163
+445,colegioeducallis,ef 9o ano,0.4565677966101695
+446,colegioeducallis,em 1a serie,0.6471354166666666
+447,colegioeducallis,em 2a serie,0.5614814814814815
+448,colegioeducallis,em 3a serie,0.6521739130434783
+449,colegioensitec,ef 2o ano,0.5444444444444444
+450,colegioensitec,ef 3o ano,0.3525641025641026
+451,colegioensitec,ef 4o ano,0.5384615384615384
+452,colegioensitec,ef 5o ano,0.7678571428571429
+453,colegioensitec,ef 6o ano,0.6233333333333333
+454,colegioensitec,ef 7o ano,0.6252158894645942
+455,colegioensitec,ef 8o ano,0.6387755102040816
+456,colegioensitec,ef 9o ano,0.6604166666666667
+457,colegioensitec,em 1a serie,0.6613545816733067
+458,colegioensitec,em 2a serie,0.5128676470588235
+459,colegioensitec,em 3a serie,0.6382978723404256
+460,colegioexatus,0,0.0
+461,colegioexatus,em 1a serie,0.0
+462,colegioflamingo,0,0.0
+463,colegioflamingo,ef 3o ano,0.0
+464,colegioflamingo,ef 7o ano,0.0
+465,colegioflamingo,ef 9o ano,0.0
+466,colegioflamingo,em 1a serie,0.4701086956521739
+467,colegioflamingo,em 2a serie,0.575197889182058
+468,colegioflamingo,em 3a serie,0.3886075949367089
+469,colegiofuturageracao,ef 2o ano,0.5
+470,colegiofuturageracao,ef 3o ano,0.1388888888888889
+471,colegiofuturageracao,ef 4o ano,0.9583333333333334
+472,colegiofuturageracao,ef 5o ano,1.0
+473,colegiofuturageracao,ef 6o ano,0.8162393162393162
+474,colegiofuturageracao,ef 7o ano,0.7647058823529411
+475,colegiofuturageracao,ef 8o ano,0.5634920634920635
+476,colegiofuturageracao,ef 9o ano,0.8
+477,colegioglobal,0,0.0
+478,colegioglobal,ef 2o ano,0.5343915343915344
+479,colegioglobal,ef 3o ano,0.49049429657794674
+480,colegioglobal,ef 4o ano,0.6826923076923077
+481,colegioglobal,ef 5o ano,0.8358778625954199
+482,colegioglobal,ef 6o ano,0.8515151515151516
+483,colegioglobal,ef 7o ano,0.9824561403508771
+484,colegioglobal,ef 8o ano,0.9618055555555556
+485,colegioglobal,ef 9o ano,0.9113149847094801
+486,colegioglobal,em 1a serie,0.7993827160493827
+487,colegioglobal,em 2a serie,0.7211538461538461
+488,colegioglobal,em 3a serie,0.5303571428571429
+489,colegioguilhermedealmeida,ef 6o ano,0.605
+490,colegioguilhermedealmeida,ef 7o ano,0.5915119363395226
+491,colegioguilhermedealmeida,ef 8o ano,0.4026548672566372
+492,colegioguilhermedealmeida,ef 9o ano,0.3333333333333333
+493,colegioguilhermedealmeida,em 1a serie,0.5283018867924528
+494,colegioguilhermedealmeida,em 2a serie,0.4224137931034483
+495,colegioguilhermedealmeida,em 3a serie,0.09433962264150944
+496,colegioiguatemy,ef 3o ano,0.284
+497,colegioiguatemy,ef 4o ano,0.6060606060606061
+498,colegioiguatemy,ef 5o ano,0.5674603174603174
+499,colegioiguatemy,ef 6o ano,0.6553191489361702
+500,colegioiguatemy,ef 7o ano,0.553156146179402
+501,colegioiguatemy,ef 8o ano,0.7126436781609196
+502,colegioiguatemy,ef 9o ano,0.6181318681318682
+503,colegioiguatemy,em 1a serie,0.1891156462585034
+504,colegioiguatemy,em 2a serie,0.30601092896174864
+505,colegioiguatemy,em 3a serie,0.23295454545454544
+506,colegiointegral,0,0.0
+507,colegiointegral,ef 2o ano,0.7604938271604939
+508,colegiointegral,ef 3o ano,0.812962962962963
+509,colegiointegral,ef 4o ano,0.8387096774193549
+510,colegiointegral,ef 5o ano,0.8695652173913043
+511,colegiointegral,ef 6o ano,0.8781594296824368
+512,colegiointegral,ef 7o ano,0.8833116036505867
+513,colegiointegral,ef 8o ano,0.9134396355353075
+514,colegiointegral,ef 9o ano,0.8207008964955175
+515,colegiointegral,em 1a serie,0.6146209386281588
+516,colegiointegral,em 2a serie,0.5540540540540541
+517,colegiointegral,em 3a serie,0.5344215755855216
+518,colegiointegral,outro,0.8327205882352942
+519,colegioitamarati,em 2a serie,0.0
+520,colegioitamarati,outro,0.0
+521,colegiojoaopaulo,0,0.0
+522,colegiojoaopaulo,ef 4o ano,0.26822157434402333
+523,colegiojoaopaulo,ef 5o ano,0.3466666666666667
+524,colegiojoaopaulo,ef 6o ano,0.3074074074074074
+525,colegiojoaopaulo,ef 7o ano,0.428958051420839
+526,colegiojoaopaulo,ef 8o ano,0.42592592592592593
+527,colegiojoaopaulo,ef 9o ano,0.3822975517890772
+528,colegiojoaopaulo,em 1a serie,0.6170575692963752
+529,colegiojoaopaulo,em 2a serie,0.529275092936803
+530,colegiojoaopaulo,em 3a serie,0.47875647668393784
+531,colegioliceu,0,0.0
+532,colegioliceu,em 1a serie,0.12195121951219512
+533,colegioliceu,em 2a serie,0.0
+534,colegioliceu,em 3a serie,0.056910569105691054
+535,colegiomagnum,em 1a serie,0.07094594594594594
+536,colegiomagnum,em 2a serie,0.11202185792349727
+537,colegiomagnum,em 3a serie,0.638733705772812
+538,colegiomarilia,em 2a serie,0.0
+539,colegiomarilia,outro,0.0
+540,colegiomartinus,0,0.0
+541,colegiomartinus,em 1a serie,0.0
+542,colegiomodelo,0,0.0
+543,colegiomodelo,em 1a serie,0.0
+544,colegiomundial,ef 6o ano,0.48148148148148145
+545,colegiomundial,ef 9o ano,0.4
+546,colegiomundial,em 1a serie,0.2903225806451613
+547,colegiomundial,em 2a serie,0.391304347826087
+548,colegiomundial,em 3a serie,0.2608695652173913
+549,colegionobre,0,0.0
+550,colegionobre,ef 6o ano,0.0
+551,colegionobre,em 1a serie,0.0
+552,colegionovageracao,ef 2o ano,0.038461538461538464
+553,colegionovageracao,ef 3o ano,0.05
+554,colegionovageracao,ef 4o ano,0.3
+555,colegionovageracao,ef 5o ano,0.4583333333333333
+556,colegionovopatio,0,0.0
+557,colegiopadreeustaquio,0,0.0
+558,colegiopadreeustaquio,em 1a serie,0.0
+559,colegiopassionista,0,0.0
+560,colegiopassionista,ef 3o ano,0.0
+561,colegiopassionista,ef 7o ano,0.0
+562,colegiopassionista,ef 9o ano,0.0
+563,colegiopassionista,em 1a serie,0.0
+564,colegiopassionista,em 2a serie,0.0
+565,colegiopassionista,em 3a serie,0.0
+566,colegiopioxii,ef 6o ano,0.0
+567,colegioplanck,0,0.0
+568,colegioplanck,ef 6o ano,0.6361161524500908
+569,colegioplanck,ef 7o ano,0.6165113182423435
+570,colegioplanck,ef 8o ano,0.5654676258992806
+571,colegioplanck,ef 9o ano,0.725925925925926
+572,colegioplanck,em 1a serie,0.4932330827067669
+573,colegioplanck,em 2a serie,0.6092362344582594
+574,colegioplanck,em 3a serie,0.3047858942065491
+575,colegioplanck,outro,0.1
+576,colegiopremium,ef 1o ano,0.1978021978021978
+577,colegiopremium,ef 2o ano,0.0
+578,colegiopremium,ef 3o ano,0.08928571428571429
+579,colegiopremium,ef 4o ano,0.2638888888888889
+580,colegiopremium,ef 5o ano,0.43125
+581,colegiopremium,ef 6o ano,0.5952380952380952
+582,colegiopremium,ef 7o ano,0.5
+583,colegiopremium,ef 8o ano,0.5280898876404494
+584,colegiopremium,ef 9o ano,0.6987951807228916
+585,colegiopremium,em 1a serie,0.6875
+586,colegiopremium,em 2a serie,0.640625
+587,colegiopremium,em 3a serie,0.5555555555555556
+588,colegioprogresso,0,0.0
+589,colegioprogresso,em 1a serie,0.0
+590,colegioradar,0,0.0
+591,colegioradar,em 1a serie,0.0
+592,colegioriobranco,0,0.0
+593,colegioriobranco,em 1a serie,0.0
+594,colegiosaberviver,0,0.0
+595,colegiosaberviver,em 1a serie,0.0
+596,colegiosalesianorn,0,0.0
+597,colegiosalesianorn,em 1a serie,0.0
+598,colegiosantadoroteia,0,0.0
+599,colegiosantadoroteia,em 1a serie,0.0
+600,colegiosantamaria,0,0.0
+601,colegiosantamaria,em 1a serie,0.0
+602,colegiosaojudas,0,0.0
+603,colegiosaojudas,em 1a serie,0.0
+604,colegiosaoluis,0,0.0
+605,colegiosaoluis,ef 1o ano,0.0
+606,colegiosaoluis,em 1a serie,0.0
+607,colegioser,0,0.0
+608,colegioser,ef 6o ano,0.0
+609,colegioser,outro,0.0
+610,colegiosete,0,0.0
+611,colegiosete,ef 1o ano,0.463768115942029
+612,colegiosete,ef 2o ano,0.6299435028248588
+613,colegiosete,ef 3o ano,0.4288537549407115
+614,colegiosete,ef 4o ano,0.6077844311377245
+615,colegiosete,ef 5o ano,0.5397286821705426
+616,colegiosete,ef 6o ano,0.3883346124328473
+617,colegiosete,ef 7o ano,0.38095238095238093
+618,colegiosete,ef 8o ano,0.3745173745173745
+619,colegiosete,ef 9o ano,0.35044642857142855
+620,colegiosete,em 1a serie,0.411945542380325
+621,colegiosete,em 2a serie,0.38449429358520265
+622,colegiosete,em 3a serie,0.3059360730593607
+623,colegiouirapuru,ef 3o ano,0.15371621621621623
+624,colegiouirapuru,ef 4o ano,0.21688311688311687
+625,colegiouirapuru,ef 5o ano,0.3885135135135135
+626,colegiouirapuru,ef 6o ano,0.40061791967044286
+627,colegiouirapuru,ef 7o ano,0.3538647342995169
+628,colegiouirapuru,ef 8o ano,0.3071324599708879
+629,colegiouirapuru,ef 9o ano,0.29896907216494845
+630,colegiouirapuru,em 1a serie,0.28688524590163933
+631,colegiouirapuru,em 2a serie,0.1888111888111888
+632,colegiouirapuru,em 3a serie,0.23822714681440443
+633,colegiounidadejardim,ef 5o ano,0.0
+634,colegiounidadejardim,ef 6o ano,0.0
+635,colegiounidadejardim,ef 7o ano,0.0
+636,colegiounidadejardim,ef 8o ano,0.0
+637,colegiounidadejardim,em 1a serie,0.0
+638,colegiounidadejardim,em 2a serie,0.0
+639,colegiounidadejardim,em 3a serie,0.0
+640,colegiouniverso,0,0.0
+641,colegiouniverso,ef 6o ano,0.8628571428571429
+642,colegiouniverso,ef 7o ano,0.8902439024390244
+643,colegiouniverso,ef 8o ano,0.8275862068965517
+644,colegiouniverso,ef 9o ano,0.9142857142857143
+645,colegiouniverso,em 1a serie,0.4552083333333333
+646,colegiouniverso,em 2a serie,0.4662480376766091
+647,colegiouniverso,em 3a serie,0.41973684210526313
+648,colegiouniverso,outro,0.11864406779661017
+649,colegioup,0,0.0
+650,colegioup,ef 6o ano,0.5462555066079295
+651,colegioup,ef 7o ano,0.47
+652,colegioup,ef 8o ano,0.5573770491803278
+653,colegioup,ef 9o ano,0.46734130634774607
+654,colegioup,em 1a serie,0.4008207934336525
+655,colegioup,em 2a serie,0.42702918832467013
+656,colegioup,em 3a serie,0.30812854442344045
+657,coleguium,em 1a serie,0.0
+658,colsantamaria,0,0.0
+659,colsantamaria,em 1a serie,0.0
+660,conexaosaber,0,0.0
+661,conexaosaber,ef 1o ano,0.043327556325823226
+662,conexaosaber,ef 2o ano,0.01956521739130435
+663,conexaosaber,ef 3o ano,0.035493827160493825
+664,conexaosaber,ef 4o ano,0.15
+665,conexaosaber,ef 5o ano,0.0
+666,conexaosaber,ef 6o ano,0.33114754098360655
+667,conexaosaber,ef 7o ano,0.226890756302521
+668,conexaosaber,ef 8o ano,0.30196078431372547
+669,conexaosaber,ef 9o ano,0.17063492063492064
+670,conib,em 1a serie,0.0
+671,contemporaneo,em 3a serie,0.0
+672,contemporaneocidadeverde,ef 3o ano,0.0
+673,contemporaneocidadeverde,ef 5o ano,0.0
+674,contemporaneocidadeverde,ef 6o ano,0.5416666666666666
+675,contemporaneocidadeverde,ef 7o ano,0.4711864406779661
+676,contemporaneocidadeverde,ef 8o ano,0.5547866205305652
+677,contemporaneocidadeverde,ef 9o ano,0.5241796200345423
+678,contemporaneocidadeverde,em 1a serie,0.5817610062893082
+679,contemporaneocidadeverde,em 2a serie,0.49292452830188677
+680,contemporaneocidadeverde,em 3a serie,0.5394021739130435
+681,contemporaneolagoanova,ef 6o ano,0.7646103896103896
+682,contemporaneolagoanova,ef 7o ano,0.805
+683,contemporaneolagoanova,ef 8o ano,0.8596491228070176
+684,contemporaneolagoanova,ef 9o ano,0.6840490797546013
+685,contemporaneolagoanova,em 1a serie,0.6055727554179566
+686,contemporaneolagoanova,em 2a serie,0.44632400780741704
+687,contemporaneolagoanova,em 3a serie,0.6013745704467354
+688,cparaiso,0,0.0
+689,cparaiso,em 1a serie,0.0
+690,crb,ef 6o ano,0.330188679245283
+691,crb,ef 7o ano,0.3441722972972973
+692,crb,ef 8o ano,0.3375766148043376
+693,crb,ef 9o ano,0.3073887305415479
+694,crb,em 1a serie,0.2821692686935086
+695,crb,em 2a serie,0.29522365428354813
+696,crb,em 3a serie,0.12567164179104479
+697,crb,outro,0.673992673992674
+698,crescercampinas,0,0.0
+699,crescercampinas,ef 6o ano,0.5111512959614225
+700,crescercampinas,ef 7o ano,0.5724465558194775
+701,crescercampinas,ef 8o ano,0.7654986522911051
+702,crescercampinas,ef 9o ano,0.5939771547248183
+703,crescercampinas,em 1a serie,0.4731782945736434
+704,crescercampinas,em 2a serie,0.1958288190682557
+705,crescercampinas,em 3a serie,0.26292517006802724
+706,cruzeiro,0,0.0
+707,cruzeiro,em 1a serie,0.0
+708,culturainglesa,ef 6o ano,0.0
+709,cursinhoeach,0,0.0
+710,cursobase,0,0.0
+711,cursoenfase,em 3a serie,0.0
+712,cursoenfase,outro,0.2402135231316726
+713,cursoisfera,0,0.0
+714,cursoisfera,outro,0.36764705882352944
+715,cursoleopoldo,em 3a serie,0.24838709677419354
+716,cursoleopoldo,outro,0.25728155339805825
+717,cursoprogressao,0,0.0
+718,cursoprogressao,ef 6o ano,0.0
+719,cursosazambuja,0,0.0
+720,cursosazambuja,outro,0.5983086680761099
+721,dante,0,0.0
+722,dante,em 1a serie,0.0
+723,dante,em 3a serie,0.0
+724,dantealighieri,0,0.0
+725,dantealighieri,em 1a serie,0.0
+726,darwin,0,0.0
+727,darwin,em 1a serie,0.0
+728,darwin,em 2a serie,0.0
+729,darwin,outro,0.0
+730,delta,ef 6o ano,0.0
+731,deltaeducacional,0,0.0
+732,deltaeducacional,em 1a serie,0.4218533886583679
+733,deltaeducacional,em 2a serie,0.359375
+734,deltaeducacional,em 3a serie,0.06
+735,demo,em 1a serie,0.0
+736,dionysia,0,0.0
+737,dionysia,ef 3o ano,0.0
+738,dionysia,ef 7o ano,0.0
+739,dionysia,ef 9o ano,0.0
+740,dionysia,em 1a serie,0.0
+741,dionysia,em 2a serie,0.0
+742,dionysia,em 3a serie,0.0
+743,dokimos,0,0.0
+744,dokimos,ef 3o ano,0.0
+745,dokimos,ef 7o ano,0.0
+746,dokimos,ef 9o ano,0.0
+747,dokimos,em 1a serie,0.0
+748,dokimos,em 2a serie,0.0
+749,dokimos,em 3a serie,0.0
+750,dombosco,0,0.0
+751,dombosco,ef 3o ano,0.0
+752,dombosco,ef 7o ano,0.0
+753,dombosco,ef 9o ano,0.0
+754,dombosco,em 1a serie,0.0
+755,dombosco,em 2a serie,0.0
+756,dombosco,em 3a serie,0.0
+757,dominius,ef 2o ano,0.0
+758,dominius,ef 3o ano,0.0
+759,dominius,ef 4o ano,0.0
+760,dominius,ef 5o ano,0.0
+761,dominius,ef 6o ano,0.0
+762,dominius,ef 7o ano,0.0
+763,dominius,ef 8o ano,0.0
+764,dominius,ef 9o ano,0.0
+765,dominius,em 1a serie,0.0
+766,dominius,em 2a serie,0.0
+767,dominius,em 3a serie,0.0
+768,dommga,em 3a serie,0.5460526315789473
+769,domus,em 1a serie,0.09523809523809523
+770,domus,em 2a serie,0.5777777777777777
+771,domus,em 3a serie,0.6
+772,eacorcovado,0,0.0
+773,eacorcovado,ef 5o ano,0.3763440860215054
+774,eacorcovado,ef 6o ano,0.0
+775,eacorcovado,ef 8o ano,0.3333333333333333
+776,eacorcovado,ef 9o ano,0.4657534246575342
+777,eacorcovado,em 1a serie,0.4755244755244755
+778,eacorcovado,em 2a serie,0.47280334728033474
+779,eacorcovado,em 3a serie,0.4897959183673469
+780,eccos,0,0.0
+781,eccos,ef 3o ano,0.6111111111111112
+782,eccos,ef 4o ano,0.8333333333333334
+783,eccos,ef 5o ano,0.8608695652173913
+784,eccos,ef 6o ano,0.8888888888888888
+785,eccos,ef 7o ano,0.7804878048780488
+786,eccos,ef 8o ano,0.6779661016949152
+787,eccos,ef 9o ano,0.7738853503184714
+788,eccos,em 1a serie,0.0
+789,eccos,em 2a serie,0.0
+790,eccos,em 3a serie,0.0
+791,educamais,ef 6o ano,0.0
+792,educamais,ef 8o ano,0.0
+793,educandarioterciocorreia,ef 3o ano,0.24242424242424243
+794,educandarioterciocorreia,ef 4o ano,0.2692307692307692
+795,educandarioterciocorreia,ef 5o ano,0.0
+796,educandarioterciocorreia,ef 6o ano,0.46296296296296297
+797,educandarioterciocorreia,ef 7o ano,0.4722222222222222
+798,educandarioterciocorreia,ef 8o ano,0.4708333333333333
+799,educandarioterciocorreia,ef 9o ano,0.51
+800,educarse,outro,0.06666666666666667
+801,eduqo,0,0.0
+802,eduqo,ef 3o ano,0.0
+803,eduqo,ef 5o ano,0.0
+804,eduqo,ef 7o ano,0.0
+805,eduqo,ef 9o ano,0.0
+806,eduqo,em 1a serie,0.0
+807,eduqo,em 2a serie,0.0
+808,eduqo,em 3a serie,0.0
+809,einsteinassis,ef 6o ano,0.28451882845188287
+810,einsteinassis,ef 7o ano,0.42780748663101603
+811,einsteinassis,ef 8o ano,0.4666666666666667
+812,einsteinassis,ef 9o ano,0.4
+813,einsteinassis,em 1a serie,0.5636363636363636
+814,einsteinassis,em 2a serie,0.5333333333333333
+815,einsteinassis,em 3a serie,0.39090909090909093
+816,elitecuritiba,ef 7o ano,0.0
+817,elitecuritiba,em 2a serie,0.0
+818,elitecuritiba,em 3a serie,0.0
+819,elitecuritiba,outro,0.1569767441860465
+820,elitecuritibaemilianoperneta,em 1a serie,0.4362519201228879
+821,elitecuritibaemilianoperneta,em 2a serie,0.6140552995391705
+822,elitecuritibaemilianoperneta,em 3a serie,0.43614718614718617
+823,elitecuritibaemilianoperneta,outro,0.3283582089552239
+824,eluneonline,0,0.0
+825,eluneonline,em 1a serie,0.0
+826,elvirabrandao,0,0.0
+827,elvirabrandao,em 1a serie,0.0
+828,ensinando,0,0.0
+829,ensinando,ef 3o ano,0.0
+830,ensinando,ef 7o ano,0.0
+831,ensinando,ef 9o ano,0.0
+832,ensinando,em 1a serie,0.0
+833,ensinando,em 2a serie,0.0
+834,ensinando,em 3a serie,0.0
+835,equipe,0,0.0
+836,equipe,em 1a serie,0.0
+837,equipea,0,0.0
+838,equipea,ef 3o ano,0.0
+839,equipea,ef 7o ano,0.0
+840,equipea,ef 9o ano,0.0
+841,equipea,em 1a serie,0.0
+842,equipea,em 2a serie,0.0
+843,equipea,em 3a serie,0.0
+844,escola,ef 4o ano,0.0
+845,escolaalpha,0,0.0
+846,escolaalpha,ef 3o ano,0.0
+847,escolaalpha,ef 7o ano,0.0
+848,escolaalpha,ef 9o ano,0.0
+849,escolaalpha,em 1a serie,0.0
+850,escolaalpha,em 2a serie,0.0
+851,escolaalpha,em 3a serie,0.0
+852,escolacastanheiras,ef 5o ano,0.0
+853,escolacastanheiras,ef 6o ano,0.0
+854,escolacastanheiras,ef 7o ano,0.0
+855,escolacastanheiras,ef 8o ano,0.0
+856,escolacastanheiras,em 1a serie,0.0
+857,escolacastanheiras,em 2a serie,0.0
+858,escolacastanheiras,em 3a serie,0.0
+859,escolaceciliameireles,ef 2o ano,0.09
+860,escolaceciliameireles,ef 3o ano,0.4444444444444444
+861,escolaceciliameireles,ef 4o ano,0.1987179487179487
+862,escolaceciliameireles,ef 5o ano,0.1568627450980392
+863,escolaceciliameireles,ef 6o ano,0.18552036199095023
+864,escoladeimpacto,0,0.0
+865,escoladofuturo,0,0.0
+866,escoladofuturo,em 1a serie,0.0
+867,escoladomingossavio,0,0.0
+868,escoladomingossavio,ef 3o ano,0.0
+869,escoladomingossavio,ef 7o ano,0.0
+870,escoladomingossavio,ef 9o ano,0.0
+871,escoladomingossavio,em 1a serie,0.0
+872,escoladomingossavio,em 2a serie,0.0
+873,escoladomingossavio,em 3a serie,0.0
+874,escolaidaam,0,0.0
+875,escolaidaam,em 1a serie,0.0
+876,escolainternacional,0,0.0
+877,escolainternacional,em 1a serie,0.0
+878,escolajardimdasnacoes,0,0.0
+879,escolajardimdasnacoes,em 1a serie,0.0
+880,escolamaster,ef 8o ano,0.14705882352941177
+881,escolamaster,ef 9o ano,0.03571428571428571
+882,escolamaster,em 1a serie,0.38461538461538464
+883,escolamaster,em 2a serie,0.34552845528455284
+884,escolamaster,em 3a serie,0.09333333333333334
+885,escolapresbiterianadecanal,0,0.0
+886,escolapresbiterianadecanal,ef 3o ano,0.0
+887,escolapresbiterianadecanal,ef 7o ano,0.0
+888,escolapresbiterianadecanal,ef 9o ano,0.0
+889,escolapresbiterianadecanal,em 1a serie,0.0
+890,escolapresbiterianadecanal,em 2a serie,0.0
+891,escolapresbiterianadecanal,em 3a serie,0.0
+892,escreva,0,0.0
+893,escreva,ef 3o ano,0.0
+894,escreva,ef 7o ano,0.0
+895,escreva,ef 9o ano,0.0
+896,escreva,em 1a serie,0.0
+897,escreva,em 2a serie,0.0
+898,escreva,em 3a serie,0.0
+899,esmg,0,0.0
+900,esmg,em 1a serie,0.0
+901,esperanza,0,0.0
+902,estantemagica,ef 6o ano,0.0
+903,estantemagica,outro,0.0
+904,estreladamanha,ef 6o ano,0.0
+905,faculdadeflamingo,0,0.0
+906,faculdadeflamingo,outro,0.07575757575757576
+907,forumcultural,0,0.0
+908,forumcultural,em 1a serie,0.0
+909,franciscanopioxii,0,0.0
+910,franciscanopioxii,ef 1o ano,0.0
+911,franciscanopioxii,em 1a serie,0.0
+912,francobrasileiro,0,0.0
+913,francobrasileiro,ef 1o ano,0.0
+914,francobrasileiro,em 3a serie,0.04142011834319527
+915,fundacaobradesco,0,0.0
+916,fundacaobradesco,em 1a serie,0.0
+917,galois,0,0.0
+918,galois,em 1a serie,0.0
+919,garra,0,0.0
+920,gaylussac,0,0.0
+921,gaylussac,em 1a serie,0.0
+922,gerabixo,outro,0.05240174672489083
+923,grandepasso,0,0.0
+924,grandepasso,ef 1o ano,0.0
+925,grandepasso,em 1a serie,0.0
+926,idaam,em 3a serie,0.4755747126436782
+927,idb,0,0.0
+928,idb,em 1a serie,0.0
+929,igmk,0,0.0
+930,igmk,ef 3o ano,0.0
+931,igmk,ef 7o ano,0.0
+932,igmk,ef 9o ano,0.0
+933,igmk,em 1a serie,0.0
+934,igmk,em 2a serie,0.0
+935,igmk,em 3a serie,0.0
+936,imaculada,0,0.0
+937,imaculada,em 1a serie,0.0
+938,implantacao,0,0.0
+939,implantacao,ef 1o ano,0.0
+940,implantacao,ef 2o ano,0.0
+941,implantacao,ef 3o ano,0.0
+942,implantacao,ef 4o ano,0.0
+943,implantacao,ef 5o ano,0.0
+944,implantacao,ef 6o ano,0.0
+945,implantacao,em 1a serie,0.0
+946,implantacao,em 2a serie,0.0
+947,implantacao,em 3a serie,0.0
+948,implantacao,outro,0.0
+949,insa,em 1a serie,0.1625
+950,insa,em 2a serie,0.3787878787878788
+951,insa,em 3a serie,0.09090909090909091
+952,institutoauxiliadoradf,0,0.0
+953,institutoauxiliadoradf,em 1a serie,0.18518518518518517
+954,institutoauxiliadoradf,em 2a serie,0.2719298245614035
+955,institutoauxiliadoradf,em 3a serie,0.1568627450980392
+956,institutocristao,ef 6o ano,0.12421052631578948
+957,institutocristao,ef 7o ano,0.11764705882352941
+958,institutocristao,ef 9o ano,0.16483516483516483
+959,institutocristao,em 2a serie,0.17142857142857143
+960,institutocristao,em 3a serie,0.045454545454545456
+961,institutoeurofarma,outro,0.67
+962,institutoideia,0,0.0
+963,institutoideia,ef 3o ano,0.0
+964,institutoideia,ef 7o ano,0.0
+965,institutoideia,ef 9o ano,0.0
+966,institutoideia,em 1a serie,0.0
+967,institutoideia,em 2a serie,0.0
+968,institutoideia,em 3a serie,0.0
+969,institutomariaauxiliadora,0,0.0
+970,institutomariaauxiliadora,ef 3o ano,0.0
+971,institutomariaauxiliadora,ef 7o ano,0.0
+972,institutomariaauxiliadora,ef 9o ano,0.0
+973,institutomariaauxiliadora,em 1a serie,0.0
+974,institutomariaauxiliadora,em 2a serie,0.0
+975,institutomariaauxiliadora,em 3a serie,0.0
+976,institutosaojose,0,0.0
+977,institutosaojose,em 1a serie,0.12698412698412698
+978,institutosaojose,em 2a serie,0.012345679012345678
+979,institutosaojose,em 3a serie,0.21212121212121213
+980,integra,ef 1o ano,0.53125
+981,integra,ef 2o ano,0.5952380952380952
+982,integra,ef 3o ano,0.8088235294117647
+983,integra,ef 4o ano,0.8055555555555556
+984,integra,ef 5o ano,0.6964285714285714
+985,integra,ef 6o ano,0.912621359223301
+986,integra,ef 7o ano,0.8809523809523809
+987,integra,ef 8o ano,0.8571428571428571
+988,integradaeducativa,0,0.0
+989,integradaeducativa,ef 6o ano,0.7483311081441922
+990,integradaeducativa,ef 7o ano,0.7514005602240896
+991,integradaeducativa,ef 8o ano,0.7702857142857142
+992,integradaeducativa,ef 9o ano,0.7285886610373945
+993,integradaeducativa,em 1a serie,0.47
+994,integradaeducativa,em 2a serie,0.5376470588235294
+995,integradaeducativa,em 3a serie,0.4354669464847849
+996,invictus,0,0.0
+997,invictus,ef 6o ano,0.7547169811320755
+998,invictus,ef 7o ano,0.6634920634920635
+999,invictus,ef 8o ano,0.5598290598290598
+1000,invictus,ef 9o ano,0.7176470588235294
+1001,invictus,em 1a serie,0.7828282828282829
+1002,invictus,em 2a serie,0.6468253968253969
+1003,invictus,em 3a serie,0.47719298245614034
+1004,invictus,outro,0.6666666666666666
+1005,iracemarufino,infantil iii,0.2
+1006,isem,ef 3o ano,0.49333333333333335
+1007,isem,ef 4o ano,0.5753968253968254
+1008,isem,ef 5o ano,0.5303030303030303
+1009,isem,ef 6o ano,0.7146562905317769
+1010,isem,ef 7o ano,0.6611950098489823
+1011,isem,ef 8o ano,0.7732843137254902
+1012,isem,ef 9o ano,0.7266666666666667
+1013,isemear,0,0.0
+1014,isemear,ef 3o ano,0.0
+1015,isemear,ef 7o ano,0.0
+1016,isemear,ef 9o ano,0.0
+1017,isemear,em 1a serie,0.0
+1018,isemear,em 2a serie,0.0
+1019,isemear,em 3a serie,0.0
+1020,isemear,outro,0.0
+1021,ismart,0,0.0
+1022,ismart,em 1a serie,0.0
+1023,itamarati,ef 8o ano,0.65
+1024,jardimsaopaulo,0,0.0
+1025,jardimsaopaulo,em 1a serie,0.0
+1026,jazzvestibular,outro,0.0
+1027,jeanpiaget,0,0.0
+1028,jeanpiaget,em 1a serie,0.0
+1029,joaobelem,ef 6o ano,0.4444444444444444
+1030,joaobelem,ef 9o ano,0.15
+1031,josemelo,0,0.0
+1032,josepiaulino,0,0.0
+1033,lasalleaguasclaras,0,0.0
+1034,lasalleaguasclaras,em 1a serie,0.019753086419753086
+1035,lasalleaguasclaras,em 2a serie,0.011299435028248588
+1036,lasalleaguasclaras,em 3a serie,0.036231884057971016
+1037,lasallesp,0,0.0
+1038,lasallesp,ef 3o ano,0.0
+1039,lasallesp,ef 7o ano,0.0
+1040,lasallesp,ef 9o ano,0.0
+1041,lasallesp,em 1a serie,0.0
+1042,lasallesp,em 2a serie,0.0
+1043,lasallesp,em 3a serie,0.0
+1044,lerote,0,0.0
+1045,lerote,em 1a serie,0.0
+1046,liceujardim,0,0.0
+1047,liceujardim,ef 3o ano,0.0
+1048,liceujardim,ef 7o ano,0.0
+1049,liceujardim,ef 9o ano,0.0
+1050,liceujardim,em 1a serie,0.0
+1051,liceujardim,em 2a serie,0.0
+1052,liceujardim,em 3a serie,0.0
+1053,liderasas,0,0.0
+1054,liderasas,em 1a serie,0.0
+1055,liessin,0,0.0
+1056,liessin,ef 1o ano,0.0
+1057,liessinbarra,ef 8o ano,0.2857142857142857
+1058,litteratus,ef 6o ano,0.0
+1059,litteratus,em 3a serie,0.024390243902439025
+1060,macvest,outro,0.5126050420168067
+1061,magister,0,0.0
+1062,magister,ef 3o ano,0.5113636363636364
+1063,magister,ef 4o ano,0.65
+1064,magister,ef 5o ano,0.6770833333333334
+1065,magister,ef 6o ano,0.0
+1066,magister,outro,0.3333333333333333
+1067,magno,0,0.0
+1068,magno,ef 1o ano,0.0
+1069,magno,em 1a serie,0.0
+1070,magnum,0,0.0
+1071,magnum,em 1a serie,0.0
+1072,magnumagostiniano,0,0.0
+1073,magnumagostiniano,ef 1o ano,0.0
+1074,magnumagostiniano,em 1a serie,0.0
+1075,maplebearslz,0,0.0
+1076,maplebearslz,ef 2o ano,0.0
+1077,maplebearslz,ef 3o ano,0.3047619047619048
+1078,maplebearslz,ef 4o ano,0.10857142857142857
+1079,maplebearslz,ef 5o ano,0.3182751540041068
+1080,maplebearslz,ef 6o ano,0.5793939393939394
+1081,maplebearslz,ef 7o ano,0.5584905660377358
+1082,maplebearslz,ef 8o ano,0.6414835164835165
+1083,maplebearslz,ef 9o ano,0.4430379746835443
+1084,maplebearslz,em 1a serie,0.3595744680851064
+1085,maplebearslz,em 2a serie,0.2795031055900621
+1086,maplebearslz,outro,0.06060606060606061
+1087,mariliamattoso,0,0.0
+1088,mariliamattoso,ef 5o ano,0.5186602870813397
+1089,mariliamattoso,ef 6o ano,0.7565290648694187
+1090,mariliamattoso,ef 7o ano,0.6936542669584245
+1091,mariliamattoso,ef 8o ano,0.752895752895753
+1092,mariliamattoso,ef 9o ano,0.6312217194570136
+1093,mariliamattoso,em 1a serie,0.6147450110864745
+1094,mariliamattoso,em 2a serie,0.663337250293772
+1095,mariliamattoso,em 3a serie,0.6706730769230769
+1096,maristadomsilverio,0,0.0
+1097,maristadomsilverio,ef 3o ano,0.0
+1098,maristadomsilverio,ef 7o ano,0.0
+1099,maristadomsilverio,ef 9o ano,0.0
+1100,maristadomsilverio,em 1a serie,0.0
+1101,maristadomsilverio,em 2a serie,0.0
+1102,maristadomsilverio,em 3a serie,0.0
+1103,master,ef 1o ano,0.03171247357293869
+1104,master,ef 2o ano,0.05573534699748292
+1105,master,ef 3o ano,0.15239256324291375
+1106,master,ef 4o ano,0.24824824824824826
+1107,master,ef 5o ano,0.239067755886593
+1108,master,ef 6o ano,0.44925857275254866
+1109,master,ef 7o ano,0.4817455790074159
+1110,master,ef 8o ano,0.4333417022344966
+1111,master,ef 9o ano,0.36848509430135873
+1112,master,em 1a serie,0.4290848769698645
+1113,master,em 2a serie,0.39135021097046413
+1114,master,em 3a serie,0.023771001866832606
+1115,master,outro,0.18705818379554107
+1116,meta,0,0.0
+1117,meta,ef 6o ano,0.0
+1118,meta,em 1a serie,0.0
+1119,meta,em 3a serie,0.0
+1120,metodocerto,0,0.0
+1121,metodocerto,ef 3o ano,0.0
+1122,metodocerto,ef 7o ano,0.0
+1123,metodocerto,ef 9o ano,0.0
+1124,metodocerto,em 1a serie,0.0
+1125,metodocerto,em 2a serie,0.0
+1126,metodocerto,em 3a serie,0.0
+1127,minhalista,outro,0.23333333333333334
+1128,moaciralves,ef 8o ano,0.028985507246376812
+1129,moaciralves,ef 9o ano,0.02631578947368421
+1130,mobile,0,0.0
+1131,mobile,em 1a serie,0.0
+1132,montessori,em 1a serie,0.12962962962962962
+1133,montessori,em 2a serie,0.05555555555555555
+1134,montessori,em 3a serie,0.14666666666666667
+1135,motiva,0,0.0
+1136,motiva,em 1a serie,0.0
+1137,murilorocha,0,0.0
+1138,navegasas,ef 5o ano,0.16666666666666666
+1139,nossasenhoradesion,0,0.0
+1140,nossasenhoradesion,em 1a serie,0.0
+1141,notredame,0,0.0
+1142,notredame,em 1a serie,0.0
+1143,novotempo,0,0.0
+1144,novotempo,ef 9o ano,0.13168724279835392
+1145,novotempo,em 1a serie,0.6842105263157895
+1146,novotempo,em 2a serie,0.3958333333333333
+1147,novotempo,em 3a serie,0.8412698412698413
+1148,nsdasgracas,ef 6o ano,0.0
+1149,nsdasgracas,ef 7o ano,0.0
+1150,nsdasgracas,ef 8o ano,0.0
+1151,nsdasgracas,em 1a serie,0.0
+1152,nsdasgracas,em 2a serie,0.0
+1153,nsdasgracas,em 3a serie,0.0
+1154,nucleo,0,0.0
+1155,nucleo,ef 1o ano,0.0
+1156,nucleo,em 1a serie,0.0
+1157,nucleocriativo,ef 1o ano,0.037142857142857144
+1158,nucleocriativo,ef 2o ano,0.16470588235294117
+1159,nucleocriativo,ef 3o ano,0.25333333333333335
+1160,nucleocriativo,ef 4o ano,0.1590909090909091
+1161,nucleocriativo,ef 5o ano,0.18388429752066116
+1162,nucleocriativo,ef 6o ano,0.2693452380952381
+1163,nucleocriativo,ef 7o ano,0.2727272727272727
+1164,nucleocriativo,ef 8o ano,0.19090909090909092
+1165,nucleocriativo,ef 9o ano,0.2633333333333333
+1166,nucleocriativo,em 1a serie,0.15123456790123457
+1167,nucleocriativo,outro,0.3333333333333333
+1168,nucleopva,0,0.0
+1169,objetivoamericana,0,0.0
+1170,objetivoamericana,ef 3o ano,0.0
+1171,objetivoamericana,ef 7o ano,0.0
+1172,objetivoamericana,ef 9o ano,0.0
+1173,objetivoamericana,em 1a serie,0.0
+1174,objetivoamericana,em 2a serie,0.0
+1175,objetivoamericana,em 3a serie,0.0
+1176,objetivohortolandia,0,0.0
+1177,objetivohortolandia,ef 3o ano,0.0
+1178,objetivohortolandia,ef 7o ano,0.0
+1179,objetivohortolandia,ef 9o ano,0.0
+1180,objetivohortolandia,em 1a serie,0.0
+1181,objetivohortolandia,em 2a serie,0.0
+1182,objetivohortolandia,em 3a serie,0.0
+1183,objetivolorena,0,0.0
+1184,objetivolorena,ef 4o ano,0.22444444444444445
+1185,objetivolorena,ef 5o ano,0.21683673469387754
+1186,objetivolorena,ef 6o ano,0.32825484764542934
+1187,objetivolorena,ef 7o ano,0.4157014157014157
+1188,objetivolorena,ef 8o ano,0.31345565749235477
+1189,objetivolorena,ef 9o ano,0.30985915492957744
+1190,objetivolorena,em 1a serie,0.4148319814600232
+1191,objetivolorena,em 2a serie,0.2893081761006289
+1192,objetivolorena,em 3a serie,0.16216216216216217
+1193,objetivolorena,outro,0.22549019607843138
+1194,objetivoteresina,0,0.0
+1195,objetivoteresina,em 1a serie,0.0
+1196,oficinadoestudante,0,0.0
+1197,oficinadoestudante,ef 1o ano,0.0
+1198,oficinadoestudante,ef 2o ano,0.025
+1199,oficinadoestudante,ef 3o ano,0.23655913978494625
+1200,oficinadoestudante,ef 4o ano,0.12916666666666668
+1201,oficinadoestudante,ef 5o ano,0.22826086956521738
+1202,oficinadoestudante,ef 7o ano,0.0
+1203,oficinadoestudante,ef 9o ano,0.0
+1204,oficinadoestudante,em 1a serie,0.0
+1205,oficinadoestudante,em 2a serie,0.0
+1206,oficinadoestudante,em 3a serie,0.0
+1207,oficinadoestudante,outro,0.0
+1208,osequim,0,0.0
+1209,osequim,ef 6o ano,0.0
+1210,oswald,0,0.0
+1211,oswald,ef 2o ano,0.0
+1212,oswald,em 1a serie,0.0
+1213,oswald,em 3a serie,0.0
+1214,oswald,outro,0.0
+1215,oswalddeandrade,0,0.0
+1216,oswalddeandrade,ef 1o ano,0.0
+1217,oswalddeandrade,em 1a serie,0.0
+1218,overabelcabral,0,0.0
+1219,overabelcabral,ef 1o ano,0.6095238095238096
+1220,overabelcabral,ef 2o ano,0.6842105263157895
+1221,overabelcabral,ef 3o ano,0.6239669421487604
+1222,overabelcabral,ef 4o ano,0.734375
+1223,overabelcabral,ef 5o ano,0.8255813953488372
+1224,overabelcabral,ef 6o ano,0.49047408063801506
+1225,overabelcabral,ef 7o ano,0.5077071290944123
+1226,overabelcabral,ef 8o ano,0.4781163434903047
+1227,overabelcabral,ef 9o ano,0.33465959328028294
+1228,overabelcabral,em 1a serie,0.27045235803657364
+1229,overabelcabral,em 2a serie,0.164503133393017
+1230,overabelcabral,em 3a serie,0.5247252747252747
+1231,overjoaopessoa,0,0.0
+1232,overjoaopessoa,ef 9o ano,0.26785714285714285
+1233,overjoaopessoa,em 1a serie,0.2250233426704015
+1234,overjoaopessoa,em 2a serie,0.23404255319148937
+1235,overjoaopessoa,em 3a serie,0.45263157894736844
+1236,overjoaopessoa,outro,0.22077922077922077
+1237,overlimaesilva,0,0.0
+1238,overlimaesilva,ef 1o ano,0.6868686868686869
+1239,overlimaesilva,ef 2o ano,0.8125
+1240,overlimaesilva,ef 3o ano,0.7101449275362319
+1241,overlimaesilva,ef 4o ano,0.8406169665809768
+1242,overlimaesilva,ef 5o ano,0.8143712574850299
+1243,overmarciliofurtado,0,0.0
+1244,overmarciliofurtado,ef 6o ano,0.5145413870246085
+1245,overmarciliofurtado,ef 7o ano,0.44931506849315067
+1246,overmarciliofurtado,ef 8o ano,0.3973421926910299
+1247,overmarciliofurtado,ef 9o ano,0.3280780780780781
+1248,overmarciliofurtado,em 1a serie,0.22759080306564478
+1249,overmarciliofurtado,em 2a serie,0.27748167888074615
+1250,overmarciliofurtado,em 3a serie,0.5444743935309974
+1251,overmossoro,0,0.0
+1252,overmossoro,ef 1o ano,0.20833333333333334
+1253,overmossoro,ef 2o ano,0.17857142857142858
+1254,overmossoro,ef 4o ano,0.1111111111111111
+1255,overmossoro,ef 5o ano,0.975
+1256,overmossoro,ef 6o ano,0.5433333333333333
+1257,overmossoro,ef 7o ano,0.44285714285714284
+1258,overmossoro,ef 8o ano,0.4166666666666667
+1259,overmossoro,ef 9o ano,0.4160839160839161
+1260,overmossoro,em 1a serie,0.3005952380952381
+1261,overmossoro,em 3a serie,0.4666666666666667
+1262,overmossoro,outro,0.22164948453608246
+1263,overnascimentodecastro,0,0.0
+1264,overnascimentodecastro,ef 3o ano,0.0
+1265,overnascimentodecastro,outro,0.1980952380952381
+1266,overpontanegra,0,0.0
+1267,overpontanegra,ef 1o ano,0.7301587301587301
+1268,overpontanegra,ef 2o ano,0.2265625
+1269,overpontanegra,ef 3o ano,0.7070063694267515
+1270,overpontanegra,ef 4o ano,0.1419753086419753
+1271,overpontanegra,ef 5o ano,0.8672566371681416
+1272,overpontanegra,ef 6o ano,0.4219204655674103
+1273,overpontanegra,ef 7o ano,0.3894230769230769
+1274,overpontanegra,ef 8o ano,0.3541666666666667
+1275,overpontanegra,ef 9o ano,0.2728744939271255
+1276,overpontanegra,em 1a serie,0.22291021671826625
+1277,overpontanegra,em 2a serie,0.33313432835820894
+1278,overpontanegra,em 3a serie,0.5364238410596026
+1279,overzonanorte,0,0.0
+1280,overzonanorte,ef 1o ano,0.3
+1281,overzonanorte,ef 2o ano,0.20952380952380953
+1282,overzonanorte,ef 3o ano,0.27380952380952384
+1283,overzonanorte,ef 4o ano,0.31983805668016196
+1284,overzonanorte,ef 5o ano,0.36507936507936506
+1285,overzonanorte,ef 6o ano,0.326171875
+1286,overzonanorte,ef 7o ano,0.21542738012508686
+1287,overzonanorte,ef 8o ano,0.23467600700525393
+1288,overzonanorte,ef 9o ano,0.4717391304347826
+1289,overzonanorte,em 1a serie,0.23087159015302727
+1290,overzonanorte,em 2a serie,0.20416333066453163
+1291,overzonanorte,em 3a serie,0.3076923076923077
+1292,overzonanorte,outro,0.1111111111111111
+1293,ovquim,ef 6o ano,0.0
+1294,padreeustaquio,0,0.0
+1295,padreeustaquio,ef 3o ano,0.0
+1296,padreeustaquio,ef 6o ano,0.0
+1297,padreeustaquio,ef 7o ano,0.0
+1298,padreeustaquio,ef 9o ano,0.0
+1299,padreeustaquio,em 1a serie,0.0
+1300,padreeustaquio,em 2a serie,0.0
+1301,padreeustaquio,em 3a serie,0.0
+1302,palmares,0,0.0
+1303,palmares,em 1a serie,0.0
+1304,pauloviana,ef 9o ano,0.0
+1305,pcf,0,0.0
+1306,pcf,ef 3o ano,0.0
+1307,pcf,ef 7o ano,0.0
+1308,pcf,ef 9o ano,0.0
+1309,pcf,em 1a serie,0.0
+1310,pcf,em 2a serie,0.0
+1311,pcf,em 3a serie,0.0
+1312,pearson,em 3a serie,0.0
+1313,pensecursos,0,0.0
+1314,pensecursos,ef 3o ano,0.0
+1315,pensecursos,ef 7o ano,0.0
+1316,pensecursos,ef 9o ano,0.0
+1317,pensecursos,em 1a serie,0.0
+1318,pensecursos,em 2a serie,0.0
+1319,pensecursos,em 3a serie,0.0
+1320,pesenglish,0,0.0
+1321,physicsalcindocacela,0,0.0
+1322,physicsalcindocacela,ef 9o ano,0.46190476190476193
+1323,physicsalcindocacela,em 1a serie,0.35135135135135137
+1324,physicsalcindocacela,em 2a serie,0.49074074074074076
+1325,physicsalcindocacela,em 3a serie,0.37962962962962965
+1326,physicsalcindocacela,outro,0.3506849315068493
+1327,physicsalmirantebarroso,ef 2o ano,0.375
+1328,physicsalmirantebarroso,ef 3o ano,0.2077922077922078
+1329,physicsalmirantebarroso,ef 4o ano,0.2222222222222222
+1330,physicsalmirantebarroso,ef 5o ano,0.2826086956521739
+1331,physicsalmirantebarroso,ef 6o ano,0.2939297124600639
+1332,physicsalmirantebarroso,ef 7o ano,0.2391304347826087
+1333,physicsalmirantebarroso,ef 8o ano,0.2345679012345679
+1334,physicsalmirantebarroso,ef 9o ano,0.175
+1335,physicsalmirantebarroso,em 1a serie,0.16933546837469976
+1336,physicsalmirantebarroso,em 2a serie,0.13576388888888888
+1337,physicsalmirantebarroso,em 3a serie,0.13566243194192376
+1338,physicsaugustomontenegro,ef 2o ano,0.30158730158730157
+1339,physicsaugustomontenegro,ef 3o ano,0.2111801242236025
+1340,physicsaugustomontenegro,ef 4o ano,0.2571428571428571
+1341,physicsaugustomontenegro,ef 5o ano,0.35467980295566504
+1342,physicsaugustomontenegro,ef 6o ano,0.27419354838709675
+1343,physicsaugustomontenegro,ef 7o ano,0.3064516129032258
+1344,physicsaugustomontenegro,ef 8o ano,0.31203007518796994
+1345,physicsaugustomontenegro,ef 9o ano,0.30952380952380953
+1346,physicsaugustomontenegro,em 1a serie,0.16300940438871472
+1347,physicsaugustomontenegro,em 2a serie,0.11333333333333333
+1348,physicsaugustomontenegro,em 3a serie,0.09620048504446241
+1349,physicsaugustomontenegro,outro,0.3056768558951965
+1350,physicsbatistacampos,0,0.0
+1351,physicsbatistacampos,ef 2o ano,0.3482142857142857
+1352,physicsbatistacampos,ef 3o ano,0.4057142857142857
+1353,physicsbatistacampos,ef 4o ano,0.2561576354679803
+1354,physicsbatistacampos,ef 5o ano,0.2610294117647059
+1355,physicsbatistacampos,ef 6o ano,0.5587301587301587
+1356,physicsbatistacampos,ef 7o ano,0.5657894736842105
+1357,physicsbatistacampos,ef 8o ano,0.5682656826568265
+1358,physicsbatistacampos,ef 9o ano,0.4748427672955975
+1359,physicsbatistacampos,em 1a serie,0.0
+1360,physicsbatistacampos,em 2a serie,0.0
+1361,physicscidadenova,ef 2o ano,0.295
+1362,physicscidadenova,ef 3o ano,0.23376623376623376
+1363,physicscidadenova,ef 4o ano,0.12781954887218044
+1364,physicscidadenova,ef 5o ano,0.215
+1365,physicscidadenova,ef 6o ano,0.424390243902439
+1366,physicscidadenova,ef 7o ano,0.475
+1367,physicscidadenova,ef 8o ano,0.4393939393939394
+1368,physicscidadenova,ef 9o ano,0.4107142857142857
+1369,physicscidadenova,em 1a serie,0.17305236270753513
+1370,physicscidadenova,em 2a serie,0.185199841709537
+1371,physicscidadenova,em 3a serie,0.1436008676789588
+1372,physicscidadenova,outro,0.23045267489711935
+1373,physicsconselheirofurtado,0,0.0
+1374,physicsconselheirofurtado,em 1a serie,0.1486111111111111
+1375,physicsconselheirofurtado,em 2a serie,0.14184636118598382
+1376,physicsconselheirofurtado,em 3a serie,0.17328519855595667
+1377,physicsconselheirofurtado,outro,0.0
+1378,physicsmacapa,ef 6o ano,0.0
+1379,physicsmacapa,ef 7o ano,0.3939393939393939
+1380,physicsmacapa,ef 8o ano,0.3253968253968254
+1381,physicsmacapa,ef 9o ano,0.38333333333333336
+1382,physicsmacapa,em 1a serie,0.36507936507936506
+1383,physicsmacapa,em 2a serie,0.16326530612244897
+1384,physicsmacapa,em 3a serie,0.1365079365079365
+1385,physicsmacapa,outro,0.25675675675675674
+1386,physicsumarizal,0,0.0
+1387,physicsumarizal,ef 2o ano,0.3188405797101449
+1388,physicsumarizal,ef 3o ano,0.23893805309734514
+1389,physicsumarizal,ef 4o ano,0.25925925925925924
+1390,physicsumarizal,ef 5o ano,0.3416149068322981
+1391,physicsumarizal,ef 6o ano,0.2336065573770492
+1392,physicsumarizal,ef 7o ano,0.28835978835978837
+1393,physicsumarizal,ef 8o ano,0.18387096774193548
+1394,physicsumarizal,ef 9o ano,0.24609375
+1395,physicsumarizal,em 1a serie,0.11953125
+1396,physicsumarizal,em 2a serie,0.10555555555555556
+1397,physicsumarizal,em 3a serie,0.1245366938472943
+1398,pioxi,0,0.0
+1399,pioxi,ef 1o ano,0.3902439024390244
+1400,pioxi,ef 2o ano,0.43041237113402064
+1401,pioxi,ef 3o ano,0.23872679045092837
+1402,pioxi,ef 4o ano,0.5089408528198074
+1403,pioxi,ef 5o ano,0.5464052287581699
+1404,pioxi,ef 6o ano,0.91701244813278
+1405,pioxi,ef 7o ano,0.9507829977628636
+1406,pioxi,ef 8o ano,0.8918650793650794
+1407,pioxi,ef 9o ano,0.5852842809364549
+1408,pioxi,em 1a serie,0.523989898989899
+1409,pioxi,em 2a serie,0.7519640852974186
+1410,pioxi,em 3a serie,0.5697211155378487
+1411,pioxi,outro,0.0
+1412,pioxii,0,0.0
+1413,pioxii,ef 3o ano,0.0
+1414,pioxii,ef 7o ano,0.0
+1415,pioxii,ef 9o ano,0.0
+1416,pioxii,em 1a serie,0.0
+1417,pioxii,em 2a serie,0.0
+1418,pioxii,em 3a serie,0.0
+1419,pioxiicolegio,ef 6o ano,0.0
+1420,pioxiicolegio,ef 9o ano,0.6309523809523809
+1421,pioxiicolegio,em 1a serie,0.59140625
+1422,pioxiicolegio,em 2a serie,0.6780219780219781
+1423,pioxiicolegio,em 3a serie,0.7104430379746836
+1424,plannetaosasco,ef 2o ano,0.0
+1425,plannetaosasco,ef 3o ano,0.0
+1426,plannetataboao,ef 1o ano,0.025796178343949046
+1427,plannetataboao,ef 2o ano,0.028822815533980584
+1428,plannetataboao,ef 3o ano,0.02883435582822086
+1429,plannetataboao,ef 4o ano,0.041282995702885204
+1430,plannetataboao,ef 5o ano,0.05441664154356346
+1431,playpen,0,0.0
+1432,playpen,em 1a serie,0.0
+1433,poliedro,0,0.0
+1434,poliedro,outro,0.0
+1435,poliedropv,0,0.0
+1436,poliedropv,outro,0.0
+1437,poliedrotreinamento,0,0.0
+1438,portalsas,0,0.0
+1439,portalsas,ef 1o ano,0.0
+1440,portinari,0,0.0
+1441,portinari,ef 2o ano,0.0
+1442,portinari,ef 3o ano,0.9259259259259259
+1443,portinari,ef 4o ano,0.9227272727272727
+1444,portinari,ef 5o ano,0.9523809523809523
+1445,portinari,ef 6o ano,0.9132867132867133
+1446,portinari,ef 7o ano,0.776036866359447
+1447,portinari,ef 8o ano,0.8244531688166012
+1448,portinari,ef 9o ano,0.8437654016757024
+1449,portinari,em 1a serie,0.63670197537933
+1450,portinari,em 2a serie,0.5513196480938416
+1451,portinari,em 3a serie,0.6673936750272628
+1452,porto,0,0.0
+1453,porto,ef 1o ano,0.0
+1454,porto,ef 6o ano,0.06642066420664207
+1455,porto,ef 7o ano,0.13056379821958458
+1456,porto,ef 8o ano,0.26586741889985893
+1457,porto,ef 9o ano,0.4177323103154305
+1458,porto,em 1a serie,0.5553932818693929
+1459,porto,em 2a serie,0.46289445048966266
+1460,porto,em 3a serie,0.507854821235103
+1461,portoseguro,0,0.0
+1462,portoseguro,ef 1o ano,0.0
+1463,portoseguro,ef 4o ano,0.0921242774566474
+1464,portoseguro,em 1a serie,0.0
+1465,positivo,ef 1o ano,0.0
+1466,positivo,ef 3o ano,0.0
+1467,positivo,ef 5o ano,0.0
+1468,positivoon,em 3a serie,0.0
+1469,preparatec,0,0.0
+1470,preparatec,ef 3o ano,0.0
+1471,preparatec,ef 7o ano,0.0
+1472,preparatec,ef 9o ano,0.0
+1473,preparatec,em 1a serie,0.0
+1474,preparatec,em 2a serie,0.0
+1475,preparatec,em 3a serie,0.0
+1476,preparavest,0,0.0
+1477,preparavest,ef 3o ano,0.0
+1478,preparavest,ef 7o ano,0.0
+1479,preparavest,ef 9o ano,0.0
+1480,preparavest,em 1a serie,0.0
+1481,preparavest,em 2a serie,0.0
+1482,preparavest,em 3a serie,0.0
+1483,prevest,outro,0.3225806451612903
+1484,primeirodemaio,0,0.0
+1485,prisma,0,0.0
+1486,prisma,ef 3o ano,0.0
+1487,prisma,ef 7o ano,0.0
+1488,prisma,ef 9o ano,0.0
+1489,prisma,em 1a serie,0.0
+1490,prisma,em 2a serie,0.0
+1491,prisma,em 3a serie,0.0
+1492,prismapatrocinio,ef 2o ano,0.43243243243243246
+1493,prismapatrocinio,ef 4o ano,0.6285714285714286
+1494,prismapatrocinio,ef 5o ano,0.5683760683760684
+1495,prismapatrocinio,ef 6o ano,0.6068376068376068
+1496,prismapatrocinio,ef 7o ano,0.7621035058430717
+1497,prismapatrocinio,ef 8o ano,0.6047979797979798
+1498,prismapatrocinio,ef 9o ano,0.517829457364341
+1499,prismapatrocinio,em 1a serie,0.4690641918020108
+1500,prismapatrocinio,em 2a serie,0.4893292682926829
+1501,prismapatrocinio,em 3a serie,0.21306092666909887
+1502,prismapatrocinio,outro,0.3744725738396624
+1503,profederal,0,0.0
+1504,profederal,ef 6o ano,0.0
+1505,profederal,outro,0.16570327552986513
+1506,progressaodc,0,0.0
+1507,progressaodc,ef 6o ano,0.0
+1508,progressaodc,em 1a serie,0.5925457991156032
+1509,progressaodc,em 2a serie,0.5739081746920492
+1510,progressaodc,em 3a serie,0.5285810356422327
+1511,progressaoeducacao,ef 6o ano,0.0
+1512,progressaoig,0,0.0
+1513,progressaoig,ef 6o ano,0.9160714285714285
+1514,progressaoig,ef 7o ano,0.9140211640211641
+1515,progressaoig,ef 9o ano,2.739795918367347
+1516,progressaoig,em 1a serie,0.8051628764597418
+1517,progressaoig,em 2a serie,0.46153846153846156
+1518,progressaoig,em 3a serie,0.6444444444444445
+1519,progressaoig,outro,1.5483870967741935
+1520,projetodeventoempopa,0,0.0
+1521,projetodeventoempopa,ef 3o ano,0.0
+1522,projetodeventoempopa,ef 7o ano,0.0
+1523,projetodeventoempopa,ef 9o ano,0.0
+1524,projetodeventoempopa,em 1a serie,0.0
+1525,projetodeventoempopa,em 2a serie,0.0
+1526,projetodeventoempopa,em 3a serie,0.0
+1527,projetogauss,0,0.0
+1528,projetogauss,ef 3o ano,0.0
+1529,projetogauss,ef 7o ano,0.0
+1530,projetogauss,ef 9o ano,0.0
+1531,projetogauss,em 1a serie,0.0
+1532,projetogauss,em 2a serie,0.0
+1533,projetogauss,em 3a serie,0.0
+1534,projetogauss,outro,0.0
+1535,provaspoliedro,0,0.0
+1536,provaspoliedro,ef 1o ano,0.0
+1537,provaspoliedro,ef 6o ano,0.5049226441631505
+1538,provaspoliedro,ef 7o ano,0.6515323496027242
+1539,provaspoliedro,ef 8o ano,0.5474452554744526
+1540,provaspoliedro,ef 9o ano,0.282312925170068
+1541,provaspoliedro,em 1a serie,0.07911315725708747
+1542,provaspoliedro,em 2a serie,0.07396877649758092
+1543,provaspoliedro,em 3a serie,0.020514169241896245
+1544,provaspoliedro,outro,0.0595405319679188
+1545,psantagema,0,0.0
+1546,psantagema,ef 6o ano,0.6923076923076923
+1547,psantagema,ef 7o ano,0.6826923076923077
+1548,psantagema,ef 8o ano,0.4519230769230769
+1549,psantagema,ef 9o ano,0.9919354838709677
+1550,psantagema,em 1a serie,0.6329113924050633
+1551,psantagema,em 2a serie,0.6538461538461539
+1552,psantagema,em 3a serie,0.7104072398190046
+1553,psantagema,outro,0.8333333333333334
+1554,qescola,0,0.0
+1555,qescola,ef 1o ano,0.5
+1556,qescola,ef 2o ano,0.0
+1557,qescola,ef 3o ano,0.0
+1558,qescola,ef 5o ano,0.03333333333333333
+1559,qescola,ef 6o ano,0.02564102564102564
+1560,qescola,ef 7o ano,0.0
+1561,qescola,ef 9o ano,0.0
+1562,qescola,em 1a serie,0.001985440105890139
+1563,qescola,em 2a serie,0.02564102564102564
+1564,qescola,em 3a serie,0.04433497536945813
+1565,qescola,outro,0.13333333333333333
+1566,qi,em 3a serie,0.0
+1567,rede,ef 9o ano,0.0
+1568,redeapogeu,0,0.0
+1569,redeapogeu,em 1a serie,0.0
+1570,redefilhasdejesus,0,0.0
+1571,redefilhasdejesus,em 1a serie,0.0
+1572,redeinspira,0,0.0
+1573,redeinspira,ef 1o ano,0.0
+1574,redeisaacnewton,0,0.0
+1575,redeisaacnewton,ef 3o ano,0.0
+1576,redeisaacnewton,ef 7o ano,0.0
+1577,redeisaacnewton,ef 9o ano,0.0
+1578,redeisaacnewton,em 1a serie,0.0
+1579,redeisaacnewton,em 2a serie,0.0
+1580,redeisaacnewton,em 3a serie,0.0
+1581,reges,em 1a serie,0.0
+1582,relacionamento,ef 6o ano,0.0
+1583,relacionamento,em 1a serie,0.0
+1584,riobrancocampinas,0,0.0
+1585,riobrancocampinas,em 1a serie,0.0
+1586,saberviver,ef 4o ano,0.0
+1587,saberviver,ef 5o ano,0.19791666666666666
+1588,saea,0,0.0
+1589,saea,em 1a serie,0.0
+1590,saedigital,ef 6o ano,0.0
+1591,sagradafamilia,em 1a serie,0.2413793103448276
+1592,sagradafamilia,em 2a serie,0.3472222222222222
+1593,sagradafamilia,em 3a serie,0.29411764705882354
+1594,santacruz,0,0.0
+1595,santacruz,em 1a serie,0.0
+1596,santadoroteia,ef 9o ano,0.05555555555555555
+1597,santadoroteia,em 1a serie,0.05555555555555555
+1598,santadoroteia,em 2a serie,0.11904761904761904
+1599,santadoroteia,em 3a serie,0.0
+1600,santamarcelina,0,0.0
+1601,santamarcelina,em 1a serie,0.0
+1602,santamaria,0,0.0
+1603,santamaria,em 1a serie,0.0
+1604,santamariacn,em 2a serie,0.6326923076923077
+1605,santamariacn,em 3a serie,0.5161744022503516
+1606,santoagostinho,0,0.0
+1607,santoagostinho,em 1a serie,0.0
+1608,santoagostinholeblon,0,0.0
+1609,santoagostinholeblon,em 1a serie,0.0
+1610,santoagostinhomg,0,0.0
+1611,santoagostinhomg,ef 1o ano,0.0
+1612,santoagostinhomg,em 1a serie,0.0
+1613,santoamerico,0,0.0
+1614,santoamerico,ef 1o ano,0.0
+1615,santoamerico,ef 6o ano,0.5914893617021276
+1616,santoamerico,ef 7o ano,0.7248062015503876
+1617,santoamerico,ef 8o ano,0.6900584795321637
+1618,santoamerico,ef 9o ano,0.5617673579801623
+1619,santoamerico,em 1a serie,0.2559857361181864
+1620,santoamerico,em 2a serie,0.12056480811006517
+1621,santoamerico,em 3a serie,0.25071225071225073
+1622,santoamerico,outro,0.20169304379830696
+1623,santoamericoteste,0,0.0
+1624,santoamericoteste,em 1a serie,0.0
+1625,santoantonio,0,0.0
+1626,santoantonio,ef 1o ano,0.0
+1627,santoantonio,em 1a serie,0.0
+1628,santoantonio,em 3a serie,0.0
+1629,saobento,0,0.0
+1630,saobento,em 1a serie,0.0
+1631,saojosecaxiasdosul,0,0.0
+1632,saojosecaxiasdosul,em 1a serie,0.0
+1633,saoluiz,0,0.0
+1634,saoluiz,ef 1o ano,0.0
+1635,saoluiz,em 1a serie,0.0
+1636,sas,0,0.0
+1637,sas,em 1a serie,0.0
+1638,sasadapt,0,0.0
+1639,sasadapt,ef 1o ano,0.5
+1640,sasadapt,em 1a serie,0.0
+1641,sasadaptem,0,0.0
+1642,sasadaptem,ef 1o ano,0.0
+1643,sasadaptem,em 1a serie,0.0
+1644,sasadaptfund,0,0.0
+1645,sasadaptfund,em 1a serie,0.0
+1646,sasadaptrelatorios,0,0.0
+1647,sasadaptrelatorios,em 1a serie,0.0
+1648,saseducacao,0,0.0
+1649,saseducacao,em 1a serie,0.0
+1650,seletivoeducallis,0,0.0
+1651,seletivoeducallis,ef 5o ano,0.0
+1652,seletivoeducallis,ef 7o ano,0.0
+1653,seletivoeducallis,ef 8o ano,0.0
+1654,seletivoeducallis,em 1a serie,0.0
+1655,seletivoeducallis,em 2a serie,0.14285714285714285
+1656,serios,0,0.0
+1657,serios,em 1a serie,0.0
+1658,simbios,outro,0.07509881422924901
+1659,simuladoita,0,0.0
+1660,simuladoita,outro,0.0163265306122449
+1661,sistemaprima,0,0.0
+1662,sistemaprima,ef 3o ano,0.0
+1663,sistemaprima,ef 7o ano,0.0
+1664,sistemaprima,ef 9o ano,0.0
+1665,sistemaprima,em 1a serie,0.0
+1666,sistemaprima,em 2a serie,0.0
+1667,sistemaprima,em 3a serie,0.0
+1668,sme,ef 6o ano,0.0
+1669,sobral,outro,0.0
+1670,solarcursinho,ef 4o ano,0.0
+1671,souhabilis,ef 6o ano,0.0
+1672,souhabilis,em 3a serie,0.08072916666666667
+1673,souhabilis,outro,0.143658810325477
+1674,spdacruz,0,0.0
+1675,spdacruz,ef 3o ano,0.0
+1676,spdacruz,ef 6o ano,0.9572368421052632
+1677,spdacruz,ef 7o ano,0.9388560157790927
+1678,spdacruz,ef 8o ano,0.930783242258652
+1679,spdacruz,ef 9o ano,0.805408271474019
+1680,spdacruz,em 1a serie,0.798454603992273
+1681,spdacruz,em 2a serie,0.6088034717916925
+1682,spdacruz,em 3a serie,0.6129831516352825
+1683,stellamarisaguaverde,ef 2o ano,0.28651685393258425
+1684,stellamarisaguaverde,ef 3o ano,0.5
+1685,stellamarisaguaverde,ef 4o ano,0.42142857142857143
+1686,stellamarisaguaverde,ef 5o ano,0.4142857142857143
+1687,stellamarisaguaverde,ef 6o ano,0.56973293768546
+1688,stellamarisaguaverde,ef 7o ano,0.6356275303643725
+1689,stellamarisjuveve,0,0.0
+1690,stellamarisjuveve,ef 2o ano,0.18098159509202455
+1691,stellamarisjuveve,ef 3o ano,0.23681592039800994
+1692,stellamarisjuveve,ef 4o ano,0.4813233724653148
+1693,stellamarisjuveve,ef 5o ano,0.5321931589537223
+1694,stellamarisjuveve,ef 6o ano,0.5450121654501217
+1695,stellamarisjuveve,ef 7o ano,0.5763239875389408
+1696,stellamarisjuveve,ef 8o ano,0.5095486111111112
+1697,stellamarisjuveve,ef 9o ano,0.4463878326996198
+1698,stellamarisjuveve,em 1a serie,0.25184375853591917
+1699,stellamarisjuveve,em 2a serie,0.32046783625730996
+1700,stellamarisjuveve,em 3a serie,0.638095238095238
+1701,stellamarisjuveve,outro,0.10989010989010989
+1702,stellamarisxaxim,ef 2o ano,0.13297872340425532
+1703,stellamarisxaxim,ef 3o ano,0.08634538152610442
+1704,stellamarisxaxim,ef 4o ano,0.2909356725146199
+1705,stellamarisxaxim,ef 5o ano,0.32292787944025836
+1706,stellamarisxaxim,ef 6o ano,0.4488778054862843
+1707,stellamarisxaxim,ef 7o ano,0.4625
+1708,stellamarisxaxim,ef 8o ano,0.3978328173374613
+1709,stellamarisxaxim,ef 9o ano,0.3894736842105263
+1710,stellamarisxaxim,em 1a serie,0.3771377137713771
+1711,stellamarisxaxim,em 2a serie,0.26214574898785425
+1712,stellamarisxaxim,em 3a serie,0.6043956043956044
+1713,studos,em 1a serie,0.3333333333333333
+1714,testevictorhugo,0,0.0
+1715,testevictorhugo,ef 7o ano,0.0
+1716,testevictorhugo,em 1a serie,0.0
+1717,tomasdeaquino,0,0.0
+1718,tomasdeaquino,em 1a serie,0.0
+1719,topguncolombo,em 3a serie,0.0
+1720,uirapuru,ef 6o ano,0.0
+1721,universitariolondrina,0,0.0
+1722,universitariolondrina,ef 3o ano,0.019230769230769232
+1723,universitariolondrina,ef 4o ano,0.73828125
+1724,universitariolondrina,ef 5o ano,0.8095238095238095
+1725,universitariolondrina,ef 6o ano,0.6538339166401527
+1726,universitariolondrina,ef 7o ano,0.6142573273720815
+1727,universitariolondrina,ef 8o ano,0.6328552803129074
+1728,universitariolondrina,ef 9o ano,0.4530758226037196
+1729,universitariolondrina,em 1a serie,0.2823065195946552
+1730,universitariolondrina,em 2a serie,0.22248992647364266
+1731,universitariolondrina,em 3a serie,0.11769100831600832
+1732,universitariolondrina,outro,0.2124223602484472
+1733,universobarcarena,ef 1o ano,0.07160493827160494
+1734,universobarcarena,ef 2o ano,0.20728291316526612
+1735,universobarcarena,ef 3o ano,0.08529741863075196
+1736,universobarcarena,ef 4o ano,0.1565217391304348
+1737,universobarcarena,ef 5o ano,0.143879173290938
+1738,universobarcarena,ef 6o ano,0.5038674033149171
+1739,universobarcarena,ef 7o ano,0.4768211920529801
+1740,universobarcarena,ef 8o ano,0.3532608695652174
+1741,universobarcarena,ef 9o ano,0.5254491017964071
+1742,universobarcarena,em 1a serie,0.2926646706586826
+1743,universobarcarena,em 2a serie,0.2926315789473684
+1744,universobarcarena,em 3a serie,0.2559774964838256
+1745,veracruz,0,0.0
+1746,veracruz,em 1a serie,0.0
+1747,vertice,0,0.0
+1748,vertice,em 1a serie,0.0
+1749,villalobos,0,0.0
+1750,villalobos,ef 3o ano,0.0
+1751,villalobos,ef 4o ano,0.7619047619047619
+1752,villalobos,ef 5o ano,0.783068783068783
+1753,villalobos,ef 6o ano,0.5397653194263363
+1754,villalobos,ef 7o ano,0.6920529801324503
+1755,villalobos,ef 8o ano,0.5954861111111112
+1756,villalobos,ef 9o ano,0.5943396226415094
+1757,villalobos,em 1a serie,0.6113681427627231
+1758,villalobos,em 2a serie,0.5661375661375662
+1759,villalobos,em 3a serie,0.5436974789915966
+1760,visaorecife,0,0.0
+1761,visaorecife,em 1a serie,0.0
+1762,vitae,ef 2o ano,0.0
+1763,vitalbrazil,0,0.0
+1764,vitalbrazil,em 1a serie,0.0
+1765,wilsondeandradebarreto,em 1a serie,0.0

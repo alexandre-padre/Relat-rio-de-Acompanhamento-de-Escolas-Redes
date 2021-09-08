@@ -1,4 +1,5 @@
 import pandas as pd
+from datetime import timedelta
 
 def quartis(dataframe, coluna):
     """Separar em quartis.
@@ -57,3 +58,62 @@ def visualizacao_resultado_quartil(texto,dataframe):
     dataframe_aux = dataframe[dataframe['Quartil'] == texto]
     dataframe_aux.set_index('Quartil', inplace=True)
     return dataframe_aux
+
+def inserir_linha(df, linha):
+    df = df.append(linha, ignore_index=False)
+    df = df.sort_index().reset_index(drop=True)
+    return df
+
+def normalizacao_z(df,coluna):
+    df[coluna] = (df[coluna] - df[coluna].mean())/df[coluna].std()
+    return df
+
+def normalizacao_maxmin(df,coluna):
+    df[coluna] = (df[coluna] - df[coluna].min())/(df[coluna].max() - df[coluna].min())
+    return df
+
+def normalizacao(df,coluna,inf,sup):
+    var_inf = df[coluna].quantile([inf])
+    var_sup = df[coluna].quantile([sup])
+    for i in range(len(df[coluna])):
+        var_aux = df[coluna][i]
+        if (var_aux > var_inf[inf] and var_aux < var_sup[sup]):
+            df.loc[i,coluna] = (var_aux - var_inf[inf])/(var_sup[sup] - var_inf[inf]) 
+        if (var_aux >= var_sup[sup]):
+            df.loc[i,coluna] = 1
+        if (var_aux <= var_inf[inf]):
+            df.loc[i,coluna] = 0
+        
+    return df
+
+def normalizacao_datetime(df,coluna,inf,sup):
+    df[coluna] = pd.to_timedelta(df[coluna])
+    var_inf = df[coluna].quantile([inf])
+    var_sup = df[coluna].quantile([sup])
+    for i in range(len(df[coluna])):
+        var_aux = df[coluna][i]
+        if (var_aux > var_inf[inf] and var_aux < var_sup[sup]):
+            df.loc[i,coluna] = (var_aux - var_inf[inf])/(var_sup[sup] - var_inf[inf]) 
+        if (var_aux >= var_sup[sup]):
+            df.loc[i,coluna] = 1
+        if (var_aux <= var_inf[inf]):
+            df.loc[i,coluna] = 0
+        
+    return df
+
+def normalizacao_datetime_inversa(df,coluna,inf,sup):
+    df[coluna] = pd.to_timedelta(df[coluna])
+    df2 = df[df[coluna] != timedelta(days = 0)]
+    var_inf = df2[coluna].quantile([inf])
+    var_sup = df2[coluna].quantile([sup])
+    for i in range(len(df[coluna])):
+        var_aux = df[coluna][i]
+        if var_aux == timedelta(days=0):
+            df.loc[i,coluna] = 0
+        if (var_aux > var_inf[inf] and var_aux < var_sup[sup]):
+            df.loc[i,coluna] = (var_sup[sup] - var_aux)/(var_sup[sup] - var_inf[inf]) 
+        if (var_aux >= var_sup[sup]):
+            df.loc[i,coluna] = 0
+        if (var_aux <= var_inf[inf] and var_aux != timedelta(days=0)):
+            df.loc[i,coluna] = 1   
+    return df
