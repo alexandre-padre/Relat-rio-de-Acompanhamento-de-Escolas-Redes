@@ -24,11 +24,13 @@ COMMIT_MESSAGE = 'Testando Push'
 b = '0'
 def git_push():
     try:
+        b = '2'
         repo = Repo(PATH_OF_GIT_REPO)
         repo.git.add(update=True)
         repo.index.commit(COMMIT_MESSAGE)
         origin = repo.remote(name='origin')
         origin.push()
+        b = '1'
     except:
         b = 'Some error occured while pushing the code'
         return b 
