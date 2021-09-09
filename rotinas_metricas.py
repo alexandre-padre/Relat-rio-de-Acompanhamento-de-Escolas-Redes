@@ -170,7 +170,7 @@ if namespace_select != 'Namespace':
     ###### Leitura dos dados de cada rotina por ano escolar ######
     avaliacao_diagnostica_anoescolar = pd.read_csv('./CSV/Avaliação Diagnóstica/Resultados por ano escolar/avaliacao_diagnostica_anoescolar.csv')
     avaliacao_diagnostica_anoescolar2 = pd.merge(namespaces_x_hubspot3['namespace'],avaliacao_diagnostica_anoescolar, on = 'namespace', how = 'left')
-    st.dataframe(avaliacao_diagnostica_anoescolar2)
+    #st.dataframe(avaliacao_diagnostica_anoescolar2)
     ###### Normalização dos dados ######
     for coluna in avaliacao_diagnostica_namespace4.columns:
         if coluna in ('Nº de AAs aplicadas da estante','Média de exercícios em relatórios de AD por turma'):
