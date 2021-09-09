@@ -9,6 +9,7 @@ import math
 from PIL import Image
 import plotly.express as px
 from funcoes import *
+from git import Repo
 
 ######################## Configuração da página ########################
 
@@ -64,10 +65,11 @@ if senha_preenchida == 'eduqo' and nome != 'Nome':
 
     ######################## Preenchimento do histórico de acessos ao relatório ########################
     
-    #historico_acesso2 = pd.read_csv('./CSV/historico_acesso.csv')
-    #historico_acesso3 = inserir_linha(pd.DataFrame(data = historico_acesso2),pd.DataFrame({'Nome': nome,'Data e Hora':datetime.today()}, index=[-1]))
-    #historico_acesso3.drop(historico_acesso3.columns[[0]], axis=1, inplace=True)
-    #historico_acesso3.to_csv('./CSV/historico_acesso.csv')
+    historico_acesso2 = pd.read_csv('./CSV/historico_acesso.csv')
+    historico_acesso2 = inserir_linha(pd.DataFrame(data = historico_acesso2),pd.DataFrame({'Nome': nome,'Data e Hora':datetime.today()}, index=[-1]))
+    historico_acesso2.drop(historico_acesso2.columns[[0]], axis=1, inplace=True)
+    git_push()
+    #historico_acesso3.to_csv('./CSV/historico_acesso.csv') ## Essa linha quebra 
     
 
     ######################## Introdução ########################
@@ -529,13 +531,13 @@ if senha_preenchida == 'eduqo' and nome != 'Nome':
 
             #
         """
-        #nps = st.selectbox('Em uma escala de 0 a 10, o quanto você acha que esse relatório te ajuda no dia a dia?', ['Nota',0,1,2,3,4,5,6,7,8,9,10])
-        #text = st.empty()
-        #value = ""
-        #if st.button('Escrever outro feedback / ponto de melhoria'):
-        #    value = " "
-        #feedback2 = text.text_input("Caso tenha algum feedback e/ou sugestão de melhoria, escreva aqui 😊", value)
-#
+        nps = st.selectbox('Em uma escala de 0 a 10, o quanto você acha que esse relatório te ajuda no dia a dia?', ['Nota',0,1,2,3,4,5,6,7,8,9,10])
+        text = st.empty()
+        value = ""
+        if st.button('Escrever outro feedback / ponto de melhoria'):
+            value = " "
+        feedback2 = text.text_input("Caso tenha algum feedback e/ou sugestão de melhoria, escreva aqui 😊", value)
+
         #if nps != '':
         #    historico_acesso6 = pd.read_csv('./CSV/historico_acesso.csv')
         #    historico_acesso7 = inserir_linha(pd.DataFrame(data = historico_acesso6),pd.DataFrame({'Nome': nome,'Data e Hora':datetime.today(),'Feedback':feedback2,'Namespace':namespace_select, 'nps':nps}, index=[-1]))
@@ -547,7 +549,7 @@ if senha_preenchida == 'eduqo' and nome != 'Nome':
         #    historico_acesso5 = inserir_linha(pd.DataFrame(data = historico_acesso4),pd.DataFrame({'Nome': nome,'Data e Hora':datetime.today(),'Feedback':feedback2,'Namespace':namespace_select}, index=[-1]))
         #    historico_acesso5.drop(historico_acesso5.columns[[0]], axis=1, inplace=True)
         #    historico_acesso5.to_csv('./CSV/historico_acesso.csv')
-        #
+        
 
         
         
