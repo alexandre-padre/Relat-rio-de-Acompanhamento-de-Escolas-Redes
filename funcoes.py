@@ -2,7 +2,7 @@ import pandas as pd
 from datetime import timedelta
 from git import Repo
 
-PATH_OF_GIT_REPO = r'https://github.com/alexandre-padre/Relat-rio-de-Acompanhamento-de-Escolas-Redes.git'  # make sure .git folder is properly configured
+PATH_OF_GIT_REPO = 'https://github.com/alexandre-padre/Relat-rio-de-Acompanhamento-de-Escolas-Redes.git'  # make sure .git folder is properly configured
 COMMIT_MESSAGE = 'Testando Push'
 
 def git_push():
