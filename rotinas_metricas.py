@@ -529,11 +529,18 @@ if senha_preenchida == 'eduqo' and nome != 'Nome':
 
             #
         """
+        nps = st.selectbox('Em uma escala de 0 a 10, o quanto você acha que esse relatório te ajuda no dia a dia?', ['Nota',0,1,2,3,4,5,6,7,8,9,10])
         text = st.empty()
         value = ""
         if st.button('Escrever outro feedback / ponto de melhoria'):
             value = " "
         feedback2 = text.text_input("Caso tenha algum feedback e/ou sugestão de melhoria, escreva aqui 😊", value)
+
+        if nps != '':
+            historico_acesso6 = pd.read_csv('./CSV/historico_acesso.csv')
+            historico_acesso7 = inserir_linha(pd.DataFrame(data = historico_acesso6),pd.DataFrame({'Nome': nome,'Data e Hora':datetime.today(),'Feedback':feedback2,'Namespace':namespace_select, 'nps':nps}, index=[-1]))
+            historico_acesso7.drop(historico_acesso7.columns[[0]], axis=1, inplace=True)
+            historico_acesso7.to_csv('./CSV/historico_acesso.csv')
 
         if feedback2 != '':
             historico_acesso4 = pd.read_csv('./CSV/historico_acesso.csv')
