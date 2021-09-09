@@ -515,7 +515,7 @@ if senha_preenchida == 'eduqo' and nome != 'Nome':
                             fig2 = px.bar(juncao_auxiliar2, x = juncao_auxiliar2['grade'], y = juncao_auxiliar2[coluna], range_y=[0,100], color_discrete_sequence = ['#4a8ae8']*len(juncao_auxiliar2))
                             fig2.add_scatter(x = juncao_auxiliar2['grade'], y = 100*juncao_auxiliar2[coluna+'_x'], name = 'Média Eduqo', line=dict(color="red"))
                             fig2.add_scatter(x = juncao_auxiliar2['grade'], y = 100*juncao_auxiliar2[coluna+'_y'], name = 'Média '+avaliacao_somativa_anoescolar_select_juncao['Produto'][0]+' com faixa de licenças '+avaliacao_somativa_anoescolar_select_juncao['licenças'][0], line=dict(color="black"))
-                            fig2.update_layout(title = "Pontuação média em Avaliação Somativa por ano escolar")
+                            fig2.update_layout(title = "Pontuação média por ano escolar")
                             fig2.update_layout(legend=dict(yanchor="top",y=0.99,xanchor="left",x=0.30))
                             st.plotly_chart(fig2)
                         st.write('----')
