@@ -11,11 +11,27 @@ import plotly.express as px
 from funcoes import *
 from git import Repo
 
+
+
 ######################## Configuração da página ########################
 
 st.set_page_config(
     page_title="Relatório de Acompanhamento de Escolas/Redes", layout="centered", page_icon="[LOGO] Eduqo 4.png"
 )
+
+PATH_OF_GIT_REPO = 'https://github.com/alexandre-padre/Relat-rio-de-Acompanhamento-de-Escolas-Redes.git'  # make sure .git folder is properly configured
+COMMIT_MESSAGE = 'Testando Push'
+b = '0'
+def git_push():
+    try:
+        repo = Repo(PATH_OF_GIT_REPO)
+        repo.git.add(update=True)
+        repo.index.commit(COMMIT_MESSAGE)
+        origin = repo.remote(name='origin')
+        origin.push()
+    except:
+        b = 'Some error occured while pushing the code'
+        return b 
 
 ######################## Namespaces a serem analisados ########################
 
@@ -69,6 +85,7 @@ if senha_preenchida == 'eduqo' and nome != 'Nome':
     historico_acesso2 = inserir_linha(pd.DataFrame(data = historico_acesso2),pd.DataFrame({'Nome': nome,'Data e Hora':datetime.today()}, index=[-1]))
     historico_acesso2.drop(historico_acesso2.columns[[0]], axis=1, inplace=True)
     git_push()
+    b
     #historico_acesso3.to_csv('./CSV/historico_acesso.csv') ## Essa linha quebra 
     
 

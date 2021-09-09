@@ -2,18 +2,7 @@ import pandas as pd
 from datetime import timedelta
 from git import Repo
 
-PATH_OF_GIT_REPO = 'https://github.com/alexandre-padre/Relat-rio-de-Acompanhamento-de-Escolas-Redes.git'  # make sure .git folder is properly configured
-COMMIT_MESSAGE = 'Testando Push'
-
-def git_push():
-    try:
-        repo = Repo(PATH_OF_GIT_REPO)
-        repo.git.add(update=True)
-        repo.index.commit(COMMIT_MESSAGE)
-        origin = repo.remote(name='origin')
-        origin.push()
-    except:
-        print('Some error occured while pushing the code')    
+  
 
 def quartis(dataframe, coluna):
     """Separar em quartis.
