@@ -295,6 +295,9 @@ if namespace_select != 'Namespace':
     avaliacao_somativa_namespace_select = avaliacao_somativa_namespace4[avaliacao_somativa_namespace4['namespace'] == namespace_select].reset_index(drop = True)
     avaliacao_somativa_temporal4 = quartis(avaliacao_somativa_temporal3,'Média')
     avaliacao_somativa_temporal_select = avaliacao_somativa_temporal4[avaliacao_somativa_temporal4['namespace'] == namespace_select].reset_index(drop = True)
+    avaliacao_somativa_temporal_select['Tempo de correção por aluno por questão'] = pd.to_numeric(avaliacao_somativa_temporal_select['Tempo de correção por aluno por questão'],errors = 'coerce')
+    avaliacao_somativa_temporal_select['Tempo médio entre publicação e ínicio de AA'] = pd.to_numeric(avaliacao_somativa_temporal_select['Tempo médio entre publicação e ínicio de AA'],errors = 'coerce')
+    avaliacao_somativa_temporal_select['Tempo médio entre criação e publicação de AA por questão'] = pd.to_numeric(avaliacao_somativa_temporal_select['Tempo médio entre criação e publicação de AA por questão'],errors = 'coerce')                
     avaliacao_somativa_anoescolar4 = quartis(avaliacao_somativa_anoescolar3,'Média')
     avaliacao_somativa_anoescolar_select = avaliacao_somativa_anoescolar4[avaliacao_somativa_anoescolar4['namespace'] == namespace_select].reset_index(drop = True)
     
@@ -328,6 +331,9 @@ if namespace_select != 'Namespace':
     with st.expander("Visualizar o histórico semanal da média de Avaliação Somativa -> (clique aqui 🖱️)"):
         avaliacao_somativa_temporal_select['Média'] = 100*avaliacao_somativa_temporal_select['Média']
         fig = px.bar(avaliacao_somativa_temporal_select, x = avaliacao_somativa_temporal_select['Semana'], y = avaliacao_somativa_temporal_select['Média'], range_y=[0,100], color_discrete_sequence = ['#4a8ae8']*len(avaliacao_somativa_temporal_select))
+        avaliacao_somativa_temporal4['Tempo de correção por aluno por questão'] = pd.to_numeric(avaliacao_somativa_temporal4['Tempo de correção por aluno por questão'],errors = 'coerce')
+        avaliacao_somativa_temporal4['Tempo médio entre publicação e ínicio de AA'] = pd.to_numeric(avaliacao_somativa_temporal4['Tempo médio entre publicação e ínicio de AA'],errors = 'coerce')
+        avaliacao_somativa_temporal4['Tempo médio entre criação e publicação de AA por questão'] = pd.to_numeric(avaliacao_somativa_temporal4['Tempo médio entre criação e publicação de AA por questão'],errors = 'coerce')
         avaliacao_somativa_temporal5 = avaliacao_somativa_temporal4.groupby('Semana').mean().reset_index()
         fig.add_scatter(x = avaliacao_somativa_temporal5['Semana'], y = 100*avaliacao_somativa_temporal5['Média'],mode='lines', name = 'Média Eduqo', line=dict(color="red"))
         juncao_hubspot_somativa_temporal4 = juncao_hubspot_somativa_temporal3.groupby('Semana').mean().reset_index()
@@ -466,6 +472,9 @@ if namespace_select != 'Namespace':
                         fig = px.bar(avaliacao_somativa_temporal_select, x = avaliacao_somativa_temporal_select['Semana'], y = coluna, range_y=[0,100], color_discrete_sequence = ['#4a8ae8']*len(avaliacao_somativa_temporal_select))
                         avaliacao_somativa_temporal5 = avaliacao_somativa_temporal4.groupby('Semana').mean().reset_index()
                         fig.add_scatter(x = avaliacao_somativa_temporal5['Semana'], y = 100*avaliacao_somativa_temporal5[coluna],mode='lines', name = 'Média Eduqo', line=dict(color="red"))
+                        juncao_hubspot_somativa_temporal3['Tempo de correção por aluno por questão'] = pd.to_numeric(juncao_hubspot_somativa_temporal3['Tempo de correção por aluno por questão'],errors = 'coerce')
+                        juncao_hubspot_somativa_temporal3['Tempo médio entre publicação e ínicio de AA'] = pd.to_numeric(juncao_hubspot_somativa_temporal3['Tempo médio entre publicação e ínicio de AA'],errors = 'coerce')
+                        juncao_hubspot_somativa_temporal3['Tempo médio entre criação e publicação de AA por questão'] = pd.to_numeric(juncao_hubspot_somativa_temporal3['Tempo médio entre criação e publicação de AA por questão'],errors = 'coerce')
                         juncao_hubspot_somativa_temporal4 = juncao_hubspot_somativa_temporal3.groupby('Semana').mean().reset_index()
                         fig.add_scatter(x = juncao_hubspot_somativa_temporal4['Semana'], y = 100*juncao_hubspot_somativa_temporal4[coluna],mode='lines', name = 'Média '+avaliacao_somativa_temporal_select_juncao['Produto'][0]+' com faixa de licenças '+avaliacao_somativa_temporal_select_juncao['licenças'][0], line=dict(color="black"))
                         fig.update_layout(title = "Pontuação média por semana")
