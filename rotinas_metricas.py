@@ -528,7 +528,7 @@ if senha_preenchida == 'eduqo' and nome != 'Nome':
             #### Ensino Híbrido
 
             #
-        #"""
+        """
         #nps = st.selectbox('Em uma escala de 0 a 10, o quanto você acha que esse relatório te ajuda no dia a dia?', ['Nota',0,1,2,3,4,5,6,7,8,9,10])
         #text = st.empty()
         #value = ""
