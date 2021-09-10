@@ -39,7 +39,7 @@ banco_de_dados = sheet.get_all_records()
 
 #banco_de_dados = sheet.get_all_records()
 banco2 = pd.DataFrame(banco_de_dados)
-banco_dados2 = banco2.groupby('Nome').count().reset_index(2)
+banco_dados2 = banco2.groupby('Nome').count().reset_index()
 st.dataframe(banco_dados2)
 
 
