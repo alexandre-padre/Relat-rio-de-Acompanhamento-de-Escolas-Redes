@@ -38,8 +38,9 @@ banco_de_dados = sheet.get_all_records()
 #sheet = client.open('Banco de Dados').sheet1
 
 #banco_de_dados = sheet.get_all_records()
-banco_dados2 = banco_de_dados.groupby('Nome').count().reset_index(2)
-st.dataframe(banco_de_dados2)
+banco2 = pd.DataFrame(banco_de_dados)
+banco_dados2 = banco2.groupby('Nome').count().reset_index(2)
+st.dataframe(banco_dados2)
 
 
 
