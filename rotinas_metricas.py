@@ -19,6 +19,30 @@ st.set_page_config(
     page_title="Relatório de Acompanhamento de Escolas/Redes", layout="centered", page_icon="[LOGO] Eduqo 4.png"
 )
 
+######################## Teste Banco de Dados ########################
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
+
+scope = ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/auth/drive']
+creds = ServiceAccountCredentials.from_json_keyfile_name('client_secret.json', scope)
+client = gspread.authorize(creds)
+
+sheet = client.open('Banco de Dados').sheet1
+
+banco_de_dados = sheet.get_all_records()
+
+#row = ['Mateus','acessoboqueirao']
+#index = 2
+#sheet.update_cell(1,2,"Namespace")
+#sheet.insert_row(row, index)
+#sheet = client.open('Banco de Dados').sheet1
+
+#banco_de_dados = sheet.get_all_records()
+st.dataframe(banco_de_dados)
+
+
+
+
 
 ######################## Namespaces a serem analisados ########################
 
@@ -67,7 +91,13 @@ nome = str(st.selectbox('Digite o seu nome',nomes_eduqo[0]))
 if senha_preenchida == 'eduqo' and nome != 'Nome':
 
     ######################## Preenchimento do histórico de acessos ao relatório ########################
-    
+    row = [nome,senha_preenchida]
+    index = 2
+    sheet.insert_row(row, index)
+    sheet = client.open('Banco de Dados').sheet1
+
+    banco_de_dados = sheet.get_all_records()
+    st.dataframe(banco_de_dados)
     #historico_acesso2 = pd.read_csv('./CSV/historico_acesso.csv')
     #historico_acesso2 = inserir_linha(pd.DataFrame(data = historico_acesso2),pd.DataFrame({'Nome': nome,'Data e Hora':datetime.today()}, index=[-1]))
     #historico_acesso2.drop(historico_acesso2.columns[[0]], axis=1, inplace=True)
