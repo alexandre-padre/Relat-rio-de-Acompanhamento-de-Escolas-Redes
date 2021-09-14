@@ -18,34 +18,24 @@ from git import Repo
 st.set_page_config(
     page_title="Relatório de Acompanhamento de Escolas/Redes", layout="centered", page_icon="[LOGO] Eduqo 4.png"
 )
-#
-######################### Teste Banco de Dados ########################
-#import gspread
-#from oauth2client.service_account import ServiceAccountCredentials
-#
-#scope = ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/auth/drive']
-#creds = ServiceAccountCredentials.from_json_keyfile_name('client_secret.json', scope)
-#client = gspread.authorize(creds)
-#
-#sheet = client.open('Banco de Dados').sheet1
-#
-#banco_de_dados = sheet.get_all_records()
-#
-##row = ['Mateus','acessoboqueirao']
-##index = 2
-##sheet.update_cell(1,2,"Namespace")
-##sheet.insert_row(row, index)
-##sheet = client.open('Banco de Dados').sheet1
-#
-##banco_de_dados = sheet.get_all_records()
-#banco2 = pd.DataFrame(banco_de_dados)
-#banco_dados2 = banco2.groupby('Nome').count().reset_index()
-#st.dataframe(banco_dados2)
-#
-#
-#
-#
-#
+
+######################### Banco de Dados ########################
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
+
+scope = ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/auth/drive']
+creds = ServiceAccountCredentials.from_json_keyfile_name('client_secret.json', scope)
+client = gspread.authorize(creds)
+
+sheet = client.open('Banco de Dados').sheet1
+
+#### Colunas (id, Data e Hora, Nome, Rede, Grupo, Gestor, Produto, Faixa de licenças, Namespace, NPS, Feedback)
+row0 = ['Data e Hora', 'Nome', 'Rede', 'Grupo', 'Gestor', 'Produto', 'Faixa de licenças', 'Namespace', 'NPS', 'Feedback']
+
+banco_de_dados = sheet.get_all_records()
+banco_de_dados2 = pd.DataFrame(banco_de_dados)
+#st.dataframe(banco_de_dados2)
+
 ######################### Namespaces a serem analisados ########################
 
 namespaces = pd.read_csv('./CSV/produto_namespace.csv')
@@ -93,18 +83,10 @@ nome = str(st.selectbox('Digite o seu nome',nomes_eduqo[0]))
 if senha_preenchida == 'eduqo' and nome != 'Nome':
 
     ######################## Preenchimento do histórico de acessos ao relatório ########################
-    #row = [nome,senha_preenchida]
-    #index = 2
-    #sheet.insert_row(row, index)
-    #sheet = client.open('Banco de Dados').sheet1
-#
-    #banco_de_dados = sheet.get_all_records()
-    #st.dataframe(banco_de_dados)
-    #historico_acesso2 = pd.read_csv('./CSV/historico_acesso.csv')
-    #historico_acesso2 = inserir_linha(pd.DataFrame(data = historico_acesso2),pd.DataFrame({'Nome': nome,'Data e Hora':datetime.today()}, index=[-1]))
-    #historico_acesso2.drop(historico_acesso2.columns[[0]], axis=1, inplace=True)
-    #historico_acesso3.to_csv('./CSV/historico_acesso.csv') ## Essa linha quebra 
-    
+    row = [str(datetime.today()),nome]
+    index = 2
+    sheet.insert_row(row, index)
+    #st.dataframe(banco_de_dados2)
 
     ######################## Introdução ########################
 
@@ -216,10 +198,10 @@ if senha_preenchida == 'eduqo' and nome != 'Nome':
     ######################## Resultados gerais por rotina ########################
     if namespace_select != 'Namespace':
 
-        #historico_acesso2 = pd.read_csv('./CSV/historico_acesso.csv')
-        #historico_acesso3 = inserir_linha(pd.DataFrame(data = historico_acesso2),pd.DataFrame({'Nome': nome,'Data e Hora':datetime.today(),'Namespace':namespace_select}, index=[-1]))
-        #historico_acesso3.drop(historico_acesso3.columns[[0]], axis=1, inplace=True)
-        #historico_acesso3.to_csv('./CSV/historico_acesso.csv')
+        row = [str(datetime.today()),nome,rede_select,grupo_select,gestor_select,produto_select,licenças_select,namespace_select]
+        index = 2
+        sheet.insert_row(row, index)
+        #st.dataframe(banco_de_dados2)
 
         st.subheader('**Resultados gerais por Rotina Pedagógica Digital**')
 
@@ -565,30 +547,20 @@ if senha_preenchida == 'eduqo' and nome != 'Nome':
 
             #
         """
-        nps = st.selectbox('Em uma escala de 0 a 10, o quanto você acha que esse relatório te ajuda no dia a dia?', ['Nota',0,1,2,3,4,5,6,7,8,9,10])
+        #print(banco_de_dados2.dtypes)
+        nps = st.selectbox('Em uma escala de 0 a 10, o quanto você acha que esse relatório te ajuda no dia a dia?', ['Nota','0','1','2','3','4','5','6','7','8','9','10'])
         text = st.empty()
         value = ""
         if st.button('Escrever outro feedback / ponto de melhoria'):
             value = " "
         feedback2 = text.text_input("Caso tenha algum feedback e/ou sugestão de melhoria, escreva aqui 😊", value)
-
-        #if nps != '':
-        #    historico_acesso6 = pd.read_csv('./CSV/historico_acesso.csv')
-        #    historico_acesso7 = inserir_linha(pd.DataFrame(data = historico_acesso6),pd.DataFrame({'Nome': nome,'Data e Hora':datetime.today(),'Feedback':feedback2,'Namespace':namespace_select, 'nps':nps}, index=[-1]))
-        #    historico_acesso7.drop(historico_acesso7.columns[[0]], axis=1, inplace=True)
-        #    historico_acesso7.to_csv('./CSV/historico_acesso.csv')
-#
-        #if feedback2 != '':
-        #    historico_acesso4 = pd.read_csv('./CSV/historico_acesso.csv')
-        #    historico_acesso5 = inserir_linha(pd.DataFrame(data = historico_acesso4),pd.DataFrame({'Nome': nome,'Data e Hora':datetime.today(),'Feedback':feedback2,'Namespace':namespace_select}, index=[-1]))
-        #    historico_acesso5.drop(historico_acesso5.columns[[0]], axis=1, inplace=True)
-        #    historico_acesso5.to_csv('./CSV/historico_acesso.csv')
-        
-
-        
-        
-
-
+        if nps == 'Nota':
+            nps = '-1'
+        row = [str(datetime.today()),nome,rede_select,grupo_select,gestor_select,produto_select,licenças_select,namespace_select,str(nps),feedback2]
+        index = 2
+        sheet.insert_row(row, index)
+        #st.dataframe(banco_de_dados2)
+     
     else:
         st.warning('🙂 Escolha um namespace para visualizar seus resultados!')
 
