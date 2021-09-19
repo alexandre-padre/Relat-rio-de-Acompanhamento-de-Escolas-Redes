@@ -27,7 +27,8 @@ scope = ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/aut
 creds = ServiceAccountCredentials.from_json_keyfile_name('client_secret.json', scope)
 client = gspread.authorize(creds)
 
-sheet = client.open('Banco de Dados').sheet1
+sheet = client.open('Banco de Dados').sheet1          # Enquanto estiver rodando na nuvem
+#sheet = client.open('Banco de Dados - Teste').sheet1   # Enquanto estiver rodando no local
 
 #### Colunas (id, Data e Hora, Nome, Rede, Grupo, Gestor, Produto, Faixa de licenças, Namespace, NPS, Feedback)
 row0 = ['Data e Hora', 'Nome', 'Rede', 'Grupo', 'Gestor', 'Produto', 'Faixa de licenças', 'Namespace', 'NPS', 'Feedback']
@@ -205,6 +206,113 @@ if senha_preenchida == 'eduqo' and nome != 'Nome':
 
         st.subheader('**Resultados gerais por Rotina Pedagógica Digital**')
 
+        ############## Avaliação Continuada ##############
+
+        ###### Leitura dos dados de cada rotina por namespace ######
+        avaliacao_continuada_namespace = pd.read_csv('./CSV/Avaliação Continuada/Resultados por namespace/avaliacao_continuada_namespace.csv')
+        avaliacao_continuada_namespace2 = pd.merge(namespaces_x_hubspot3['namespace'],avaliacao_continuada_namespace, on = 'namespace', how = 'left')
+        avaliacao_continuada_namespace3 = avaliacao_continuada_namespace2.groupby('namespace').mean().reset_index()
+        avaliacao_continuada_namespace4 = avaliacao_continuada_namespace3.drop(columns = ['Unnamed: 0'])
+
+        ###### Leitura dos dados de cada rotina temporal ######
+        avaliacao_continuada_temporal = pd.read_csv('./CSV/Avaliação Continuada/Resultados temporais/avaliacao_continuada_temporal.csv')
+        avaliacao_continuada_temporal2 = pd.merge(namespaces_x_hubspot3['namespace'],avaliacao_continuada_temporal, on = 'namespace', how = 'left')
+
+        ###### Leitura dos dados de cada rotina por ano escolar ######
+        avaliacao_continuada_anoescolar = pd.read_csv('./CSV/Avaliação Continuada/Resultados por ano escolar/avaliacao_continuada_anoescolar.csv')
+        avaliacao_continuada_anoescolar2 = pd.merge(namespaces_x_hubspot3['namespace'],avaliacao_continuada_anoescolar, on = 'namespace', how = 'left')
+
+        ###### Normalização dos dados ######
+        for coluna in avaliacao_continuada_namespace4.columns:
+            if coluna in ('Número de exercícios por turma','Média de séries de exercícios por turma','Número de AAs iniciadas por aluno'):
+                avaliacao_continuada_namespace4 = normalizacao(avaliacao_continuada_namespace4,coluna,0.1, 0.9)
+            if coluna in ('Número de exercícios por turma','Média de séries de exercícios por turma','Número de AAs iniciadas por aluno'):
+                avaliacao_continuada_anoescolar2 = normalizacao(avaliacao_continuada_anoescolar2,coluna,0.1, 0.9)
+            if coluna in ('Número de exercícios por turma','Média de séries de exercícios por turma','Número de AAs iniciadas por aluno'):
+                avaliacao_continuada_temporal2 = normalizacao(avaliacao_continuada_temporal2,coluna,0.1, 0.9)
+
+        ###### Média Final ######
+        col = avaliacao_continuada_namespace4.loc[: , "Porcentagem de engajamento em série de exercícios":"Número de AAs iniciadas por aluno"]
+        avaliacao_continuada_namespace4['Média'] = col.mean(axis=1)
+        col = avaliacao_continuada_anoescolar2.loc[: , "Porcentagem de engajamento em série de exercícios":"Número de AAs iniciadas por aluno"]
+        avaliacao_continuada_anoescolar2['Média'] = col.mean(axis=1)
+        avaliacao_continuada_anoescolar3 = avaliacao_continuada_anoescolar2.drop(columns = ['Unnamed: 0'])
+        col = avaliacao_continuada_temporal2.loc[: , "Porcentagem de engajamento em série de exercícios":"Número de AAs iniciadas por aluno"]
+        avaliacao_continuada_temporal2['Média'] = col.mean(axis=1)
+
+        ###### Quartis ######
+        avaliacao_continuada_namespace5 = quartis(avaliacao_continuada_namespace4,'Média')
+        avaliacao_continuada_namespace_select = avaliacao_continuada_namespace5[avaliacao_continuada_namespace5['namespace'] == namespace_select].reset_index(drop = True)
+        avaliacao_continuada_anoescolar4 = quartis(avaliacao_continuada_anoescolar3,'Média')
+        avaliacao_continuada_anoescolar_select = avaliacao_continuada_anoescolar4[avaliacao_continuada_anoescolar4['namespace'] == namespace_select].reset_index(drop = True)
+        avaliacao_continuada_temporal3 = quartis(avaliacao_continuada_temporal2,'Média')
+        avaliacao_continuada_temporal_select = avaliacao_continuada_temporal3[avaliacao_continuada_temporal3['namespace'] == namespace_select].reset_index(drop = True)
+
+        ###### Média do namespace x média Eduqo ######
+        if avaliacao_continuada_namespace_select['Média'][0] >= avaliacao_continuada_namespace5['Média'].mean():
+            comparativo_media_avaliacao_continuada = ' 🟩'
+        else:
+            comparativo_media_avaliacao_continuada = ' 🟨'
+        st.subheader('**Avaliação Continuada'+' (Pontuação: '+str(round(100*avaliacao_continuada_namespace_select['Média'][0], 2))+')**')
+        st.markdown('O namespace '+namespace_select+ ' está no **'+avaliacao_continuada_namespace_select['Quartil'][0]+ ' quartil**!') 
+        st.progress(avaliacao_continuada_namespace_select['Média'][0])
+        st.write('Pontuação **Média Eduqo: '+str(round(100*avaliacao_continuada_namespace5['Média'].mean(), 2))+comparativo_media_avaliacao_continuada+'**')
+
+        ###### Junção Hubspot para pegar média das escolas que tem o mesmo produto e mesma faixa de licenças ######
+        juncao_hubspot_continuada_namespace = pd.merge(namespaces_x_hubspot3,avaliacao_continuada_namespace4, on = 'namespace', how = 'left')
+        avaliacao_continuada_namespace_select_juncao = juncao_hubspot_continuada_namespace[juncao_hubspot_continuada_namespace['namespace'] == namespace_select].reset_index(drop = True)
+        juncao_hubspot_continuada_namespace2 = juncao_hubspot_continuada_namespace[juncao_hubspot_continuada_namespace['Produto'] == avaliacao_continuada_namespace_select_juncao['Produto'][0]]
+        juncao_hubspot_continuada_namespace3 = juncao_hubspot_continuada_namespace2[juncao_hubspot_continuada_namespace2['licenças'] == avaliacao_continuada_namespace_select_juncao['licenças'][0]]
+        if avaliacao_continuada_namespace_select['Média'][0] >= juncao_hubspot_continuada_namespace3['Média'].mean():
+            comparativo_media_avaliacao_continuada_juncao = ' 🟩'
+        else:
+            comparativo_media_avaliacao_continuada_juncao = ' 🟨'
+        st.write('Pontuação **Média '+avaliacao_continuada_namespace_select_juncao['Produto'][0]+' com faixa de licenças de '+avaliacao_continuada_namespace_select_juncao['licenças'][0]+': '+str(round(100*juncao_hubspot_continuada_namespace3['Média'].mean(), 2))+comparativo_media_avaliacao_continuada_juncao+'**')
+
+        ###### Gráfico temporal ######
+        juncao_hubspot_continuada_temporal = pd.merge(namespaces_x_hubspot3,avaliacao_continuada_temporal3, on = 'namespace', how = 'left')
+        avaliacao_continuada_temporal_select_juncao = juncao_hubspot_continuada_temporal[juncao_hubspot_continuada_temporal['namespace'] == namespace_select].reset_index(drop = True)
+        juncao_hubspot_continuada_temporal2 = juncao_hubspot_continuada_temporal[juncao_hubspot_continuada_temporal['Produto'] == avaliacao_continuada_temporal_select_juncao['Produto'][0]]
+        juncao_hubspot_continuada_temporal3 = juncao_hubspot_continuada_temporal2[juncao_hubspot_continuada_temporal2['licenças'] == avaliacao_continuada_temporal_select_juncao['licenças'][0]]
+
+        with st.expander("Visualizar o histórico semanal da média de Avaliação Continuada -> (clique aqui 🖱️)"):
+            avaliacao_continuada_temporal_select['Média'] = 100*avaliacao_continuada_temporal_select['Média']
+            avaliacao_continuada_temporal_select2 = avaliacao_continuada_temporal_select.groupby('Semana').mean().reset_index()
+            fig = px.bar(avaliacao_continuada_temporal_select2, x = avaliacao_continuada_temporal_select2['Semana'], y = avaliacao_continuada_temporal_select2['Média'], range_y=[0,100], color_discrete_sequence = ['#4a8ae8']*len(avaliacao_continuada_temporal_select2))
+            avaliacao_continuada_temporal5 = avaliacao_continuada_temporal3.groupby('Semana').mean().reset_index()
+            fig.add_scatter(x = avaliacao_continuada_temporal5['Semana'], y = 100*avaliacao_continuada_temporal5['Média'],mode='lines', name = 'Média Eduqo', line=dict(color="red"))
+            juncao_hubspot_continuada_temporal4 = juncao_hubspot_continuada_temporal3.groupby('Semana').mean().reset_index()
+            fig.add_scatter(x = juncao_hubspot_continuada_temporal4['Semana'], y = 100*juncao_hubspot_continuada_temporal4['Média'],mode='lines', name = 'Média '+avaliacao_continuada_temporal_select_juncao['Produto'][0]+' com faixa de licenças '+avaliacao_continuada_temporal_select_juncao['licenças'][0], line=dict(color="black"))
+            fig.update_layout(title = "Pontuação média em Avaliação Continuada por semana")
+            fig.update_layout(legend=dict(yanchor="top",y=0.99,xanchor="left",x=0.30))
+            st.plotly_chart(fig)
+
+
+        ###### Gráfico por ano escolar ######
+        juncao_hubspot_continuada_anoescolar = pd.merge(namespaces_x_hubspot3,avaliacao_continuada_anoescolar4, on = 'namespace', how = 'left')
+        avaliacao_continuada_anoescolar_select_juncao = juncao_hubspot_continuada_anoescolar[juncao_hubspot_continuada_anoescolar['namespace'] == namespace_select].reset_index(drop = True)
+        juncao_hubspot_continuada_anoescolar2 = juncao_hubspot_continuada_anoescolar[juncao_hubspot_continuada_anoescolar['Produto'] == avaliacao_continuada_anoescolar_select_juncao['Produto'][0]]
+        juncao_hubspot_continuada_anoescolar3 = juncao_hubspot_continuada_anoescolar2[juncao_hubspot_continuada_anoescolar2['licenças'] == avaliacao_continuada_anoescolar_select_juncao['licenças'][0]]
+
+        with st.expander("Visualizar a média de Avaliação Continuada por ano escolar -> (clique aqui 🖱️)"):
+            avaliacao_continuada_anoescolar_select['Média'] = 100*avaliacao_continuada_anoescolar_select['Média']
+            avaliacao_continuada_anoescolar_select_aux = avaliacao_continuada_anoescolar_select.groupby('grade').mean().reset_index()
+            avaliacao_continuada_anoescolar_select2 = avaliacao_continuada_anoescolar_select_aux.sort_values(by = 'grade')
+            avaliacao_continuada_anoescolar5 = avaliacao_continuada_anoescolar4.groupby('grade').mean().reset_index()
+            avaliacao_continuada_anoescolar6 = avaliacao_continuada_anoescolar5.sort_values(by = 'grade')
+            juncao_hubspot_continuada_anoescolar4 = juncao_hubspot_continuada_anoescolar3.groupby('grade').mean().reset_index()
+            juncao_hubspot_continuada_anoescolar5 = juncao_hubspot_continuada_anoescolar4.sort_values(by = 'grade')
+            juncao_auxiliar_continuada = pd.merge(avaliacao_continuada_anoescolar6,juncao_hubspot_continuada_anoescolar5, on = 'grade', how = 'left')
+            juncao_auxiliar_continuada2 = pd.merge(juncao_auxiliar_continuada,avaliacao_continuada_anoescolar_select2, on = 'grade', how = 'left')
+            fig2 = px.bar(juncao_auxiliar_continuada2, x = juncao_auxiliar_continuada2['grade'], y = juncao_auxiliar_continuada2['Média'], range_y=[0,100], color_discrete_sequence = ['#4a8ae8']*len(juncao_auxiliar_continuada2))
+            fig2.add_scatter(x = juncao_auxiliar_continuada2['grade'], y = 100*juncao_auxiliar_continuada2['Média_x'], name = 'Média Eduqo', line=dict(color="red"))
+            fig2.add_scatter(x = juncao_auxiliar_continuada2['grade'], y = 100*juncao_auxiliar_continuada2['Média_y'], name = 'Média '+avaliacao_continuada_anoescolar_select_juncao['Produto'][0]+' com faixa de licenças '+avaliacao_continuada_anoescolar_select_juncao['licenças'][0], line=dict(color="black"))
+            fig2.update_layout(title = "Pontuação média em Avaliação Continuada por ano escolar")
+            fig2.update_layout(legend=dict(yanchor="top",y=0.99,xanchor="left",x=0.30))
+            st.plotly_chart(fig2)
+
+        st.write('---')
+
         ############## Avaliação Diagnóstica ##############
 
         ###### Leitura dos dados de cada rotina por namespace ######
@@ -216,7 +324,7 @@ if senha_preenchida == 'eduqo' and nome != 'Nome':
         ###### Leitura dos dados de cada rotina por ano escolar ######
         avaliacao_diagnostica_anoescolar = pd.read_csv('./CSV/Avaliação Diagnóstica/Resultados por ano escolar/avaliacao_diagnostica_anoescolar.csv')
         avaliacao_diagnostica_anoescolar2 = pd.merge(namespaces_x_hubspot3['namespace'],avaliacao_diagnostica_anoescolar, on = 'namespace', how = 'left')
-        #st.dataframe(avaliacao_diagnostica_anoescolar2)
+
         ###### Normalização dos dados ######
         for coluna in avaliacao_diagnostica_namespace4.columns:
             if coluna in ('Nº de AAs aplicadas da estante','Média de exercícios em relatórios de AD por turma'):
@@ -318,7 +426,7 @@ if senha_preenchida == 'eduqo' and nome != 'Nome':
                 avaliacao_somativa_temporal2 = normalizacao_datetime_inversa(avaliacao_somativa_temporal2,coluna,0.1, 0.9)
         avaliacao_somativa_temporal3 = avaliacao_somativa_temporal2.drop(columns = ['Unnamed: 0'])
 
-        ###### Normalização dos dados temporais ######
+        ###### Normalização dos dados por ano escolar ######
         for coluna in avaliacao_somativa_anoescolar2.columns:
             if coluna in ('Número de AAs por turma','Média de exercícios de AA por turma'):
                 avaliacao_somativa_anoescolar2 = normalizacao(avaliacao_somativa_anoescolar2,coluna,0.1, 0.9)
@@ -376,7 +484,8 @@ if senha_preenchida == 'eduqo' and nome != 'Nome':
 
         with st.expander("Visualizar o histórico semanal da média de Avaliação Somativa -> (clique aqui 🖱️)"):
             avaliacao_somativa_temporal_select['Média'] = 100*avaliacao_somativa_temporal_select['Média']
-            fig = px.bar(avaliacao_somativa_temporal_select, x = avaliacao_somativa_temporal_select['Semana'], y = avaliacao_somativa_temporal_select['Média'], range_y=[0,100], color_discrete_sequence = ['#4a8ae8']*len(avaliacao_somativa_temporal_select))
+            avaliacao_somativa_temporal_select2 = avaliacao_somativa_temporal_select.groupby('Semana').mean().reset_index()
+            fig = px.bar(avaliacao_somativa_temporal_select2, x = avaliacao_somativa_temporal_select2['Semana'], y = avaliacao_somativa_temporal_select2['Média'], range_y=[0,100], color_discrete_sequence = ['#4a8ae8']*len(avaliacao_somativa_temporal_select2))
             avaliacao_somativa_temporal4['Tempo de correção por aluno por questão'] = pd.to_numeric(avaliacao_somativa_temporal4['Tempo de correção por aluno por questão'],errors = 'coerce')
             avaliacao_somativa_temporal4['Tempo médio entre publicação e ínicio de AA'] = pd.to_numeric(avaliacao_somativa_temporal4['Tempo médio entre publicação e ínicio de AA'],errors = 'coerce')
             avaliacao_somativa_temporal4['Tempo médio entre criação e publicação de AA por questão'] = pd.to_numeric(avaliacao_somativa_temporal4['Tempo médio entre criação e publicação de AA por questão'],errors = 'coerce')
@@ -401,20 +510,85 @@ if senha_preenchida == 'eduqo' and nome != 'Nome':
             avaliacao_somativa_anoescolar6 = avaliacao_somativa_anoescolar5.sort_values(by = 'grade')
             juncao_hubspot_somativa_anoescolar4 = juncao_hubspot_somativa_anoescolar3.groupby('grade').mean().reset_index()
             juncao_hubspot_somativa_anoescolar5 = juncao_hubspot_somativa_anoescolar4.sort_values(by = 'grade')
-            juncao_auxiliar = pd.merge(avaliacao_somativa_anoescolar6,juncao_hubspot_somativa_anoescolar5, on = 'grade', how = 'left')
-            juncao_auxiliar2 = pd.merge(juncao_auxiliar,avaliacao_somativa_anoescolar_select2, on = 'grade', how = 'left')
-            fig2 = px.bar(juncao_auxiliar2, x = juncao_auxiliar2['grade'], y = juncao_auxiliar2['Média'], range_y=[0,100], color_discrete_sequence = ['#4a8ae8']*len(juncao_auxiliar2))
-            fig2.add_scatter(x = juncao_auxiliar2['grade'], y = 100*juncao_auxiliar2['Média_x'], name = 'Média Eduqo', line=dict(color="red"))
-            fig2.add_scatter(x = juncao_auxiliar2['grade'], y = 100*juncao_auxiliar2['Média_y'], name = 'Média '+avaliacao_somativa_anoescolar_select_juncao['Produto'][0]+' com faixa de licenças '+avaliacao_somativa_anoescolar_select_juncao['licenças'][0], line=dict(color="black"))
+            juncao_auxiliar_somativa = pd.merge(avaliacao_somativa_anoescolar6,juncao_hubspot_somativa_anoescolar5, on = 'grade', how = 'left')
+            juncao_auxiliar_somativa2 = pd.merge(juncao_auxiliar_somativa,avaliacao_somativa_anoescolar_select2, on = 'grade', how = 'left')
+            fig2 = px.bar(juncao_auxiliar_somativa2, x = juncao_auxiliar_somativa2['grade'], y = juncao_auxiliar_somativa2['Média'], range_y=[0,100], color_discrete_sequence = ['#4a8ae8']*len(juncao_auxiliar_somativa2))
+            fig2.add_scatter(x = juncao_auxiliar_somativa2['grade'], y = 100*juncao_auxiliar_somativa2['Média_x'], name = 'Média Eduqo', line=dict(color="red"))
+            fig2.add_scatter(x = juncao_auxiliar_somativa2['grade'], y = 100*juncao_auxiliar_somativa2['Média_y'], name = 'Média '+avaliacao_somativa_anoescolar_select_juncao['Produto'][0]+' com faixa de licenças '+avaliacao_somativa_anoescolar_select_juncao['licenças'][0], line=dict(color="black"))
             fig2.update_layout(title = "Pontuação média em Avaliação Somativa por ano escolar")
             fig2.update_layout(legend=dict(yanchor="top",y=0.99,xanchor="left",x=0.30))
             st.plotly_chart(fig2)
 
-
+        st.write('---')
 
         ######################## Resultados detalhados por rotina ########################
 
         st.subheader('**Resultados detalhados por Rotina Pedagógica Digital**')
+
+        ############## Avaliação Continuada ##############
+
+        st.markdown('**Avaliação Continuada**')
+
+        ###### Namespaces destaques ######
+        avaliacao_continuada_namespace6 = avaliacao_continuada_namespace5.copy()
+        avaliacao_continuada_namespace6['Média'] = round(100*avaliacao_continuada_namespace6['Média'],2)
+        avaliacao_continuada_namespace6.rename(columns = {'Média':'Média (0 a 100)'}, inplace = True)
+        avaliacao_continuada_namespace7 = pd.DataFrame()
+        avaliacao_continuada_namespace7['namespace'] = avaliacao_continuada_namespace6['namespace']
+        avaliacao_continuada_namespace7['Média (0 a 100)'] = avaliacao_continuada_namespace6['Média (0 a 100)']
+        avaliacao_continuada_namespace7['Quartil'] = avaliacao_continuada_namespace6['Quartil']
+        avaliacao_continuada_namespace8 = avaliacao_continuada_namespace7.groupby('namespace').mean()
+        avaliacao_continuada_namespace9 = quartis(avaliacao_continuada_namespace8,'Média (0 a 100)').reset_index()
+        avaliacao_continuada_namespace10 = avaliacao_continuada_namespace9.sort_values(by = 'Média (0 a 100)', ascending = False)
+        with st.expander("Visualizar as escolas destaque em Avaliação Continuada -> (clique aqui 🖱️)"):
+            avaliacao_continuada_namespace11 = destaques_rotina(avaliacao_continuada_namespace10)
+            st.table(avaliacao_continuada_namespace11)
+
+        ###### Visualizar um quartil ######
+        ver_quartil_avaliacao_continuada = st.radio('Escolha o quartil que deseja ver os resultados de Avaliação Continuada 📈',('Nenhum','1º','2º','3º','4º'))
+        if ver_quartil_avaliacao_continuada != 'Nenhum':
+            avaliacao_continuada_namespace_quartil = visualizacao_resultado_quartil(ver_quartil_avaliacao_continuada,avaliacao_continuada_namespace10)
+            st.table(avaliacao_continuada_namespace_quartil)
+
+        ###### Visualização das métricas do namespace selecionado ######
+        with st.expander("Visualizar os resultados de Avaliação Continuada do namespace selecionado por métrica -> (clique aqui 🖱️)"):
+            for coluna in avaliacao_continuada_namespace_select.columns:
+                if (coluna != 'namespace' and coluna != 'Média' and coluna != 'Quartil'):
+                    if avaliacao_continuada_namespace_select[coluna][0] >= avaliacao_continuada_namespace6[coluna].mean():
+                        comparativo_media_avaliacao_continuada = ' 🟩'
+                    else:
+                        comparativo_media_avaliacao_continuada = ' 🟨'
+                    st.markdown('**'+coluna+' (Pontuação: '+str(round(100*avaliacao_continuada_namespace_select[coluna][0], 2))+')**')
+                    st.progress(avaliacao_continuada_namespace_select[coluna][0])
+                    st.write('**Média Eduqo: '+str(round(100*avaliacao_continuada_namespace6[coluna].mean(), 2))+comparativo_media_avaliacao_continuada+'**')
+                    if avaliacao_continuada_namespace_select[coluna][0] >= juncao_hubspot_continuada_namespace3[coluna].mean():
+                        comparativo_media_avaliacao_continuada_juncao = ' 🟩'
+                    else:
+                        comparativo_media_avaliacao_continuada_juncao = ' 🟨'
+                    st.write('**Média '+avaliacao_continuada_namespace_select_juncao['Produto'][0]+' com faixa de licenças de '+avaliacao_continuada_namespace_select_juncao['licenças'][0]+': '+str(round(100*juncao_hubspot_continuada_namespace3[coluna].mean(), 2))+comparativo_media_avaliacao_continuada_juncao+'**')
+                    beta = st.checkbox('Visualizar histórico semanal de '+coluna+' -> (clique aqui 🖱️)')
+                    if beta == True:
+                        avaliacao_continuada_temporal_select[coluna] = 100*avaliacao_continuada_temporal_select[coluna]
+                        fig = px.bar(avaliacao_continuada_temporal_select, x = avaliacao_continuada_temporal_select['Semana'], y = coluna, range_y=[0,100], color_discrete_sequence = ['#4a8ae8']*len(avaliacao_continuada_temporal_select))
+                        avaliacao_continuada_temporal5 = avaliacao_continuada_temporal3.groupby('Semana').mean().reset_index()
+                        fig.add_scatter(x = avaliacao_continuada_temporal5['Semana'], y = 100*avaliacao_continuada_temporal5[coluna],mode='lines', name = 'Média Eduqo', line=dict(color="red"))
+                        juncao_hubspot_continuada_temporal4 = juncao_hubspot_continuada_temporal3.groupby('Semana').mean().reset_index()
+                        fig.add_scatter(x = juncao_hubspot_continuada_temporal4['Semana'], y = 100*juncao_hubspot_continuada_temporal4[coluna],mode='lines', name = 'Média '+avaliacao_continuada_temporal_select_juncao['Produto'][0]+' com faixa de licenças '+avaliacao_continuada_temporal_select_juncao['licenças'][0], line=dict(color="black"))
+                        fig.update_layout(title = "Pontuação média por semana")
+                        fig.update_layout(legend=dict(yanchor="top",y=0.99,xanchor="left",x=0.30))
+                        st.plotly_chart(fig)
+                    beta = st.checkbox('Visualizar resultados por ano escolar de '+coluna+' -> (clique aqui 🖱️)')
+                    if beta == True:
+                        juncao_auxiliar_continuada2[coluna] = 100*juncao_auxiliar_continuada2[coluna]
+                        fig2 = px.bar(juncao_auxiliar_continuada2, x = juncao_auxiliar_continuada2['grade'], y = juncao_auxiliar_continuada2[coluna], range_y=[0,100], color_discrete_sequence = ['#4a8ae8']*len(juncao_auxiliar_continuada2))
+                        fig2.add_scatter(x = juncao_auxiliar_continuada2['grade'], y = 100*juncao_auxiliar_continuada2[coluna+'_x'], name = 'Média Eduqo', line=dict(color="red"))
+                        fig2.add_scatter(x = juncao_auxiliar_continuada2['grade'], y = 100*juncao_auxiliar_continuada2[coluna+'_y'], name = 'Média '+avaliacao_continuada_anoescolar_select_juncao['Produto'][0]+' com faixa de licenças '+avaliacao_continuada_anoescolar_select_juncao['licenças'][0], line=dict(color="black"))
+                        fig2.update_layout(title = "Pontuação média por ano escolar")
+                        fig2.update_layout(legend=dict(yanchor="top",y=0.99,xanchor="left",x=0.30))
+                        st.plotly_chart(fig2)
+                    st.write('----')
+
+        st.write('---')
 
         ############## Avaliação Diagnóstica ##############
 
@@ -469,6 +643,7 @@ if senha_preenchida == 'eduqo' and nome != 'Nome':
                             st.plotly_chart(fig2)
                     st.write('----')
 
+        st.write('---')
 
         ############## Avaliação Somativa ##############
 
@@ -512,7 +687,7 @@ if senha_preenchida == 'eduqo' and nome != 'Nome':
                         comparativo_media_avaliacao_somativa_juncao = ' 🟨'
                     st.write('**Média '+avaliacao_somativa_namespace_select_juncao['Produto'][0]+' com faixa de licenças de '+avaliacao_somativa_namespace_select_juncao['licenças'][0]+': '+str(round(100*juncao_hubspot_somativa_namespace3[coluna].mean(), 2))+comparativo_media_avaliacao_somativa_juncao+'**')
                     if coluna != 'Porcentagem de administrantes que visualizaram relatórios de AA':
-                        beta = st.checkbox('Visualizar histórico semanal de '+coluna+' -> (clique aqui 🖱️)')
+                        beta = st.checkbox('Visualizar histórico semanal de '+coluna+' -> (clique aqui 🖱️) ')
                         if beta == True:
                             avaliacao_somativa_temporal_select[coluna] = 100*avaliacao_somativa_temporal_select[coluna]
                             fig = px.bar(avaliacao_somativa_temporal_select, x = avaliacao_somativa_temporal_select['Semana'], y = coluna, range_y=[0,100], color_discrete_sequence = ['#4a8ae8']*len(avaliacao_somativa_temporal_select))
@@ -527,27 +702,37 @@ if senha_preenchida == 'eduqo' and nome != 'Nome':
                             fig.update_layout(legend=dict(yanchor="top",y=0.99,xanchor="left",x=0.30))
                             st.plotly_chart(fig)
                     if coluna in ('Porcentagem de engajamento em AAs','Número de AAs por turma','Média de exercícios de AA por turma','Porcentagem de visualização de relatórios de AA'):
-                        beta = st.checkbox('Visualizar resultados por ano escolar de '+coluna+' -> (clique aqui 🖱️)')
+                        beta = st.checkbox('Visualizar resultados por ano escolar de '+coluna+' -> (clique aqui 🖱️) ')
                         if beta == True:
-                            juncao_auxiliar2[coluna] = 100*juncao_auxiliar2[coluna]
-                            fig2 = px.bar(juncao_auxiliar2, x = juncao_auxiliar2['grade'], y = juncao_auxiliar2[coluna], range_y=[0,100], color_discrete_sequence = ['#4a8ae8']*len(juncao_auxiliar2))
-                            fig2.add_scatter(x = juncao_auxiliar2['grade'], y = 100*juncao_auxiliar2[coluna+'_x'], name = 'Média Eduqo', line=dict(color="red"))
-                            fig2.add_scatter(x = juncao_auxiliar2['grade'], y = 100*juncao_auxiliar2[coluna+'_y'], name = 'Média '+avaliacao_somativa_anoescolar_select_juncao['Produto'][0]+' com faixa de licenças '+avaliacao_somativa_anoescolar_select_juncao['licenças'][0], line=dict(color="black"))
+                            juncao_auxiliar_somativa2[coluna] = 100*juncao_auxiliar_somativa2[coluna]
+                            fig2 = px.bar(juncao_auxiliar_somativa2, x = juncao_auxiliar_somativa2['grade'], y = juncao_auxiliar_somativa2[coluna], range_y=[0,100], color_discrete_sequence = ['#4a8ae8']*len(juncao_auxiliar_somativa2))
+                            fig2.add_scatter(x = juncao_auxiliar_somativa2['grade'], y = 100*juncao_auxiliar_somativa2[coluna+'_x'], name = 'Média Eduqo', line=dict(color="red"))
+                            fig2.add_scatter(x = juncao_auxiliar_somativa2['grade'], y = 100*juncao_auxiliar_somativa2[coluna+'_y'], name = 'Média '+avaliacao_somativa_anoescolar_select_juncao['Produto'][0]+' com faixa de licenças '+avaliacao_somativa_anoescolar_select_juncao['licenças'][0], line=dict(color="black"))
                             fig2.update_layout(title = "Pontuação média por ano escolar")
                             fig2.update_layout(legend=dict(yanchor="top",y=0.99,xanchor="left",x=0.30))
                             st.plotly_chart(fig2)
                         st.write('----')
+        
+        st.write('---')
+
+        """
+            ### 🥳 **Lançamento recente:**
+
+            #### Avaliação Continuada
+
+            #
+        """
         """
             ### 📅 **Próximos lançamentos:**
 
-            #### Avaliação Continuada
             #### Tarefa de Casa
             #### Reforço/aprofundamento
             #### Ensino Híbrido
 
             #
         """
-        #print(banco_de_dados2.dtypes)
+        st.write('---')
+
         nps = st.selectbox('Em uma escala de 0 a 10, o quanto você acha que esse relatório te ajuda no dia a dia?', ['Nota','0','1','2','3','4','5','6','7','8','9','10'])
         text = st.empty()
         value = ""
