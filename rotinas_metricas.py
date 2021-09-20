@@ -11,8 +11,6 @@ import plotly.express as px
 from funcoes import *
 from git import Repo
 
-
-
 ######################## Configuração da página ########################
 
 st.set_page_config(
