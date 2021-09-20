@@ -77,7 +77,6 @@ senha_preenchida = str(st.text_input("Digite a senha para conseguir acessar o re
         #### Dica: Nome da Edtech mais cabulosa do Brasil!
         ##
 """
-
 nomes_eduqo = pd.read_csv('./CSV/nomes_eduqo.csv')
 nomes_eduqo = inserir_linha(pd.DataFrame(data = nomes_eduqo['Nomes'].unique()),pd.DataFrame({0: 'Nome'}, index=[-1]))
 nome = str(st.selectbox('Digite o seu nome',nomes_eduqo[0]))
@@ -87,7 +86,6 @@ if senha_preenchida == 'eduqo' and nome != 'Nome':
     row = [str(datetime.today()),nome]
     index = 2
     sheet.insert_row(row, index)
-    #st.dataframe(banco_de_dados2)
 
     ######################## Introdução ########################
 
