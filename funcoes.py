@@ -127,6 +127,7 @@ def truncar(num, digits):
     return float(str(sp[0])+'.'+str(sp[1][0:digits]))
 
 def obter_semana(dataframe, coluna):
+    dataframe = dataframe.reset_index(drop = True)
     dataframe['Semana'] = 0
     for i in range(len(dataframe[coluna])):
         aux2 = str(dataframe[coluna][i])
