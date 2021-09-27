@@ -122,7 +122,7 @@ def normalizacao_datetime_inversa(df,coluna,inf,sup):
             df.loc[i,coluna] = 1   
     return df
 
-def trunc(num, digits):
+def truncar(num, digits):
     sp = str(num).split('.')
     return float(str(sp[0])+'.'+str(sp[1][0:digits]))
 

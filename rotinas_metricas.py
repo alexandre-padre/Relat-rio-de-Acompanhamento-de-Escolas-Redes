@@ -251,9 +251,9 @@ if senha_preenchida == 'eduqo' and nome != 'Nome':
             porc_aluno_ativo = alunos_ativos3['count'][0]/(alunos_ativos3['count'][0]+adm_ativo2['count'][0]+doc_ativo2['count'][0])
             porc_doc_ativo = doc_ativo2['count'][0]/(alunos_ativos3['count'][0]+adm_ativo2['count'][0]+doc_ativo2['count'][0])
             porc_adm_ativo = adm_ativo2['count'][0]/(alunos_ativos3['count'][0]+adm_ativo2['count'][0]+doc_ativo2['count'][0])
-            porc_adm_ativo2 = round(100*trunc(porc_adm_ativo,3),3)
-            porc_aluno_ativo2 = round(100*trunc(porc_aluno_ativo,3),3) 
-            porc_doc_ativo2 = round(100*trunc(porc_doc_ativo,3),3)    
+            porc_adm_ativo2 = round(100*truncar(porc_adm_ativo,3),3)
+            porc_aluno_ativo2 = round(100*truncar(porc_aluno_ativo,3),3) 
+            porc_doc_ativo2 = round(100*truncar(porc_doc_ativo,3),3)    
 
             st.write('O total de administrantes é **'+str(adm_ativo2['count'][0])+' ('+str(porc_adm_ativo2)+'%)**, de professores é **'+str(doc_ativo2['count'][0])+' ('+str(porc_doc_ativo2)+'%)** e a quantidade de alunos é **'+str(alunos_ativos3['count'][0])+' ('+str(porc_aluno_ativo2)+'%)**.')    
 
@@ -281,7 +281,7 @@ if senha_preenchida == 'eduqo' and nome != 'Nome':
             fig.update_layout(title = "Exercícios resolvidos de AA por aluno")
             st.plotly_chart(fig)
             
-            st.write('A média de exercícios resolvidos em todas as semanas é **'+str(round(trunc(exercicios_realizados_namespace_select_tempo3['Exercícios resolvidos por aluno'].mean(),3),3))+'** exercícios por aluno.')
+            st.write('A média de exercícios resolvidos em todas as semanas é **'+str(round(truncar(exercicios_realizados_namespace_select_tempo3['Exercícios resolvidos por aluno'].mean(),3),3))+'** exercícios por aluno.')
 
             """
                 ## 🚀 **Exercícios resolvidos (Séries de exercícios)**
@@ -305,7 +305,7 @@ if senha_preenchida == 'eduqo' and nome != 'Nome':
             fig.update_layout(title = "Exercícios resolvidos de SE por aluno")
             st.plotly_chart(fig)
 
-            st.write('A média de exercícios resolvidos em todas as semanas é **'+str(round(trunc(exercicios_realizados_se_namespace_select_tempo3['Exercícios resolvidos de SE por aluno'].mean(),3),3))+'** exercícios por aluno.')
+            st.write('A média de exercícios resolvidos em todas as semanas é **'+str(round(truncar(exercicios_realizados_se_namespace_select_tempo3['Exercícios resolvidos de SE por aluno'].mean(),3),3))+'** exercícios por aluno.')
 
             """
                 ## 🚀 **Conteúdos estudados**
@@ -325,7 +325,7 @@ if senha_preenchida == 'eduqo' and nome != 'Nome':
             fig.update_layout(title = "Conteudos estudados por aluno")
             st.plotly_chart(fig)
 
-            st.write('A média de conteúdos estudados em todas as semanas é **'+str(round(trunc(conteudos_estudados_namespace_select_tempo3['Conteudos estudados por aluno'].mean(),3),3))+'** conteúdos por aluno.')
+            st.write('A média de conteúdos estudados em todas as semanas é **'+str(round(truncar(conteudos_estudados_namespace_select_tempo3['Conteudos estudados por aluno'].mean(),3),3))+'** conteúdos por aluno.')
 
             """
                 ### **Benefício 2**: Professores que estão personalizando a aprendizagem.
@@ -339,7 +339,7 @@ if senha_preenchida == 'eduqo' and nome != 'Nome':
             fig.update_layout(title = "Engajamento de professores")
             st.plotly_chart(fig)
 
-            st.write('A média de acesso por professores por dia é **'+str(round(trunc(100*profs_acessaram_select_tempo3['Engajamento de professores'].mean(),3),3))+'%**.')
+            st.write('A média de acesso por professores por dia é **'+str(round(truncar(100*profs_acessaram_select_tempo3['Engajamento de professores'].mean(),3),3))+'%**.')
 
             """
                 ## 🚀 **Materiais criados por professor**
@@ -352,7 +352,7 @@ if senha_preenchida == 'eduqo' and nome != 'Nome':
             fig.update_layout(title = "Materiais criados por professor")
             st.plotly_chart(fig)
 
-            st.write('A média de materiais postados por professor por semana é **'+str(round(trunc(profs_materiais_select_tempo3['Materiais por professor'].mean(),3),3))+'**.')
+            st.write('A média de materiais postados por professor por semana é **'+str(round(truncar(profs_materiais_select_tempo3['Materiais por professor'].mean(),3),3))+'**.')
 
             """
                 ## 🚀 **Exercícios criados por professor**
@@ -365,7 +365,7 @@ if senha_preenchida == 'eduqo' and nome != 'Nome':
             fig.update_layout(title = "Exercícios criados por professor")
             st.plotly_chart(fig)
 
-            st.write('A média de exercícios criados por professor por semana é **'+str(round(trunc(profs_exercicios_select_tempo3['Exercícios por professor'].mean(),3),3))+'**.')
+            st.write('A média de exercícios criados por professor por semana é **'+str(round(truncar(profs_exercicios_select_tempo3['Exercícios por professor'].mean(),3),3))+'**.')
 
             """
                 ### **Benefício 3**: Escola que analisa dados para personalização da aprendizagem.
@@ -385,7 +385,7 @@ if senha_preenchida == 'eduqo' and nome != 'Nome':
             fig.update_layout(title = "Porcentagem de professores que visualizam relatórios")
             st.plotly_chart(fig)
 
-            st.write('A porcentagem de professores que visualizaram relatórios semanalmente é de **'+str(round(trunc(100*profs_relatorios_select_tempo6['Engajamento na visualização de relatórios'].mean(),3),3))+'%**.')
+            st.write('A porcentagem de professores que visualizaram relatórios semanalmente é de **'+str(round(truncar(100*profs_relatorios_select_tempo6['Engajamento na visualização de relatórios'].mean(),3),3))+'%**.')
 
     if escolha_relatorio == 'Relatório QBR de Redes':
         namespace_rede = pd.read_csv('./CSV/QBR/Resultados Query/namespace_rede.csv', sep = ',')
