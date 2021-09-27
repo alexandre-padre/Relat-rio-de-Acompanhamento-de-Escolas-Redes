@@ -1,6 +1,7 @@
 import pandas as pd
 from datetime import timedelta
 from git import Repo
+import datetime as dt
 
   
 
@@ -120,3 +121,30 @@ def normalizacao_datetime_inversa(df,coluna,inf,sup):
         if (var_aux <= var_inf[inf] and var_aux != timedelta(days=0)):
             df.loc[i,coluna] = 1   
     return df
+
+def trunc(num, digits):
+    sp = str(num).split('.')
+    return float(str(sp[0])+'.'+str(sp[1][0:digits]))
+
+def obter_semana(dataframe, coluna):
+    dataframe['Semana'] = 0
+    for i in range(len(dataframe[coluna])):
+        aux2 = str(dataframe[coluna][i])
+        #aux2 = dataframe[coluna][i].strftime('%Y-%m-%d')
+        aux = aux2.split('-')
+        for j in range(len(aux)):
+            aux[j] = int(aux[j])
+        dataframe['Semana'][i] = dt.date(aux[0],aux[1],aux[2]).isocalendar()[1]
+    return dataframe
+
+def filtro_data(dataframe, coluna, periodo):
+    dataframe[coluna] = pd.to_datetime(dataframe[coluna])
+    dataframe2 = dataframe[dataframe[coluna] >= pd.to_datetime(periodo[0])]
+    dataframe3 = dataframe2[dataframe2[coluna] <= pd.to_datetime(periodo[1])]
+    return dataframe3
+
+def filtro_uniao_rede(dataframe, namespace_rede2, rede):
+    dataframe2 = pd.merge(namespace_rede2,dataframe, on = 'namespace', how = 'inner')
+    dataframe3 = dataframe2.drop(columns = ['Unnamed: 0_x','Unnamed: 0_y'])
+    dataframe4 = dataframe3[dataframe3['name'] == rede]
+    return dataframe4
