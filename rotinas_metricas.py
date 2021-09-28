@@ -313,12 +313,16 @@ if senha_preenchida == 'eduqo' and nome != 'Nome':
             """
             ######################### Conteúdos estudados ############################
             conteudos_estudados_namespace_select_tempo2 = conteudos_estudados_namespace_select_tempo2.reset_index(drop = True)
-            conteudos_estudados_namespace_select_tempo3 = conteudos_estudados_namespace_select_tempo2.groupby(['namespace','Semana']).sum().reset_index()   
+            conteudos_estudados_namespace_select_tempo2['Conteudos estudados por aluno'] = conteudos_estudados_namespace_select_tempo2['count_y']/conteudos_estudados_namespace_select_tempo2['count_x']
+            conteudos_estudados_namespace_select_tempo2_aux = conteudos_estudados_namespace_select_tempo2.drop(columns = ['count_x','count_y'])
+            conteudos_estudados_namespace_select_tempo3 = conteudos_estudados_namespace_select_tempo2_aux.groupby(['namespace','Semana']).sum().reset_index()   
             fig = px.bar(conteudos_estudados_namespace_select_tempo3, x = conteudos_estudados_namespace_select_tempo3['Semana'], y = conteudos_estudados_namespace_select_tempo3['Conteudos estudados por aluno'], color_discrete_sequence = ['#4a8ae8']*len(conteudos_estudados_namespace_select_tempo3))
             
             if len(anoescolar_select) != 0:
                 conteudos_estudados_anoescolar_select_tempo2 = conteudos_estudados_anoescolar_select_tempo2.reset_index(drop = True)
-                conteudos_estudados_anoescolar_select_tempo3 = conteudos_estudados_anoescolar_select_tempo2.groupby(['namespace','Semana','grade']).sum().reset_index()
+                conteudos_estudados_anoescolar_select_tempo2['Conteudos estudados por aluno'] = conteudos_estudados_anoescolar_select_tempo2['count_y']/conteudos_estudados_anoescolar_select_tempo2['count_x']
+                conteudos_estudados_anoescolar_select_tempo2_aux = conteudos_estudados_anoescolar_select_tempo2.drop(columns = ['count_x','count_y'])
+                conteudos_estudados_anoescolar_select_tempo3 = conteudos_estudados_anoescolar_select_tempo2_aux.groupby(['namespace','Semana','grade']).sum().reset_index()
                 for i in range(len(anoescolar_select)):
                     conteudos_estudados_anoescolar_select_tempo4 = conteudos_estudados_anoescolar_select_tempo3.loc[conteudos_estudados_anoescolar_select_tempo3['grade'] == anoescolar_select[i]]
                     fig.add_scatter(x = conteudos_estudados_anoescolar_select_tempo4['Semana'], y = conteudos_estudados_anoescolar_select_tempo4['Conteudos estudados por aluno'],mode='lines', name = anoescolar_select[i], line=dict(color=cor[i]))
@@ -334,7 +338,9 @@ if senha_preenchida == 'eduqo' and nome != 'Nome':
             """
             ######################### Acesso de professores à plataforma ############################
             profs_acessaram_select_tempo2 = profs_acessaram_select_tempo2.reset_index(drop = True)
-            profs_acessaram_select_tempo3 = profs_acessaram_select_tempo2.groupby(['namespace','Semana']).mean().reset_index()   
+            profs_acessaram_select_tempo2['Engajamento de professores'] = profs_acessaram_select_tempo2['count_y']/profs_acessaram_select_tempo2['count_x']
+            profs_acessaram_select_tempo2_aux = profs_acessaram_select_tempo2.drop(columns = ['count_x','count_y'])
+            profs_acessaram_select_tempo3 = profs_acessaram_select_tempo2_aux.groupby(['namespace','Semana']).mean().reset_index()   
             fig = px.bar(profs_acessaram_select_tempo3, x = profs_acessaram_select_tempo3['Semana'], y = 100*profs_acessaram_select_tempo3['Engajamento de professores'], range_y=[0,100], color_discrete_sequence = ['#4a8ae8']*len(profs_acessaram_select_tempo3))
             fig.update_layout(title = "Engajamento de professores")
             st.plotly_chart(fig)
@@ -347,7 +353,9 @@ if senha_preenchida == 'eduqo' and nome != 'Nome':
             """
             ######################### Materiais criados por professor ############################
             profs_materiais_select_tempo2 = profs_materiais_select_tempo2.reset_index(drop = True)
-            profs_materiais_select_tempo3 = profs_materiais_select_tempo2.groupby(['namespace','Semana']).sum().reset_index()   
+            profs_materiais_select_tempo2['Materiais por professor'] = profs_materiais_select_tempo2['count_y']/profs_materiais_select_tempo2['count_x']
+            profs_materiais_select_tempo2_aux = profs_materiais_select_tempo2.drop(columns = ['count_x','count_y'])
+            profs_materiais_select_tempo3 = profs_materiais_select_tempo2_aux.groupby(['namespace','Semana']).sum().reset_index()   
             fig = px.bar(profs_materiais_select_tempo3, x = profs_materiais_select_tempo3['Semana'], y = profs_materiais_select_tempo3['Materiais por professor'], color_discrete_sequence = ['#4a8ae8']*len(profs_materiais_select_tempo3))
             fig.update_layout(title = "Materiais criados por professor")
             st.plotly_chart(fig)
@@ -360,7 +368,9 @@ if senha_preenchida == 'eduqo' and nome != 'Nome':
             """
             ######################### Exercícios criador por professores ############################
             profs_exercicios_select_tempo2 = profs_exercicios_select_tempo2.reset_index(drop = True)
-            profs_exercicios_select_tempo3 = profs_exercicios_select_tempo2.groupby(['namespace','Semana']).sum().reset_index()   
+            profs_exercicios_select_tempo2['Exercícios por professor'] = profs_exercicios_select_tempo2['count_y']/profs_exercicios_select_tempo2['count_x']
+            profs_exercicios_select_tempo2_aux = profs_exercicios_select_tempo2.drop(columns = ['count_x','count_y'])
+            profs_exercicios_select_tempo3 = profs_exercicios_select_tempo2_aux.groupby(['namespace','Semana']).sum().reset_index()   
             fig = px.bar(profs_exercicios_select_tempo3, x = profs_exercicios_select_tempo3['Semana'], y = profs_exercicios_select_tempo3['Exercícios por professor'], color_discrete_sequence = ['#4a8ae8']*len(profs_exercicios_select_tempo3))
             fig.update_layout(title = "Exercícios criados por professor")
             st.plotly_chart(fig)
@@ -388,6 +398,7 @@ if senha_preenchida == 'eduqo' and nome != 'Nome':
             st.write('A porcentagem de professores que visualizaram relatórios semanalmente é de **'+str(round(truncar(100*profs_relatorios_select_tempo6['Engajamento na visualização de relatórios'].mean(),3),3))+'%**.')
 
     if escolha_relatorio == 'Relatório QBR de Redes':
+
         namespace_rede = pd.read_csv('./CSV/QBR/Resultados Query/namespace_rede.csv', sep = ',')
 
         ######################### Filtro de rede ############################
@@ -416,7 +427,6 @@ if senha_preenchida == 'eduqo' and nome != 'Nome':
                 ## 🚀 **Acesso à plataforma por alunos**
                 Aqui analisamos a quantidade de acessos à plataforma, cada número representa a média semanal da quantidade de alunos que acessaram diariamente em relação ao número de alunos ativos.
             """
-
             alunos_acessaram_namespace_rede2 = filtro_uniao_rede(alunos_acessaram_namespace_rede,namespace_rede2,namespace_rede_select)
             alunos_acessaram_namespace_rede3 = obter_semana(alunos_acessaram_namespace_rede2,'day')
             alunos_acessaram_namespace_rede4 = filtro_data(alunos_acessaram_namespace_rede3,'day',periodo_data)
@@ -434,46 +444,234 @@ if senha_preenchida == 'eduqo' and nome != 'Nome':
             fig.update_layout(title = "Engajamento de alunos ativos")
             st.plotly_chart(fig)  
 
+            st.write('A média de acesso por alunos da rede por dia é **'+str(round(truncar(100*alunos_acessaram_namespace_rede6['Engajamento de alunos ativos'].mean(),3),3))+'%**.')
+
             """
                 ## 🚀 **Exercícios resolvidos (Atividades Avaliativas)**
                 Aqui analisamos a quantidade de exercícios resolvidos pelos alunos em atividades avaliativas, por aluno ativo, ou seja, é a média de exercícios de AA resolvidos por aluno em cada semana.
             """
-            
             ######################### Exercícios realizados em AAs ############################
             exercicios_realizados_namespace_rede = pd.read_csv('./CSV/QBR/Resultados por namespace/exercicios_realizados_namespace.csv')
             exercicios_realizados_namespace_rede2 = filtro_uniao_rede(exercicios_realizados_namespace_rede,namespace_rede2,namespace_rede_select)
             exercicios_realizados_namespace_rede3 = obter_semana(exercicios_realizados_namespace_rede2,'creation')
             exercicios_realizados_namespace_rede4 = filtro_data(exercicios_realizados_namespace_rede3,'creation',periodo_data)
-            exercicios_realizados_namespace_rede5 = exercicios_realizados_namespace_rede4.groupby(['name','grupo','namespace','Semana']).agg({'exercicios_realizados': 'sum', 'count': 'mean'}).reset_index()
-            exercicios_realizados_namespace_rede6 = exercicios_realizados_namespace_rede5.groupby(['name','Semana']).sum().reset_index()       
-            #exercicios_realizados_namespace_rede6['Exercícios resolvidos em AA por aluno'] = exercicios_realizados_namespace_rede6['exercicios_realizados']/exercicios_realizados_namespace_rede6['count']
-            #exercicios_realizados_namespace_rede7 = exercicios_realizados_namespace_rede6.drop(columns = ['exercicios_realizados','count'])
-            #exercicios_realizados_namespace_rede8 = exercicios_realizados_namespace_rede5.groupby(['name','grupo','Semana']).sum().reset_index()
-            #exercicios_realizados_namespace_rede8['Exercícios resolvidos em AA por aluno'] = exercicios_realizados_namespace_rede7['exercicios_realizados']/exercicios_realizados_namespace_rede7['count']
-            #exercicios_realizados_namespace_rede9 = exercicios_realizados_namespace_rede8.drop(columns = ['exercicios_realizados','count'])
-            #st.dataframe(exercicios_realizados_namespace_rede6)
-            #fig = px.bar(exercicios_realizados_namespace_rede6, x = exercicios_realizados_namespace_rede6['Semana'], y = 100*exercicios_realizados_namespace_rede6['Engajamento de alunos ativos'], range_y=[0,100], color_discrete_sequence = ['#4a8ae8']*len(exercicios_realizados_namespace_rede))
-            #df.groupby(['Sex','Survived']).agg({'Age': np.mean, 'PassengerId': np.size})
+            exercicios_realizados_namespace_rede5 = exercicios_realizados_namespace_rede4.groupby(['name','grupo','namespace','Semana']).agg({'exercicios_realizados': 'sum', 'count': 'mean'}).reset_index() 
+            exercicios_realizados_namespace_rede6 = exercicios_realizados_namespace_rede5.groupby(['name','Semana']).agg({'exercicios_realizados': 'sum', 'count': 'sum'}).reset_index() 
+            exercicios_realizados_namespace_rede6['Exercícios resolvidos em AA por aluno'] = exercicios_realizados_namespace_rede6['exercicios_realizados']/exercicios_realizados_namespace_rede6['count']
+            exercicios_realizados_namespace_rede7 = exercicios_realizados_namespace_rede6.drop(columns = ['exercicios_realizados','count'])
+            
+            fig = px.bar(exercicios_realizados_namespace_rede7, x = exercicios_realizados_namespace_rede7['Semana'], y = exercicios_realizados_namespace_rede7['Exercícios resolvidos em AA por aluno'], color_discrete_sequence = ['#4a8ae8']*len(exercicios_realizados_namespace_rede7))
+            
+            exercicios_realizados_namespace_rede8 = exercicios_realizados_namespace_rede5.groupby(['name','grupo','Semana']).agg({'exercicios_realizados': 'sum', 'count': 'sum'}).reset_index() 
+            exercicios_realizados_namespace_rede8['Exercícios resolvidos em AA por aluno'] = exercicios_realizados_namespace_rede8['exercicios_realizados']/exercicios_realizados_namespace_rede8['count']
+            exercicios_realizados_namespace_rede9 = exercicios_realizados_namespace_rede8.drop(columns = ['exercicios_realizados','count'])
+            
+            if len(namespace_grupo_select) != 0:
+                exercicios_realizados_namespace_rede9 = exercicios_realizados_namespace_rede9.reset_index(drop = True)
+                for i in range(len(namespace_grupo_select)):
+                    exercicios_realizados_namespace_rede10 = exercicios_realizados_namespace_rede9.loc[exercicios_realizados_namespace_rede9['grupo'] == namespace_grupo_select[i]]
+                    fig.add_scatter(x = exercicios_realizados_namespace_rede10['Semana'], y = exercicios_realizados_namespace_rede10['Exercícios resolvidos em AA por aluno'],mode='lines', name = namespace_grupo_select[i], line=dict(color=cor[i]))
+            fig.update_layout(title = "Exercícios resolvidos em AA por aluno")
+            st.plotly_chart(fig)   
 
+            st.write('A média de exercícios resolvidos da rede em todas as semanas é **'+str(round(truncar(exercicios_realizados_namespace_rede8['Exercícios resolvidos em AA por aluno'].mean(),3),3))+'** exercícios por aluno.')
+
+            """
+                ## 🚀 **Exercícios resolvidos (Séries de exercícios)**
+                Aqui analisamos a quantidade de exercícios resolvidos pelos alunos em séries de exercícios, por aluno ativo, ou seja, é a média de exercícios de SE resolvidos por aluno em cada semana.
+            """
             ######################### Exercícios realizados em SEs ############################
             exercicios_realizados_se_namespace_rede = pd.read_csv('./CSV/QBR/Resultados por namespace/exercicios_realizados_se_namespace.csv')
+            exercicios_realizados_se_namespace_rede2 = filtro_uniao_rede(exercicios_realizados_se_namespace_rede,namespace_rede2,namespace_rede_select)
+            exercicios_realizados_se_namespace_rede3 = obter_semana(exercicios_realizados_se_namespace_rede2,'day')
+            exercicios_realizados_se_namespace_rede4 = filtro_data(exercicios_realizados_se_namespace_rede3,'day',periodo_data)
+            exercicios_realizados_se_namespace_rede5 = exercicios_realizados_se_namespace_rede4.groupby(['name','grupo','namespace','Semana']).agg({'num_ex': 'sum', 'count': 'mean'}).reset_index() 
+            exercicios_realizados_se_namespace_rede6 = exercicios_realizados_se_namespace_rede5.groupby(['name','Semana']).agg({'num_ex': 'sum', 'count': 'sum'}).reset_index() 
+            exercicios_realizados_se_namespace_rede6['Exercícios resolvidos em SE por aluno'] = exercicios_realizados_se_namespace_rede6['num_ex']/exercicios_realizados_se_namespace_rede6['count']
+            exercicios_realizados_se_namespace_rede7 = exercicios_realizados_se_namespace_rede6.drop(columns = ['num_ex','count'])
+            #st.dataframe(exercicios_realizados_se_namespace_rede7)
 
+            fig = px.bar(exercicios_realizados_se_namespace_rede7, x = exercicios_realizados_se_namespace_rede7['Semana'], y = exercicios_realizados_se_namespace_rede7['Exercícios resolvidos em SE por aluno'], color_discrete_sequence = ['#4a8ae8']*len(exercicios_realizados_se_namespace_rede7))
+            
+            exercicios_realizados_se_namespace_rede8 = exercicios_realizados_se_namespace_rede5.groupby(['name','grupo','Semana']).agg({'num_ex': 'sum', 'count': 'sum'}).reset_index() 
+            exercicios_realizados_se_namespace_rede8['Exercícios resolvidos em SE por aluno'] = exercicios_realizados_se_namespace_rede8['num_ex']/exercicios_realizados_se_namespace_rede8['count']
+            exercicios_realizados_se_namespace_rede9 = exercicios_realizados_se_namespace_rede8.drop(columns = ['num_ex','count'])
+            
+            if len(namespace_grupo_select) != 0:
+                exercicios_realizados_se_namespace_rede9 = exercicios_realizados_se_namespace_rede9.reset_index(drop = True)
+                for i in range(len(namespace_grupo_select)):
+                    exercicios_realizados_se_namespace_rede10 = exercicios_realizados_se_namespace_rede9.loc[exercicios_realizados_se_namespace_rede9['grupo'] == namespace_grupo_select[i]]
+                    fig.add_scatter(x = exercicios_realizados_se_namespace_rede10['Semana'], y = exercicios_realizados_se_namespace_rede10['Exercícios resolvidos em SE por aluno'],mode='lines', name = namespace_grupo_select[i], line=dict(color=cor[i]))
+            fig.update_layout(title = "Exercícios resolvidos em SE por aluno")
+            st.plotly_chart(fig) 
+
+            st.write('A média de exercícios resolvidos da rede em todas as semanas é **'+str(round(truncar(exercicios_realizados_se_namespace_rede8['Exercícios resolvidos em SE por aluno'].mean(),3),3))+'** exercícios por aluno.')
+
+            """
+                ## 🚀 **Conteúdos estudados**
+                Aqui analisamos a quantidade de conteúdos estudados, por aluno ativo, ou seja, é a média de conteúdos estudados por aluno em cada semana.
+            """
             ######################### Conteúdos estudados ############################
             conteudos_estudados_namespace_rede = pd.read_csv('./CSV/QBR/Resultados por namespace/conteudos_estudados_namespace.csv')
+            conteudos_estudados_namespace_rede2 = filtro_uniao_rede(conteudos_estudados_namespace_rede,namespace_rede2,namespace_rede_select)
+            conteudos_estudados_namespace_rede3 = obter_semana(conteudos_estudados_namespace_rede2,'day')
+            conteudos_estudados_namespace_rede4 = filtro_data(conteudos_estudados_namespace_rede3,'day',periodo_data)
+            conteudos_estudados_namespace_rede5 = conteudos_estudados_namespace_rede4.groupby(['name','grupo','namespace','Semana']).agg({'count_y': 'sum', 'count_x': 'mean'}).reset_index() 
+            conteudos_estudados_namespace_rede6 = conteudos_estudados_namespace_rede5.groupby(['name','Semana']).agg({'count_y': 'sum', 'count_x': 'sum'}).reset_index() 
+            conteudos_estudados_namespace_rede6['Conteúdos estudados por aluno'] = conteudos_estudados_namespace_rede6['count_y']/conteudos_estudados_namespace_rede6['count_x']
+            conteudos_estudados_namespace_rede7 = conteudos_estudados_namespace_rede6.drop(columns = ['count_y','count_x'])
+            #st.dataframe(conteudos_estudados_namespace_rede7)
 
+            fig = px.bar(conteudos_estudados_namespace_rede7, x = conteudos_estudados_namespace_rede7['Semana'], y = conteudos_estudados_namespace_rede7['Conteúdos estudados por aluno'], color_discrete_sequence = ['#4a8ae8']*len(conteudos_estudados_namespace_rede7))
+            
+            conteudos_estudados_namespace_rede8 = conteudos_estudados_namespace_rede5.groupby(['name','grupo','Semana']).agg({'count_y': 'sum', 'count_x': 'sum'}).reset_index() 
+            conteudos_estudados_namespace_rede8['Conteúdos estudados por aluno'] = conteudos_estudados_namespace_rede8['count_y']/conteudos_estudados_namespace_rede8['count_x']
+            conteudos_estudados_namespace_rede9 = conteudos_estudados_namespace_rede8.drop(columns = ['count_y','count_x'])
+            
+            if len(namespace_grupo_select) != 0:
+                conteudos_estudados_namespace_rede9 = conteudos_estudados_namespace_rede9.reset_index(drop = True)
+                for i in range(len(namespace_grupo_select)):
+                    conteudos_estudados_namespace_rede10 = conteudos_estudados_namespace_rede9.loc[conteudos_estudados_namespace_rede9['grupo'] == namespace_grupo_select[i]]
+                    fig.add_scatter(x = conteudos_estudados_namespace_rede10['Semana'], y = conteudos_estudados_namespace_rede10['Conteúdos estudados por aluno'],mode='lines', name = namespace_grupo_select[i], line=dict(color=cor[i]))
+            fig.update_layout(title = "Conteúdos estudados por aluno")
+            st.plotly_chart(fig) 
+
+            st.write('A média de conteúdos estudados da rede em todas as semanas é **'+str(round(truncar(conteudos_estudados_namespace_rede8['Conteúdos estudados por aluno'].mean(),3),3))+'** conteúdos por aluno.')
+
+            """
+                ### **Benefício 2**: Professores que estão personalizando a aprendizagem.
+                ## 🚀 **Acesso à plataforma por professores**
+                Aqui analisamos a quantidade de acessos à plataforma, cada número representa a média semanal da quantidade de professores que acessaram diariamente em relação ao número de professores ativos.
+            """
             ######################### Acesso a plataforma por professores ############################
             profs_acessaram_rede = pd.read_csv('./CSV/QBR/Resultados por namespace/profs_acessaram.csv')
+            profs_acessaram_rede2 = filtro_uniao_rede(profs_acessaram_rede,namespace_rede2,namespace_rede_select)
+            profs_acessaram_rede3 = obter_semana(profs_acessaram_rede2,'day')
+            profs_acessaram_rede4 = filtro_data(profs_acessaram_rede3,'day',periodo_data)
+            profs_acessaram_rede5 = profs_acessaram_rede4.groupby(['name','grupo','namespace','Semana']).agg({'count_y': 'mean', 'count_x': 'mean'}).reset_index() 
+            profs_acessaram_rede6 = profs_acessaram_rede5.groupby(['name','Semana']).agg({'count_y': 'sum', 'count_x': 'sum'}).reset_index() 
+            profs_acessaram_rede6['Engajamento de professores'] = profs_acessaram_rede6['count_y']/profs_acessaram_rede6['count_x']
+            profs_acessaram_rede7 = profs_acessaram_rede6.drop(columns = ['count_y','count_x'])
+            #st.dataframe(profs_acessaram_rede7)
 
+            fig = px.bar(profs_acessaram_rede7, x = profs_acessaram_rede7['Semana'], y = 100*profs_acessaram_rede7['Engajamento de professores'], range_y=[0,100], color_discrete_sequence = ['#4a8ae8']*len(profs_acessaram_rede7))
+            
+            profs_acessaram_rede8 = profs_acessaram_rede5.groupby(['name','grupo','Semana']).agg({'count_y': 'sum', 'count_x': 'sum'}).reset_index() 
+            profs_acessaram_rede8['Engajamento de professores'] = profs_acessaram_rede8['count_y']/profs_acessaram_rede8['count_x']
+            profs_acessaram_rede9 = profs_acessaram_rede8.drop(columns = ['count_y','count_x'])
+            
+            if len(namespace_grupo_select) != 0:
+                profs_acessaram_rede9 = profs_acessaram_rede9.reset_index(drop = True)
+                for i in range(len(namespace_grupo_select)):
+                    profs_acessaram_rede10 = profs_acessaram_rede9.loc[profs_acessaram_rede9['grupo'] == namespace_grupo_select[i]]
+                    fig.add_scatter(x = profs_acessaram_rede10['Semana'], y = 100*profs_acessaram_rede10['Engajamento de professores'],mode='lines', name = namespace_grupo_select[i], line=dict(color=cor[i]))
+            fig.update_layout(title = "Engajamento de professores")
+            st.plotly_chart(fig) 
+
+            st.write('A média de acesso por professores da rede por dia é **'+str(round(truncar(100*profs_acessaram_rede8['Engajamento de professores'].mean(),3),3))+'%**.')
+
+            """
+                ## 🚀 **Materiais criados por professor**
+                Aqui analisamos a quantidade de materiais criador por professor, cada número representa a média semanal da quantidade de materiais postados.
+            """
             ######################### Professores materiais ############################
             profs_materiais_rede = pd.read_csv('./CSV/QBR/Resultados por namespace/profs_materiais.csv')
+            profs_materiais_rede2 = filtro_uniao_rede(profs_materiais_rede,namespace_rede2,namespace_rede_select)
+            profs_materiais_rede3 = obter_semana(profs_materiais_rede2,'created')
+            profs_materiais_rede4 = filtro_data(profs_materiais_rede3,'created',periodo_data)
+            profs_materiais_rede5 = profs_materiais_rede4.groupby(['name','grupo','namespace','Semana']).agg({'count_y': 'sum', 'count_x': 'mean'}).reset_index() 
+            profs_materiais_rede6 = profs_materiais_rede5.groupby(['name','Semana']).agg({'count_y': 'sum', 'count_x': 'sum'}).reset_index() 
+            profs_materiais_rede6['Materiais criados por professor'] = profs_materiais_rede6['count_y']/profs_materiais_rede6['count_x']
+            profs_materiais_rede7 = profs_materiais_rede6.drop(columns = ['count_y','count_x'])
+            #st.dataframe(profs_materiais_rede7)
 
+            fig = px.bar(profs_materiais_rede7, x = profs_materiais_rede7['Semana'], y = profs_materiais_rede7['Materiais criados por professor'], color_discrete_sequence = ['#4a8ae8']*len(profs_materiais_rede7))
+            
+            profs_materiais_rede8 = profs_materiais_rede5.groupby(['name','grupo','Semana']).agg({'count_y': 'sum', 'count_x': 'sum'}).reset_index() 
+            profs_materiais_rede8['Materiais criados por professor'] = profs_materiais_rede8['count_y']/profs_materiais_rede8['count_x']
+            profs_materiais_rede9 = profs_materiais_rede8.drop(columns = ['count_y','count_x'])
+            
+            if len(namespace_grupo_select) != 0:
+                profs_materiais_rede9 = profs_materiais_rede9.reset_index(drop = True)
+                for i in range(len(namespace_grupo_select)):
+                    profs_materiais_rede10 = profs_materiais_rede9.loc[profs_materiais_rede9['grupo'] == namespace_grupo_select[i]]
+                    fig.add_scatter(x = profs_materiais_rede10['Semana'], y = profs_materiais_rede10['Materiais criados por professor'],mode='lines', name = namespace_grupo_select[i], line=dict(color=cor[i]))
+            fig.update_layout(title = "Materiais criados por professor")
+            st.plotly_chart(fig) 
+
+            st.write('A média de materiais postados por professor da rede por semana é **'+str(round(truncar(profs_materiais_rede8['Materiais criados por professor'].mean(),3),3))+'**.')
+
+            """
+                ## 🚀 **Exercícios criados por professor**
+                Aqui analisamos a quantidade de exercícios criador por professor, cada número representa a média semanal da quantidade de exercícios postados.
+            """
             ######################### Professores exercícios ############################
             profs_exercicios_rede = pd.read_csv('./CSV/QBR/Resultados por namespace/profs_exercicios.csv')
+            profs_exercicios_rede2 = filtro_uniao_rede(profs_exercicios_rede,namespace_rede2,namespace_rede_select)
+            profs_exercicios_rede3 = obter_semana(profs_exercicios_rede2,'created')
+            profs_exercicios_rede4 = filtro_data(profs_exercicios_rede3,'created',periodo_data)
+            profs_exercicios_rede5 = profs_exercicios_rede4.groupby(['name','grupo','namespace','Semana']).agg({'count_y': 'sum', 'count_x': 'mean'}).reset_index() 
+            profs_exercicios_rede6 = profs_exercicios_rede5.groupby(['name','Semana']).agg({'count_y': 'sum', 'count_x': 'sum'}).reset_index() 
+            profs_exercicios_rede6['Exercícios criados por professor'] = profs_exercicios_rede6['count_y']/profs_exercicios_rede6['count_x']
+            profs_exercicios_rede7 = profs_exercicios_rede6.drop(columns = ['count_y','count_x'])
+            #st.dataframe(profs_exercicios_rede7)
 
+            fig = px.bar(profs_exercicios_rede7, x = profs_exercicios_rede7['Semana'], y = profs_exercicios_rede7['Exercícios criados por professor'], color_discrete_sequence = ['#4a8ae8']*len(profs_exercicios_rede7))
+            
+            profs_exercicios_rede8 = profs_exercicios_rede5.groupby(['name','grupo','Semana']).agg({'count_y': 'sum', 'count_x': 'sum'}).reset_index() 
+            profs_exercicios_rede8['Exercícios criados por professor'] = profs_exercicios_rede8['count_y']/profs_exercicios_rede8['count_x']
+            profs_exercicios_rede9 = profs_exercicios_rede8.drop(columns = ['count_y','count_x'])
+            
+            if len(namespace_grupo_select) != 0:
+                profs_exercicios_rede9 = profs_exercicios_rede9.reset_index(drop = True)
+                for i in range(len(namespace_grupo_select)):
+                    profs_exercicios_rede10 = profs_exercicios_rede9.loc[profs_exercicios_rede9['grupo'] == namespace_grupo_select[i]]
+                    fig.add_scatter(x = profs_exercicios_rede10['Semana'], y = profs_exercicios_rede10['Exercícios criados por professor'],mode='lines', name = namespace_grupo_select[i], line=dict(color=cor[i]))
+            fig.update_layout(title = "Exercícios criados por professor")
+            st.plotly_chart(fig) 
+
+            st.write('A média de exercícios criados por professor da rede por semana é **'+str(round(truncar(profs_exercicios_rede8['Exercícios criados por professor'].mean(),3),3))+'**.')
+
+            """
+                ### **Benefício 3**: Escola que analisa dados para personalização da aprendizagem.
+                ## 🚀 **Visualização de relatórios por professor**
+                Aqui analisamos a visualização de relatórios por professor semanalmente, ou seja cada número representa a porcentagem de professores que visualizações relatórios em cada semana.
+            """
             ######################### Professores visualização de relatórios ############################
             profs_relatorios_rede = pd.read_csv('./CSV/QBR/Resultados por namespace/profs_relatorios.csv')
+            profs_relatorios_rede2 = filtro_uniao_rede(profs_relatorios_rede,namespace_rede2,namespace_rede_select)
+            profs_relatorios_rede3 = obter_semana(profs_relatorios_rede2,'creation')
+            profs_relatorios_rede4 = filtro_data(profs_relatorios_rede3,'creation',periodo_data)
+            profs_relatorios_rede5 = profs_relatorios_rede4.groupby(['name','grupo','namespace','Semana']).nunique().reset_index()
+            profs_relatorios_rede6 = profs_relatorios_rede5.drop(columns = ['creation','type'])
+            profs_ativos2 = pd.read_csv('./CSV/QBR/Resultados Query/profs_ativos.csv', sep = ',')
+            profs_ativos3 = profs_ativos2.drop(columns = ['Unnamed: 0'])
+            profs_relatorios_rede7 = pd.merge(profs_ativos3,profs_relatorios_rede6, on = 'namespace', how = 'inner')
+            #st.dataframe(profs_relatorios_rede7)
 
-            st.warning('Em construção!')
+            profs_relatorios_rede8 = profs_relatorios_rede7.groupby(['name','grupo','namespace','Semana']).agg({'user_id': 'sum', 'count': 'mean'}).reset_index() 
+            profs_relatorios_rede9 = profs_relatorios_rede8.groupby(['name','Semana']).agg({'user_id': 'sum', 'count': 'sum'}).reset_index() 
+            profs_relatorios_rede9['Engajamento de visualização de relatórios por professor'] = profs_relatorios_rede9['user_id']/profs_relatorios_rede9['count']
+            profs_relatorios_rede10 = profs_relatorios_rede9.drop(columns = ['user_id','count'])
+            #st.dataframe(profs_relatorios_rede10)
+
+            fig = px.bar(profs_relatorios_rede10, x = profs_relatorios_rede10['Semana'], y = 100*profs_relatorios_rede10['Engajamento de visualização de relatórios por professor'], range_y=[0,100], color_discrete_sequence = ['#4a8ae8']*len(profs_relatorios_rede10))
+            
+            profs_relatorios_rede11 = profs_relatorios_rede8.groupby(['name','grupo','Semana']).agg({'user_id': 'sum', 'count': 'sum'}).reset_index() 
+            profs_relatorios_rede11['Engajamento de visualização de relatórios por professor'] = profs_relatorios_rede11['user_id']/profs_relatorios_rede11['count']
+            profs_relatorios_rede12 = profs_relatorios_rede11.drop(columns = ['user_id','count'])
+            
+            if len(namespace_grupo_select) != 0:
+                profs_relatorios_rede12 = profs_relatorios_rede12.reset_index(drop = True)
+                for i in range(len(namespace_grupo_select)):
+                    profs_relatorios_rede13 = profs_relatorios_rede12.loc[profs_relatorios_rede12['grupo'] == namespace_grupo_select[i]]
+                    fig.add_scatter(x = profs_relatorios_rede13['Semana'], y = 100*profs_relatorios_rede13['Engajamento de visualização de relatórios por professor'],mode='lines', name = namespace_grupo_select[i], line=dict(color=cor[i]))
+            fig.update_layout(title = "Engajamento de visualização de relatórios por professor")
+            st.plotly_chart(fig) 
+
+            st.write('A porcentagem de professores da rede que visualizaram relatórios semanalmente é de **'+str(round(truncar(100*profs_relatorios_rede11['Engajamento de visualização de relatórios por professor'].mean(),3),3))+'%**.')
+
+            #st.warning('Em construção!')
 
     if escolha_relatorio == 'Relatório de Rotinas pegagógicas (em construção)':
 
