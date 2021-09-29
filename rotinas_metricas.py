@@ -427,7 +427,20 @@ if senha_preenchida == 'eduqo' and nome != 'Nome':
                 st.write('A porcentagem de professores que visualizaram relatórios semanalmente é de **'+str(round(truncar(100*profs_relatorios_select_tempo6['Engajamento na visualização de relatórios'].mean(),3),3))+'%**.')
             else:
                 st.warning('Não há registro de visualização de relatórios no período selecionado!')
-                
+
+        nps = st.selectbox('Em uma escala de 0 a 10, o quanto você acha que esse relatório te ajuda no dia a dia?', ['Nota','0','1','2','3','4','5','6','7','8','9','10'])
+        text = st.empty()
+        value = ""
+        if st.button('Escrever outro feedback / ponto de melhoria'):
+            value = " "
+        feedback2 = text.text_input("Caso tenha algum feedback e/ou sugestão de melhoria, escreva aqui 😊", value)
+        if nps == 'Nota':
+            nps = '-1'
+        row = [str(datetime.today()),nome,'','','','','',namespace_meio_select,str(nps),feedback2,escolha_relatorio,len(anoescolar_select)]
+        index = 2
+        sheet.insert_row(row, index)
+
+
     if escolha_relatorio == 'Relatório QBR de Redes':
 
         namespace_rede = pd.read_csv('./CSV/QBR/Resultados Query/namespace_rede.csv', sep = ',')
@@ -727,7 +740,18 @@ if senha_preenchida == 'eduqo' and nome != 'Nome':
             else:
                 st.warning('Não há registro de relatórios visualizados no período selecionado!')
 
-            #st.warning('Em construção!')
+        nps = st.selectbox('Em uma escala de 0 a 10, o quanto você acha que esse relatório te ajuda no dia a dia?', ['Nota','0','1','2','3','4','5','6','7','8','9','10'])
+        text = st.empty()
+        value = ""
+        if st.button('Escrever outro feedback / ponto de melhoria'):
+            value = " "
+        feedback2 = text.text_input("Caso tenha algum feedback e/ou sugestão de melhoria, escreva aqui 😊", value)
+        if nps == 'Nota':
+            nps = '-1'
+        row = [str(datetime.today()),nome,namespace_rede_select,len(namespace_grupo_select),'','','','',str(nps),feedback2,escolha_relatorio]
+        index = 2
+        sheet.insert_row(row, index)
+        
 
     if escolha_relatorio == 'Relatório de Rotinas pegagógicas (em construção)':
 
