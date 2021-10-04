@@ -149,3 +149,28 @@ def filtro_uniao_rede(dataframe, namespace_rede2, rede):
     dataframe3 = dataframe2.drop(columns = ['Unnamed: 0_x','Unnamed: 0_y'])
     dataframe4 = dataframe3[dataframe3['name'] == rede]
     return dataframe4
+
+def classificacao_cor(value):
+    if value >= 75:
+        color = 'blue'
+    elif value >= 50:
+        color = 'green'
+    elif value >= 25:
+        color = 'orange'
+    else:
+        color = 'red'
+    return 'color: %s' % color
+
+def medalha(dataframe, coluna):
+    dataframe['Medalha'] = ''
+    for i in range(len(dataframe[coluna])):
+        if i == 0:
+            dataframe['Medalha'][i] = '🥇'
+        if i == 1:
+            dataframe['Medalha'][i] = '🥈'
+        if i == 2:
+            dataframe['Medalha'][i] = '🥉'
+        if i > 2:
+            dataframe['Medalha'][i] = '  '   
+    dataframe.set_index('Medalha', drop = True, inplace=True)
+    return dataframe

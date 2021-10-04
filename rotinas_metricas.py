@@ -12,6 +12,7 @@ from funcoes import *
 from git import Repo
 import datetime as dt
 import random
+import plotly.graph_objects as go
 
 ######################## Configuração da página ########################
 
@@ -27,8 +28,8 @@ scope = ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/aut
 creds = ServiceAccountCredentials.from_json_keyfile_name('client_secret.json', scope)
 client = gspread.authorize(creds)
 
-sheet = client.open('Banco de Dados').sheet1          # Enquanto estiver rodando na nuvem
-#sheet = client.open('Banco de Dados - Teste').sheet1   # Enquanto estiver rodando no local
+#sheet = client.open('Banco de Dados').sheet1          # Enquanto estiver rodando na nuvem
+sheet = client.open('Banco de Dados - Teste').sheet1   # Enquanto estiver rodando no local
 
 #### Colunas (id, Data e Hora, Nome, Rede, Grupo, Gestor, Produto, Faixa de licenças, Namespace, NPS, Feedback)
 row0 = ['Data e Hora', 'Nome', 'Rede', 'Grupo', 'Gestor', 'Produto', 'Faixa de licenças', 'Namespace', 'NPS', 'Feedback']
@@ -97,7 +98,7 @@ if senha_preenchida == 'eduqo' and nome != 'Nome':
     ######################## Menu do relatório ########################
     st.write('----')
 
-    escolha_relatorio = st.radio('👉 Selecione o relatório que deseja acessar 📈',('Escolha abaixo:','Relatório QBR','Relatório QBR de Redes','Relatório de Rotinas pegagógicas (em construção)'))    
+    escolha_relatorio = st.radio('👉 Selecione o relatório que deseja acessar 📈',('Escolha abaixo:','Relatório QBR','Relatório QBR de Redes','Qontrole de Redes','Relatório de Rotinas pegagógicas (em construção)'))    
 
     if escolha_relatorio == 'Relatório QBR':
         
@@ -752,6 +753,409 @@ if senha_preenchida == 'eduqo' and nome != 'Nome':
         index = 2
         sheet.insert_row(row, index)
         
+    if escolha_relatorio == 'Qontrole de Redes':
+        
+        namespace_rede = pd.read_csv('./CSV/QBR/Resultados Query/namespace_rede.csv', sep = ',')
+
+        ######################### Filtro de rede ############################
+        namespace_rede2 = namespace_rede.sort_values(by = 'name')
+        namespace_rede3 = inserir_linha(pd.DataFrame(data = namespace_rede2['name'].unique()),pd.DataFrame({0: 'Rede'}, index=[-1]))
+        namespace_rede_select = st.selectbox('👉 Selecione uma rede', namespace_rede3)
+
+        ######################### Acesso a plataforma por alunos ############################
+        alunos_acessaram_rede = pd.read_csv('./CSV/Qontrole de Redes/Resultados por namespace/acesso_alunos.csv')
+        
+        ######################### Data de análise ############################
+        dias = []
+        for i in range(len(alunos_acessaram_rede['day'].unique())+1):
+            dias.append(datetime.strptime(alunos_acessaram_rede['day'][i], '%Y-%m-%d').date())
+        periodo_data = st.slider('👉 Data de análise',min(dias),max(dias),[min(dias),max(dias)],timedelta(1))
+        
+        ######################### Filtro de grupo ############################
+        namespace_grupo2_aux = namespace_rede[namespace_rede['name'] == namespace_rede_select]
+        namespace_grupo2 = namespace_grupo2_aux.sort_values(by = 'grupo')
+        namespace_grupo3 = inserir_linha(pd.DataFrame(data = namespace_grupo2['grupo'].unique()),pd.DataFrame({0: 'Grupo'}, index=[-1]))
+        namespace_grupo_select = st.multiselect('👉 Selecione um grupo', namespace_grupo3)
+
+        if namespace_rede_select != 'Rede':
+            
+            """
+                # 🌟 **Alunos**
+                ## 🚀 **Destaques**
+            """
+            ######################### Alunos ############################
+            alunos_acessaram_rede2 = filtro_uniao_rede(alunos_acessaram_rede,namespace_rede2,namespace_rede_select)
+            alunos_acessaram_rede2_aux = alunos_acessaram_rede2.fillna(0)
+            total_alunos_rede = alunos_acessaram_rede2_aux.groupby(['name','grupo','namespace']).mean().reset_index()
+            
+            ######################### Filtro de tempo ############################
+            alunos_acessaram_rede3 = obter_semana(alunos_acessaram_rede2_aux,'day')
+            alunos_acessaram_rede4 = filtro_data(alunos_acessaram_rede3,'day',periodo_data)
+            alunos_tempo_rede = alunos_acessaram_rede4.groupby(['name','grupo','day']).mean().reset_index()
+            alunos_presentes_rede = alunos_acessaram_rede4.groupby(['name','grupo','day']).sum().reset_index()
+
+            ######################### Filtro de grupo ############################
+            if len(namespace_grupo_select) > 0:
+                filtro_alunos_grupo = total_alunos_rede[total_alunos_rede['grupo'].isin(namespace_grupo_select)]
+                alunos_tempo_rede2 = alunos_tempo_rede[alunos_tempo_rede['grupo'].isin(namespace_grupo_select)]
+                alunos_presentes_rede2 = alunos_presentes_rede[alunos_presentes_rede['grupo'].isin(namespace_grupo_select)]
+                tabela_namespace_acesso = alunos_acessaram_rede4[alunos_acessaram_rede4['grupo'].isin(namespace_grupo_select)]
+            else: 
+                filtro_alunos_grupo = total_alunos_rede.copy()
+                alunos_tempo_rede2 = alunos_tempo_rede.copy()
+                alunos_presentes_rede2 = alunos_presentes_rede.copy()
+                tabela_namespace_acesso = alunos_acessaram_rede4.copy()
+
+            ######################### Cards de resultados gerais ############################
+            filtro_alunos_grupo2 = filtro_alunos_grupo.groupby('name').sum().reset_index()
+            alunos_tempo_rede3 = alunos_tempo_rede2.groupby('name').mean().reset_index()
+            alunos_presentes_rede3 = alunos_presentes_rede2.groupby(['name','grupo']).mean().reset_index()
+            alunos_presentes_rede4 = alunos_presentes_rede3.groupby('name').sum().reset_index()
+
+            figa = go.Figure()
+            figa.add_trace(go.Indicator(
+            value = filtro_alunos_grupo2['user_id_x'][0],
+            domain = {'x': [0.25, 0.75], 'y': [0.8, 1]},
+            title = {"text": "Número de estudantes ativos<br><span style='font-size:0.4em;color:#4A8AE8'>"}))
+
+            figa.add_trace(go.Indicator(
+            value = truncar(alunos_presentes_rede4['user_id_y'][0],0),
+            domain = {'x': [0.25, 0.75], 'y': [0.4, 0.6]},
+            title = {"text": "Média de estudantes presentes por dia<br><span style='font-size:0.4em;color:#4A8AE8'>"}))
+
+            figa.add_trace(go.Indicator(
+            value = truncar(alunos_tempo_rede3['seconds'][0]/3600,2),
+            domain = {'x': [0.25, 0.75], 'y': [0, 0.2]},
+            title = {"text": "Tempo médio por dia (em horas)<br><span style='font-size:0.4em;color:#4A8AE8'>"}))
+            st.plotly_chart(figa)
+
+            """
+                ## 🚀 **Presença semanal**
+                Aqui analisamos a porcentagem de presença diária dos alunos ativos por semana.
+            """
+            ######################### Alunos presentes por semana ############################
+            alunos_acessaram_temporal = alunos_acessaram_rede4.copy()
+            alunos_acessaram_temporal2 = alunos_acessaram_temporal.groupby(['name','Semana']).mean().reset_index()
+            alunos_acessaram_temporal2['Presença de alunos'] = alunos_acessaram_temporal2['user_id_y']/alunos_acessaram_temporal2['user_id_x'].max()
+            alunos_acessaram_temporal3 = alunos_acessaram_temporal.groupby(['name','grupo','Semana']).mean().reset_index()
+
+            fig = px.bar(alunos_acessaram_temporal2, x = alunos_acessaram_temporal2['Semana'], y = 100*alunos_acessaram_temporal2['Presença de alunos'], range_y=[0,100], color_discrete_sequence = ['#4a8ae8']*len(alunos_acessaram_temporal2))
+
+            if len(namespace_grupo_select) != 0:
+                cor = []
+                alunos_acessaram_temporal3 = alunos_acessaram_temporal3.reset_index(drop = True)
+                for i in range(len(namespace_grupo_select)):
+                    alunos_acessaram_temporal4 = alunos_acessaram_temporal3.loc[alunos_acessaram_temporal3['grupo'] == namespace_grupo_select[i]]
+                    alunos_acessaram_temporal4['Presença de alunos'] = alunos_acessaram_temporal4['user_id_y']/alunos_acessaram_temporal4['user_id_x'].max()
+                    cor.append("#"+''.join([random.choice('0123456789ABCDEF') for j in range(6)]))
+                    fig.add_scatter(x = alunos_acessaram_temporal4['Semana'], y = 100*alunos_acessaram_temporal4['Presença de alunos'],mode='lines', name = namespace_grupo_select[i], line=dict(color=cor[i]))
+            fig.update_layout(title = "Engajamento de alunos ativos", yaxis_title='Porcentagem de presença')
+            st.plotly_chart(fig) 
+
+            """
+                ## 🚀 **Tempo médio por dia**
+                Aqui analisamos a tempo médio diário de uso da plataforma pelos alunos ativos.
+            """
+            ######################### Tempo por aluno por dia ############################
+            alunos_tempo_temporal = alunos_acessaram_rede4.copy()
+            alunos_tempo_temporal2 = alunos_tempo_temporal.groupby(['name','Semana']).mean().reset_index()
+            alunos_tempo_temporal2['seconds'] = alunos_tempo_temporal2['seconds']/3600
+            alunos_tempo_temporal3 = alunos_tempo_temporal.groupby(['name','grupo','Semana']).mean().reset_index()
+            
+            fig = px.bar(alunos_tempo_temporal2, x = alunos_tempo_temporal2['Semana'], y = alunos_tempo_temporal2['seconds'], color_discrete_sequence = ['#4a8ae8']*len(alunos_tempo_temporal2))
+
+            if len(namespace_grupo_select) != 0:
+                alunos_tempo_temporal3 = alunos_tempo_temporal3.reset_index(drop = True)
+                for i in range(len(namespace_grupo_select)):
+                    alunos_tempo_temporal4 = alunos_tempo_temporal3.loc[alunos_tempo_temporal3['grupo'] == namespace_grupo_select[i]]
+                    alunos_tempo_temporal4['seconds'] = alunos_tempo_temporal4['seconds']/3600
+                    fig.add_scatter(x = alunos_tempo_temporal4['Semana'], y = alunos_tempo_temporal4['seconds'],mode='lines', name = namespace_grupo_select[i], line=dict(color=cor[i]))
+
+            fig.update_layout(title = "Tempo médio por aluno por dia", yaxis_title='Média de tempo (h)')
+            st.plotly_chart(fig) 
+
+            """
+                ## 🚀 **Presença e tempo médio por grupo**
+                Aqui analisamos por grupo a porcentagem de presença e tempo médio de acesso dos alunos.
+            """
+            ######################### Tabela por grupo ############################
+            with st.expander("Visualizar por grupo -> (clique aqui 🖱️)"):
+                tabela_acesso_grupo = tabela_namespace_acesso.groupby(['name','grupo']).mean().reset_index()
+                tabela_acesso_grupo2 = tabela_acesso_grupo.drop(columns = ['Semana','name'])
+                tabela_acesso_grupo2['seconds'] = tabela_acesso_grupo2['seconds']/3600
+                tabela_acesso_grupo2['Porcentagem de presença (%)'] = 100*tabela_acesso_grupo2['user_id_y']/tabela_acesso_grupo2['user_id_x']
+                tabela_acesso_grupo3 = tabela_acesso_grupo2.drop(columns = ['user_id_x','user_id_y'])
+                tabela_acesso_grupo3.rename(columns = {'seconds':'Tempo Médio (h)','grupo':'Grupo'}, inplace = True)
+                tabela_acesso_grupo4 = tabela_acesso_grupo3.sort_values(by = 'Porcentagem de presença (%)', ascending = False).reset_index(drop = True)
+                tabela_acesso_grupo5 = tabela_acesso_grupo4.style.applymap(classificacao_cor, subset=['Porcentagem de presença (%)']).set_precision(2)
+                st.table(tabela_acesso_grupo5)
+            
+            """
+                ## 🚀 **Presença e tempo médio por namespace**
+                Aqui analisamos por namespace a porcentagem de presença e tempo médio de acesso dos alunos.
+            """
+            ######################### Tabela por namespace ############################
+            with st.expander("Visualizar por namespace -> (clique aqui 🖱️)"):
+                tabela_acesso_namespace = tabela_namespace_acesso.groupby(['name','grupo','namespace']).mean().reset_index()
+                tabela_acesso_namespace2 = tabela_acesso_namespace.drop(columns = ['Semana','name'])
+                tabela_acesso_namespace2['seconds'] = tabela_acesso_namespace2['seconds']/3600
+                tabela_acesso_namespace2['Porcentagem de presença (%)'] = 100*tabela_acesso_namespace2['user_id_y']/tabela_acesso_namespace2['user_id_x']
+                tabela_acesso_namespace3 = tabela_acesso_namespace2.drop(columns = ['user_id_x','user_id_y'])
+                tabela_acesso_namespace3.rename(columns = {'seconds':'Tempo Médio (h)','grupo':'Grupo','namespace':'Namespace'}, inplace = True)
+                tabela_acesso_namespace4 = tabela_acesso_namespace3.sort_values(by = 'Porcentagem de presença (%)', ascending = False).reset_index(drop = True)
+                tabela_acesso_namespace5 = tabela_acesso_namespace4.style.applymap(classificacao_cor, subset=['Porcentagem de presença (%)']).set_precision(2)
+                st.table(tabela_acesso_namespace5)
+            
+            """
+                # 🌟 **Materiais estudados**
+                ## 🚀 **Destaques**
+            """
+            ######################### Materiais estudados por dia ############################
+            conteudos_estudados = pd.read_csv('./CSV/Qontrole de Redes/Resultados por namespace/conteudos_estudados.csv')
+            conteudos_estudados2 = filtro_uniao_rede(conteudos_estudados,namespace_rede2,namespace_rede_select)
+            conteudos_estudados3 = obter_semana(conteudos_estudados2,'day')
+            conteudos_estudados4 = filtro_data(conteudos_estudados3,'day',periodo_data)
+            conteudos_estudados4_aux = conteudos_estudados4.fillna(0)
+
+            ######################### Filtro de grupo ############################
+            if len(namespace_grupo_select) > 0:
+                filtro_conteudos_grupo = conteudos_estudados4_aux[conteudos_estudados4_aux['grupo'].isin(namespace_grupo_select)]
+            else:
+                filtro_conteudos_grupo = conteudos_estudados4_aux.copy()
+
+            ######################### Cards de resultados gerais ############################
+            conteudos_estudados_semana = filtro_conteudos_grupo.groupby(['name','Semana']).sum().reset_index()
+            semanas = conteudos_estudados4.groupby('Semana').nunique().reset_index()
+            semanas2 = semanas.drop(columns = ['name','grupo','namespace','count'])
+            conteudos_estudados_semana2 = pd.merge(conteudos_estudados_semana,semanas2, on = 'Semana', how = 'inner')
+            conteudos_estudados_semana2['Conteúdos estudados por dia'] = conteudos_estudados_semana2['count']/conteudos_estudados_semana2['day']
+            conteudos_estudados_semana3 = conteudos_estudados_semana2.groupby('name').mean().reset_index()
+            conteudos_estudados_total = conteudos_estudados_semana2.groupby('name').sum().reset_index()
+
+            figa = go.Figure()
+            figa.add_trace(go.Indicator(
+            value = conteudos_estudados_semana3['Conteúdos estudados por dia'][0],
+            domain = {'x': [0.25, 0.75], 'y': [0.8, 1]},
+            title = {"text": "Média de conteúdos estudados por dia<br><span style='font-size:0.4em;color:#4A8AE8'>"}))
+
+            figa.add_trace(go.Indicator(
+            value = truncar(conteudos_estudados_semana3['Conteúdos estudados por dia'][0]/filtro_alunos_grupo2['user_id_x'][0],2),
+            domain = {'x': [0.25, 0.75], 'y': [0.4, 0.6]},
+            title = {"text": "Média de conteúdos estudados por aluno ativo por dia<br><span style='font-size:0.4em;color:#4A8AE8'>"}))
+
+            figa.add_trace(go.Indicator(
+            value = truncar(conteudos_estudados_total['Conteúdos estudados por dia'][0],2),
+            domain = {'x': [0.25, 0.75], 'y': [0, 0.2]},
+            title = {"text": "Número de conteúdos estudados no período selecionado<br><span style='font-size:0.4em;color:#4A8AE8'>"}))
+
+            st.plotly_chart(figa)
+
+            """
+                ## 🚀 **Materiais estudados por dia**
+                Aqui analisamos o número de materiais estudados por alunos da rede por semana.
+            """
+            ######################### Conteúdos estudados por dia ############################
+            alunos_ativos = pd.read_csv('./CSV/Qontrole de Redes/Resultados Query/alunos_ativos.csv')
+            alunos_ativos2 = alunos_ativos.groupby(['namespace']).nunique().reset_index()
+            alunos_ativos3 = alunos_ativos2.drop(columns = ['Unnamed: 0','Unnamed: 0.1','grade'])
+
+            conteudos_estudados_semana_grafico = conteudos_estudados4_aux.groupby(['name','grupo','namespace','Semana']).sum().reset_index()
+            conteudos_estudados_semana_grafico2 = pd.merge(conteudos_estudados_semana_grafico,semanas2, on = 'Semana', how = 'inner')
+            conteudos_estudados_semana_grafico2['Conteúdos estudados por dia'] = conteudos_estudados_semana_grafico2['count']/conteudos_estudados_semana_grafico2['day']
+            conteudos_estudados_semana_grafico3 = pd.merge(conteudos_estudados_semana_grafico2,alunos_ativos3, on = 'namespace', how = 'inner')
+            conteudos_estudados_semana_grafico3['Conteúdos estudados por aluno por dia'] = conteudos_estudados_semana_grafico3['Conteúdos estudados por dia']/conteudos_estudados_semana_grafico3['user_id']
+            conteudos_estudados_semana_grafico4 = conteudos_estudados_semana_grafico3.groupby(['name','Semana']).mean().reset_index()
+            conteudos_estudados_semana_grafico5 = conteudos_estudados_semana_grafico3.groupby(['name','grupo','Semana']).mean().reset_index()
+            
+            fig = px.bar(conteudos_estudados_semana_grafico4, x = conteudos_estudados_semana_grafico4['Semana'], y = conteudos_estudados_semana_grafico4['Conteúdos estudados por aluno por dia'], color_discrete_sequence = ['#4a8ae8']*len(conteudos_estudados_semana_grafico4))
+            
+            if len(namespace_grupo_select) != 0:
+                conteudos_estudados_semana_grafico5 = conteudos_estudados_semana_grafico5.reset_index(drop = True)
+                for i in range(len(namespace_grupo_select)):
+                    conteudos_estudados_semana_grafico6 = conteudos_estudados_semana_grafico5.loc[conteudos_estudados_semana_grafico5['grupo'] == namespace_grupo_select[i]]
+                    fig.add_scatter(x = conteudos_estudados_semana_grafico6['Semana'], y = conteudos_estudados_semana_grafico6['Conteúdos estudados por aluno por dia'],mode='lines', name = namespace_grupo_select[i], line=dict(color=cor[i]))
+            fig.update_layout(title = "Conteúdos estudados por aluno por dia", yaxis_title='Conteúdos estudados por aluno por dia')
+            st.plotly_chart(fig) 
+
+            """
+                ## 🚀 **Materiais estudados por grupo**
+                Aqui analisamos por grupo o número de conteúdos por aluno e no total no período selecionado.
+            """
+            with st.expander("Visualizar por grupo -> (clique aqui 🖱️) "):
+                num_dias = conteudos_estudados_semana_grafico3.groupby(['name','grupo','Semana']).mean().reset_index()
+                num_dias2 = num_dias.groupby('name').sum().reset_index()
+                num_alunos = conteudos_estudados_semana_grafico3.groupby(['name','grupo','namespace']).mean().reset_index()
+                num_alunos2 = num_alunos.groupby(['name','grupo']).sum().reset_index()
+                num_alunos3 = pd.DataFrame()
+                num_alunos3['grupo'] = num_alunos2['grupo']
+                num_alunos3['user_id'] = num_alunos2['user_id']
+                num_conteudos = conteudos_estudados_semana_grafico3.groupby(['name','grupo']).sum().reset_index()
+                num_conteudos2 = pd.DataFrame()
+                num_conteudos2['grupo'] = num_conteudos['grupo']
+                num_conteudos2['count'] = num_conteudos['count']
+                conteudos_estudados_tabela_grupo = pd.merge(num_conteudos2,num_alunos3, on = 'grupo', how = 'inner')
+                conteudos_estudados_tabela_grupo.rename(columns = {'count':'Total'}, inplace = True) 
+                conteudos_estudados_tabela_grupo['Por dia'] = conteudos_estudados_tabela_grupo['Total']/num_dias2['day'][0]
+                conteudos_estudados_tabela_grupo['Por aluno por dia'] = conteudos_estudados_tabela_grupo['Por dia']/conteudos_estudados_tabela_grupo['user_id']
+                conteudos_estudados_tabela_grupo2 = conteudos_estudados_tabela_grupo.drop(columns = ['user_id'])
+                conteudos_estudados_tabela_grupo3 = conteudos_estudados_tabela_grupo2.sort_values(by = 'Por aluno por dia', ascending = False)
+                if len(namespace_grupo_select) > 0:
+                    conteudos_estudados_tabela_grupo4 = conteudos_estudados_tabela_grupo3[conteudos_estudados_tabela_grupo3['grupo'].isin(namespace_grupo_select)].reset_index(drop = True)
+                else:
+                    conteudos_estudados_tabela_grupo4 = conteudos_estudados_tabela_grupo3.copy().reset_index(drop = True)
+                conteudos_estudados_tabela_grupo5 = conteudos_estudados_tabela_grupo4.style.set_precision(2)
+                st.table(conteudos_estudados_tabela_grupo5)
+
+            """
+                ## 🚀 **Materiais estudados por namespace**
+                Aqui analisamos por namespace o número de conteúdos por aluno e no total no período selecionado.
+            """
+            with st.expander("Visualizar por namespace -> (clique aqui 🖱️) "):
+                num_alunos_namespace3 = pd.DataFrame()
+                num_alunos_namespace3['namespace'] = num_alunos['namespace']
+                num_alunos_namespace3['grupo'] = num_alunos['grupo']
+                num_alunos_namespace3['user_id'] = num_alunos['user_id']
+                num_conteudos_namespace = conteudos_estudados_semana_grafico3.groupby(['name','grupo','namespace']).sum().reset_index()
+                num_conteudos_namespace2 = pd.DataFrame()
+                num_conteudos_namespace2['namespace'] = num_conteudos_namespace['namespace']
+                num_conteudos_namespace2['grupo'] = num_conteudos_namespace['grupo']
+                num_conteudos_namespace2['count'] = num_conteudos_namespace['count']
+                conteudos_estudados_tabela_namespace = pd.merge(num_conteudos_namespace2,num_alunos_namespace3, on = ['grupo','namespace'], how = 'inner')
+                conteudos_estudados_tabela_namespace.rename(columns = {'count':'Total'}, inplace = True) 
+                conteudos_estudados_tabela_namespace['Por dia'] = conteudos_estudados_tabela_namespace['Total']/num_dias2['day'][0]
+                conteudos_estudados_tabela_namespace['Por aluno por dia'] = conteudos_estudados_tabela_namespace['Por dia']/conteudos_estudados_tabela_namespace['user_id']
+                conteudos_estudados_tabela_namespace2 = conteudos_estudados_tabela_namespace.drop(columns = ['user_id'])
+                conteudos_estudados_tabela_namespace3 = conteudos_estudados_tabela_namespace2.sort_values(by = 'Por aluno por dia', ascending = False)
+                if len(namespace_grupo_select) > 0:
+                    conteudos_estudados_tabela_namespace4 = conteudos_estudados_tabela_namespace3[conteudos_estudados_tabela_namespace3['grupo'].isin(namespace_grupo_select)].reset_index(drop = True)
+                else:
+                    conteudos_estudados_tabela_namespace4 = conteudos_estudados_tabela_namespace3.copy().reset_index(drop = True)
+                conteudos_estudados_tabela_namespace5 = conteudos_estudados_tabela_namespace4.style.set_precision(2)
+                st.table(conteudos_estudados_tabela_namespace5)
+
+            """
+                # 🌟 **Professores**
+                ## 🚀 **Destaques**
+            """
+            acesso_profs = pd.read_csv('./CSV/Qontrole de Redes/Resultados por namespace/acesso_profs.csv')
+            acesso_profs2 = filtro_uniao_rede(acesso_profs,namespace_rede2,namespace_rede_select)
+            acesso_profs3 = obter_semana(acesso_profs2,'day')
+            acesso_profs4 = filtro_data(acesso_profs3,'day',periodo_data)
+            acesso_profs4_aux = acesso_profs4.fillna(0)
+
+            if len(namespace_grupo_select) > 0:
+                acesso_profs5 = acesso_profs4_aux[acesso_profs4_aux['grupo'].isin(namespace_grupo_select)]
+            else: 
+                acesso_profs5 = acesso_profs4_aux.copy()
+
+            ######################### Cards de resultados gerais ############################
+            acesso_profs6 = acesso_profs5.groupby(['name','grupo','namespace']).mean().reset_index()
+            acesso_profs7 = acesso_profs6.groupby(['name']).sum().reset_index()
+
+            acesso_profs8 = acesso_profs5.groupby(['name','day']).sum().reset_index()
+            acesso_profs9 = acesso_profs8.groupby('name').mean().reset_index()
+
+            figa = go.Figure()
+            figa.add_trace(go.Indicator(
+            value = acesso_profs7['user_id_x'][0],
+            domain = {'x': [0.25, 0.75], 'y': [0.8, 1]},
+            title = {"text": "Número de professores ativos<br><span style='font-size:0.4em;color:#4A8AE8'>"}))
+
+            figa.add_trace(go.Indicator(
+            value = truncar(acesso_profs9['user_id_y'][0],0),
+            domain = {'x': [0.25, 0.75], 'y': [0.4, 0.6]},
+            title = {"text": "Média de professores presentes por dia<br><span style='font-size:0.4em;color:#4A8AE8'>"}))
+
+            figa.add_trace(go.Indicator(
+            value = truncar(acesso_profs9['seconds'][0]/acesso_profs7['user_id_x'][0]/3600,2),
+            domain = {'x': [0.25, 0.75], 'y': [0, 0.2]},
+            title = {"text": "Tempo médio por dia (em horas)<br><span style='font-size:0.4em;color:#4A8AE8'>"}))
+            st.plotly_chart(figa)
+
+            """
+                ## 🚀 **Acesso semanal**
+                Aqui analisamos a porcentagem de presença diária dos professores ativos por semana.
+            """
+            ######################### Acesso de professores ############################
+            acesso_profs10 = acesso_profs4_aux.groupby(['name','grupo','namespace','Semana']).sum().reset_index()
+            acesso_profs11 = acesso_profs10.groupby(['name','grupo','Semana']).sum().reset_index()
+            acesso_profs11['Porcentagem de presença'] = acesso_profs11['user_id_y']/acesso_profs11['user_id_x']
+            acesso_profs12 = acesso_profs11.groupby(['name','Semana']).sum().reset_index()
+            acesso_profs12['Porcentagem de presença'] = acesso_profs12['user_id_y']/acesso_profs12['user_id_x']
+
+            fig = px.bar(acesso_profs12, x = acesso_profs12['Semana'], y = 100*acesso_profs12['Porcentagem de presença'], range_y=[0,100], color_discrete_sequence = ['#4a8ae8']*len(acesso_profs12))
+
+            if len(namespace_grupo_select) != 0:
+                acesso_profs11 = acesso_profs11.reset_index(drop = True)
+                for i in range(len(namespace_grupo_select)):
+                    acesso_profs13 = acesso_profs11.loc[acesso_profs11['grupo'] == namespace_grupo_select[i]]
+                    fig.add_scatter(x = acesso_profs13['Semana'], y = 100*acesso_profs13['Porcentagem de presença'],mode='lines', name = namespace_grupo_select[i], line=dict(color=cor[i]))
+            fig.update_layout(title = "Engajamento de professores ativos", yaxis_title='Porcentagem de presença')
+            st.plotly_chart(fig) 
+
+            """
+                ## 🚀 **Tempo médio por dia**
+                Aqui analisamos a tempo médio diário de uso da plataforma pelos professores ativos.
+            """
+            ######################### Tempo médio por dia ############################
+            acesso_profs14 = acesso_profs4_aux.groupby(['name','grupo','namespace','Semana']).agg({'user_id_x':'max','seconds':'mean'}).reset_index()
+            acesso_profs15 = acesso_profs14.groupby(['name','grupo','Semana']).sum().reset_index()
+            acesso_profs15['Tempo médio por professor por dia'] = acesso_profs15['seconds']/acesso_profs15['user_id_x']/3600
+
+            acesso_profs16 = acesso_profs14.groupby(['name','Semana']).sum().reset_index()
+            acesso_profs16['Tempo médio por professor por dia'] = acesso_profs16['seconds']/acesso_profs16['user_id_x']/3600
+
+            fig = px.bar(acesso_profs16, x = acesso_profs16['Semana'], y = acesso_profs16['Tempo médio por professor por dia'], color_discrete_sequence = ['#4a8ae8']*len(acesso_profs16))
+
+            if len(namespace_grupo_select) != 0:
+                acesso_profs15 = acesso_profs15.reset_index(drop = True)
+                for i in range(len(namespace_grupo_select)):
+                    acesso_profs17 = acesso_profs15.loc[acesso_profs15['grupo'] == namespace_grupo_select[i]]
+                    fig.add_scatter(x = acesso_profs17['Semana'], y = acesso_profs17['Tempo médio por professor por dia'],mode='lines', name = namespace_grupo_select[i], line=dict(color=cor[i]))
+            fig.update_layout(title = "Tempo médio por professor por dia", yaxis_title='Tempo médio por professor por dia')
+            st.plotly_chart(fig) 
+
+            """
+                ## 🚀 **Presença e tempo médio por grupo**
+                Aqui analisamos por grupo a porcentagem de presença e tempo médio de acesso dos professores.
+            """
+            ######################### Tabela por grupo ############################
+            with st.expander("Visualizar por grupo -> (clique aqui 🖱️)  "):
+                acesso_profs18 = pd.merge(acesso_profs11,acesso_profs15, on = ['name','grupo','Semana'], how = 'inner')
+                acesso_profs19 = acesso_profs18.drop(columns = ['user_id_x_x','user_id_y','seconds_x','user_id_x_y','seconds_y'])
+                acesso_profs20 = acesso_profs19.groupby(['name','grupo']).mean().reset_index()
+                acesso_profs21 = acesso_profs20.drop(columns = ['Semana','name'])
+                acesso_profs22 = pd.DataFrame()
+                acesso_profs22['Grupo'] = acesso_profs21['grupo']
+                acesso_profs22['Tempo Médio (h)'] = acesso_profs21['Tempo médio por professor por dia']
+                acesso_profs22['Porcentagem de presença (%)'] = 100*acesso_profs21['Porcentagem de presença']
+                if len(namespace_grupo_select) > 0:
+                    acesso_profs22_aux = acesso_profs22[acesso_profs22['Grupo'].isin(namespace_grupo_select)].reset_index(drop = True)
+                else:
+                    acesso_profs22_aux = acesso_profs22.copy().reset_index(drop = True)
+                acesso_profs23 = acesso_profs22_aux.sort_values(by = 'Porcentagem de presença (%)', ascending = False).reset_index(drop = True)
+                acesso_profs24 = acesso_profs23.style.applymap(classificacao_cor, subset=['Porcentagem de presença (%)']).set_precision(2)
+                st.table(acesso_profs24)
+
+            """
+                ## 🚀 **Presença e tempo médio por namespace**
+                Aqui analisamos por namespace a porcentagem de presença e tempo médio de acesso dos professores.
+            """
+            ######################### Tabela por namespace ############################
+            with st.expander("Visualizar por namespace -> (clique aqui 🖱️)  "):
+                acesso_profs25 = pd.merge(acesso_profs10,num_dias, on = ['name','grupo','Semana'], how = 'inner')
+                acesso_profs26 = acesso_profs25.drop(columns = ['count','Conteúdos estudados por aluno por dia','user_id','Conteúdos estudados por dia'])
+                acesso_profs27 = acesso_profs26.groupby(['name','grupo','namespace']).sum().reset_index()
+                acesso_profs27['Tempo médio (h)'] = acesso_profs27['seconds']/acesso_profs27['user_id_x']/3600
+                acesso_profs27['Porcentagem de presença (%)'] = 100*acesso_profs27['user_id_y']/acesso_profs27['user_id_x']
+                acesso_profs28 = acesso_profs27.drop(columns = ['seconds','user_id_y','Semana','user_id_x','name','day'])
+                if len(namespace_grupo_select) > 0:
+                    acesso_profs28_aux = acesso_profs28[acesso_profs28['grupo'].isin(namespace_grupo_select)].reset_index(drop = True)
+                else:
+                    acesso_profs28_aux = acesso_profs28.copy().reset_index(drop = True)
+                acesso_profs29 = acesso_profs28_aux.sort_values(by = 'Porcentagem de presença (%)', ascending = False).reset_index(drop = True)
+                acesso_profs30 = acesso_profs29.style.applymap(classificacao_cor, subset=['Porcentagem de presença (%)']).set_precision(2)
+                st.table(acesso_profs30)
 
     if escolha_relatorio == 'Relatório de Rotinas pegagógicas (em construção)':
 
