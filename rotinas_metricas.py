@@ -28,8 +28,8 @@ scope = ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/aut
 creds = ServiceAccountCredentials.from_json_keyfile_name('client_secret.json', scope)
 client = gspread.authorize(creds)
 
-#sheet = client.open('Banco de Dados').sheet1          # Enquanto estiver rodando na nuvem
-sheet = client.open('Banco de Dados - Teste').sheet1   # Enquanto estiver rodando no local
+sheet = client.open('Banco de Dados').sheet1          # Enquanto estiver rodando na nuvem
+#sheet = client.open('Banco de Dados - Teste').sheet1   # Enquanto estiver rodando no local
 
 #### Colunas (id, Data e Hora, Nome, Rede, Grupo, Gestor, Produto, Faixa de licenças, Namespace, NPS, Feedback)
 row0 = ['Data e Hora', 'Nome', 'Rede', 'Grupo', 'Gestor', 'Produto', 'Faixa de licenças', 'Namespace', 'NPS', 'Feedback']
@@ -1156,6 +1156,19 @@ if senha_preenchida == 'eduqo' and nome != 'Nome':
                 acesso_profs29 = acesso_profs28_aux.sort_values(by = 'Porcentagem de presença (%)', ascending = False).reset_index(drop = True)
                 acesso_profs30 = acesso_profs29.style.applymap(classificacao_cor, subset=['Porcentagem de presença (%)']).set_precision(2)
                 st.table(acesso_profs30)
+
+            """
+                # 🌟 **Interações de Professores**
+                ## 🚀 **Destaques**
+            """
+            ######################### Bases de interações ############################
+            conteudos_criados = pd.read_csv('./CSV/Qontrole de Redes/Resultados por namespace/conteudos_criados.csv')
+            aas_criados = pd.read_csv('./CSV/Qontrole de Redes/Resultados por namespace/aas_criados.csv')
+            view_relas_aa = pd.read_csv('./CSV/Qontrole de Redes/Resultados por namespace/view_relas_aa.csv')
+            view_relas_lista = pd.read_csv('./CSV/Qontrole de Redes/Resultados por namespace/view_relas_lista.csv')
+            view_relas_caderno = pd.read_csv('./CSV/Qontrole de Redes/Resultados por namespace/view_relas_caderno.csv')
+
+            st.dataframe(conteudos_criados)
 
     if escolha_relatorio == 'Relatório de Rotinas pegagógicas (em construção)':
 
