@@ -785,6 +785,7 @@ if senha_preenchida == 'eduqo' and nome != 'Nome':
             """
             ######################### Alunos ############################
             alunos_acessaram_rede2 = filtro_uniao_rede(alunos_acessaram_rede,namespace_rede2,namespace_rede_select)
+            
             alunos_acessaram_rede2_aux = alunos_acessaram_rede2.fillna(0)
             total_alunos_rede = alunos_acessaram_rede2_aux.groupby(['name','grupo','namespace']).mean().reset_index()
             
