@@ -1159,7 +1159,6 @@ if senha_preenchida == 'eduqo' and nome != 'Nome':
 
             """
                 # 🌟 **Interações de Professores**
-                ## 🚀 **Destaques**
             """
             ######################### Bases de interações ############################
             conteudos_criados = pd.read_csv('./CSV/Qontrole de Redes/Resultados por namespace/conteudos_criados.csv')
@@ -1168,7 +1167,293 @@ if senha_preenchida == 'eduqo' and nome != 'Nome':
             view_relas_lista = pd.read_csv('./CSV/Qontrole de Redes/Resultados por namespace/view_relas_lista.csv')
             view_relas_caderno = pd.read_csv('./CSV/Qontrole de Redes/Resultados por namespace/view_relas_caderno.csv')
 
-            st.dataframe(conteudos_criados)
+            """
+                ## 🚀 **Materiais criados**
+            """
+            ######################### Conteúdos criados ############################
+            conteudos_criados2 = filtro_uniao_rede(conteudos_criados,namespace_rede2,namespace_rede_select)
+            conteudos_criados3 = obter_semana(conteudos_criados2,'creation')
+            conteudos_criados4 = filtro_data(conteudos_criados3,'creation',periodo_data)
+            conteudos_criados5 = conteudos_criados4.fillna(0)
+            conteudos_criados6 = conteudos_criados5.groupby(['name','grupo','namespace','Semana']).sum().reset_index()
+            conteudos_criados7 = conteudos_criados6.drop(columns = ['user_id'])
+            
+            conteudos_criados10 = conteudos_criados5.groupby(['name','grupo','namespace']).mean().reset_index()
+            if len(namespace_grupo_select) > 0:
+                conteudos_criados8 = conteudos_criados7[conteudos_criados7['grupo'].isin(namespace_grupo_select)].reset_index(drop = True)
+                conteudos_criados11 = conteudos_criados10[conteudos_criados10['grupo'].isin(namespace_grupo_select)].reset_index(drop = True)
+            else:
+                conteudos_criados8 = conteudos_criados7.copy().reset_index(drop = True)
+                conteudos_criados11 = conteudos_criados10.copy()
+            conteudos_criados9 = conteudos_criados8.groupby('name').sum().reset_index()
+            conteudos_criados12 = conteudos_criados11.groupby('name').sum().reset_index()
+
+            if len(conteudos_criados9['Número de conteúdos criados']) > 0:
+                figa = go.Figure()
+                figa.add_trace(go.Indicator(
+                value = conteudos_criados9['Número de conteúdos criados'][0],
+                domain = {'x': [0.25, 0.75], 'y': [0.8, 1]},
+                title = {"text": "Número de conteúdos criados<br><span style='font-size:0.4em;color:#4A8AE8'>"}))
+
+                figa.add_trace(go.Indicator(
+                value = truncar(conteudos_criados9['Número de conteúdos criados'][0]/conteudos_criados12['user_id'][0],1),
+                domain = {'x': [0.25, 0.75], 'y': [0.4, 0.6]},
+                title = {"text": "Média de conteúdos criados por professor<br><span style='font-size:0.4em;color:#4A8AE8'>"}))
+
+                figa.add_trace(go.Indicator(
+                value = truncar(conteudos_criados9['Número de conteúdos criados'][0]/int(str(periodo_data[1] - periodo_data[0])[0:1]),0),
+                domain = {'x': [0.25, 0.75], 'y': [0, 0.2]},
+                title = {"text": "Média de conteúdos criados por dia<br><span style='font-size:0.4em;color:#4A8AE8'>"}))
+                st.plotly_chart(figa)
+
+                conteudos_criados13 = pd.merge(conteudos_criados7,conteudos_criados10, on = ['name','grupo','namespace'], how = 'inner')
+                conteudos_criados14 = conteudos_criados13.drop(columns = ['Semana_y','Número de conteúdos criados_y'])
+                conteudos_criados15 = conteudos_criados14.groupby(['name','Semana_x']).sum().reset_index()
+                conteudos_criados15['Número de conteúdos criados por professor'] = conteudos_criados15['Número de conteúdos criados_x']/conteudos_criados15['user_id']
+                conteudos_criados16 = conteudos_criados14.groupby(['name','grupo','Semana_x']).sum().reset_index()
+
+                fig = px.bar(conteudos_criados15, x = conteudos_criados15['Semana_x'], y = conteudos_criados15['Número de conteúdos criados por professor'], color_discrete_sequence = ['#4a8ae8']*len(conteudos_criados15))
+
+                if len(namespace_grupo_select) != 0:
+                    conteudos_criados16 = conteudos_criados16.reset_index(drop = True)
+                    for i in range(len(namespace_grupo_select)):
+                        conteudos_criados17 = conteudos_criados16.loc[conteudos_criados16['grupo'] == namespace_grupo_select[i]]
+                        conteudos_criados17['Número de conteúdos criados por professor'] = conteudos_criados17['Número de conteúdos criados_x']/conteudos_criados17['user_id']
+                        fig.add_scatter(x = conteudos_criados17['Semana_x'], y = conteudos_criados17['Número de conteúdos criados por professor'],mode='lines', name = namespace_grupo_select[i], line=dict(color=cor[i]))
+                fig.update_layout(title = "Número de conteúdos criados por professor por semana", yaxis_title='Número de conteúdos criados por professor', xaxis_title = 'Semana')
+                st.plotly_chart(fig)
+            else:
+                st.warning('Não há registro de conteúdos criados no período selecionado!')
+
+            """
+                ## 🚀 **Atividades avaliativas criadas**
+            """
+            ######################### AA criadas ############################
+            aas_criados2 = filtro_uniao_rede(aas_criados,namespace_rede2,namespace_rede_select)
+            aas_criados3 = obter_semana(aas_criados2,'creation')
+            aas_criados4 = filtro_data(aas_criados3,'creation',periodo_data)
+            aas_criados5 = aas_criados4.fillna(0)
+            aas_criados6 = aas_criados5.groupby(['name','grupo','namespace','Semana']).sum().reset_index()
+            aas_criados7 = aas_criados6.drop(columns = ['user_id'])
+            
+            aas_criados10 = aas_criados5.groupby(['name','grupo','namespace']).mean().reset_index()
+            if len(namespace_grupo_select) > 0:
+                aas_criados8 = aas_criados7[aas_criados7['grupo'].isin(namespace_grupo_select)].reset_index(drop = True)
+                aas_criados11 = aas_criados10[aas_criados10['grupo'].isin(namespace_grupo_select)].reset_index(drop = True)
+            else:
+                aas_criados8 = aas_criados7.copy().reset_index(drop = True)
+                aas_criados11 = aas_criados10.copy()
+            aas_criados9 = aas_criados8.groupby('name').sum().reset_index()
+            aas_criados12 = aas_criados11.groupby('name').sum().reset_index()
+
+            if len(aas_criados9['Número de AAs criadas']) > 0:
+                figa = go.Figure()
+                figa.add_trace(go.Indicator(
+                value = aas_criados9['Número de AAs criadas'][0],
+                domain = {'x': [0.25, 0.75], 'y': [0.8, 1]},
+                title = {"text": "Número de atividades avaliativas criadas<br><span style='font-size:0.4em;color:#4A8AE8'>"}))
+
+                figa.add_trace(go.Indicator(
+                value = truncar(aas_criados9['Número de AAs criadas'][0]/aas_criados12['user_id'][0],1),
+                domain = {'x': [0.25, 0.75], 'y': [0.4, 0.6]},
+                title = {"text": "Média de atividades avaliativas criadas por professor<br><span style='font-size:0.4em;color:#4A8AE8'>"}))
+
+                figa.add_trace(go.Indicator(
+                value = truncar(aas_criados9['Número de AAs criadas'][0]/int(str(periodo_data[1] - periodo_data[0])[0:1]),0),
+                domain = {'x': [0.25, 0.75], 'y': [0, 0.2]},
+                title = {"text": "Média de atividades avaliativas criadas por dia<br><span style='font-size:0.4em;color:#4A8AE8'>"}))
+                st.plotly_chart(figa)
+
+                aas_criados13 = pd.merge(aas_criados7,aas_criados10, on = ['name','grupo','namespace'], how = 'inner')
+                aas_criados14 = aas_criados13.drop(columns = ['Semana_y','Número de AAs criadas_y'])
+                aas_criados15 = aas_criados14.groupby(['name','Semana_x']).sum().reset_index()
+                aas_criados15['Número de atividades avaliativas criadas por professor'] = aas_criados15['Número de AAs criadas_x']/aas_criados15['user_id']
+                aas_criados16 = aas_criados14.groupby(['name','grupo','Semana_x']).sum().reset_index()
+
+                fig = px.bar(aas_criados15, x = aas_criados15['Semana_x'], y = aas_criados15['Número de atividades avaliativas criadas por professor'], color_discrete_sequence = ['#4a8ae8']*len(aas_criados15))
+                if len(namespace_grupo_select) != 0:
+                    aas_criados16 = aas_criados16.reset_index(drop = True)
+                    for i in range(len(namespace_grupo_select)):
+                        aas_criados17 = aas_criados16.loc[aas_criados16['grupo'] == namespace_grupo_select[i]]
+                        aas_criados17['Número de atividades avaliativas criadas por professor'] = aas_criados17['Número de AAs criadas_x']/aas_criados17['user_id']
+                        fig.add_scatter(x = aas_criados17['Semana_x'], y = aas_criados17['Número de atividades avaliativas criadas por professor'],mode='lines', name = namespace_grupo_select[i], line=dict(color=cor[i]))
+                fig.update_layout(title = "Atividades avaliativas criadas por professor por semana", yaxis_title='Nº de atividades criadas por professor', xaxis_title = 'Semana')
+                st.plotly_chart(fig)
+            else:
+                st.warning('Não há registro de atividades avaliativas criadas no período selecionado!')
+
+            """
+                ## 🚀 **Visualização de relatórios de atividades avaliativas**
+            """
+            ######################### AA ############################
+            view_relas_aa2 = filtro_uniao_rede(view_relas_aa,namespace_rede2,namespace_rede_select)
+            view_relas_aa3 = obter_semana(view_relas_aa2,'creation')
+            view_relas_aa4 = filtro_data(view_relas_aa3,'creation',periodo_data)
+            view_relas_aa5 = view_relas_aa4.fillna(0)
+            view_relas_aa6 = view_relas_aa5.groupby(['name','grupo','namespace','Semana']).sum().reset_index()
+            view_relas_aa7 = view_relas_aa6.drop(columns = ['user_id'])
+            
+            view_relas_aa10 = view_relas_aa5.groupby(['name','grupo','namespace']).mean().reset_index()
+            if len(namespace_grupo_select) > 0:
+                view_relas_aa8 = view_relas_aa7[view_relas_aa7['grupo'].isin(namespace_grupo_select)].reset_index(drop = True)
+                view_relas_aa11 = view_relas_aa10[view_relas_aa10['grupo'].isin(namespace_grupo_select)].reset_index(drop = True)
+            else:
+                view_relas_aa8 = view_relas_aa7.copy().reset_index(drop = True)
+                view_relas_aa11 = view_relas_aa10.copy()
+            view_relas_aa9 = view_relas_aa8.groupby('name').sum().reset_index()
+            view_relas_aa12 = view_relas_aa11.groupby('name').sum().reset_index()
+
+            if len(view_relas_aa9['Número de visualizações de relatórios de atividade avaliativa']) > 0:
+                figa = go.Figure()
+                figa.add_trace(go.Indicator(
+                value = view_relas_aa9['Número de visualizações de relatórios de atividade avaliativa'][0],
+                domain = {'x': [0.25, 0.75], 'y': [0.8, 1]},
+                title = {"text": "Número de visualizações de relatórios de AA<br><span style='font-size:0.4em;color:#4A8AE8'>"}))
+
+                figa.add_trace(go.Indicator(
+                value = truncar(view_relas_aa9['Número de visualizações de relatórios de atividade avaliativa'][0]/view_relas_aa12['user_id'][0],1),
+                domain = {'x': [0.25, 0.75], 'y': [0.4, 0.6]},
+                title = {"text": "Média de visualizações por professor<br><span style='font-size:0.4em;color:#4A8AE8'>"}))
+
+                figa.add_trace(go.Indicator(
+                value = truncar(view_relas_aa9['Número de visualizações de relatórios de atividade avaliativa'][0]/int(str(periodo_data[1] - periodo_data[0])[0:1]),0),
+                domain = {'x': [0.25, 0.75], 'y': [0, 0.2]},
+                title = {"text": "Média de visualizações por dia<br><span style='font-size:0.4em;color:#4A8AE8'>"}))
+                st.plotly_chart(figa)
+
+                view_relas_aa13 = pd.merge(view_relas_aa7,view_relas_aa10, on = ['name','grupo','namespace'], how = 'inner')
+                view_relas_aa14 = view_relas_aa13.drop(columns = ['Semana_y','Número de visualizações de relatórios de atividade avaliativa_y'])
+                view_relas_aa15 = view_relas_aa14.groupby(['name','Semana_x']).sum().reset_index()
+                view_relas_aa15['Número de visualizações de relatórios de AA por professor'] = view_relas_aa15['Número de visualizações de relatórios de atividade avaliativa_x']/view_relas_aa15['user_id']
+                view_relas_aa16 = view_relas_aa14.groupby(['name','grupo','Semana_x']).sum().reset_index()
+
+                fig = px.bar(view_relas_aa15, x = view_relas_aa15['Semana_x'], y = view_relas_aa15['Número de visualizações de relatórios de AA por professor'], color_discrete_sequence = ['#4a8ae8']*len(view_relas_aa15))
+                if len(namespace_grupo_select) != 0:
+                    view_relas_aa16 = view_relas_aa16.reset_index(drop = True)
+                    for i in range(len(namespace_grupo_select)):
+                        view_relas_aa17 = view_relas_aa16.loc[view_relas_aa16['grupo'] == namespace_grupo_select[i]]
+                        view_relas_aa17['Número de visualizações de relatórios de AA por professor'] = view_relas_aa17['Número de visualizações de relatórios de atividade avaliativa_x']/view_relas_aa17['user_id']
+                        fig.add_scatter(x = view_relas_aa17['Semana_x'], y = view_relas_aa17['Número de visualizações de relatórios de AA por professor'],mode='lines', name = namespace_grupo_select[i], line=dict(color=cor[i]))
+                fig.update_layout(title = "Visualização de relatórios de AA por professor por semana", yaxis_title='Nº de visualizações por professor', xaxis_title = 'Semana')
+                st.plotly_chart(fig)
+            else:
+                st.warning('Não há registro de visualização de relatórios de atividades avaliativas no período selecionado!')
+
+            """
+                ## 🚀 **Visualização de relatórios de séries de exercícios**
+            """
+            ######################### SE ############################
+            view_relas_lista2 = filtro_uniao_rede(view_relas_lista,namespace_rede2,namespace_rede_select)
+            view_relas_lista3 = obter_semana(view_relas_lista2,'creation')
+            view_relas_lista4 = filtro_data(view_relas_lista3,'creation',periodo_data)
+            view_relas_lista5 = view_relas_lista4.fillna(0)
+            view_relas_lista6 = view_relas_lista5.groupby(['name','grupo','namespace','Semana']).sum().reset_index()
+            view_relas_lista7 = view_relas_lista6.drop(columns = ['user_id'])
+            
+            view_relas_lista10 = view_relas_lista5.groupby(['name','grupo','namespace']).mean().reset_index()
+            if len(namespace_grupo_select) > 0:
+                view_relas_lista8 = view_relas_lista7[view_relas_lista7['grupo'].isin(namespace_grupo_select)].reset_index(drop = True)
+                view_relas_lista11 = view_relas_lista10[view_relas_lista10['grupo'].isin(namespace_grupo_select)].reset_index(drop = True)
+            else:
+                view_relas_lista8 = view_relas_lista7.copy().reset_index(drop = True)
+                view_relas_lista11 = view_relas_lista10.copy()
+            view_relas_lista9 = view_relas_lista8.groupby('name').sum().reset_index()
+            view_relas_lista12 = view_relas_lista11.groupby('name').sum().reset_index()
+
+            if len(view_relas_lista9['Número de visualizações de relatórios de lista']) > 0:
+                figa = go.Figure()
+                figa.add_trace(go.Indicator(
+                value = view_relas_lista9['Número de visualizações de relatórios de lista'][0],
+                domain = {'x': [0.25, 0.75], 'y': [0.8, 1]},
+                title = {"text": "Número de visualizações de relatórios de SE<br><span style='font-size:0.4em;color:#4A8AE8'>"}))
+
+                figa.add_trace(go.Indicator(
+                value = truncar(view_relas_lista9['Número de visualizações de relatórios de lista'][0]/view_relas_lista12['user_id'][0],1),
+                domain = {'x': [0.25, 0.75], 'y': [0.4, 0.6]},
+                title = {"text": "Média de visualizações por professor<br><span style='font-size:0.4em;color:#4A8AE8'>"}))
+
+                figa.add_trace(go.Indicator(
+                value = truncar(view_relas_lista9['Número de visualizações de relatórios de lista'][0]/int(str(periodo_data[1] - periodo_data[0])[0:1]),0),
+                domain = {'x': [0.25, 0.75], 'y': [0, 0.2]},
+                title = {"text": "Média de visualizações por dia<br><span style='font-size:0.4em;color:#4A8AE8'>"}))
+                st.plotly_chart(figa)
+
+                view_relas_lista13 = pd.merge(view_relas_lista7,view_relas_lista10, on = ['name','grupo','namespace'], how = 'inner')
+                view_relas_lista14 = view_relas_lista13.drop(columns = ['Semana_y','Número de visualizações de relatórios de lista_y'])
+                view_relas_lista15 = view_relas_lista14.groupby(['name','Semana_x']).sum().reset_index()
+                view_relas_lista15['Número de visualizações de relatórios de SE por professor'] = view_relas_lista15['Número de visualizações de relatórios de lista_x']/view_relas_lista15['user_id']
+                view_relas_lista16 = view_relas_lista14.groupby(['name','grupo','Semana_x']).sum().reset_index()
+
+                fig = px.bar(view_relas_lista15, x = view_relas_lista15['Semana_x'], y = view_relas_lista15['Número de visualizações de relatórios de SE por professor'], color_discrete_sequence = ['#4a8ae8']*len(view_relas_lista15))
+                if len(namespace_grupo_select) != 0:
+                    view_relas_lista16 = view_relas_lista16.reset_index(drop = True)
+                    for i in range(len(namespace_grupo_select)):
+                        view_relas_lista17 = view_relas_lista16.loc[view_relas_lista16['grupo'] == namespace_grupo_select[i]]
+                        view_relas_lista17['Número de visualizações de relatórios de SE por professor'] = view_relas_lista17['Número de visualizações de relatórios de lista_x']/view_relas_lista17['user_id']
+                        fig.add_scatter(x = view_relas_lista17['Semana_x'], y = view_relas_lista17['Número de visualizações de relatórios de SE por professor'],mode='lines', name = namespace_grupo_select[i], line=dict(color=cor[i]))
+                fig.update_layout(title = "Visualização de relatórios de SE por professor por semana", yaxis_title='Nº de visualizações por professor', xaxis_title = 'Semana')
+                st.plotly_chart(fig)
+            else:
+                st.warning('Não há registro de visualização de relatórios de séries de exercícios no período selecionado!')
+
+            """
+                ## 🚀 **Visualização de relatórios de cadernos**
+            """
+            ######################### SE ############################
+            view_relas_caderno2 = filtro_uniao_rede(view_relas_caderno,namespace_rede2,namespace_rede_select)
+            view_relas_caderno3 = obter_semana(view_relas_caderno2,'creation')
+            view_relas_caderno4 = filtro_data(view_relas_caderno3,'creation',periodo_data)
+            view_relas_caderno5 = view_relas_caderno4.fillna(0)
+            view_relas_caderno6 = view_relas_caderno5.groupby(['name','grupo','namespace','Semana']).sum().reset_index()
+            view_relas_caderno7 = view_relas_caderno6.drop(columns = ['user_id'])
+            
+            view_relas_caderno10 = view_relas_caderno5.groupby(['name','grupo','namespace']).mean().reset_index()
+            if len(namespace_grupo_select) > 0:
+                view_relas_caderno8 = view_relas_caderno7[view_relas_caderno7['grupo'].isin(namespace_grupo_select)].reset_index(drop = True)
+                view_relas_caderno11 = view_relas_caderno10[view_relas_caderno10['grupo'].isin(namespace_grupo_select)].reset_index(drop = True)
+            else:
+                view_relas_caderno8 = view_relas_caderno7.copy().reset_index(drop = True)
+                view_relas_caderno11 = view_relas_caderno10.copy()
+            view_relas_caderno9 = view_relas_caderno8.groupby('name').sum().reset_index()
+            view_relas_caderno12 = view_relas_caderno11.groupby('name').sum().reset_index()
+
+            if len(view_relas_caderno9['Número de visualizações de relatórios de caderno']) > 0:
+                figa = go.Figure()
+                figa.add_trace(go.Indicator(
+                value = view_relas_caderno9['Número de visualizações de relatórios de caderno'][0],
+                domain = {'x': [0.25, 0.75], 'y': [0.8, 1]},
+                title = {"text": "Número de visualizações de relatórios de caderno<br><span style='font-size:0.4em;color:#4A8AE8'>"}))
+
+                figa.add_trace(go.Indicator(
+                value = truncar(view_relas_caderno9['Número de visualizações de relatórios de caderno'][0]/view_relas_caderno12['user_id'][0],1),
+                domain = {'x': [0.25, 0.75], 'y': [0.4, 0.6]},
+                title = {"text": "Média de visualizações por professor<br><span style='font-size:0.4em;color:#4A8AE8'>"}))
+
+                figa.add_trace(go.Indicator(
+                value = truncar(view_relas_caderno9['Número de visualizações de relatórios de caderno'][0]/int(str(periodo_data[1] - periodo_data[0])[0:1]),0),
+                domain = {'x': [0.25, 0.75], 'y': [0, 0.2]},
+                title = {"text": "Média de visualizações por dia<br><span style='font-size:0.4em;color:#4A8AE8'>"}))
+                st.plotly_chart(figa)
+
+                view_relas_caderno13 = pd.merge(view_relas_caderno7,view_relas_caderno10, on = ['name','grupo','namespace'], how = 'inner')
+                view_relas_caderno14 = view_relas_caderno13.drop(columns = ['Semana_y','Número de visualizações de relatórios de caderno_y'])
+                view_relas_caderno15 = view_relas_caderno14.groupby(['name','Semana_x']).sum().reset_index()
+                view_relas_caderno15['Número de visualizações de relatórios de caderno por professor'] = view_relas_caderno15['Número de visualizações de relatórios de caderno_x']/view_relas_caderno15['user_id']
+                view_relas_caderno16 = view_relas_caderno14.groupby(['name','grupo','Semana_x']).sum().reset_index()
+
+                fig = px.bar(view_relas_caderno15, x = view_relas_caderno15['Semana_x'], y = view_relas_caderno15['Número de visualizações de relatórios de caderno por professor'], color_discrete_sequence = ['#4a8ae8']*len(view_relas_caderno15))
+                if len(namespace_grupo_select) != 0:
+                    view_relas_caderno16 = view_relas_caderno16.reset_index(drop = True)
+                    for i in range(len(namespace_grupo_select)):
+                        view_relas_caderno17 = view_relas_caderno16.loc[view_relas_caderno16['grupo'] == namespace_grupo_select[i]]
+                        view_relas_caderno17['Número de visualizações de relatórios de caderno por professor'] = view_relas_caderno17['Número de visualizações de relatórios de caderno_x']/view_relas_caderno17['user_id']
+                        fig.add_scatter(x = view_relas_caderno17['Semana_x'], y = view_relas_caderno17['Número de visualizações de relatórios de caderno por professor'],mode='lines', name = namespace_grupo_select[i], line=dict(color=cor[i]))
+                fig.update_layout(title = "Visualização de relatórios de caderno por professor por semana", yaxis_title='Nº de visualizações por professor', xaxis_title = 'Semana')
+                st.plotly_chart(fig)
+            else:
+                st.warning('Não há registro de visualização de relatórios de cadernos no período selecionado!')
+
+            
 
     if escolha_relatorio == 'Relatório de Rotinas pegagógicas (em construção)':
 
