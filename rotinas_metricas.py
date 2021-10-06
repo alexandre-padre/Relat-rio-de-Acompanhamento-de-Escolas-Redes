@@ -959,7 +959,7 @@ if senha_preenchida == 'eduqo' and nome != 'Nome':
             alunos_ativos = pd.read_csv('./CSV/Qontrole de Redes/Resultados Query/alunos_ativos.csv')
             alunos_ativos2 = alunos_ativos.groupby(['namespace']).nunique().reset_index()
             alunos_ativos3 = alunos_ativos2.drop(columns = ['Unnamed: 0','Unnamed: 0.1','grade'])
-
+            alunos_ativos3.rename(columns = {'name':'Nome'}, inplace = True)
             conteudos_estudados_semana_grafico = conteudos_estudados4_aux.groupby(['name','grupo','namespace','Semana']).sum().reset_index()
             conteudos_estudados_semana_grafico2 = pd.merge(conteudos_estudados_semana_grafico,semanas2, on = 'Semana', how = 'inner')
             conteudos_estudados_semana_grafico2['Conteúdos estudados por dia'] = conteudos_estudados_semana_grafico2['count']/conteudos_estudados_semana_grafico2['day']
