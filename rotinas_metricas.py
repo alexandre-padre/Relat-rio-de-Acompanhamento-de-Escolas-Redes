@@ -102,22 +102,23 @@ if senha_preenchida == 'eduqo' and nome != 'Nome':
 
     if escolha_relatorio == 'Relatório QBR':
         
-        ######################### Filtro de namespace ############################
-        namespace_meio = namespaces_x_hubspot3.sort_values(by = 'namespace')
-        namespace_meio2 = inserir_linha(pd.DataFrame(data = namespace_meio['namespace'].unique()),pd.DataFrame({0: 'Namespace'}, index=[-1]))
-        namespace_meio_select = st.selectbox('👉 Selecione um namespace ', namespace_meio2)
-
         ######################### Acesso a plataforma por alunos ############################
         alunos_acessaram_namespace = pd.read_csv('./CSV/QBR/Resultados por namespace/alunos_acessaram_namespace.csv')
-        alunos_acessaram_namespace_select = alunos_acessaram_namespace[alunos_acessaram_namespace['namespace'] == namespace_meio_select]
         alunos_acessaram_anoescolar = pd.read_csv('./CSV/QBR/Resultados por ano escolar/alunos_acessaram_anoescolar.csv')
-        alunos_acessaram_anoescolar_select = alunos_acessaram_anoescolar[alunos_acessaram_anoescolar['namespace'] == namespace_meio_select]
 
         ######################### Data de análise ############################
         dias = []
         for i in range(len(alunos_acessaram_namespace['day'].unique())+1):
             dias.append(datetime.strptime(alunos_acessaram_namespace['day'][i], '%Y-%m-%d').date())
-        periodo_data = st.slider('👉 Data de análise',min(dias),max(dias),[min(dias),max(dias)],timedelta(1))
+        periodo_data = st.slider('👉 Data de análise (opcional)',min(dias),max(dias),[min(dias),max(dias)],timedelta(1))
+        
+        ######################### Filtro de namespace ############################
+        namespace_meio = namespaces_x_hubspot3.sort_values(by = 'namespace')
+        namespace_meio2 = inserir_linha(pd.DataFrame(data = namespace_meio['namespace'].unique()),pd.DataFrame({0: 'Namespace'}, index=[-1]))
+        namespace_meio_select = st.selectbox('👉 Selecione um namespace ', namespace_meio2)
+
+        alunos_acessaram_namespace_select = alunos_acessaram_namespace[alunos_acessaram_namespace['namespace'] == namespace_meio_select]
+        alunos_acessaram_anoescolar_select = alunos_acessaram_anoescolar[alunos_acessaram_anoescolar['namespace'] == namespace_meio_select]
 
         ######################### Filtro acesso da plataforma (namespace) - Data de análise ############################
         alunos_acessaram_namespace_select['day'] = pd.to_datetime(alunos_acessaram_namespace_select['day'])
@@ -132,7 +133,7 @@ if senha_preenchida == 'eduqo' and nome != 'Nome':
 
         ######################### Filtro de ano escolar ############################   
         ano_escolar = inserir_linha(pd.DataFrame(data = alunos_acessaram_anoescolar_select['grade'].unique()),pd.DataFrame({0: 'Ano Escolar'}, index=[-1]))
-        anoescolar_select = st.multiselect('👉 Selecione um ano escolar', ano_escolar)
+        anoescolar_select = st.multiselect('👉 Selecione um ano escolar (opcional)', ano_escolar)
 
         ######################### Exercícios realizados em AAs ############################
         exercicios_realizados_namespace = pd.read_csv('./CSV/QBR/Resultados por namespace/exercicios_realizados_namespace.csv')
@@ -149,6 +150,7 @@ if senha_preenchida == 'eduqo' and nome != 'Nome':
 
         ######################### Exercícios realizados em SEs ############################
         exercicios_realizados_se_namespace = pd.read_csv('./CSV/QBR/Resultados por namespace/exercicios_realizados_se_namespace.csv')
+        #st.dataframe(exercicios_realizados_se_namespace)
         exercicios_realizados_se_namespace_select = exercicios_realizados_se_namespace[exercicios_realizados_se_namespace['namespace'] == namespace_meio_select]
         exercicios_realizados_se_namespace_select['day'] = pd.to_datetime(exercicios_realizados_se_namespace_select['day'])
         exercicios_realizados_se_namespace_select_tempo = exercicios_realizados_se_namespace_select[exercicios_realizados_se_namespace_select['day'] >= periodo_data[0]]
@@ -206,8 +208,8 @@ if senha_preenchida == 'eduqo' and nome != 'Nome':
 
         if namespace_meio_select != 'Namespace':
             """
-                ### **Benefício 1**: Alunos engajados, no seu próprio ritmo e recebendo feedback em tempo real.
-                ## 🚀 **Acesso à plataforma por alunos**
+                # 🌟 **Benefício 1**: Alunos engajados, no seu próprio ritmo e recebendo feedback em tempo real.
+                ## 🚀 **Acesso à plataforma pelos alunos**
                 Aqui analisamos a quantidade de acessos à plataforma, cada número representa a média semanal da quantidade de alunos que acessaram diariamente em relação ao número de alunos ativos.
             """
             alunos_acessaram_namespace_select_tempo2 = alunos_acessaram_namespace_select_tempo2.reset_index(drop = True)
@@ -238,7 +240,7 @@ if senha_preenchida == 'eduqo' and nome != 'Nome':
                         alunos_acessaram_anoescolar_select_tempo4 = alunos_acessaram_anoescolar_select_tempo3.loc[alunos_acessaram_anoescolar_select_tempo3['grade'] == anoescolar_select[i]]
                         cor.append("#"+''.join([random.choice('0123456789ABCDEF') for j in range(6)]))
                         fig.add_scatter(x = alunos_acessaram_anoescolar_select_tempo4['Semana'], y = 100*alunos_acessaram_anoescolar_select_tempo4['Engajamento de alunos ativos'],mode='lines', name = anoescolar_select[i], line=dict(color=cor[i]))
-                fig.update_layout(title = "Engajamento de alunos ativos")
+                fig.update_layout(title = "Engajamento de alunos ativos", yaxis_title = 'Porcentagem de presença')
                 st.plotly_chart(fig)
 
                 alunos_ativos = pd.read_csv('./CSV/QBR/Resultados Query/alunos_ativos.csv')
@@ -257,7 +259,7 @@ if senha_preenchida == 'eduqo' and nome != 'Nome':
                 porc_aluno_ativo2 = round(100*truncar(porc_aluno_ativo,3),3) 
                 porc_doc_ativo2 = round(100*truncar(porc_doc_ativo,3),3)    
 
-                st.write('O total de administrantes é **'+str(adm_ativo2['count'][0])+' ('+str(porc_adm_ativo2)+'%)**, de professores é **'+str(doc_ativo2['count'][0])+' ('+str(porc_doc_ativo2)+'%)** e a quantidade de alunos é **'+str(alunos_ativos3['count'][0])+' ('+str(porc_aluno_ativo2)+'%)**.')    
+                st.write('O total de administrantes é **'+str(adm_ativo2['count'][0])+' ('+str(porc_adm_ativo2).replace('.',',')+'%)**, de professores é **'+str(doc_ativo2['count'][0])+' ('+str(porc_doc_ativo2).replace('.',',')+'%)** e a quantidade de alunos é **'+str(alunos_ativos3['count'][0])+' ('+str(porc_aluno_ativo2).replace('.',',')+'%)**.')    
 
             else:
                 st.warning('Não há registro de acesso dos alunos no período selecionado!')
@@ -287,7 +289,7 @@ if senha_preenchida == 'eduqo' and nome != 'Nome':
                 fig.update_layout(title = "Exercícios resolvidos de AA por aluno")
                 st.plotly_chart(fig)
 
-                st.write('A média de exercícios resolvidos em todas as semanas é **'+str(round(truncar(exercicios_realizados_namespace_select_tempo3['Exercícios resolvidos por aluno'].mean(),3),3))+'** exercícios por aluno.')
+                st.write('Em média, os alunos resolveram **'+str(round(exercicios_realizados_namespace_select_tempo3['Exercícios resolvidos por aluno'].mean(),0)).replace('.0','')+'** exercícios de AA por semana.')
             else:
                 st.warning('Não há registro de exercícios resolvidos no período selecionado!')
 
@@ -312,10 +314,10 @@ if senha_preenchida == 'eduqo' and nome != 'Nome':
                     for i in range(len(anoescolar_select)):
                         exercicios_realizados_se_anoescolar_select_tempo4 = exercicios_realizados_se_anoescolar_select_tempo3.loc[exercicios_realizados_se_anoescolar_select_tempo3['grade'] == anoescolar_select[i]]
                         fig.add_scatter(x = exercicios_realizados_se_anoescolar_select_tempo4['Semana'], y = exercicios_realizados_se_anoescolar_select_tempo4['Exercícios resolvidos de SE por aluno'],mode='lines', name = anoescolar_select[i], line=dict(color=cor[i]))
-                fig.update_layout(title = "Exercícios resolvidos de SE por aluno")
+                fig.update_layout(title = "Exercícios resolvidos de SE por aluno", yaxis_title = 'Exercícios por aluno')
                 st.plotly_chart(fig)
 
-                st.write('A média de exercícios resolvidos em todas as semanas é **'+str(round(truncar(exercicios_realizados_se_namespace_select_tempo3['Exercícios resolvidos de SE por aluno'].mean(),3),3))+'** exercícios por aluno.')
+                st.write('Em média, os alunos resolveram **'+str(round(exercicios_realizados_se_namespace_select_tempo3['Exercícios resolvidos de SE por aluno'].mean(),0)).replace('.0','')+'** exercícios de SE por semana.')
             else:
                 st.warning('Não há registro de exercícios resolvidos no período selecionado!')
 
@@ -340,16 +342,16 @@ if senha_preenchida == 'eduqo' and nome != 'Nome':
                     for i in range(len(anoescolar_select)):
                         conteudos_estudados_anoescolar_select_tempo4 = conteudos_estudados_anoescolar_select_tempo3.loc[conteudos_estudados_anoescolar_select_tempo3['grade'] == anoescolar_select[i]]
                         fig.add_scatter(x = conteudos_estudados_anoescolar_select_tempo4['Semana'], y = conteudos_estudados_anoescolar_select_tempo4['Conteudos estudados por aluno'],mode='lines', name = anoescolar_select[i], line=dict(color=cor[i]))
-                fig.update_layout(title = "Conteudos estudados por aluno")
+                fig.update_layout(title = "Conteudos estudados por aluno", yaxis_title = 'Conteúdos por aluno')
                 st.plotly_chart(fig)
 
-                st.write('A média de conteúdos estudados em todas as semanas é **'+str(round(truncar(conteudos_estudados_namespace_select_tempo3['Conteudos estudados por aluno'].mean(),3),3))+'** conteúdos por aluno.')
+                st.write('Em média, os alunos estudaram **'+str(round(conteudos_estudados_namespace_select_tempo3['Conteudos estudados por aluno'].mean(),0)).replace('.0','')+'** conteúdos por semana.')
             else:
                 st.warning('Não há registro de conteúdos estudados no período selecionado!')
 
             """
-                ### **Benefício 2**: Professores que estão personalizando a aprendizagem.
-                ## 🚀 **Acesso à plataforma por professores**
+                # 🌟 **Benefício 2**: Professores que estão personalizando a aprendizagem.
+                ## 🚀 **Acesso à plataforma pelos professores**
                 Aqui analisamos a quantidade de acessos à plataforma, cada número representa a média semanal da quantidade de professores que acessaram diariamente em relação ao número de professores ativos.
             """
             ######################### Acesso de professores à plataforma ############################
@@ -360,16 +362,16 @@ if senha_preenchida == 'eduqo' and nome != 'Nome':
             
             if len(profs_acessaram_select_tempo3['Semana'] >= 0):
                 fig = px.bar(profs_acessaram_select_tempo3, x = profs_acessaram_select_tempo3['Semana'], y = 100*profs_acessaram_select_tempo3['Engajamento de professores'], range_y=[0,100], color_discrete_sequence = ['#4a8ae8']*len(profs_acessaram_select_tempo3))
-                fig.update_layout(title = "Engajamento de professores")
+                fig.update_layout(title = "Engajamento de professores", yaxis_title = 'Engajamento de professores')
                 st.plotly_chart(fig)
 
-                st.write('A média de acesso por professores por dia é **'+str(round(truncar(100*profs_acessaram_select_tempo3['Engajamento de professores'].mean(),3),3))+'%**.')
+                st.write('Em média, o acesso de professores foi de **'+str(round(100*profs_acessaram_select_tempo3['Engajamento de professores'].mean(),0)).replace('.0','')+'%** por dia.')
             else:
                 st.warning('Não há registro de acesso de professores no período selecionado!')
 
             """
-                ## 🚀 **Materiais criados por professor**
-                Aqui analisamos a quantidade de materiais criador por professor, cada número representa a média semanal da quantidade de materiais postados.
+                ## 🚀 **Materiais criados pelos professores**
+                Aqui analisamos a quantidade de materiais criados pelos professores, cada número representa a média semanal da quantidade de materiais postados.
             """
             ######################### Materiais criados por professor ############################
             profs_materiais_select_tempo2 = profs_materiais_select_tempo2.reset_index(drop = True)
@@ -379,16 +381,16 @@ if senha_preenchida == 'eduqo' and nome != 'Nome':
             
             if len(profs_materiais_select_tempo3['Semana'] >= 0):
                 fig = px.bar(profs_materiais_select_tempo3, x = profs_materiais_select_tempo3['Semana'], y = profs_materiais_select_tempo3['Materiais por professor'], color_discrete_sequence = ['#4a8ae8']*len(profs_materiais_select_tempo3))
-                fig.update_layout(title = "Materiais criados por professor")
+                fig.update_layout(title = "Materiais criados por professor", yaxis_title = 'Materiais por professor')
                 st.plotly_chart(fig)
 
-                st.write('A média de materiais postados por professor por semana é **'+str(round(truncar(profs_materiais_select_tempo3['Materiais por professor'].mean(),3),3))+'**.')
+                st.write('Em média, os professores postaram **'+str(round(profs_materiais_select_tempo3['Materiais por professor'].mean(),0)).replace('.0','')+'** conteúdos por semana.')
             else:
                 st.warning('Não há registro de criação de materiais no período selecionado!')
 
             """
-                ## 🚀 **Exercícios criados por professor**
-                Aqui analisamos a quantidade de exercícios criador por professor, cada número representa a média semanal da quantidade de exercícios postados.
+                ## 🚀 **Exercícios criados pelos professores**
+                Aqui analisamos a quantidade de exercícios criador pelos professores, cada número representa a média semanal da quantidade de exercícios postados.
             """
             ######################### Exercícios criador por professores ############################
             profs_exercicios_select_tempo2 = profs_exercicios_select_tempo2.reset_index(drop = True)
@@ -398,17 +400,17 @@ if senha_preenchida == 'eduqo' and nome != 'Nome':
             
             if len(profs_exercicios_select_tempo3['Semana'] >= 0):
                 fig = px.bar(profs_exercicios_select_tempo3, x = profs_exercicios_select_tempo3['Semana'], y = profs_exercicios_select_tempo3['Exercícios por professor'], color_discrete_sequence = ['#4a8ae8']*len(profs_exercicios_select_tempo3))
-                fig.update_layout(title = "Exercícios criados por professor")
+                fig.update_layout(title = "Exercícios criados por professor", yaxis_title = 'Exercícios por professor')
                 st.plotly_chart(fig)
 
-                st.write('A média de exercícios criados por professor por semana é **'+str(round(truncar(profs_exercicios_select_tempo3['Exercícios por professor'].mean(),3),3))+'**.')
+                st.write('Em média, os professores postaram **'+str(round(profs_exercicios_select_tempo3['Exercícios por professor'].mean(),0)).replace('.0','')+'** exercícios por semana.')
             else:
                 st.warning('Não há registro de criação de exercícios no período selecionado!')
 
             """
-                ### **Benefício 3**: Escola que analisa dados para personalização da aprendizagem.
-                ## 🚀 **Visualização de relatórios por professor**
-                Aqui analisamos a visualização de relatórios por professor semanalmente, ou seja cada número representa a porcentagem de professores que visualizações relatórios em cada semana.
+                # 🌟 **Benefício 3**: Escola que analisa dados para personalização da aprendizagem.
+                ## 🚀 **Engajamento em visualização de relatórios pelos professores**
+                Aqui analisamos a visualização de relatórios pelos professores semanalmente, ou seja cada número representa a porcentagem de professores que visualizações relatórios em cada semana.
             """
             ######################### Visualização de relatórios por professores ############################
             profs_relatorios_select_tempo2 = profs_relatorios_select_tempo2.reset_index(drop = True)
@@ -422,10 +424,10 @@ if senha_preenchida == 'eduqo' and nome != 'Nome':
             
             if len(profs_relatorios_select_tempo6['Semana'] >= 0):
                 fig = px.bar(profs_relatorios_select_tempo6, x = profs_relatorios_select_tempo6['Semana'], y = 100*profs_relatorios_select_tempo6['Engajamento na visualização de relatórios'], range_y=[0,100], color_discrete_sequence = ['#4a8ae8']*len(profs_relatorios_select_tempo6))
-                fig.update_layout(title = "Porcentagem de professores que visualizam relatórios")
+                fig.update_layout(title = "Porcentagem de professores que visualizam relatórios", yaxis_title = 'Engajamento')
                 st.plotly_chart(fig)
 
-                st.write('A porcentagem de professores que visualizaram relatórios semanalmente é de **'+str(round(truncar(100*profs_relatorios_select_tempo6['Engajamento na visualização de relatórios'].mean(),3),3))+'%**.')
+                st.write('Em média, o engajamento semanal na visualização de relatórios foi de **'+str(round(100*profs_relatorios_select_tempo6['Engajamento na visualização de relatórios'].mean(),0)).replace('.0','')+'%**.')
             else:
                 st.warning('Não há registro de visualização de relatórios no período selecionado!')
 
@@ -441,15 +443,9 @@ if senha_preenchida == 'eduqo' and nome != 'Nome':
         index = 2
         sheet.insert_row(row, index)
 
-
     if escolha_relatorio == 'Relatório QBR de Redes':
 
         namespace_rede = pd.read_csv('./CSV/QBR/Resultados Query/namespace_rede.csv', sep = ',')
-
-        ######################### Filtro de rede ############################
-        namespace_rede2 = namespace_rede.sort_values(by = 'name')
-        namespace_rede3 = inserir_linha(pd.DataFrame(data = namespace_rede2['name'].unique()),pd.DataFrame({0: 'Rede'}, index=[-1]))
-        namespace_rede_select = st.selectbox('👉 Selecione uma rede', namespace_rede3)
 
         ######################### Acesso a plataforma por alunos ############################
         alunos_acessaram_namespace_rede = pd.read_csv('./CSV/QBR/Resultados por namespace/alunos_acessaram_namespace.csv')
@@ -458,18 +454,23 @@ if senha_preenchida == 'eduqo' and nome != 'Nome':
         dias = []
         for i in range(len(alunos_acessaram_namespace_rede['day'].unique())+1):
             dias.append(datetime.strptime(alunos_acessaram_namespace_rede['day'][i], '%Y-%m-%d').date())
-        periodo_data = st.slider('👉 Data de análise',min(dias),max(dias),[min(dias),max(dias)],timedelta(1))
+        periodo_data = st.slider('👉 Data de análise (opcional)',min(dias),max(dias),[min(dias),max(dias)],timedelta(1))
+        
+        ######################### Filtro de rede ############################
+        namespace_rede2 = namespace_rede.sort_values(by = 'name')
+        namespace_rede3 = inserir_linha(pd.DataFrame(data = namespace_rede2['name'].unique()),pd.DataFrame({0: 'Rede'}, index=[-1]))
+        namespace_rede_select = st.selectbox('👉 Selecione uma rede', namespace_rede3)
         
         ######################### Filtro de grupo ############################
         namespace_grupo2_aux = namespace_rede[namespace_rede['name'] == namespace_rede_select]
         namespace_grupo2 = namespace_grupo2_aux.sort_values(by = 'grupo')
         namespace_grupo3 = inserir_linha(pd.DataFrame(data = namespace_grupo2['grupo'].unique()),pd.DataFrame({0: 'Grupo'}, index=[-1]))
-        namespace_grupo_select = st.multiselect('👉 Selecione um grupo', namespace_grupo3)
+        namespace_grupo_select = st.multiselect('👉 Selecione um grupo (opcional)', namespace_grupo3)
 
         if namespace_rede_select != 'Rede':
             """
-                ### **Benefício 1**: Alunos engajados, no seu próprio ritmo e recebendo feedback em tempo real.
-                ## 🚀 **Acesso à plataforma por alunos**
+                # 🌟 **Benefício 1**: Alunos engajados, no seu próprio ritmo e recebendo feedback em tempo real.
+                ## 🚀 **Acesso à plataforma pelos alunos**
                 Aqui analisamos a quantidade de acessos à plataforma, cada número representa a média semanal da quantidade de alunos que acessaram diariamente em relação ao número de alunos ativos.
             """
             alunos_acessaram_namespace_rede2 = filtro_uniao_rede(alunos_acessaram_namespace_rede,namespace_rede2,namespace_rede_select)
@@ -488,10 +489,10 @@ if senha_preenchida == 'eduqo' and nome != 'Nome':
                         alunos_acessaram_namespace_rede7 = alunos_acessaram_namespace_rede5.loc[alunos_acessaram_namespace_rede5['grupo'] == namespace_grupo_select[i]]
                         cor.append("#"+''.join([random.choice('0123456789ABCDEF') for j in range(6)]))
                         fig.add_scatter(x = alunos_acessaram_namespace_rede7['Semana'], y = 100*alunos_acessaram_namespace_rede7['Engajamento de alunos ativos'],mode='lines', name = namespace_grupo_select[i], line=dict(color=cor[i]))
-                fig.update_layout(title = "Engajamento de alunos ativos")
+                fig.update_layout(title = "Engajamento de alunos ativos", yaxis_title = 'Porcentagem de presença')
                 st.plotly_chart(fig)  
 
-                st.write('A média de acesso por alunos da rede por dia é **'+str(round(truncar(100*alunos_acessaram_namespace_rede6['Engajamento de alunos ativos'].mean(),3),3))+'%**.')
+                st.write('Em média, o acesso de alunos foi de **'+str(round(100*alunos_acessaram_namespace_rede6['Engajamento de alunos ativos'].mean(),0)).replace('.0','')+'%** por dia.')
             else:
                 st.warning('Não há registro de acesso dos alunos no período selecionado!')
 
@@ -521,10 +522,10 @@ if senha_preenchida == 'eduqo' and nome != 'Nome':
                     for i in range(len(namespace_grupo_select)):
                         exercicios_realizados_namespace_rede10 = exercicios_realizados_namespace_rede9.loc[exercicios_realizados_namespace_rede9['grupo'] == namespace_grupo_select[i]]
                         fig.add_scatter(x = exercicios_realizados_namespace_rede10['Semana'], y = exercicios_realizados_namespace_rede10['Exercícios resolvidos em AA por aluno'],mode='lines', name = namespace_grupo_select[i], line=dict(color=cor[i]))
-                fig.update_layout(title = "Exercícios resolvidos em AA por aluno")
+                fig.update_layout(title = "Exercícios resolvidos em AA por aluno", yaxis_title = 'Exercícios por aluno')
                 st.plotly_chart(fig)   
 
-                st.write('A média de exercícios resolvidos da rede em todas as semanas é **'+str(round(truncar(exercicios_realizados_namespace_rede8['Exercícios resolvidos em AA por aluno'].mean(),3),3))+'** exercícios por aluno.')
+                st.write('Em média, os alunos resolveram **'+str(round(exercicios_realizados_namespace_rede8['Exercícios resolvidos em AA por aluno'].mean(),0)).replace('.0','')+'** exercícios de AA por semana.')
             else:
                 st.warning('Não há registro de realização de exercícios no período selecionado!')
             
@@ -555,10 +556,10 @@ if senha_preenchida == 'eduqo' and nome != 'Nome':
                     for i in range(len(namespace_grupo_select)):
                         exercicios_realizados_se_namespace_rede10 = exercicios_realizados_se_namespace_rede9.loc[exercicios_realizados_se_namespace_rede9['grupo'] == namespace_grupo_select[i]]
                         fig.add_scatter(x = exercicios_realizados_se_namespace_rede10['Semana'], y = exercicios_realizados_se_namespace_rede10['Exercícios resolvidos em SE por aluno'],mode='lines', name = namespace_grupo_select[i], line=dict(color=cor[i]))
-                fig.update_layout(title = "Exercícios resolvidos em SE por aluno")
+                fig.update_layout(title = "Exercícios resolvidos em SE por aluno", yaxis_title = 'Exercícios por aluno')
                 st.plotly_chart(fig) 
 
-                st.write('A média de exercícios resolvidos da rede em todas as semanas é **'+str(round(truncar(exercicios_realizados_se_namespace_rede8['Exercícios resolvidos em SE por aluno'].mean(),3),3))+'** exercícios por aluno.')
+                st.write('Em média, os alunos resolveram **'+str(round(exercicios_realizados_se_namespace_rede8['Exercícios resolvidos em SE por aluno'].mean(),0)).replace('.0','')+'** exercícios de SE por semana.')
             else:
                 st.warning('Não há registro de realização de exercícios no período selecionado!')
 
@@ -589,16 +590,16 @@ if senha_preenchida == 'eduqo' and nome != 'Nome':
                     for i in range(len(namespace_grupo_select)):
                         conteudos_estudados_namespace_rede10 = conteudos_estudados_namespace_rede9.loc[conteudos_estudados_namespace_rede9['grupo'] == namespace_grupo_select[i]]
                         fig.add_scatter(x = conteudos_estudados_namespace_rede10['Semana'], y = conteudos_estudados_namespace_rede10['Conteúdos estudados por aluno'],mode='lines', name = namespace_grupo_select[i], line=dict(color=cor[i]))
-                fig.update_layout(title = "Conteúdos estudados por aluno")
+                fig.update_layout(title = "Conteúdos estudados por aluno", yaxis_title = 'Conteúdos por aluno')
                 st.plotly_chart(fig) 
 
-                st.write('A média de conteúdos estudados da rede em todas as semanas é **'+str(round(truncar(conteudos_estudados_namespace_rede8['Conteúdos estudados por aluno'].mean(),3),3))+'** conteúdos por aluno.')
+                st.write('Em média, os alunos estudaram **'+str(round(conteudos_estudados_namespace_rede8['Conteúdos estudados por aluno'].mean(),0)).replace('.0','')+'** conteúdos por semana.')
             else:
                 st.warning('Não há registro de estudo de conteúdos no período selecionado!')
 
             """
-                ### **Benefício 2**: Professores que estão personalizando a aprendizagem.
-                ## 🚀 **Acesso à plataforma por professores**
+                # 🌟 **Benefício 2**: Professores que estão personalizando a aprendizagem.
+                ## 🚀 **Acesso à plataforma pelos professores**
                 Aqui analisamos a quantidade de acessos à plataforma, cada número representa a média semanal da quantidade de professores que acessaram diariamente em relação ao número de professores ativos.
             """
             ######################### Acesso a plataforma por professores ############################
@@ -624,16 +625,16 @@ if senha_preenchida == 'eduqo' and nome != 'Nome':
                     for i in range(len(namespace_grupo_select)):
                         profs_acessaram_rede10 = profs_acessaram_rede9.loc[profs_acessaram_rede9['grupo'] == namespace_grupo_select[i]]
                         fig.add_scatter(x = profs_acessaram_rede10['Semana'], y = 100*profs_acessaram_rede10['Engajamento de professores'],mode='lines', name = namespace_grupo_select[i], line=dict(color=cor[i]))
-                fig.update_layout(title = "Engajamento de professores")
+                fig.update_layout(title = "Engajamento de professores", yaxis_title = 'Engajamento de professores')
                 st.plotly_chart(fig) 
 
-                st.write('A média de acesso por professores da rede por dia é **'+str(round(truncar(100*profs_acessaram_rede8['Engajamento de professores'].mean(),3),3))+'%**.')
+                st.write('Em média, o acesso de professores foi de **'+str(round(100*profs_acessaram_rede8['Engajamento de professores'].mean(),0)).replace('.0','')+'%** por dia.')
             else:
                 st.warning('Não há registro de acesso de professores no período selecionado!')
 
             """
-                ## 🚀 **Materiais criados por professor**
-                Aqui analisamos a quantidade de materiais criador por professor, cada número representa a média semanal da quantidade de materiais postados.
+                ## 🚀 **Materiais criados pelos professores**
+                Aqui analisamos a quantidade de materiais criador pelos professores, cada número representa a média semanal da quantidade de materiais postados.
             """
             ######################### Professores materiais ############################
             profs_materiais_rede = pd.read_csv('./CSV/QBR/Resultados por namespace/profs_materiais.csv')
@@ -658,16 +659,16 @@ if senha_preenchida == 'eduqo' and nome != 'Nome':
                     for i in range(len(namespace_grupo_select)):
                         profs_materiais_rede10 = profs_materiais_rede9.loc[profs_materiais_rede9['grupo'] == namespace_grupo_select[i]]
                         fig.add_scatter(x = profs_materiais_rede10['Semana'], y = profs_materiais_rede10['Materiais criados por professor'],mode='lines', name = namespace_grupo_select[i], line=dict(color=cor[i]))
-                fig.update_layout(title = "Materiais criados por professor")
+                fig.update_layout(title = "Materiais criados por professor", yaxis_title = 'Materiais por professor')
                 st.plotly_chart(fig) 
 
-                st.write('A média de materiais postados por professor da rede por semana é **'+str(round(truncar(profs_materiais_rede8['Materiais criados por professor'].mean(),3),3))+'**.')
+                st.write('Em média, os professores postaram **'+str(round(profs_materiais_rede8['Materiais criados por professor'].mean(),0)).replace('.0','')+'** conteúdos por semana.')
             else:
                 st.warning('Não há registro de materiais criados no período selecionado!')
 
             """
-                ## 🚀 **Exercícios criados por professor**
-                Aqui analisamos a quantidade de exercícios criador por professor, cada número representa a média semanal da quantidade de exercícios postados.
+                ## 🚀 **Exercícios criados pelos professores**
+                Aqui analisamos a quantidade de exercícios criados pelos professores, cada número representa a média semanal da quantidade de exercícios postados.
             """
             ######################### Professores exercícios ############################
             profs_exercicios_rede = pd.read_csv('./CSV/QBR/Resultados por namespace/profs_exercicios.csv')
@@ -692,17 +693,17 @@ if senha_preenchida == 'eduqo' and nome != 'Nome':
                     for i in range(len(namespace_grupo_select)):
                         profs_exercicios_rede10 = profs_exercicios_rede9.loc[profs_exercicios_rede9['grupo'] == namespace_grupo_select[i]]
                         fig.add_scatter(x = profs_exercicios_rede10['Semana'], y = profs_exercicios_rede10['Exercícios criados por professor'],mode='lines', name = namespace_grupo_select[i], line=dict(color=cor[i]))
-                fig.update_layout(title = "Exercícios criados por professor")
+                fig.update_layout(title = "Exercícios criados por professor", yaxis_title = 'Exercícios por professor')
                 st.plotly_chart(fig) 
 
-                st.write('A média de exercícios criados por professor da rede por semana é **'+str(round(truncar(profs_exercicios_rede8['Exercícios criados por professor'].mean(),3),3))+'**.')
+                st.write('Em média, os professores postaram **'+str(round(profs_exercicios_rede8['Exercícios criados por professor'].mean(),0)).replace('.0','')+'** exercícios por semana.')
             else:
                 st.warning('Não há registro de exercícios criados no período selecionado!')
 
             """
-                ### **Benefício 3**: Escola que analisa dados para personalização da aprendizagem.
-                ## 🚀 **Visualização de relatórios por professor**
-                Aqui analisamos a visualização de relatórios por professor semanalmente, ou seja cada número representa a porcentagem de professores que visualizações relatórios em cada semana.
+                # 🌟 **Benefício 3**: Escola que analisa dados para personalização da aprendizagem.
+                ## 🚀 **Visualização de relatórios pelos professor**
+                Aqui analisamos a visualização de relatórios pelos professores semanalmente, ou seja cada número representa a porcentagem de professores que visualizações relatórios em cada semana.
             """
             ######################### Professores visualização de relatórios ############################
             profs_relatorios_rede = pd.read_csv('./CSV/QBR/Resultados por namespace/profs_relatorios.csv')
@@ -734,33 +735,28 @@ if senha_preenchida == 'eduqo' and nome != 'Nome':
                     for i in range(len(namespace_grupo_select)):
                         profs_relatorios_rede13 = profs_relatorios_rede12.loc[profs_relatorios_rede12['grupo'] == namespace_grupo_select[i]]
                         fig.add_scatter(x = profs_relatorios_rede13['Semana'], y = 100*profs_relatorios_rede13['Engajamento de visualização de relatórios por professor'],mode='lines', name = namespace_grupo_select[i], line=dict(color=cor[i]))
-                fig.update_layout(title = "Engajamento de visualização de relatórios por professor")
+                fig.update_layout(title = "Engajamento de visualização de relatórios por professor", yaxis_title = 'Engajamento')
                 st.plotly_chart(fig) 
 
-                st.write('A porcentagem de professores da rede que visualizaram relatórios semanalmente é de **'+str(round(truncar(100*profs_relatorios_rede11['Engajamento de visualização de relatórios por professor'].mean(),3),3))+'%**.')
+                st.write('Em média, o engajamento semanal na visualização de relatórios foi de **'+str(round(100*profs_relatorios_rede11['Engajamento de visualização de relatórios por professor'].mean(),0)).replace('.0','')+'%**.')
             else:
                 st.warning('Não há registro de relatórios visualizados no período selecionado!')
 
-        nps = st.selectbox('Em uma escala de 0 a 10, o quanto você acha que esse relatório te ajuda no dia a dia?', ['Nota','0','1','2','3','4','5','6','7','8','9','10'])
-        text = st.empty()
-        value = ""
-        if st.button('Escrever outro feedback / ponto de melhoria'):
-            value = " "
-        feedback2 = text.text_input("Caso tenha algum feedback e/ou sugestão de melhoria, escreva aqui 😊", value)
-        if nps == 'Nota':
-            nps = '-1'
-        row = [str(datetime.today()),nome,namespace_rede_select,len(namespace_grupo_select),'','','','',str(nps),feedback2,escolha_relatorio]
-        index = 2
-        sheet.insert_row(row, index)
+            nps = st.selectbox('Em uma escala de 0 a 10, o quanto você acha que esse relatório te ajuda no dia a dia?', ['Nota','0','1','2','3','4','5','6','7','8','9','10'])
+            text = st.empty()
+            value = ""
+            if st.button('Escrever outro feedback / ponto de melhoria'):
+                value = " "
+            feedback2 = text.text_input("Caso tenha algum feedback e/ou sugestão de melhoria, escreva aqui 😊", value)
+            if nps == 'Nota':
+                nps = '-1'
+            row = [str(datetime.today()),nome,namespace_rede_select,len(namespace_grupo_select),'','','','',str(nps),feedback2,escolha_relatorio]
+            index = 2
+            sheet.insert_row(row, index)
         
     if escolha_relatorio == 'Qontrole de Redes':
         
         namespace_rede = pd.read_csv('./CSV/QBR/Resultados Query/namespace_rede.csv', sep = ',')
-
-        ######################### Filtro de rede ############################
-        namespace_rede2 = namespace_rede.sort_values(by = 'name')
-        namespace_rede3 = inserir_linha(pd.DataFrame(data = namespace_rede2['name'].unique()),pd.DataFrame({0: 'Rede'}, index=[-1]))
-        namespace_rede_select = st.selectbox('👉 Selecione uma rede', namespace_rede3)
 
         ######################### Acesso a plataforma por alunos ############################
         alunos_acessaram_rede = pd.read_csv('./CSV/Qontrole de Redes/Resultados por namespace/acesso_alunos.csv')
@@ -769,13 +765,18 @@ if senha_preenchida == 'eduqo' and nome != 'Nome':
         dias = []
         for i in range(len(alunos_acessaram_rede['day'].unique())+1):
             dias.append(datetime.strptime(alunos_acessaram_rede['day'][i], '%Y-%m-%d').date())
-        periodo_data = st.slider('👉 Data de análise',min(dias),max(dias),[min(dias),max(dias)],timedelta(1))
+        periodo_data = st.slider('👉 Data de análise (opcional)',min(dias),max(dias),[min(dias),max(dias)],timedelta(1))
+
+        ######################### Filtro de rede ############################
+        namespace_rede2 = namespace_rede.sort_values(by = 'name')
+        namespace_rede3 = inserir_linha(pd.DataFrame(data = namespace_rede2['name'].unique()),pd.DataFrame({0: 'Rede'}, index=[-1]))
+        namespace_rede_select = st.selectbox('👉 Selecione uma rede', namespace_rede3)
         
         ######################### Filtro de grupo ############################
         namespace_grupo2_aux = namespace_rede[namespace_rede['name'] == namespace_rede_select]
         namespace_grupo2 = namespace_grupo2_aux.sort_values(by = 'grupo')
         namespace_grupo3 = inserir_linha(pd.DataFrame(data = namespace_grupo2['grupo'].unique()),pd.DataFrame({0: 'Grupo'}, index=[-1]))
-        namespace_grupo_select = st.multiselect('👉 Selecione um grupo', namespace_grupo3)
+        namespace_grupo_select = st.multiselect('👉 Selecione um grupo (opcional)', namespace_grupo3)
 
         if namespace_rede_select != 'Rede':
             
@@ -831,8 +832,8 @@ if senha_preenchida == 'eduqo' and nome != 'Nome':
             st.plotly_chart(figa)
 
             """
-                ## 🚀 **Presença semanal**
-                Aqui analisamos a porcentagem de presença diária dos alunos ativos por semana.
+                ## 🚀 **Acesso à plataforma pelos alunos**
+                Aqui analisamos a quantidade de acessos à plataforma, cada número representa a média semanal da quantidade de alunos que acessaram diariamente em relação ao número de alunos ativos.
             """
             ######################### Alunos presentes por semana ############################
             alunos_acessaram_temporal = alunos_acessaram_rede4.copy()
@@ -887,7 +888,18 @@ if senha_preenchida == 'eduqo' and nome != 'Nome':
                 tabela_acesso_grupo2['Porcentagem de presença (%)'] = 100*tabela_acesso_grupo2['user_id_y']/tabela_acesso_grupo2['user_id_x']
                 tabela_acesso_grupo3 = tabela_acesso_grupo2.drop(columns = ['user_id_x','user_id_y'])
                 tabela_acesso_grupo3.rename(columns = {'seconds':'Tempo Médio (h)','grupo':'Grupo'}, inplace = True)
-                tabela_acesso_grupo4 = tabela_acesso_grupo3.sort_values(by = 'Porcentagem de presença (%)', ascending = False).reset_index(drop = True)
+                tabela_acesso_grupo3['Tempo Médio (h)'] = 60*tabela_acesso_grupo3['Tempo Médio (h)']
+                for i in range(len(tabela_acesso_grupo3['Tempo Médio (h)'])):
+                    minutes = tabela_acesso_grupo3['Tempo Médio (h)'][i]
+                    if minutes > 60:
+                        hours = minutes // 60
+                        reminder = minutes - hours*60
+                        tabela_acesso_grupo3['Tempo Médio (h)'][i] = str(hours)+'h'+str(truncar(reminder,0))+'min'
+                    else:
+                        tabela_acesso_grupo3['Tempo Médio (h)'][i] = str(truncar(minutes,0))+'min'
+                    tabela_acesso_grupo3['Tempo Médio (h)'][i] = tabela_acesso_grupo3['Tempo Médio (h)'][i].replace('.0','') 
+                tabela_acesso_grupo3_aux = tabela_acesso_grupo3.drop(columns = ['Nome'])
+                tabela_acesso_grupo4 = tabela_acesso_grupo3_aux.sort_values(by = 'Porcentagem de presença (%)', ascending = False).reset_index(drop = True)
                 tabela_acesso_grupo5 = tabela_acesso_grupo4.style.applymap(classificacao_cor, subset=['Porcentagem de presença (%)']).set_precision(2)
                 st.table(tabela_acesso_grupo5)
             
@@ -903,7 +915,18 @@ if senha_preenchida == 'eduqo' and nome != 'Nome':
                 tabela_acesso_namespace2['Porcentagem de presença (%)'] = 100*tabela_acesso_namespace2['user_id_y']/tabela_acesso_namespace2['user_id_x']
                 tabela_acesso_namespace3 = tabela_acesso_namespace2.drop(columns = ['user_id_x','user_id_y'])
                 tabela_acesso_namespace3.rename(columns = {'seconds':'Tempo Médio (h)','grupo':'Grupo','namespace':'Namespace'}, inplace = True)
-                tabela_acesso_namespace4 = tabela_acesso_namespace3.sort_values(by = 'Porcentagem de presença (%)', ascending = False).reset_index(drop = True)
+                tabela_acesso_namespace3['Tempo Médio (h)'] = 60*tabela_acesso_namespace3['Tempo Médio (h)']
+                for i in range(len(tabela_acesso_namespace3['Tempo Médio (h)'])):
+                    minutes = tabela_acesso_namespace3['Tempo Médio (h)'][i]
+                    if minutes > 60:
+                        hours = minutes // 60
+                        reminder = minutes - hours*60
+                        tabela_acesso_namespace3['Tempo Médio (h)'][i] = str(hours)+'h'+str(truncar(reminder,0))+'min'
+                    else:
+                        tabela_acesso_namespace3['Tempo Médio (h)'][i] = str(truncar(minutes,0))+'min'
+                    tabela_acesso_namespace3['Tempo Médio (h)'][i] = tabela_acesso_namespace3['Tempo Médio (h)'][i].replace('.0','') 
+                tabela_acesso_namespace3_aux = tabela_acesso_namespace3.drop(columns = ['Nome'])
+                tabela_acesso_namespace4 = tabela_acesso_namespace3_aux.sort_values(by = 'Porcentagem de presença (%)', ascending = False).reset_index(drop = True)
                 tabela_acesso_namespace5 = tabela_acesso_namespace4.style.applymap(classificacao_cor, subset=['Porcentagem de presença (%)']).set_precision(2)
                 st.table(tabela_acesso_namespace5)
             
@@ -917,35 +940,37 @@ if senha_preenchida == 'eduqo' and nome != 'Nome':
             conteudos_estudados3 = obter_semana(conteudos_estudados2,'day')
             conteudos_estudados4 = filtro_data(conteudos_estudados3,'day',periodo_data)
             conteudos_estudados4_aux = conteudos_estudados4.fillna(0)
+            
 
             ######################### Filtro de grupo ############################
             if len(namespace_grupo_select) > 0:
                 filtro_conteudos_grupo = conteudos_estudados4_aux[conteudos_estudados4_aux['grupo'].isin(namespace_grupo_select)]
             else:
                 filtro_conteudos_grupo = conteudos_estudados4_aux.copy()
-
+            
             ######################### Cards de resultados gerais ############################
             conteudos_estudados_semana = filtro_conteudos_grupo.groupby(['name','Semana']).sum().reset_index()
+            dias = filtro_conteudos_grupo.groupby('name').nunique().reset_index()
             semanas = conteudos_estudados4.groupby('Semana').nunique().reset_index()
             semanas2 = semanas.drop(columns = ['name','grupo','namespace','count'])
             conteudos_estudados_semana2 = pd.merge(conteudos_estudados_semana,semanas2, on = 'Semana', how = 'inner')
             conteudos_estudados_semana2['Conteúdos estudados por dia'] = conteudos_estudados_semana2['count']/conteudos_estudados_semana2['day']
             conteudos_estudados_semana3 = conteudos_estudados_semana2.groupby('name').mean().reset_index()
-            conteudos_estudados_total = conteudos_estudados_semana2.groupby('name').sum().reset_index()
+            conteudos_estudados_total = conteudos_estudados_semana.groupby('name').sum().reset_index()
 
             figa = go.Figure()
             figa.add_trace(go.Indicator(
-            value = conteudos_estudados_semana3['Conteúdos estudados por dia'][0],
+            value = conteudos_estudados_total['count'][0]/dias['day'][0],
             domain = {'x': [0.25, 0.75], 'y': [0.8, 1]},
             title = {"text": "Média de conteúdos estudados por dia<br><span style='font-size:0.4em;color:#4A8AE8'>"}))
 
             figa.add_trace(go.Indicator(
-            value = truncar(conteudos_estudados_semana3['Conteúdos estudados por dia'][0]/filtro_alunos_grupo2['user_id_x'][0],2),
+            value = truncar(conteudos_estudados_total['count'][0]/dias['day'][0]/filtro_alunos_grupo2['user_id_x'][0],2),
             domain = {'x': [0.25, 0.75], 'y': [0.4, 0.6]},
             title = {"text": "Média de conteúdos estudados por aluno ativo por dia<br><span style='font-size:0.4em;color:#4A8AE8'>"}))
 
             figa.add_trace(go.Indicator(
-            value = truncar(conteudos_estudados_total['Conteúdos estudados por dia'][0],2),
+            value = conteudos_estudados_total['count'][0],
             domain = {'x': [0.25, 0.75], 'y': [0, 0.2]},
             title = {"text": "Número de conteúdos estudados no período selecionado<br><span style='font-size:0.4em;color:#4A8AE8'>"}))
 
@@ -953,7 +978,7 @@ if senha_preenchida == 'eduqo' and nome != 'Nome':
 
             """
                 ## 🚀 **Materiais estudados por dia**
-                Aqui analisamos o número de materiais estudados por alunos da rede por semana.
+                Aqui analisamos a quantidade de conteúdos estudados, por aluno ativo, ou seja, é a média de conteúdos estudados por aluno em cada semana.
             """
             ######################### Conteúdos estudados por dia ############################
             alunos_ativos = pd.read_csv('./CSV/Qontrole de Redes/Resultados Query/alunos_ativos.csv')
@@ -967,23 +992,21 @@ if senha_preenchida == 'eduqo' and nome != 'Nome':
             conteudos_estudados_semana_grafico3['Conteúdos estudados por aluno por dia'] = conteudos_estudados_semana_grafico3['Conteúdos estudados por dia']/conteudos_estudados_semana_grafico3['user_id']
             conteudos_estudados_semana_grafico4 = conteudos_estudados_semana_grafico3.groupby(['name','Semana']).mean().reset_index()
             conteudos_estudados_semana_grafico5 = conteudos_estudados_semana_grafico3.groupby(['name','grupo','Semana']).mean().reset_index()
-            
             fig = px.bar(conteudos_estudados_semana_grafico4, x = conteudos_estudados_semana_grafico4['Semana'], y = conteudos_estudados_semana_grafico4['Conteúdos estudados por aluno por dia'], color_discrete_sequence = ['#4a8ae8']*len(conteudos_estudados_semana_grafico4))
-            
             if len(namespace_grupo_select) != 0:
                 conteudos_estudados_semana_grafico5 = conteudos_estudados_semana_grafico5.reset_index(drop = True)
                 for i in range(len(namespace_grupo_select)):
                     conteudos_estudados_semana_grafico6 = conteudos_estudados_semana_grafico5.loc[conteudos_estudados_semana_grafico5['grupo'] == namespace_grupo_select[i]]
                     fig.add_scatter(x = conteudos_estudados_semana_grafico6['Semana'], y = conteudos_estudados_semana_grafico6['Conteúdos estudados por aluno por dia'],mode='lines', name = namespace_grupo_select[i], line=dict(color=cor[i]))
-            fig.update_layout(title = "Conteúdos estudados por aluno por dia", yaxis_title='Conteúdos estudados por aluno por dia')
+            fig.update_layout(title = "Conteúdos estudados por aluno por dia", yaxis_title = 'Conteúdos por aluno por dia')
             st.plotly_chart(fig) 
 
             """
                 ## 🚀 **Materiais estudados por grupo**
-                Aqui analisamos por grupo o número de conteúdos por aluno e no total no período selecionado.
+                Aqui analisamos por grupo o número de conteúdos estudados pelos alunos por dia e no total no período selecionado.
             """
             with st.expander("Visualizar por grupo -> (clique aqui 🖱️) "):
-                num_dias = conteudos_estudados_semana_grafico3.groupby(['name','grupo','Semana']).mean().reset_index()
+                num_dias = conteudos_estudados_semana_grafico3.groupby(['name','Semana']).mean().reset_index()
                 num_dias2 = num_dias.groupby('name').sum().reset_index()
                 num_alunos = conteudos_estudados_semana_grafico3.groupby(['name','grupo','namespace']).mean().reset_index()
                 num_alunos2 = num_alunos.groupby(['name','grupo']).sum().reset_index()
@@ -1009,7 +1032,7 @@ if senha_preenchida == 'eduqo' and nome != 'Nome':
 
             """
                 ## 🚀 **Materiais estudados por namespace**
-                Aqui analisamos por namespace o número de conteúdos por aluno e no total no período selecionado.
+                Aqui analisamos por namespace o número de conteúdos estudados pelos alunos por dia e no total no período selecionado.
             """
             with st.expander("Visualizar por namespace -> (clique aqui 🖱️) "):
                 num_alunos_namespace3 = pd.DataFrame()
@@ -1074,8 +1097,8 @@ if senha_preenchida == 'eduqo' and nome != 'Nome':
             st.plotly_chart(figa)
 
             """
-                ## 🚀 **Acesso semanal**
-                Aqui analisamos a porcentagem de presença diária dos professores ativos por semana.
+                ## 🚀 **Acesso à plataforma pelos professores**
+                Aqui analisamos a quantidade de acessos à plataforma, cada número representa a média semanal da quantidade de professores que acessaram diariamente em relação ao número de professores ativos.
             """
             ######################### Acesso de professores ############################
             acesso_profs10 = acesso_profs4_aux.groupby(['name','grupo','namespace','Semana']).sum().reset_index()
@@ -1130,6 +1153,16 @@ if senha_preenchida == 'eduqo' and nome != 'Nome':
                 acesso_profs22['Grupo'] = acesso_profs21['grupo']
                 acesso_profs22['Tempo Médio (h)'] = acesso_profs21['Tempo médio por professor por dia']
                 acesso_profs22['Porcentagem de presença (%)'] = 100*acesso_profs21['Porcentagem de presença']
+                acesso_profs22['Tempo Médio (h)'] = 60*acesso_profs22['Tempo Médio (h)']
+                for i in range(len(acesso_profs22['Tempo Médio (h)'])):
+                    minutes = acesso_profs22['Tempo Médio (h)'][i]
+                    if minutes > 60:
+                        hours = minutes // 60
+                        reminder = minutes - hours*60
+                        acesso_profs22['Tempo Médio (h)'][i] = str(hours)+'h'+str(truncar(reminder,0))+'min'
+                    else:
+                        acesso_profs22['Tempo Médio (h)'][i] = str(truncar(minutes,0))+'min'
+                    acesso_profs22['Tempo Médio (h)'][i] = acesso_profs22['Tempo Médio (h)'][i].replace('.0','') 
                 if len(namespace_grupo_select) > 0:
                     acesso_profs22_aux = acesso_profs22[acesso_profs22['Grupo'].isin(namespace_grupo_select)].reset_index(drop = True)
                 else:
@@ -1144,16 +1177,27 @@ if senha_preenchida == 'eduqo' and nome != 'Nome':
             """
             ######################### Tabela por namespace ############################
             with st.expander("Visualizar por namespace -> (clique aqui 🖱️)  "):
-                acesso_profs25 = pd.merge(acesso_profs10,num_dias, on = ['name','grupo','Semana'], how = 'inner')
+                acesso_profs25 = pd.merge(acesso_profs10,num_dias, on = ['name','Semana'], how = 'inner')
                 acesso_profs26 = acesso_profs25.drop(columns = ['count','Conteúdos estudados por aluno por dia','user_id','Conteúdos estudados por dia'])
                 acesso_profs27 = acesso_profs26.groupby(['name','grupo','namespace']).sum().reset_index()
-                acesso_profs27['Tempo médio (h)'] = acesso_profs27['seconds']/acesso_profs27['user_id_x']/3600
+                acesso_profs27['Tempo Médio (h)'] = acesso_profs27['seconds']/acesso_profs27['user_id_x']/3600
                 acesso_profs27['Porcentagem de presença (%)'] = 100*acesso_profs27['user_id_y']/acesso_profs27['user_id_x']
                 acesso_profs28 = acesso_profs27.drop(columns = ['seconds','user_id_y','Semana','user_id_x','name','day'])
+                acesso_profs28['Tempo Médio (h)'] = 60*acesso_profs28['Tempo Médio (h)']
+                for i in range(len(acesso_profs28['Tempo Médio (h)'])):
+                    minutes = acesso_profs28['Tempo Médio (h)'][i]
+                    if minutes > 60:
+                        hours = minutes // 60
+                        reminder = minutes - hours*60
+                        acesso_profs28['Tempo Médio (h)'][i] = str(hours)+'h'+str(truncar(reminder,0))+'min'
+                    else:
+                        acesso_profs28['Tempo Médio (h)'][i] = str(truncar(minutes,0))+'min'
+                    acesso_profs28['Tempo Médio (h)'][i] = acesso_profs28['Tempo Médio (h)'][i].replace('.0','') 
+                acesso_profs28_aux2 = acesso_profs28.drop(columns = ['Nome'])
                 if len(namespace_grupo_select) > 0:
-                    acesso_profs28_aux = acesso_profs28[acesso_profs28['grupo'].isin(namespace_grupo_select)].reset_index(drop = True)
+                    acesso_profs28_aux = acesso_profs28_aux2[acesso_profs28_aux2['grupo'].isin(namespace_grupo_select)].reset_index(drop = True)
                 else:
-                    acesso_profs28_aux = acesso_profs28.copy().reset_index(drop = True)
+                    acesso_profs28_aux = acesso_profs28_aux2.copy().reset_index(drop = True)
                 acesso_profs29 = acesso_profs28_aux.sort_values(by = 'Porcentagem de presença (%)', ascending = False).reset_index(drop = True)
                 acesso_profs30 = acesso_profs29.style.applymap(classificacao_cor, subset=['Porcentagem de presença (%)']).set_precision(2)
                 st.table(acesso_profs30)
@@ -1221,7 +1265,7 @@ if senha_preenchida == 'eduqo' and nome != 'Nome':
                         conteudos_criados17 = conteudos_criados16.loc[conteudos_criados16['grupo'] == namespace_grupo_select[i]]
                         conteudos_criados17['Número de conteúdos criados por professor'] = conteudos_criados17['Número de conteúdos criados_x']/conteudos_criados17['user_id']
                         fig.add_scatter(x = conteudos_criados17['Semana_x'], y = conteudos_criados17['Número de conteúdos criados por professor'],mode='lines', name = namespace_grupo_select[i], line=dict(color=cor[i]))
-                fig.update_layout(title = "Número de conteúdos criados por professor por semana", yaxis_title='Número de conteúdos criados por professor', xaxis_title = 'Semana')
+                fig.update_layout(title = "Número de conteúdos criados por professor por semana", yaxis_title='Nº de conteúdos criados por professor', xaxis_title = 'Semana')
                 st.plotly_chart(fig)
             else:
                 st.warning('Não há registro de conteúdos criados no período selecionado!')
@@ -1453,8 +1497,6 @@ if senha_preenchida == 'eduqo' and nome != 'Nome':
                 st.plotly_chart(fig)
             else:
                 st.warning('Não há registro de visualização de relatórios de cadernos no período selecionado!')
-
-            
 
     if escolha_relatorio == 'Relatório de Rotinas pegagógicas (em construção)':
 
